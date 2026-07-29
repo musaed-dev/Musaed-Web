@@ -101,7 +101,7 @@ made.
 
 ### Placeholder links
 
-Eight anchors still need a real destination. All are tagged:
+Seven anchors still need a real destination. All are tagged:
 
 ```bash
 grep -rn "data-placeholder-link" index.html
@@ -110,7 +110,6 @@ grep -rn "data-placeholder-link" index.html
 | Marker | Count | Needs |
 | --- | --- | --- |
 | `discord-invite` | 3 | the bot-invite URL (nav, hero, about section) |
-| `status` | 1 | a status page |
 | `privacy` | 1 | a privacy policy |
 | `terms` | 1 | terms of use |
 | `email` | 2 | the contact address (footer + developer page). Also change `href` to `mailto:` |
@@ -120,12 +119,10 @@ missing URLs**. Before launch, either give each one a real page or delete the ro
 
 - `privacy` and `terms` are legal pages. An unwired link to a privacy policy is worse
   than no link at all.
-- `status` renders with the accent colour, matching the reference. It is styled as a link
-  to a status page, not as a live up/down indicator, so it asserts nothing about current
-  uptime.
 
-Pricing and refund-policy rows were in the reference but have been removed: Musaed is not
-presented as a paid product anywhere on this site.
+Pricing, refund-policy and service-status rows were in the reference but have been
+removed: Musaed is not presented as a paid product anywhere on this site, and there is no
+status page to point at.
 
 The community server link (`https://discord.gg/QvNXvDDFtz`) is **live, not a
 placeholder**. It appears twice: the من نحن section and the footer. It is deliberately
@@ -171,8 +168,28 @@ are in the comment beside them. Nothing else needs touching.
 ### The updates page
 
 `updates.html` is a changelog, reached from `التحديثات` in both the nav and the footer.
-Layout is a vertical timeline: one column with the rail on the reading edge on mobile,
-centred rail with releases alternating left and right from 820px up.
+
+Layout is a three-column timeline inside a glass panel: a sticky version block, the
+rail itself as a real 1px grid column, then the release body. Because the rail is a
+column rather than a pseudo-element, consecutive releases join into one unbroken line
+with no offset maths. Under 860px it collapses to rail plus content, with the version
+stacked above its release and the sticky dropped.
+
+Two site-wide rules are broken here on purpose, and both are load-bearing for the
+terminal look:
+
+- **Radius is zero.** Everywhere else uses `--r-sm` / `--r-md`. Every mark on this page
+  is a hard square: the panel, the `جديد` badge, the rail nodes, the status dots.
+  Rounding them makes the page look like the landing page in costume. The four
+  selectors to change are named in the comment at the top of `updates.css`.
+- **It does not use `.pagebar` / `.pagewrap`.** The shared sub-page chrome is a bar
+  floating above a plain column; this design needs the bar *inside* the panel, so the
+  back link lives in `.upbar`. `developer.html` still uses the shared chrome, so
+  nothing there changed.
+
+The greys were nudged a few points toward green from the neutral reference values, so
+the page still reads as part of Musaed rather than a stock terminal template. They are
+local tokens at the top of `updates.css` (`--up-head`, `--up-body`, and so on).
 
 **Every version number, date and bullet in it is invented.** It is a layout demonstration,
 not a record of what shipped. The feature bullets describe systems the site already
@@ -183,8 +200,17 @@ advertises, but the releases they are attributed to and all six dates are made u
 > changelog page at all.
 
 To add a release, copy one `<li class="rel">` block; newest goes first. Only the newest
-carries `rel--latest`, which fills its timeline node and draws the `جديد` badge. The three
-summary tiles above the timeline are `data-mock="true"` and need updating alongside it.
+carries `rel--latest`, which lights its node on the rail and draws the `جديد` badge. Each
+block holds three children in order: `.rel__meta` (version + date), `.rel__rail` (the line
+and its node), `.rel__body` (title, badge, bullets). Bullets are `.rel__item` rows, not a
+card, and each one opens with a mono `+`.
+
+The two summary figures above the timeline are `data-mock="true"` and need updating
+alongside it. The `∞` is not a figure so it stays as is.
+
+**Do not put `.reveal` on `.rel__meta`.** That class animates `transform`, and a
+transformed ancestor traps the sticky version block inside it. Reveals go on `.rel__body`
+only, which is how the markup already has it.
 
 ### Shared sub-page chrome
 
@@ -329,6 +355,33 @@ not scale it past about 50px, which is where upscaling starts to show.
   Collapses to two columns under 640px. Markup is `.footer__cols > .fcol`.
 - **Motion** is opacity and transform only, and fully disabled under
   `prefers-reduced-motion: reduce`. There are no scroll event listeners anywhere.
+
+### Accessibility invariants
+
+These four were audited and fixed, and each is easy to undo by accident. Keep them.
+
+- **44px is the floor for tap targets.** Footer rows, nav links, the updates back link and
+  the developer social buttons all sit at or just over 44px. Several get there through
+  `padding-block` cancelled by a negative margin, so the target grew without the layout
+  moving. If you tighten padding for looks, you shrink the target.
+- **Never `display: none` a label that is a control's accessible name.** The updates back
+  link hides its text under 560px, so it is clipped out of view while staying in the
+  accessibility tree. `display: none` there would leave screen readers announcing an
+  unlabelled link, since the icon is `aria-hidden`.
+- **Contrast is measured against the worst case, not the average.** The updates panel is
+  half-transparent, so small text has to clear 4.5:1 over the *accent glow* behind it, not
+  over the plain background. `--up-faint` and `--up-dim` were re-picked for that: 5.05:1
+  and 4.81:1 in the glow. They look darker than they need to be against plain background
+  because that is not where they have to survive.
+- **Line length is capped.** `.rel__item` text stops at `68ch`. Without it the changelog
+  bullets run about 95 characters, past the point where the eye loses the line return.
+
+Verify with:
+
+```bash
+grep -rn "min-height: 44px\|padding-block: 11px\|padding-block: 10px" assets/css/
+grep -rn "clip-path: inset(50%)" assets/css/updates.css
+```
 
 ### Motion, in two layers
 
