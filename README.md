@@ -195,7 +195,7 @@ to a page stays in that page's own stylesheet.
 
 ### Other things to fill in
 
-- `og:image` is not set. Add one plus `og:url` once the site has a domain.
+- `og:image` and `og:url` are not set. `musaed-banner.png` is ready for it, see "Brand assets".
 - The footer year is hard-coded to `2026`.
 
 ---
@@ -237,7 +237,7 @@ assets/css/updates.css     updates page only, loaded after styles.css
 assets/js/main.js          stats data, count-up, scroll reveals, link guard
 assets/js/developer.js     skill bars, loaded after main.js
 assets/fonts/              self-hosted woff2, no external font requests
-assets/Pics/               images. Note the capital P, see below
+assets/Pics/               brand marks + images. Note the capital P, see below
 ```
 
 **Path casing.** `assets/Pics/` is capitalised while its siblings are not. Windows and
@@ -361,6 +361,44 @@ Two constraints worth preserving if you extend this:
 - **Do not scrub body copy or cards.** Scrubbed text fades back out as you scroll up,
   which is distracting to read against. Scrubbing is reserved for effects where being
   tied to scroll position is the actual point.
+
+### Brand assets
+
+`assets/Pics/` holds the Musaed mark, a green م glyph on a transparent background:
+
+| File | Size | Used as |
+| --- | --- | --- |
+| `musaed-avatar.png` | 1024x1024 | brand mark in the landing nav and footer (30px), and in the sub-page bars (25px). Also the `apple-touch-icon` |
+| `musaed-favicon.png` | 512x512 | `rel="icon"` on all three pages |
+| `musaed-banner.png` | 960x540 | **not wired up yet.** See below |
+
+Both marks are fully transparent outside the glyph, so they sit on the dark chrome with no
+plate behind them. The nav mark used to be a filled accent square with a م typed into it;
+the real logo replaces both the square and the letter.
+
+`musaed-banner.png` is the `og:image`, the card that renders when the site is linked in
+Discord, Twitter or Slack. All three pages carry a full Open Graph + Twitter card block
+with a `summary_large_image` card, plus a `canonical` link.
+
+### The hardcoded domain
+
+Social crawlers reject relative URLs, so the site URL is written literally into
+`og:url`, `og:image`, `twitter:image` and `canonical` on **all three pages**:
+
+```text
+https://musaed-web-production.up.railway.app
+```
+
+If you move to a custom domain, find and replace that string across the three HTML files.
+Nothing else references it.
+
+Two notes on the card:
+
+- The banner is **960x540**. It renders fine, but `1200x630` is the size every platform
+  optimises for. Worth regenerating at that size when convenient.
+- `og:image` points at a path that only exists **after you redeploy**. At the time of
+  writing the live deploy predates these assets, so the URL 404s and the card will render
+  blank until the current files ship.
 
 ### Vendored assets
 

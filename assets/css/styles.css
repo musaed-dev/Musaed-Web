@@ -252,17 +252,13 @@ img, svg { display: block; max-width: 100%; }
 
 .brand { display: inline-flex; align-items: center; gap: 10px; }
 
+/* The real brand mark: a green glyph on transparency, so it needs no
+   container fill of its own. It used to be a filled accent square with a
+   م typed into it; the logo replaces both. */
 .brand__mark {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--r-sm);
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1;
+  width: 30px;
+  height: 30px;
+  flex: none;
 }
 
 .brand__name { font-weight: 700; font-size: 1.1rem; }
@@ -329,11 +325,21 @@ img, svg { display: block; max-width: 100%; }
 /* The arrow glyph points right, which is "back" in a right-to-left page. */
 .pagebar__back .icon { width: 17px; height: 17px; }
 
+/* Page name plus the brand mark, sitting at the outer edge of the bar.
+   The mark identifies the site, the label identifies the page. */
+.pagebar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .pagebar__label {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--text);
 }
+
+.pagebar__logo { width: 25px; height: 25px; flex: none; }
 
 .pagewrap {
   max-width: 1080px;

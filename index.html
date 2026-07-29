@@ -5,15 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Runs before first paint so scroll-reveal elements are only hidden when JS can reveal them. -->
 <script>document.documentElement.classList.remove("no-js");</script>
-<title>مساعد | بوت الإشراف والحماية لسيرفرات ديسكورد العربية</title>
+<title>Musaed |مساعد</title>
 <meta name="description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
 <meta name="theme-color" content="#080a09">
 
-<!-- Open Graph. Update the URL + image once the site has a real domain. -->
+<link rel="icon" href="assets/Pics/musaed-favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
+
+<!-- Open Graph / social card. Crawlers require ABSOLUTE urls, so the domain
+     is hardcoded. If it changes, update og:url + og:image + canonical on all
+     three pages. The banner is 960x540; 1200x630 would be the ideal size. -->
+<link rel="canonical" href="https://musaed-web-production.up.railway.app/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Musaed">
 <meta property="og:locale" content="ar_SA">
+<meta property="og:url" content="https://musaed-web-production.up.railway.app/">
 <meta property="og:title" content="Musaed |مساعد">
 <meta property="og:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta property="og:image" content="https://musaed-web-production.up.railway.app/assets/Pics/musaed-banner.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="960">
+<meta property="og:image:height" content="540">
+<meta property="og:image:alt" content="مساعد">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Musaed |مساعد">
+<meta name="twitter:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta name="twitter:image" content="https://musaed-web-production.up.railway.app/assets/Pics/musaed-banner.png">
 
 <link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -47,7 +64,7 @@
 <header class="nav" id="top">
   <div class="shell nav__inner">
     <a class="brand" href="#top">
-      <span class="brand__mark" aria-hidden="true">م</span>
+      <img class="brand__mark" src="assets/Pics/musaed-avatar.png" alt="" width="30" height="30" decoding="async">
       <span class="brand__name">مساعد</span>
     </a>
 
@@ -270,7 +287,7 @@
   <div class="shell footer__inner">
     <div class="footer__brand">
       <a class="brand" href="#top">
-        <span class="brand__mark" aria-hidden="true">م</span>
+        <img class="brand__mark" src="assets/Pics/musaed-avatar.png" alt="" width="30" height="30" decoding="async">
         <span class="brand__name">مساعد</span>
       </a>
       <p class="footer__tag">بوت إشراف وحماية لسيرفرات ديسكورد العربية.</p>
