@@ -118,13 +118,14 @@
   gap: 16px;
 }
 
-/* padding-block, plus the negative margin that cancels it, is what carries
-   this link past a 44px touch target without moving the bar. */
+/* min-height rather than padding: under 560px the label is hidden and the
+   only content left is a 17px icon, so padding alone collapsed this to 37px.
+   The negative block margin keeps the bar its original height. */
 .upbar__back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding-block: 10px;
+  min-height: 44px;
   margin-block: -10px;
   font-size: 0.9rem;
   color: var(--text-dim);

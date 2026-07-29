@@ -68,7 +68,16 @@
       <span class="brand__name">مساعد</span>
     </a>
 
-    <nav class="nav__links" aria-label="روابط الصفحة">
+    <!-- Phone-width menu button. Sits BEFORE the panel it controls and after
+         the brand, so DOM order, visual order and focus order agree at every
+         width and no `order` property is needed. Hidden from 768px up, where
+         the links lay out as a normal row. -->
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav__burger" aria-hidden="true"></span>
+      <span class="nav__toggle-text">القائمة</span>
+    </button>
+
+    <nav class="nav__links" id="nav-menu" aria-label="روابط الصفحة">
       <a href="#features">المميزات</a>
       <a href="#stats">الأرقام</a>
       <a href="#about">عن البوت</a>
@@ -128,7 +137,7 @@
 
       <div class="bento">
 
-        <article class="card card--wide card--accent reveal">
+        <article class="card card--accent reveal">
           <svg class="card__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>
           <h3 class="card__title">الإشراف</h3>
           <p class="card__body">
@@ -158,7 +167,7 @@
           </p>
         </article>
 
-        <article class="card card--wide card--accent reveal">
+        <article class="card card--accent reveal">
           <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
           <h3 class="card__title">بادئة لكل سيرفر</h3>
           <p class="card__body">
@@ -300,6 +309,7 @@
         <ul class="fcol__list">
           <li><a href="#features"><svg class="fcol__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>المميزات</a></li>
           <li><a href="#stats"><svg class="fcol__icon" aria-hidden="true"><use href="#i-users"></use></svg>الأرقام</a></li>
+          <li><a href="#about"><svg class="fcol__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>عن البوت</a></li>
           <li><a href="#about-us"><svg class="fcol__icon" aria-hidden="true"><use href="#i-chats"></use></svg>من نحن</a></li>
         </ul>
       </div>
@@ -307,8 +317,6 @@
       <div class="fcol">
         <h2 class="fcol__title">النظام</h2>
         <ul class="fcol__list">
-          <!-- PLACEHOLDER LINK: needs a real status page. -->
-          <li><a href="#" data-placeholder-link="status"><svg class="fcol__icon fcol__icon--accent" aria-hidden="true"><use href="#i-pulse"></use></svg>حالة الخدمة</a></li>
           <li><a href="updates.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>التحديثات</a></li>
           <li><a href="https://discord.gg/QvNXvDDFtz" target="_blank" rel="noopener noreferrer"><svg class="fcol__icon" aria-hidden="true"><use href="#i-discord"></use></svg>سيرفرنا</a></li>
           <li><a href="developer.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-user"></use></svg>المطور</a></li>

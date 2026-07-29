@@ -16,3 +16,4 @@ yarn-error.log*
 # contain bot credentials or a database URL. See README.md.
 .env
 .env.*
+TODO.md

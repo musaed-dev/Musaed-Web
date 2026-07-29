@@ -258,8 +258,68 @@
       });
   }
 
+  /* ---------------------------------------------------------------- nav
+     Phone-width menu. A plain disclosure: the button owns aria-expanded and
+     the panel is the next element in the DOM, so tabbing out of the button
+     lands in the menu without any focus juggling.
+
+     The panel is hidden with `visibility` in CSS, which keeps its links out
+     of the tab order while closed. Nothing here needs to manage that.
+  */
+
+  function initNav() {
+    var nav = document.querySelector(".nav");
+    var toggle = document.querySelector(".nav__toggle");
+    if (!nav || !toggle) return;
+
+    var panel = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!panel) return;
+
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function isOpen() {
+      return toggle.getAttribute("aria-expanded") === "true";
+    }
+
+    toggle.addEventListener("click", function () {
+      setOpen(!isOpen());
+    });
+
+    /* Every link either jumps to a section on this page or leaves it. In both
+       cases leaving the menu open would cover the thing just navigated to. */
+    panel.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || !isOpen()) return;
+      setOpen(false);
+      toggle.focus();
+    });
+
+    /* A tap anywhere else dismisses it, which is what the panel looks like it
+       should do. Listening on the document means a tap on page content counts. */
+    document.addEventListener("click", function (event) {
+      if (!isOpen() || nav.contains(event.target)) return;
+      setOpen(false);
+    });
+
+    /* Rotating the phone can cross the breakpoint with the panel open, which
+       would otherwise leave `is-open` set on a nav that no longer has one. */
+    var wide = window.matchMedia("(min-width: 768px)");
+    var onChange = function (event) {
+      if (event.matches) setOpen(false);
+    };
+    if (wide.addEventListener) wide.addEventListener("change", onChange);
+    else if (wide.addListener) wide.addListener(onChange);
+  }
+
   /* ------------------------------------------------------------------ go */
 
+  initNav();
   initReveals();
   initStats();
   initPlaceholderLinks();

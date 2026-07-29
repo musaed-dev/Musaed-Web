@@ -125,11 +125,13 @@
   margin-top: 22px;
 }
 
+/* 44x44 is the floor for a tap target, and these are icon-only, so there is
+   no text to enlarge the hit area. Do not shrink them for looks. */
 .social {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
   background: var(--bg-2);

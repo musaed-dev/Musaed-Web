@@ -356,6 +356,28 @@ not scale it past about 50px, which is where upscaling starts to show.
 - **Motion** is opacity and transform only, and fully disabled under
   `prefers-reduced-motion: reduce`. There are no scroll event listeners anywhere.
 
+### The phone menu
+
+Below 768px the five nav links become a panel under the bar, opened by `.nav__toggle`.
+It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay.
+
+- **DOM order is brand, button, panel, CTA.** The button sits immediately before the panel
+  it controls, so tabbing out of it lands in the menu with no focus management, and DOM,
+  visual and focus order agree at *both* breakpoints. No `order` property anywhere. This
+  is why the button is inboard of the CTA rather than at the far edge.
+- **The panel is hidden with `visibility`, not `opacity` alone.** That is what keeps its
+  links out of the tab order and the accessibility tree while closed. Verified: the nav
+  exposes 2 links closed, 7 open.
+- **Mobile is the base, desktop is the override.** `.nav__links` defaults to the dropped
+  panel; the `min-width: 768px` block turns it back into a row.
+- **Opening the menu pins the bar solid.** `nav-solidify` leaves the bar at 35% opacity
+  until you scroll 140px, and a menu hanging off a see-through bar looks broken.
+  `.nav.is-open { animation: none }` releases it, which is also how a plain declaration
+  beats a running animation without `!important`.
+- **Without JS the button is hidden**, since it could not do anything. The footer is the
+  fallback and now carries every destination the nav does. If you add a nav link, add it
+  to the footer too, or no-JS phones lose it.
+
 ### Accessibility invariants
 
 These four were audited and fixed, and each is easy to undo by accident. Keep them.
@@ -376,11 +398,16 @@ These four were audited and fixed, and each is easy to undo by accident. Keep th
 - **Line length is capped.** `.rel__item` text stops at `68ch`. Without it the changelog
   bullets run about 95 characters, past the point where the eye loses the line return.
 
+All of the above were measured in a real browser at 320, 375, 390, 412 and 768px, not
+inferred from the stylesheet. The 320px column is the one that breaks first: the nav bar
+there has about 6px of slack, so widening the brand, the menu button or the CTA will
+overflow it before it shows anywhere else.
+
 Verify with:
 
 ```bash
-grep -rn "min-height: 44px\|padding-block: 11px\|padding-block: 10px" assets/css/
-grep -rn "clip-path: inset(50%)" assets/css/updates.css
+grep -rn "min-height: 44px" assets/css/
+grep -rn "clip-path: inset(50%)" assets/css/
 ```
 
 ### Motion, in two layers

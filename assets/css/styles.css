@@ -231,8 +231,14 @@ img, svg { display: block; max-width: 100%; }
 .nav__inner {
   display: flex;
   align-items: center;
-  gap: 18px;
+  /* Brand + button + CTA has to survive a 320px viewport, so the bar runs
+     tight on phones and opens up once the links move into it. */
+  gap: 10px;
   height: 100%;
+}
+
+@media (min-width: 768px) {
+  .nav__inner { gap: 18px; }
 }
 
 /* Read-progress line. Sits at scaleX(0) until a scroll timeline drives it,
@@ -250,7 +256,12 @@ img, svg { display: block; max-width: 100%; }
   pointer-events: none;
 }
 
-.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;             /* it is a link to #top, so it is a tap target */
+}
 
 /* The real brand mark: a green glyph on transparency, so it needs no
    container fill of its own. It used to be a filled accent square with a
@@ -263,22 +274,165 @@ img, svg { display: block; max-width: 100%; }
 
 .brand__name { font-weight: 700; font-size: 1.1rem; }
 
-.nav__links {
-  display: none;                /* mobile: hidden, CTA carries the nav */
-  gap: 20px;                    /* tightened to keep 5 links on one line */
-  margin-inline-start: auto;
-  font-size: 0.95rem;
-  color: var(--text-dim);
-  white-space: nowrap;          /* a label may never break the nav onto 2 rows */
+/* ---------- Nav: menu button ----------
+   Phone widths only. Below 768px the five links have nowhere to go, so they
+   become a panel under the bar and this button discloses it.
+*/
+
+/* Square and icon-only. A visible label pushed the bar to 376px of content
+   at a 320px viewport, which overflowed; the label is kept for assistive
+   tech below instead. */
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  margin-inline-start: auto;    /* pushes itself and the CTA to the far edge */
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
 }
-.nav__links a { transition: color .2s var(--ease); }
+
+/* Hidden visually, NOT removed: this is the button's only accessible name,
+   since the bars are drawn in CSS and marked aria-hidden. */
+.nav__toggle-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.nav__toggle:hover { border-color: var(--line-strong); }
+.nav__toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+
+/* A control that does nothing is worse than no control: without JS the panel
+   cannot open, so the button is not offered. The footer carries every link
+   the nav does, which is what no-JS phones fall back to. */
+.no-js .nav__toggle { display: none; }
+
+/* Three bars from one element, becoming an X when open. Drawn in CSS rather
+   than added to the icon sprite because the two states are one animation,
+   not two icons. */
+.nav__burger {
+  position: relative;
+  width: 17px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: background-color .12s linear;
+}
+.nav__burger::before,
+.nav__burger::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border-radius: inherit;
+  transition: transform .26s var(--ease);
+}
+.nav__burger::before { transform: translateY(-6px); }
+.nav__burger::after  { transform: translateY(6px); }
+
+.nav__toggle[aria-expanded="true"] .nav__burger { background: transparent; }
+.nav__toggle[aria-expanded="true"] .nav__burger::before { transform: rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__burger::after  { transform: rotate(-45deg); }
+
+/* ---------- Nav: links ----------
+   Phone default is the dropped panel. The 768px block below turns it back
+   into an ordinary row, so the desktop nav is the override, not the base.
+*/
+
+.nav__links {
+  position: absolute;
+  inset-inline: 0;
+  /* 100% resolves against the padding box, which stops 1px short and would
+     put the panel on top of the bar's own bottom hairline. */
+  top: calc(100% + 1px);
+  display: grid;
+  padding: 6px 20px 14px;
+  /* Opaque, not translucent: page content scrolls behind this, and unlike
+     the bar it has no backdrop blur to hide what shows through. */
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  color: var(--text-dim);
+  /* visibility, not opacity alone: it also takes the links out of the tab
+     order and the accessibility tree while the panel is closed. */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .22s var(--ease),
+              transform .22s var(--ease),
+              visibility .22s;
+}
+.nav.is-open .nav__links {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+/* At the top of the page the bar is only 35% opaque, because nav-solidify
+   fades it in over the first 140px of scroll. An open menu hanging off a
+   see-through bar reads as broken, so opening it releases that animation
+   and pins the bar solid. `animation: none` is what lets a plain
+   declaration win here; a CSS animation outranks normal author styles, so
+   the alternative would have been !important. */
+.nav.is-open {
+  animation: none;
+  background: var(--bg);
+  border-bottom-color: var(--line);
+}
+
+.nav__links a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border-top: 1px solid var(--line);
+  transition: color .2s var(--ease);
+}
+.nav__links a:first-child { border-top: 0; }
 .nav__links a:hover { color: var(--accent); }
 
-.nav__cta { margin-inline-start: auto; }
+.nav__cta { margin-inline-start: 0; }
 
 @media (min-width: 768px) {
-  .nav__links { display: flex; }
-  .nav__cta   { margin-inline-start: 0; }
+  .nav__toggle { display: none; }
+
+  .nav__links {
+    position: static;
+    display: flex;
+    gap: 20px;                  /* tightened to keep 5 links on one line */
+    margin-inline-start: auto;
+    padding: 0;
+    background: none;
+    border-bottom: 0;
+    font-size: 0.95rem;
+    white-space: nowrap;        /* a label may never break the nav onto 2 rows */
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* Text alone is 26px tall and some labels are under 44px wide, so the row
+     gets padding in both axes rather than height alone. */
+  .nav__links a {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding-inline: 2px;
+    border-top: 0;
+  }
 }
 
 /* ---------- Sub-page chrome ----------
@@ -312,10 +466,15 @@ img, svg { display: block; max-width: 100%; }
   background: var(--bg-1);
 }
 
+/* The negative inline margin keeps the label flush with the bar edge while
+   the padding carries the target past 44px. Measured at 70x26 before it. */
 .pagebar__back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
+  padding-inline: 10px;
+  margin-inline-start: -10px;
   color: var(--text-dim);
   font-size: 0.95rem;
   transition: color .2s var(--ease);
@@ -354,7 +513,10 @@ img, svg { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   min-height: calc(100dvh - var(--nav-h));
-  padding-block: 56px 72px;
+  /* Tighter on phones: at 320px the hero already runs past the viewport, so
+     generous block padding buys nothing and pushes the wordmark further out
+     of reach. The 768px block restores it. */
+  padding-block: 36px 52px;
   overflow: hidden;
 }
 
@@ -428,6 +590,10 @@ img, svg { display: block; max-width: 100%; }
 
 @keyframes blink { 50% { opacity: 0; } }
 
+@media (min-width: 768px) {
+  .hero { padding-block: 56px 72px; }
+}
+
 @media (min-width: 900px) {
   .hero__inner {
     grid-template-columns: 1.05fr 0.95fr;
@@ -438,7 +604,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- Section shell ---------- */
 
-.section { padding-block: 84px; }
+.section { padding-block: 64px; }
 
 .section__head { margin-bottom: 44px; max-width: 58ch; }
 .section__head--center { margin-inline: auto; text-align: center; }
@@ -643,13 +809,6 @@ img, svg { display: block; max-width: 100%; }
     var(--bg-1);
 }
 
-.community__icon {
-  width: 30px;
-  height: 30px;
-  fill: var(--accent);
-  margin-bottom: 18px;
-}
-
 /* Real Discord brand mark, on a dark panel this time. Left at its natural
    colour: the source blurple already clears 7.2:1 here, so it needs none
    of the deepening the green button requires (see .btn__logo). Sized at
@@ -714,13 +873,20 @@ img, svg { display: block; max-width: 100%; }
 .fcol__list {
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  /* Cancels the first row's leading padding so the column still aligns to
+     its heading, without shrinking that row's tap target. */
+  margin-block-start: -11px;
 }
 
+/* The rows are the smallest tap targets on the site and they are visible on
+   mobile, where the footer is the only navigation. Text alone is 22px tall,
+   which fails the 24px minimum outright. padding-block carries each row to
+   44px; the gap moved into that padding, so the visual rhythm barely shifts. */
 .fcol__list a {
   display: flex;
   align-items: center;
   gap: 9px;
+  padding-block: 11px;
   color: var(--text-dim);
   font-size: 0.93rem;
   line-height: 1.5;
@@ -735,11 +901,6 @@ img, svg { display: block; max-width: 100%; }
   opacity: 0.72;
   transition: opacity .2s var(--ease);
 }
-
-/* Service status keeps the accent so the column has one point of colour,
-   matching the rest of the page. It is a link to a status page, not a
-   live indicator. */
-.fcol__icon--accent { fill: var(--accent); opacity: 1; }
 
 .fcol__list a:hover { color: var(--accent); }
 .fcol__list a:hover .fcol__icon { opacity: 1; }
