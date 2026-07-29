@@ -1,212 +1,372 @@
 /* ==========================================================================
    Updates / changelog page (updates.html)
-   Loaded AFTER styles.css, which owns the tokens, fonts, reset, buttons and
-   the shared .subpage / .pagebar / .pagewrap chrome.
+   Loaded AFTER styles.css, which owns the tokens, fonts, reset and buttons.
 
-   Palette note: the reference design for this layout used a rose/pink
-   accent. This page uses the site accent, same decision as developer.html,
-   so the sub-pages read as one product.
+   This page deliberately breaks two site-wide rules, because the layout it
+   is built from is a terminal / blueprint treatment and both rules are what
+   make it read that way:
+
+     1. RADIUS IS ZERO here. The rest of the site uses --r-sm / --r-md. Every
+        mark on this page is a hard square: the panel, the badge, the rail
+        nodes, the status dots. Rounding them makes the page look like the
+        landing page wearing a costume. To undo it, add a radius to .uppanel,
+        .rel__badge, .rel__node and .upbar__dots i.
+
+     2. It does NOT use .pagebar / .pagewrap. The shared sub-page chrome is a
+        bar floating above a plain column; this design needs the bar INSIDE
+        the glass panel. developer.html still uses the shared chrome, so
+        nothing there is affected. The back link lives in .upbar instead.
+
+   Greys: the reference palette was pure neutral (#fafafa / #b9b9b9 / #8a8a8a).
+   Those are nudged a few points toward green below so the page still reads as
+   part of Musaed rather than a stock terminal template.
    ========================================================================== */
 
-/* ---------- header ---------- */
+.subpage--updates {
+  --up-head:  #f4f8f5;              /* headings, brighter than --text      */
+  --up-body:  #b4c0b8;              /* bullet copy, sits between the two   */
+  --up-mute:  var(--text-dim);      /* lead paragraph, footer              */
+  /* Both of these are small text over the glass panel, and the panel is
+     half-transparent, so the accent glow behind it is the worst case, not
+     the plain background. Measured against the composite there:
+     faint 5.05:1, dim 4.81:1. The values they replaced were 4.12 and 3.06,
+     which failed 4.5:1 outright. Do not darken them back. */
+  --up-faint: #7d8c84;              /* stat labels                         */
+  --up-dim:   #7b8880;              /* dates                               */
+  --up-off:   #2b322e;              /* rail node, shipped releases         */
+  --up-dot:   #1c211f;              /* the two inactive status squares     */
 
-.uphead {
-  text-align: center;
-  max-width: 60ch;
-  margin: 44px auto 0;
+  --up-line: rgb(255 255 255 / 0.09);   /* bar + section rules   */
+  --up-hair: rgb(255 255 255 / 0.06);   /* between bullets       */
+  --up-rail: rgb(255 255 255 / 0.10);   /* the vertical timeline */
+
+  background: var(--bg);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 96px;
 }
 
-.uphead__pill {
+/* ---------- fixed backdrop ----------
+   Sits behind the panel and never scrolls, so the glass has something with
+   structure to blur. Two layers: an accent glow and a 56px lattice.
+*/
+
+.upbg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.upbg::before,
+.upbg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.upbg::before {
+  opacity: 0.55;
+  background:
+    radial-gradient(760px 520px at 82% 6%,  rgb(55 224 138 / 0.26), transparent 70%),
+    radial-gradient(680px 480px at 8%  88%, rgb(55 224 138 / 0.14), transparent 72%);
+}
+
+.upbg::after {
+  background-image:
+    repeating-linear-gradient(0deg,  rgb(255 255 255 / 0.05) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.05) 0 1px, transparent 1px 56px);
+}
+
+/* ---------- glass panel ---------- */
+
+.uppanel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1080px;
+  padding: 0 30px 20px;
+  background: rgb(10 11 10 / 0.5);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+}
+
+/* Browsers without backdrop-filter would show the grid straight through the
+   text. Give them an opaque panel instead. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .uppanel { background: #0b0d0c; }
+}
+
+/* ---------- top bar ---------- */
+
+.upbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--up-line);
+}
+
+.upbar__side {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* padding-block, plus the negative margin that cancels it, is what carries
+   this link past a 44px touch target without moving the bar. */
+.upbar__back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 15px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--r-sm);
-  background: var(--bg-1);
+  padding-block: 10px;
+  margin-block: -10px;
+  font-size: 0.9rem;
   color: var(--text-dim);
-  font-size: 0.83rem;
+  transition: color .2s var(--ease);
 }
-.uphead__pill svg { width: 15px; height: 15px; fill: var(--accent); }
+.upbar__back:hover { color: var(--accent); }
+
+/* The arrow points right, which is "back" in a right-to-left page. */
+.upbar__back .icon { width: 17px; height: 17px; }
+
+/* Three status squares. The lit one is the accent, matching the newest
+   release marker further down the rail. */
+.upbar__dots {
+  display: flex;
+  gap: 6px;
+}
+.upbar__dots i {
+  width: 9px;
+  height: 9px;
+  background: var(--up-dot);
+}
+.upbar__dots i:last-child { background: var(--accent); }
+
+.upbar__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ---------- hero ---------- */
+
+.uphead {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 84px 4px 56px;
+  border-bottom: 1px solid var(--up-line);
+}
+
+.uphead__row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
 .uphead__title {
-  margin-top: 22px;
-  font-size: clamp(2rem, 6vw, 3.2rem);
-  line-height: 1.25;
+  font-size: clamp(2.375rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--up-head);
+  text-wrap: pretty;
 }
 .uphead__title span { color: var(--accent); }
 
-.uphead__sub {
-  margin-top: 16px;
-  color: var(--text-dim);
-  font-size: 1.03rem;
+/* Sits on the title's baseline, so it grows visually with the clamp. */
+.uphead__bar {
+  width: 14px;
+  height: 44px;
+  background: var(--accent);
+  opacity: 0.85;
 }
 
-/* ---------- summary tiles ---------- */
+.uphead__sub {
+  max-width: 62ch;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--up-mute);
+  text-wrap: pretty;
+}
+
+/* ---------- summary figures ---------- */
 
 .upstats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 40px auto 0;
-  max-width: 760px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 18px;
 }
 
+/* column-reverse, not a DOM reorder: <dl> requires the <dt> before its <dd>,
+   but the figure has to sit above its label. */
 .upstat {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  padding: 20px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--bg-1);
-  text-align: center;
+  flex-direction: column-reverse;
+  gap: 6px;
+  padding-inline: 22px;
 }
-
-.upstat__icon { width: 19px; height: 19px; fill: var(--accent); opacity: .8; }
+.upstat:first-of-type { padding-inline-start: 0; }
+.upstat + .upstat { border-inline-start: 1px solid var(--up-rail); }
 
 .upstat__value {
   font-family: var(--mono);
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.1;
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--up-head);
+}
+.upstat--live .upstat__value { color: var(--accent); }
+
+.upstat__label {
+  font-size: 0.8rem;
+  color: var(--up-faint);
 }
 
-.upstat__label { color: var(--text-dim); font-size: 0.82rem; }
-
 /* ---------- timeline ----------
-   Mobile: one column, rail pinned to the reading edge (right in RTL),
-   every release on the same side.
-   Desktop: rail down the centre, releases alternate, and each release's
-   version/date sits opposite its card.
+   Three columns: version block, the rail itself, then the release body. The
+   rail is a real grid column rather than a pseudo-element, so consecutive
+   rows join into one unbroken line with no maths.
 */
 
 .timeline {
-  position: relative;
   list-style: none;
-  margin: 56px 0 0;
+  margin: 0;
   padding: 0;
 }
 
-/* the rail */
-.timeline::before {
-  content: "";
-  position: absolute;
-  inset-block: 6px;
-  inset-inline-start: 7px;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--line-strong) 8%,
-    var(--line-strong) 92%,
-    transparent
-  );
-}
-
 .rel {
-  position: relative;
-  padding-inline-start: 34px;
-  padding-bottom: 34px;
-}
-.rel:last-child { padding-bottom: 0; }
-
-/* the node on the rail */
-.rel::before {
-  content: "";
-  position: absolute;
-  top: 6px;
-  inset-inline-start: 3px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--line-strong);
-}
-.rel--latest::before {
-  background: var(--accent);
-  border-color: var(--accent);
+  display: grid;
+  grid-template-columns: 220px 1px minmax(0, 1fr);
+  align-items: start;
 }
 
-.rel__meta { margin-bottom: 12px; }
+/* Stretches so the sticky child below has somewhere to travel. The reference
+   left this at the default and the sticky never fired. */
+.rel__meta {
+  align-self: stretch;
+  padding-block: 52px;
+  padding-inline: 4px 0;
+}
+
+/* Keeps the version number in view while its bullets scroll past. No .reveal
+   on this column: that class animates transform, and a transformed ancestor
+   would trap the sticky element. */
+.rel__metain {
+  position: sticky;
+  top: 24px;
+}
 
 .rel__version {
   font-family: var(--mono);
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--accent);
+  font-size: 2.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   line-height: 1;
+  text-align: start;
+  color: var(--up-head);
 }
+.rel--latest .rel__version { color: var(--accent); }
 
 .rel__date {
-  margin-top: 6px;
-  color: var(--text-dim);
-  font-size: 0.85rem;
+  padding-top: 12px;
+  font-size: 0.8rem;
+  color: var(--up-dim);
+}
+.rel__date bdi {
+  font-family: var(--mono);
+  letter-spacing: 0.1em;
 }
 
-.rel__card {
+.rel__rail {
+  align-self: stretch;
   position: relative;
-  padding: 24px 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--bg-1);
-  transition: border-color .25s var(--ease);
+  background: var(--up-rail);
 }
-.rel__card:hover { border-color: var(--line-strong); }
 
-.rel--latest .rel__card {
-  border-color: var(--line-strong);
-  background:
-    radial-gradient(100% 130% at 100% 0%, rgb(55 224 138 / 0.08), transparent 58%),
-    var(--bg-1);
+.rel__node {
+  position: absolute;
+  top: 64px;
+  inset-inline-start: -4px;
+  width: 9px;
+  height: 9px;
+  background: var(--up-off);
+}
+.rel--latest .rel__node { background: var(--accent); }
+
+.rel__body {
+  padding-block: 52px;
+  padding-inline: 32px;
+}
+
+.rel__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-bottom: 26px;
+}
+
+.rel__title {
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: var(--up-head);
 }
 
 .rel__badge {
-  display: inline-block;
-  margin-bottom: 12px;
   padding: 4px 10px;
-  border-radius: var(--r-sm);
   background: var(--accent);
   color: var(--on-accent);
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
-
-.rel__title { font-size: 1.22rem; }
 
 .rel__list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.rel__list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  color: var(--text-dim);
-  font-size: 0.94rem;
-  line-height: 1.65;
+.rel__item {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 12px;
+  border-top: 1px solid var(--up-hair);
+  font-size: 0.9375rem;
+  line-height: 1.95;
+  color: var(--up-body);
+  text-wrap: pretty;
+  transition: background-color .2s var(--ease);
+}
+.rel__item:hover { background: rgb(255 255 255 / 0.035); }
+
+.rel__plus {
+  font-family: var(--mono);
+  color: var(--accent);
+  text-align: center;
+  line-height: inherit;
 }
 
-.rel__list svg {
-  width: 16px;
-  height: 16px;
-  flex: none;
-  margin-top: 4px;
-  fill: var(--accent);
-  opacity: .85;
-}
+/* Caps the measure at roughly 68 characters. Without this the bullets run the
+   full width of the release column, about 95 characters at the widest, which
+   is well past the point where the eye loses its place returning to the next
+   line. The hairline rules still span the full width. */
+.rel__item > :not(.rel__plus) { max-width: 68ch; }
 
 /* ---------- closing line ---------- */
 
 .upfoot {
-  margin-top: 56px;
-  text-align: center;
-  color: var(--text-dim);
+  padding: 40px 4px 0;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--up-mute);
 }
 .upfoot a {
   color: var(--accent);
@@ -216,37 +376,68 @@
 }
 .upfoot a:hover { border-color: var(--accent); }
 
-/* ---------- desktop: centred rail, alternating sides ---------- */
+/* ---------- narrow ----------
+   The 220px version column stops paying for itself here. Collapse to rail +
+   content, stack the version above its release, and drop the sticky.
+*/
 
-@media (min-width: 820px) {
-  .timeline::before {
-    inset-inline-start: 50%;
-    transform: translateX(50%);
+@media (max-width: 860px) {
+  .subpage--updates { padding: 20px 14px 64px; }
+  .uppanel { padding: 0 18px 18px; }
+
+  .uphead { padding: 56px 2px 40px; }
+
+  .rel { grid-template-columns: 1px minmax(0, 1fr); }
+
+  .rel__rail { grid-column: 1; grid-row: 1 / 3; }
+
+  .rel__meta {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    padding-block: 44px 0;
+    padding-inline: 22px 0;
+  }
+  .rel__metain { position: static; }
+  .rel__version { font-size: 2.25rem; }
+
+  .rel__body {
+    grid-column: 2;
+    grid-row: 2;
+    padding-block: 20px 44px;
+    padding-inline: 22px 0;
   }
 
-  .rel {
+  .rel__node { top: 52px; }
+}
+
+@media (max-width: 560px) {
+  /* Three across rather than wrapping, so the dividers stay meaningful. */
+  .upstats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 0 64px;
-    padding-inline-start: 0;
-    padding-bottom: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-wrap: nowrap;
+  }
+  .upstat { padding-inline: 12px; }
+  .upstat__value { font-size: 1.5rem; }
+  .upstat__label { font-size: 0.72rem; }
+
+  /* The label is hidden VISUALLY, not removed. This span is the link's only
+     accessible name (the icon is aria-hidden), so `display: none` here would
+     leave screen readers announcing an unlabelled link. Never swap this back.
+     The inline padding replaces the hit area the text was contributing. */
+  .upbar__back {
+    padding-inline: 14px;
+    margin-inline-start: -14px;
+  }
+  .upbar__back span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 
-  .rel::before {
-    top: 50%;
-    inset-inline-start: 50%;
-    transform: translate(50%, -50%);
-  }
-
-  /* Odd releases: card on the leading side, meta opposite.
-     Even releases: the two swap, which is what makes it alternate. */
-  .rel:nth-child(odd) .rel__card { grid-column: 1; }
-  .rel:nth-child(odd) .rel__meta { grid-column: 2; text-align: start; }
-
-  .rel:nth-child(even) .rel__card { grid-column: 2; }
-  .rel:nth-child(even) .rel__meta { grid-column: 1; text-align: end; }
-
-  .rel__meta { margin-bottom: 0; }
-  .rel__version { font-size: 2.4rem; }
+  .rel__item { padding-inline: 0; }
 }
