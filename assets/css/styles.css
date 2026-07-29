@@ -1,0 +1,794 @@
+/* ==========================================================================
+   Musaed (مساعد) - landing page styles
+   Static site. No build step, no framework.
+
+   Design locks (keep these consistent if you extend the page):
+     - Theme      : dark only, single theme for the whole page.
+     - Accent     : ONE accent (--accent). Never introduce a second hue.
+     - Radius     : interactive + small elements = --r-sm, panels = --r-md.
+     - Direction  : RTL. Use logical properties (inline-start/end), not left/right.
+     - Arabic type: never apply negative letter-spacing to Arabic; it breaks
+                    the connected script. Tracking is for Latin/mono only.
+   ========================================================================== */
+
+/* ---------- Fonts (self-hosted, no external requests) ---------- */
+
+/* IBM Plex Sans Arabic - Arabic subset */
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-arabic-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1,
+                 U+08E3-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-arabic-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1,
+                 U+08E3-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-arabic-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1,
+                 U+08E3-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+/* Latin subset - carries the digits used inside Arabic copy */
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-latin-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-latin-600.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  src: url("../fonts/plex-latin-700.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+/* IBM Plex Mono - stat numerals and command chips */
+@font-face {
+  font-family: "Plex Mono";
+  src: url("../fonts/plex-mono-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --bg:          #080a09;
+  --bg-1:        #0d100f;
+  --bg-2:        #121615;
+  --line:        rgb(126 235 175 / 0.11);
+  --line-strong: rgb(126 235 175 / 0.22);
+
+  --text:        #e7efe9;
+  --text-dim:    #8fa098;
+
+  --accent:      #37e08a;
+  --accent-soft: rgb(55 224 138 / 0.10);
+  --on-accent:   #05130b;
+
+  --sans: "Plex Arabic", system-ui, "Segoe UI", sans-serif;
+  --mono: "Plex Mono", ui-monospace, "SFMono-Regular", "Consolas", monospace;
+
+  /* Radius scale: small = interactive, md = panels. Only these two. */
+  --r-sm: 8px;
+  --r-md: 14px;
+
+  --shell: 1200px;
+  --nav-h: 68px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Reset ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;              /* Arabic needs a taller default than Latin */
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.32; }
+p  { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+dl, dd, dt { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+img, svg { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 50%;
+  top: -100px;
+  transform: translateX(50%);
+  z-index: 100;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--r-sm);
+  font-weight: 600;
+}
+.skip-link:focus { top: 12px; }
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.icon { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 13px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.975rem;
+  white-space: nowrap;          /* CTA labels never wrap */
+  cursor: pointer;
+  transition: background-color .22s var(--ease),
+              border-color .22s var(--ease),
+              color .22s var(--ease),
+              transform .12s var(--ease);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);      /* near-black on green: ~11:1 */
+}
+.btn--primary:hover { background: #4ded9c; }
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn:active { transform: translateY(1px); }
+
+.btn--sm { padding: 9px 16px; font-size: 0.9rem; }
+.btn--sm .btn__logo { width: 16px; height: 16px; }
+
+/* Real Discord brand mark inside a CTA.
+   Shipped in full colour (Discord blurple), which is the brand-correct
+   default. Blurple against the green button is a strong contrast; if you
+   want it to sit quieter, uncomment ONE of the filters below. Discord's
+   brand guidelines permit solid black and solid white marks:
+
+     filter: brightness(0);             solid black, matches the button text
+     filter: brightness(0) invert(1);   solid white
+*/
+.btn__logo {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+/* ---------- Nav ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  background: rgb(8 10 9 / 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 100%;
+}
+
+/* Read-progress line. Sits at scaleX(0) until a scroll timeline drives it,
+   so browsers without scroll-driven animation support simply never see it.
+   transform-origin is `right` because the page is RTL and progress should
+   grow from the reading edge. */
+.nav__progress {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: right center;
+  background: linear-gradient(to left, var(--accent), rgb(55 224 138 / 0.4));
+  pointer-events: none;
+}
+
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.brand__name { font-weight: 700; font-size: 1.1rem; }
+
+.nav__links {
+  display: none;                /* mobile: hidden, CTA carries the nav */
+  gap: 22px;                    /* tightened to keep 4 links on one line */
+  margin-inline-start: auto;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+.nav__links a { transition: color .2s var(--ease); }
+.nav__links a:hover { color: var(--accent); }
+
+.nav__cta { margin-inline-start: auto; }
+
+@media (min-width: 768px) {
+  .nav__links { display: flex; }
+  .nav__cta   { margin-inline-start: 0; }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100dvh - var(--nav-h));
+  padding-block: 56px 72px;
+  overflow: hidden;
+}
+
+/* Single soft accent field behind the hero. Not a per-element neon glow. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -10%;
+  top: -30%;
+  width: 70%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(55 224 138 / 0.13), transparent 62%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  gap: 44px;
+  align-items: center;
+}
+
+.hero__title {
+  font-size: clamp(2.6rem, 10vw, 5rem);
+  line-height: 1.22;
+  margin-bottom: 22px;
+}
+
+.hero__sub {
+  max-width: 46ch;
+  color: var(--text-dim);
+  font-size: clamp(1.02rem, 2.4vw, 1.18rem);
+  margin-bottom: 34px;
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero__visual { display: flex; justify-content: center; }
+
+.wordmark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.12em;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(120% 90% at 70% 0%, rgb(55 224 138 / 0.09), transparent 60%),
+    var(--bg-1);
+}
+
+.wordmark__text {
+  font-size: clamp(3.4rem, 13vw, 5.4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.wordmark__caret {
+  width: 0.11em;
+  height: 0.86em;
+  font-size: clamp(3.4rem, 13vw, 5.4rem);
+  background: var(--accent);
+  border-radius: 1px;
+  animation: blink 1.15s steps(2, start) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (min-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 60px;
+  }
+  .hero__title { font-size: clamp(3.4rem, 5.2vw, 5rem); }
+}
+
+/* ---------- Section shell ---------- */
+
+.section { padding-block: 84px; }
+
+.section__head { margin-bottom: 44px; max-width: 58ch; }
+.section__head--center { margin-inline: auto; text-align: center; }
+
+.section__title { font-size: clamp(1.9rem, 5vw, 2.9rem); }
+
+.section__lede {
+  margin-top: 14px;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+}
+
+@media (min-width: 768px) {
+  .section { padding-block: 116px; }
+}
+
+/* ---------- Features: bento ---------- */
+
+.bento { display: grid; gap: 16px; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  transition: border-color .28s var(--ease), background-color .28s var(--ease);
+}
+.card:hover { border-color: var(--line-strong); background: var(--bg-2); }
+
+/* The two wide cells carry a tinted field so the grid is not 4 flat boxes. */
+.card--accent {
+  background:
+    radial-gradient(100% 130% at 100% 0%, rgb(55 224 138 / 0.08), transparent 58%),
+    var(--bg-1);
+}
+.card--accent:hover {
+  background:
+    radial-gradient(100% 130% at 100% 0%, rgb(55 224 138 / 0.12), transparent 58%),
+    var(--bg-2);
+}
+
+.card__icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--accent);
+  margin-bottom: 20px;
+}
+
+.card__title { font-size: 1.3rem; margin-bottom: 10px; }
+
+.card__body { color: var(--text-dim); }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 860px) {
+  .bento { grid-template-columns: repeat(12, 1fr); }
+  .card              { grid-column: span 5; }
+  .card--wide        { grid-column: span 7; }
+  .card:nth-child(3) { grid-column: span 5; }
+  .card:nth-child(4) { grid-column: span 7; }
+}
+
+/* ---------- Public stats ---------- */
+
+.section--stats {
+  border-block: 1px solid var(--line);
+  background: var(--bg-1);
+}
+
+.stats { display: grid; gap: 0; }
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: 30px;
+  border-top: 1px solid var(--line);
+}
+.stat:first-child { border-top: 0; }
+
+.stat__icon {
+  width: 22px;
+  height: 22px;
+  fill: var(--accent);
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+
+.stat__value {
+  font-family: var(--mono);
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;      /* Latin numerals only, safe here */
+}
+
+.stat__label {
+  margin-top: 12px;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+}
+
+@media (min-width: 768px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stat {
+    padding-block: 0;
+    border-top: 0;
+    border-inline-start: 1px solid var(--line);
+  }
+  .stat:first-child { border-inline-start: 0; }
+}
+
+/* ---------- About ---------- */
+
+.section--about { text-align: center; }
+
+.about { max-width: 62ch; margin-inline: auto; }
+
+.about__body {
+  margin-top: 20px;
+  color: var(--text-dim);
+  font-size: 1.08rem;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+/* ---------- About us + community panel ----------
+   Layout family: asymmetric two-column, copy leading and a bordered
+   community panel trailing. Deliberately not centered, so it does not
+   repeat the About section directly above it.
+*/
+
+.section--team {
+  border-top: 1px solid var(--line);
+}
+
+.team {
+  display: grid;
+  gap: 36px;
+  align-items: start;
+}
+
+.team__body {
+  margin-top: 18px;
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  max-width: 54ch;
+}
+
+.community {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 28px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(110% 130% at 100% 0%, rgb(55 224 138 / 0.10), transparent 60%),
+    var(--bg-1);
+}
+
+.community__icon {
+  width: 30px;
+  height: 30px;
+  fill: var(--accent);
+  margin-bottom: 18px;
+}
+
+/* Real Discord brand mark. Kept full-colour rather than tinted to the
+   accent, because it is a third-party logo and recolouring it would
+   misrepresent the brand. Sized at 44px so the 100px source stays crisp
+   on 2x displays. */
+.community__logo {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+}
+
+.community__title { font-size: 1.25rem; margin-bottom: 10px; }
+
+.community__body { color: var(--text-dim); }
+
+.community__cta { margin-top: 24px; }
+
+@media (min-width: 900px) {
+  .team {
+    grid-template-columns: 1fr 0.82fr;
+    gap: 64px;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg-1);
+  padding-block: 48px 24px;
+}
+
+.footer__inner {
+  display: grid;
+  gap: 28px;
+  padding-bottom: 32px;
+}
+
+.footer__tag {
+  margin-top: 14px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  max-width: 40ch;
+}
+
+/* Link columns: bright heading, then a right-aligned list where each row
+   is led by a muted icon. Icons sit at the reading edge so they form a
+   clean vertical rail down each column. */
+
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 28px;
+}
+
+.fcol__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.fcol__list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.fcol__list a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-dim);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  transition: color .2s var(--ease);
+}
+
+.fcol__icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: currentColor;
+  opacity: 0.72;
+  transition: opacity .2s var(--ease);
+}
+
+/* Service status keeps the accent so the column has one point of colour,
+   matching the rest of the page. It is a link to a status page, not a
+   live indicator. */
+.fcol__icon--accent { fill: var(--accent); opacity: 1; }
+
+.fcol__list a:hover { color: var(--accent); }
+.fcol__list a:hover .fcol__icon { opacity: 1; }
+
+@media (min-width: 640px) {
+  .footer__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.footer__base {
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 768px) {
+  .footer__inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+/* ---------- Motion ----------
+   Reveal: opacity + transform only (compositor-friendly).
+   Triggered by IntersectionObserver in main.js, never a scroll listener.
+   Purpose: establishes read order on entry, and sequences the feature grid.
+*/
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+/* No JS? Show everything. */
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* ---------- Scroll-linked motion ----------
+   Everything below is scrubbed to scroll position using native CSS
+   scroll-driven timelines: scroll() for page progress, view() for
+   element-relative effects. No scroll listeners, no JS, and it runs off
+   the main thread.
+
+   Supported in Chromium 115+ and Safari 26+. Everywhere else the @supports
+   block is skipped entirely and the page keeps the one-shot reveals above,
+   which is a complete experience on its own.
+
+   Deliberately NOT applied to body copy or cards: scrubbed content fades
+   back out when you scroll up, which is distracting to read against. These
+   effects are limited to places where being tied to scroll IS the point.
+*/
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* Read-progress line under the nav. Grows from the right (RTL). */
+    .nav__progress {
+      animation: progress-grow linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    /* Nav lifts from transparent to solid over the first 140px. */
+    .nav {
+      animation: nav-solidify linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 140px;
+    }
+
+    /* Hero exit. The copy recedes and the wordmark drifts at a slower
+       rate, so the two layers separate as the hero scrolls away.
+       Applied to .hero__copy and .wordmark, never to .hero__visual,
+       which carries .reveal and owns its own transform. */
+    .hero__copy {
+      animation: hero-recede linear both;
+      animation-timeline: view(block);
+      animation-range: exit 0% exit 100%;
+    }
+
+    .wordmark {
+      animation: hero-drift linear both;
+      animation-timeline: view(block);
+      animation-range: exit 0% exit 100%;
+    }
+
+    /* The hero glow parallaxes against the content for depth.
+       Driven from the root timeline over a fixed distance rather than
+       view(): the hero is already in view at load, so a view() range
+       would start part-way through its own progress. */
+    .hero::before {
+      animation: glow-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+
+  }
+}
+
+@keyframes progress-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes nav-solidify {
+  from {
+    background: rgb(8 10 9 / 0.35);
+    border-bottom-color: transparent;
+  }
+  to {
+    background: rgb(8 10 9 / 0.92);
+    border-bottom-color: var(--line);
+  }
+}
+
+@keyframes hero-recede {
+  to { opacity: 0.15; transform: translateY(-26px); }
+}
+
+@keyframes hero-drift {
+  to { opacity: 0.3; transform: translateY(-56px) scale(0.95); }
+}
+
+@keyframes glow-drift {
+  to { transform: translateY(34%) scale(1.15); opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .wordmark__caret { animation: none; }
+  .btn:active { transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

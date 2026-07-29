@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Runs before first paint so scroll-reveal elements are only hidden when JS can reveal them. -->
+<script>document.documentElement.classList.remove("no-js");</script>
+<title>مساعد | بوت الإشراف والحماية لسيرفرات ديسكورد العربية</title>
+<meta name="description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta name="theme-color" content="#080a09">
+
+<!-- Open Graph. Update the URL + image once the site has a real domain. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="Musaed |مساعد">
+<meta property="og:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+
+<link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<!--
+  Icon sprite. Paths are the official Phosphor Icons "regular" set (MIT),
+  from the @phosphor-icons/core package. Do not hand-edit these paths.
+-->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-gavel" viewBox="0 0 256 256"><path d="M243.32,116.69l-16-16a16,16,0,0,0-20.84-1.53L156.84,49.52a16,16,0,0,0-1.52-20.84l-16-16a16,16,0,0,0-22.63,0l-64,64a16,16,0,0,0,0,22.63l16,16a16,16,0,0,0,20.83,1.52L96.69,124,31.31,189.38A25,25,0,0,0,66.63,224.7L132,159.32l7.17,7.16a16,16,0,0,0,1.52,20.84l16,16a16,16,0,0,0,22.63,0l64-64A16,16,0,0,0,243.32,116.69ZM80,104,64,88l64-64,16,16ZM55.32,213.38a9,9,0,0,1-12.69,0,9,9,0,0,1,0-12.68L108,135.32,120.69,148ZM101,105.66,145.66,61,195,110.34,150.35,155ZM168,192l-16-16,4-4h0l56-56h0l4-4,16,16Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 256 256"><path d="M220.17,100,202.86,70a28,28,0,0,0-38.24-10.25,27.69,27.69,0,0,0-9,8.34L138.2,38a28,28,0,0,0-48.48,0A28,28,0,0,0,48.15,74l1.59,2.76A27.67,27.67,0,0,0,38,80.41a28,28,0,0,0-10.24,38.25l40,69.32a87.47,87.47,0,0,0,53.43,41,88.56,88.56,0,0,0,22.92,3,88,88,0,0,0,76.06-132Zm-6.66,62.64A72,72,0,0,1,81.62,180l-40-69.32a12,12,0,0,1,20.78-12L81.63,132a8,8,0,1,0,13.85-8L62,66A12,12,0,1,1,82.78,54L114,108a8,8,0,1,0,13.85-8L103.57,58h0a12,12,0,1,1,20.78-12l33.42,57.9a48,48,0,0,0-5.54,60.6,8,8,0,0,0,13.24-9A32,32,0,0,1,172.78,112a8,8,0,0,0,2.13-10.4L168.23,90A12,12,0,1,1,189,78l17.31,30A71.56,71.56,0,0,1,213.51,162.62ZM184.25,31.71A8,8,0,0,1,194,26a59.62,59.62,0,0,1,36.53,28l.33.57a8,8,0,1,1-13.85,8l-.33-.57a43.67,43.67,0,0,0-26.8-20.5A8,8,0,0,1,184.25,31.71ZM80.89,237a8,8,0,0,1-11.23,1.33A119.56,119.56,0,0,1,40.06,204a8,8,0,0,1,13.86-8,103.67,103.67,0,0,0,25.64,29.72A8,8,0,0,1,80.89,237Z"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 256 256"><path d="M128,128a8,8,0,0,1-3,6.25l-40,32a8,8,0,1,1-10-12.5L107.19,128,75,102.25a8,8,0,1,1,10-12.5l40,32A8,8,0,0,1,128,128Zm48,24H136a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-96V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Z"/></symbol>
+  <symbol id="i-discord" viewBox="0 0 256 256"><path d="M104,140a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm60-12a12,12,0,1,0,12,12A12,12,0,0,0,164,128Zm74.45,64.9-67,29.71a16.17,16.17,0,0,1-21.71-9.1l-8.11-22q-6.72.45-13.63.46t-13.63-.46l-8.11,22a16.18,16.18,0,0,1-21.71,9.1l-67-29.71a15.93,15.93,0,0,1-9.06-18.51L38,58A16.07,16.07,0,0,1,51,46.14l36.06-5.93a16.22,16.22,0,0,1,18.26,11.88l3.26,12.84Q118.11,64,128,64t19.4.93l3.26-12.84a16.21,16.21,0,0,1,18.26-11.88L205,46.14A16.07,16.07,0,0,1,218,58l29.53,116.38A15.93,15.93,0,0,1,238.45,192.9ZM232,178.28,202.47,62s0,0-.08,0L166.33,56a.17.17,0,0,0-.17,0l-2.83,11.14c5,.94,10,2.06,14.83,3.42A8,8,0,0,1,176,86.31a8.09,8.09,0,0,1-2.16-.3A172.25,172.25,0,0,0,128,80a172.25,172.25,0,0,0-45.84,6,8,8,0,1,1-4.32-15.4c4.82-1.36,9.78-2.48,14.82-3.42L89.83,56s0,0-.12,0h0L53.61,61.93a.17.17,0,0,0-.09,0L24,178.33,91,208a.23.23,0,0,0,.22,0L98,189.72a173.2,173.2,0,0,1-20.14-4.32A8,8,0,0,1,82.16,170,171.85,171.85,0,0,0,128,176a171.85,171.85,0,0,0,45.84-6,8,8,0,0,1,4.32,15.41A173.2,173.2,0,0,1,158,189.72L164.75,208a.22.22,0,0,0,.21,0Z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 256 256"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></symbol>
+  <symbol id="i-chats" viewBox="0 0 256 256"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 256 256"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 256 256"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 256 256"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 256 256"><path d="M240,128a8,8,0,0,1-8,8H204.94l-37.78,75.58A8,8,0,0,1,160,216h-.4a8,8,0,0,1-7.08-5.14L95.35,60.76,63.28,131.31A8,8,0,0,1,56,136H24a8,8,0,0,1,0-16H50.85L88.72,36.69a8,8,0,0,1,14.76.46l57.51,151,31.85-63.71A8,8,0,0,1,200,120h32A8,8,0,0,1,240,128Z"/></symbol>
+</svg>
+
+<header class="nav" id="top">
+  <div class="shell nav__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark" aria-hidden="true">م</span>
+      <span class="brand__name">مساعد</span>
+    </a>
+
+    <nav class="nav__links" aria-label="روابط الصفحة">
+      <a href="#features">المميزات</a>
+      <a href="#stats">الأرقام</a>
+      <a href="#about">عن البوت</a>
+      <a href="#about-us">من نحن</a>
+    </nav>
+
+    <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
+    <a class="btn btn--primary btn--sm nav__cta" href="#" data-placeholder-link="discord-invite">
+      <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
+      ضيف البوت
+    </a>
+  </div>
+  <div class="nav__progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+  <!-- ========================= HERO ========================= -->
+  <section class="hero">
+    <div class="shell hero__inner">
+
+      <div class="hero__copy">
+        <h1 class="hero__title reveal" style="--d:0ms">
+          سيرفرك مرتب،<br>وانت مرتاح
+        </h1>
+        <p class="hero__sub reveal" style="--d:90ms">
+          مساعد بوت عربي يتولى الإشراف والحماية والترحيب في سيرفرك، وكل شي فيه تضبطه على كيفك.
+        </p>
+        <div class="hero__actions reveal" style="--d:180ms">
+          <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
+          <a class="btn btn--primary" href="#" data-placeholder-link="discord-invite">
+            <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
+            ضيف البوت
+          </a>
+          <a class="btn btn--ghost" href="#features">شوف المميزات</a>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" style="--d:120ms" aria-hidden="true">
+        <div class="wordmark">
+          <span class="wordmark__text">مساعد</span>
+          <span class="wordmark__caret"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================= FEATURES ========================= -->
+  <section class="section" id="features">
+    <div class="shell">
+      <header class="section__head reveal">
+        <h2 class="section__title">كل اللي يحتاجه سيرفرك</h2>
+        <p class="section__lede">أربعة أنظمة تشتغل مع بعض، وكل وحدة تضبطها لحالها.</p>
+      </header>
+
+      <div class="bento">
+
+        <article class="card card--wide card--accent reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>
+          <h3 class="card__title">الإشراف</h3>
+          <p class="card__body">
+            طرد، حظر، إسكات مؤقت، وتحذيرات تنحفظ كلها في سجل السيرفر عشان ترجع لها وقت ما تبي.
+          </p>
+          <ul class="chips">
+            <li class="chip">!طرد</li>
+            <li class="chip">!حظر</li>
+            <li class="chip">!اسكات</li>
+            <li class="chip">!تحذير</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+          <h3 class="card__title">الحماية التلقائية</h3>
+          <p class="card__body">
+            فلتر كلمات ممنوعة وكشف سبام يشتغلان لحالهما على مدار الساعة، بدون ما تراقب.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-wave"></use></svg>
+          <h3 class="card__title">الترحيب</h3>
+          <p class="card__body">
+            رسالة ترحيب تكتبها بنفسك، ورتبة تنعطى تلقائي لكل عضو جديد يدخل السيرفر.
+          </p>
+        </article>
+
+        <article class="card card--wide card--accent reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
+          <h3 class="card__title">بادئة لكل سيرفر</h3>
+          <p class="card__body">
+            كل سيرفر يختار البادئة اللي تناسبه، وتقدر تغيرها في أي وقت بدون ما تأثر على غيرك.
+          </p>
+          <ul class="chips">
+            <li class="chip">!</li>
+            <li class="chip">؟</li>
+            <li class="chip">.</li>
+            <li class="chip">-</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= PUBLIC STATS =========================
+       Every number in this section is MOCK DATA.
+       The values live in one place: the STATS object at the top of
+       assets/js/main.js. See README.md ("Placeholder data") before launch.
+  -->
+  <section class="section section--stats" id="stats">
+    <div class="shell">
+      <header class="section__head section__head--center reveal">
+        <h2 class="section__title">مساعد بالأرقام</h2>
+      </header>
+
+      <dl class="stats">
+        <div class="stat reveal">
+          <svg class="stat__icon" aria-hidden="true"><use href="#i-discord"></use></svg>
+          <!-- placeholder: value comes from STATS.servers in assets/js/main.js -->
+          <dd class="stat__value" data-stat="servers" data-mock="true"><bdi>0</bdi></dd>
+          <dt class="stat__label">سيرفر يشغّل مساعد</dt>
+        </div>
+
+        <div class="stat reveal">
+          <svg class="stat__icon" aria-hidden="true"><use href="#i-users"></use></svg>
+          <!-- placeholder: value comes from STATS.members in assets/js/main.js -->
+          <dd class="stat__value" data-stat="members" data-mock="true"><bdi>0</bdi></dd>
+          <dt class="stat__label">عضو داخل هالسيرفرات</dt>
+        </div>
+
+        <div class="stat reveal">
+          <svg class="stat__icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
+          <!-- placeholder: value comes from STATS.uptime in assets/js/main.js -->
+          <dd class="stat__value" data-stat="uptime" data-mock="true"><bdi>0</bdi></dd>
+          <dt class="stat__label">نسبة التشغيل خلال ٣٠ يوم</dt>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ========================= ABOUT ========================= -->
+  <section class="section section--about" id="about">
+    <div class="shell about">
+      <h2 class="section__title reveal">مبني لمجتمعات عربية</h2>
+      <p class="about__body reveal">
+        مساعد مكتوب بالعربي من أول يوم. أوامره ورسايله وردوده كلها بلهجة يفهمها أعضاء سيرفرك،
+        مو ترجمة حرفية من بوت أجنبي. وكل سيرفر عنده إعداداته وبياناته لحاله، ما تختلط مع غيره أبد.
+      </p>
+      <div class="about__actions reveal">
+        <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
+        <a class="btn btn--primary" href="#" data-placeholder-link="discord-invite">
+          <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
+          ضيف البوت
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= ABOUT US ========================= -->
+  <section class="section section--team" id="about-us">
+    <div class="shell team">
+
+      <div class="team__copy reveal">
+        <h2 class="section__title">من نحن</h2>
+        <p class="team__body">
+          مساعد مشروع مستقل، بدأ من ملاحظة بسيطة: أغلب بوتات الإشراف مكتوبة بالإنجليزي،
+          وترجمتها للعربي تطلع ركيكة وما تشبه طريقة كلام أعضاء سيرفرك.
+        </p>
+        <p class="team__body">
+          فسوينا بوت يتكلم لهجتهم من الأساس. نطوره باستمرار، ونسمع اقتراحات أصحاب
+          السيرفرات ونبني عليها اللي يجي بعده.
+        </p>
+      </div>
+
+      <aside class="community reveal">
+        <img class="community__logo" src="assets/Pics/Discord-Icon.png" alt=""
+             width="44" height="44" loading="lazy" decoding="async">
+        <h3 class="community__title">سيرفر مساعد</h3>
+        <p class="community__body">
+          دعم فني، تحديثات أول بأول، ومكان تقترح فيه اللي تبي تشوفه في البوت.
+        </p>
+        <a class="btn btn--primary community__cta"
+           href="https://discord.gg/QvNXvDDFtz"
+           target="_blank" rel="noopener noreferrer">
+          <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
+          ادخل سيرفرنا
+        </a>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="#top">
+        <span class="brand__mark" aria-hidden="true">م</span>
+        <span class="brand__name">مساعد</span>
+      </a>
+      <p class="footer__tag">بوت إشراف وحماية لسيرفرات ديسكورد العربية.</p>
+    </div>
+
+    <nav class="footer__cols" aria-label="روابط أسفل الصفحة">
+
+      <div class="fcol">
+        <h2 class="fcol__title">الموقع</h2>
+        <ul class="fcol__list">
+          <li><a href="#features"><svg class="fcol__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>المميزات</a></li>
+          <li><a href="#stats"><svg class="fcol__icon" aria-hidden="true"><use href="#i-users"></use></svg>الأرقام</a></li>
+          <li><a href="#about-us"><svg class="fcol__icon" aria-hidden="true"><use href="#i-chats"></use></svg>من نحن</a></li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h2 class="fcol__title">النظام</h2>
+        <ul class="fcol__list">
+          <!-- PLACEHOLDER LINK: needs a real status page. -->
+          <li><a href="#" data-placeholder-link="status"><svg class="fcol__icon fcol__icon--accent" aria-hidden="true"><use href="#i-pulse"></use></svg>حالة الخدمة</a></li>
+          <!-- PLACEHOLDER LINK: needs a real changelog page. -->
+          <li><a href="#" data-placeholder-link="changelog"><svg class="fcol__icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>التحديثات</a></li>
+          <li><a href="https://discord.gg/QvNXvDDFtz" target="_blank" rel="noopener noreferrer"><svg class="fcol__icon" aria-hidden="true"><use href="#i-discord"></use></svg>سيرفرنا</a></li>
+          <li><a href="developer.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-user"></use></svg>المطور</a></li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h2 class="fcol__title">قانوني</h2>
+        <ul class="fcol__list">
+          <!-- PLACEHOLDER LINK: needs a real privacy policy. -->
+          <li><a href="#" data-placeholder-link="privacy"><svg class="fcol__icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a></li>
+          <!-- PLACEHOLDER LINK: needs real terms of use. -->
+          <li><a href="#" data-placeholder-link="terms"><svg class="fcol__icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a></li>
+          <!-- PLACEHOLDER LINK: replace with the real contact address, then change href to mailto:. -->
+          <li><a href="#" data-placeholder-link="email"><svg class="fcol__icon" aria-hidden="true"><use href="#i-mail"></use></svg><bdi>بريد التواصل</bdi></a></li>
+        </ul>
+      </div>
+
+    </nav>
+  </div>
+
+  <div class="shell footer__base">
+    <p>جميع الحقوق محفوظة لمساعد 2026.</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

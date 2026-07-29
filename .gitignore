@@ -1,23 +1,18 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
+# Editors
 .vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-files
-*.bclicense
-*.flf
-#Test results file
-TestResults.xml
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (only if you later add a dev server or tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Env files. This site reads no environment variables and must never
+# contain bot credentials or a database URL. See README.md.
+.env
+.env.*

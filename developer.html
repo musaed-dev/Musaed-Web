@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.remove("no-js");</script>
+<title>المطور | مساعد</title>
+<meta name="description" content="عن المطور اللي بنى مساعد، بوت الإشراف والحماية لسيرفرات ديسكورد العربية.">
+<meta name="theme-color" content="#080a09">
+
+<link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/developer.css">
+</head>
+<body class="dev-page">
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<!--
+  Icon sprite. Official Phosphor Icons "regular" set (MIT), from
+  @phosphor-icons/core. Only the symbols this page uses. Do not hand-edit.
+-->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-back" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 256 256"><path d="M230.9,73.6A15.85,15.85,0,0,0,212,77.39l-33.67,36.29-35.8-80.29a1,1,0,0,1,0-.1,16,16,0,0,0-29.06,0,1,1,0,0,1,0,.1l-35.8,80.29L44,77.39A16,16,0,0,0,16.25,90.81c0,.11,0,.21.07.32L39,195a16,16,0,0,0,15.72,13H201.29A16,16,0,0,0,217,195L239.68,91.13c0-.11,0-.21.07-.32A15.85,15.85,0,0,0,230.9,73.6ZM201.35,191.68l-.06.32H54.71l-.06-.32L32,88l.14.16,42,45.24a8,8,0,0,0,13.18-2.18L128,40l40.69,91.25a8,8,0,0,0,13.18,2.18l42-45.24L224,88Z"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 256 256"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></symbol>
+  <symbol id="i-robot" viewBox="0 0 256 256"><path d="M200,48H136V16a8,8,0,0,0-16,0V48H56A32,32,0,0,0,24,80V192a32,32,0,0,0,32,32H200a32,32,0,0,0,32-32V80A32,32,0,0,0,200,48Zm16,144a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V80A16,16,0,0,1,56,64H200a16,16,0,0,1,16,16Zm-52-56H92a28,28,0,0,0,0,56h72a28,28,0,0,0,0-56Zm-24,16v24H116V152ZM80,164a12,12,0,0,1,12-12h8v24H92A12,12,0,0,1,80,164Zm84,12h-8V152h8a12,12,0,0,1,0,24ZM72,108a12,12,0,1,1,12,12A12,12,0,0,1,72,108Zm88,0a12,12,0,1,1,12,12A12,12,0,0,1,160,108Z"/></symbol>
+  <symbol id="i-code" viewBox="0 0 256 256"><path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 256 256"><path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 256 256"><path d="M80,56V24a8,8,0,0,1,16,0V56a8,8,0,0,1-16,0Zm40,8a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,120,64Zm32,0a8,8,0,0,0,8-8V24a8,8,0,0,0-16,0V56A8,8,0,0,0,152,64Zm96,56v8a40,40,0,0,1-37.51,39.91,96.59,96.59,0,0,1-27,40.09H208a8,8,0,0,1,0,16H32a8,8,0,0,1,0-16H56.54A96.3,96.3,0,0,1,24,136V88a8,8,0,0,1,8-8H208A40,40,0,0,1,248,120ZM200,96H40v40a80.27,80.27,0,0,0,45.12,72h69.76A80.27,80.27,0,0,0,200,136Zm32,24a24,24,0,0,0-16-22.62V136a95.78,95.78,0,0,1-1.2,15A24,24,0,0,0,232,128Z"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 256 256"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm88,104a87.62,87.62,0,0,1-6.4,32.94l-44.7-27.49a15.92,15.92,0,0,0-6.24-2.23l-22.82-3.08a16.11,16.11,0,0,0-16,7.86h-8.72l-3.8-7.86a15.91,15.91,0,0,0-11-8.67l-8-1.73L96.14,104h16.71a16.06,16.06,0,0,0,7.73-2l12.25-6.76a16.62,16.62,0,0,0,3-2.14l26.91-24.34A15.93,15.93,0,0,0,166,49.1l-.36-.65A88.11,88.11,0,0,1,216,128ZM143.31,41.34,152,56.9,125.09,81.24,112.85,88H96.14a16,16,0,0,0-13.88,8l-8.73,15.23L63.38,84.19,74.32,58.32a87.87,87.87,0,0,1,69-17ZM40,128a87.53,87.53,0,0,1,8.54-37.8l11.34,30.27a16,16,0,0,0,11.62,10l21.43,4.61L96.74,143a16.09,16.09,0,0,0,14.4,9h1.48l-7.23,16.23a16,16,0,0,0,2.86,17.37l.14.14L128,205.94l-1.94,10A88.11,88.11,0,0,1,40,128Zm102.58,86.78,1.13-5.81a16.09,16.09,0,0,0-4-13.9,1.85,1.85,0,0,1-.14-.14L120,174.74,133.7,144l22.82,3.08,45.72,28.12A88.18,88.18,0,0,1,142.58,214.78Z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 256 256"><path d="M223.85,47.12a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.41,27.07L132.69,64H74.36A15.91,15.91,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A15.91,15.91,0,0,0,192,181.64V123.31l4.77-4.77C223.45,91.86,224.6,59.71,223.85,47.12ZM74.36,80h42.33L77.16,119.52,40,114.34Zm74.41-9.45a76.65,76.65,0,0,1,59.11-22.47,76.46,76.46,0,0,1-22.42,59.16L128,164.68,91.32,128ZM176,181.64,141.67,216l-5.19-37.17L176,139.31Zm-74.16,9.5C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
+</svg>
+
+<header class="devbar">
+  <div class="devbar__inner">
+    <a class="devbar__back" href="index.html">
+      <svg class="icon" aria-hidden="true"><use href="#i-back"></use></svg>
+      الرئيسية
+    </a>
+    <span class="devbar__label"> Hex</span>
+  </div>
+</header>
+
+<main id="main" class="devwrap">
+
+  <section class="profile">
+
+    <!-- ---------------- identity column ---------------- -->
+    <div class="profile__id">
+      <div class="avatar">
+        <svg class="avatar__crown" aria-hidden="true"><use href="#i-crown"></use></svg>
+        <!--
+          PLACEHOLDER AVATAR.
+          Drop a square image at assets/img/developer.jpg and replace the
+          whole .avatar__ring block with:
+            <img class="avatar__img" src="assets/Pics/developer.png" alt="" width="200" height="200">
+          The monogram below is the fallback so the page never ships broken.
+        -->
+        <div class="avatar__ring" data-placeholder="avatar">
+          <span class="avatar__monogram" aria-hidden="true">H</span>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER TEXT: real name and title go here. -->
+      <h1 class="profile__name" data-placeholder="dev-name">Hex</h1>
+      <p class="profile__role">صانع مساعد</p>
+
+      <dl class="tiles">
+        <div class="tile">
+          <svg class="tile__icon" aria-hidden="true"><use href="#i-bulb"></use></svg>
+          <dd class="tile__value">∞</dd>
+          <dt class="tile__label">أفكار</dt>
+        </div>
+        <div class="tile">
+          <svg class="tile__icon" aria-hidden="true"><use href="#i-moon"></use></svg>
+          <dd class="tile__value">∞</dd>
+          <dt class="tile__label">Spotify</dt>
+        </div>
+        <div class="tile">
+          <svg class="tile__icon" aria-hidden="true"><use href="#i-coffee"></use></svg>
+          <!-- placeholder: joke counter, not real data -->
+          <dd class="tile__value" data-mock="true"><bdi>10K</bdi></dd>
+          <dt class="tile__label">ساعه لعب بدال الشغل</dt>
+        </div>
+      </dl>
+
+      <div class="socials">
+        <a class="social" href="https://discord.gg/QvNXvDDFtz" target="_blank" rel="noopener noreferrer" aria-label="سيرفر مساعد على ديسكورد">
+          <img src="assets/Pics/Discord-Icon.png" alt="" width="22" height="22" loading="lazy" decoding="async">
+        </a>
+        <!-- PLACEHOLDER LINK: replace with the real address, then change href to mailto:. -->
+        <a class="social" href="#" data-placeholder-link="email" aria-label="بريد التواصل">
+          <svg aria-hidden="true"><use href="#i-mail"></use></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ---------------- content column ---------------- -->
+    <div class="profile__body">
+
+      <ul class="pills">
+        <li class="pill"><svg aria-hidden="true"><use href="#i-robot"></use></svg>مطوّر بوتات</li>
+        <li class="pill"><svg aria-hidden="true"><use href="#i-code"></use></svg>مبرمج</li>
+        <li class="pill"><svg aria-hidden="true"><use href="#i-palette"></use></svg>مصمّم واجهات</li>
+      </ul>
+
+      <h2 class="profile__heading">
+        <span class="profile__prompt" aria-hidden="true">&gt;_</span>
+        العقل المدبّر
+      </h2>
+
+      <!-- PLACEHOLDER TEXT: rewrite this in your own voice before launch. -->
+      <div class="profile__bio" data-placeholder="dev-bio">
+        <p>
+          بدأ مساعد كفكرة بسيطة: بوت إشراف يتكلم عربي صح، مو ترجمة حرفية من بوت أجنبي.
+          وتحول مع الوقت لنظام كامل يدير مجتمعات ديسكورد العربية.
+        </p>
+        <p>
+          كل سطر كود فيه انكتب عشان يوفر على صاحب السيرفر وقته، ويخلي أعضاءه يحسون
+          إن البوت واحد منهم وفيهم.
+        </p>
+      </div>
+
+      <!--
+        SKILL BARS. The technologies are real (they are what Musaed runs on),
+        but every percentage is a hand-written placeholder. Edit data-skill
+        and the visible label together. The last row is a joke, on purpose.
+      -->
+      <ul class="skills">
+        <li class="skill reveal">
+          <div class="skill__head">
+            <span class="skill__name">Python / discord.py</span>
+            <span class="skill__pct"><bdi>85%</bdi></span>
+          </div>
+          <div class="skill__track"><span class="skill__fill" data-skill="95"></span></div>
+        </li>
+        <li class="skill reveal">
+          <div class="skill__head">
+            <span class="skill__name">PostgreSQL / SQLAlchemy</span>
+            <span class="skill__pct"><bdi>80%</bdi></span>
+          </div>
+          <div class="skill__track"><span class="skill__fill" data-skill="88"></span></div>
+        </li>
+        <li class="skill reveal">
+          <div class="skill__head">
+            <span class="skill__name">HTML / CSS / JS</span>
+            <span class="skill__pct"><bdi>70%</bdi></span>
+          </div>
+          <div class="skill__track"><span class="skill__fill" data-skill="90"></span></div>
+        </li>
+      </ul>
+
+      <!-- PLACEHOLDER TEXT: swap for a line you actually want to sign. -->
+      <figure class="quote" data-placeholder="dev-quote">
+        <blockquote>وراء كل سطر كود، فيه شوي من صاحبه.</blockquote>
+        <figcaption>مساعد</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <ul class="facts">
+    <li class="fact reveal">
+      <svg class="fact__icon" aria-hidden="true"><use href="#i-heart"></use></svg>
+      <p class="fact__value">مشروع للعرب</p>
+      <p class="fact__label">بدون شركة وراه</p>
+    </li>
+    <li class="fact reveal">
+      <svg class="fact__icon" aria-hidden="true"><use href="#i-globe"></use></svg>
+      <p class="fact__value">العربية</p>
+      <p class="fact__label">اللغة الأولى</p>
+    </li>
+    <li class="fact reveal">
+      <svg class="fact__icon" aria-hidden="true"><use href="#i-rocket"></use></svg>
+      <!-- placeholder: set the real launch year -->
+      <p class="fact__value" data-mock="true"><bdi>2026</bdi></p>
+      <p class="fact__label">سنة الانطلاق</p>
+    </li>
+  </ul>
+
+</main>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/developer.js" defer></script>
+</body>
+</html>
