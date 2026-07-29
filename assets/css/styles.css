@@ -74,6 +74,15 @@
   --accent-soft: rgb(55 224 138 / 0.10);
   --on-accent:   #05130b;
 
+  /* Discord action colour. Scoped strictly to CTAs that lead to Discord,
+     so it reads as "this button goes to Discord" rather than a second
+     brand accent. Deliberately deeper and a little less saturated than
+     Discord's own #5865f2, so it is not an exact brand match.
+     White label clears 4.99:1 at rest and 6.05:1 on hover. */
+  --discord:       #5a63d8;
+  --discord-hover: #4e56c6;
+  --on-discord:    #ffffff;
+
   --sans: "Plex Arabic", system-ui, "Segoe UI", sans-serif;
   --mono: "Plex Mono", ui-monospace, "SFMono-Regular", "Consolas", monospace;
 
@@ -166,14 +175,21 @@ img, svg { display: block; max-width: 100%; }
   transition: background-color .22s var(--ease),
               border-color .22s var(--ease),
               color .22s var(--ease),
+              box-shadow .22s var(--ease),
               transform .12s var(--ease);
 }
 
 .btn--primary {
-  background: var(--accent);
-  color: var(--on-accent);      /* near-black on green: ~11:1 */
+  background: var(--discord);
+  color: var(--on-discord);
+  box-shadow: 0 4px 16px rgb(90 99 216 / 0.22);
 }
-.btn--primary:hover { background: #4ded9c; }
+/* Darkens on hover rather than lightening, which is how Discord's own
+   buttons behave and which raises the label contrast instead of eroding it. */
+.btn--primary:hover {
+  background: var(--discord-hover);
+  box-shadow: 0 6px 22px rgb(90 99 216 / 0.30);
+}
 
 .btn--ghost {
   background: transparent;
@@ -188,18 +204,15 @@ img, svg { display: block; max-width: 100%; }
 .btn--sm .btn__logo { width: 16px; height: 16px; }
 
 /* Real Discord brand mark inside a CTA.
-   Shipped in full colour (Discord blurple), which is the brand-correct
-   default. Blurple against the green button is a strong contrast; if you
-   want it to sit quieter, uncomment ONE of the filters below. Discord's
-   brand guidelines permit solid black and solid white marks:
-
-     filter: brightness(0);             solid black, matches the button text
-     filter: brightness(0) invert(1);   solid white
-*/
+   The button is now blurple, so the mark is rendered solid white. That is
+   Discord's own treatment for the logo on a blurple field, and it matches
+   the button label exactly. brightness(0) flattens the artwork to black,
+   invert(1) flips it to white; alpha is preserved either way. */
 .btn__logo {
   width: 18px;
   height: 18px;
   flex: none;
+  filter: brightness(0) invert(1);
 }
 
 /* ---------- Nav ---------- */
@@ -256,10 +269,11 @@ img, svg { display: block; max-width: 100%; }
 
 .nav__links {
   display: none;                /* mobile: hidden, CTA carries the nav */
-  gap: 22px;                    /* tightened to keep 4 links on one line */
+  gap: 20px;                    /* tightened to keep 5 links on one line */
   margin-inline-start: auto;
   font-size: 0.95rem;
   color: var(--text-dim);
+  white-space: nowrap;          /* a label may never break the nav onto 2 rows */
 }
 .nav__links a { transition: color .2s var(--ease); }
 .nav__links a:hover { color: var(--accent); }
@@ -269,6 +283,62 @@ img, svg { display: block; max-width: 100%; }
 @media (min-width: 768px) {
   .nav__links { display: flex; }
   .nav__cta   { margin-inline-start: 0; }
+}
+
+/* ---------- Sub-page chrome ----------
+   Shared by every page that is not the landing page (developer.html,
+   updates.html). Those pages set <body class="subpage"> and use .pagebar
+   for the top bar and .pagewrap for the content column.
+*/
+
+.subpage {
+  background:
+    radial-gradient(85% 55% at 50% 0%, rgb(55 224 138 / 0.07), transparent 70%),
+    var(--bg);
+  min-height: 100dvh;
+}
+
+.pagebar {
+  max-width: 1080px;
+  margin: 22px auto 0;
+  padding-inline: 20px;
+}
+
+.pagebar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 58px;
+  padding-inline: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+}
+
+.pagebar__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  transition: color .2s var(--ease);
+}
+.pagebar__back:hover { color: var(--accent); }
+
+/* The arrow glyph points right, which is "back" in a right-to-left page. */
+.pagebar__back .icon { width: 17px; height: 17px; }
+
+.pagebar__label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.pagewrap {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: 26px 20px 80px;
 }
 
 /* ---------- Hero ---------- */
@@ -436,12 +506,27 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.5;
 }
 
+/* The full-width fifth cell spreads horizontally so the row does not read
+   as one very wide paragraph. Text leads, chips trail. */
+.card--full .card__lead { max-width: 60ch; }
+
 @media (min-width: 860px) {
+  /* 5 items, 5 cells, no gaps: 7+5, then 5+7, then one full-width row.
+     Reversing the split between rows keeps the grid from looking striped. */
   .bento { grid-template-columns: repeat(12, 1fr); }
-  .card              { grid-column: span 5; }
-  .card--wide        { grid-column: span 7; }
+  .card:nth-child(1) { grid-column: span 7; }
+  .card:nth-child(2) { grid-column: span 5; }
   .card:nth-child(3) { grid-column: span 5; }
   .card:nth-child(4) { grid-column: span 7; }
+  .card:nth-child(5) { grid-column: span 12; }
+
+  .card--full {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .card--full .chips { margin-top: 0; flex: none; }
 }
 
 /* ---------- Public stats ---------- */
@@ -559,10 +644,10 @@ img, svg { display: block; max-width: 100%; }
   margin-bottom: 18px;
 }
 
-/* Real Discord brand mark. Kept full-colour rather than tinted to the
-   accent, because it is a third-party logo and recolouring it would
-   misrepresent the brand. Sized at 44px so the 100px source stays crisp
-   on 2x displays. */
+/* Real Discord brand mark, on a dark panel this time. Left at its natural
+   colour: the source blurple already clears 7.2:1 here, so it needs none
+   of the deepening the green button requires (see .btn__logo). Sized at
+   44px so the 100px source stays crisp on 2x displays. */
 .community__logo {
   width: 44px;
   height: 44px;

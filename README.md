@@ -19,7 +19,9 @@ belongs to the servers that generated it. A public marketing page has no busines
 Concretely, this repo:
 
 - has **no** backend, no server process, and no build step
-- makes **no** network requests at runtime (verify: `grep -rn "fetch(" assets/js/`)
+- makes **no** network requests as shipped. There is exactly one `fetch` in the codebase,
+  in `readStats()`, and it is unreachable while `STATS_ENDPOINT` is `null`. Verify with
+  `grep -n "STATS_ENDPOINT =" assets/js/main.js`
 - reads **no** environment variables. There is no `DATABASE_URL`, no `DISCORD_BOT_TOKEN`,
   no secrets of any kind, and no code path that could consume one
 - imports **no** database, Discord, or auth libraries. No SQLAlchemy, no asyncpg,
@@ -61,18 +63,45 @@ grep -rn "data-mock" index.html
 
 ### Wiring a real API later
 
-`readStats()` in [assets/js/main.js](assets/js/main.js) is the single seam. It currently
-returns the hard-coded object. Swap its body for a `fetch` against your public endpoint,
-keep the same return shape, and every consumer downstream (formatting, the count-up
-animation, reduced-motion fallback) keeps working untouched. A worked example is in the
-comment directly above the function.
+`readStats()` in [assets/js/main.js](assets/js/main.js) is the single seam, and the fetch
+path with its rate limiting is **already written**. To switch it on, set one constant:
 
-Make `initStats()` await it, and give the counters a sensible value if the request fails.
+```js
+var STATS_ENDPOINT = "https://<your-public-api>/v1/stats";
+```
+
+While it is `null` the function resolves to the placeholder object and the page makes zero
+network requests, so the site stays fully static until you are ready. Adjust `shapeStats()`
+to match your payload's field names; nothing else needs editing.
+
 The endpoint must be a public aggregate API. Not the bot's database.
+
+### Rate limiting the stats fetch
+
+Three protections, so a page that gets traffic cannot hammer the endpoint:
+
+| | Behaviour | Constant |
+| --- | --- | --- |
+| Throttle | at most one request per browser tab per window; repeats and reloads inside it are served from cache | `STATS_TTL_MS`, 5 min |
+| Backoff | a 429 or a failure parks further requests, honouring `Retry-After` when the server sends it | `STATS_BACKOFF_MS`, 15 min |
+| Fallback | any failure keeps the last good values, or the placeholders if there was never a good response | |
+
+`readStats()` always resolves and never rejects, so the counters always get usable numbers.
+
+The cache is `sessionStorage` under `musaed:stats`: public aggregate counts only, no
+identifiers, cleared when the tab closes. Every access is wrapped in `try/catch` because
+private-mode browsers can throw. If storage is unavailable the throttle degrades to
+per-pageload rather than breaking.
+
+Verified behaviour: first call fetches; repeat calls inside the TTL do not; the call after
+the TTL does; a 429 keeps the previous values and suppresses requests for exactly
+`Retry-After`; a 500 falls back to the last good values and backs off; with no cache and a
+dead endpoint the placeholders render; and with `STATS_ENDPOINT = null` no request is ever
+made.
 
 ### Placeholder links
 
-Nine anchors still need a real destination. All are tagged:
+Eight anchors still need a real destination. All are tagged:
 
 ```bash
 grep -rn "data-placeholder-link" index.html
@@ -82,7 +111,6 @@ grep -rn "data-placeholder-link" index.html
 | --- | --- | --- |
 | `discord-invite` | 3 | the bot-invite URL (nav, hero, about section) |
 | `status` | 1 | a status page |
-| `changelog` | 1 | a changelog / updates page |
 | `privacy` | 1 | a privacy policy |
 | `terms` | 1 | terms of use |
 | `email` | 2 | the contact address (footer + developer page). Also change `href` to `mailto:` |
@@ -140,6 +168,31 @@ the site's green instead so it reads as part of Musaed rather than a separate pr
 switch, change `--dev-a` and `--dev-b` at the top of `developer.css`; the reference values
 are in the comment beside them. Nothing else needs touching.
 
+### The updates page
+
+`updates.html` is a changelog, reached from `التحديثات` in both the nav and the footer.
+Layout is a vertical timeline: one column with the rail on the reading edge on mobile,
+centred rail with releases alternating left and right from 820px up.
+
+**Every version number, date and bullet in it is invented.** It is a layout demonstration,
+not a record of what shipped. The feature bullets describe systems the site already
+advertises, but the releases they are attributed to and all six dates are made up.
+
+> Replace the whole `<ol class="timeline">` with your real history before launch. A
+> changelog that says things happened on dates they did not is worse than having no
+> changelog page at all.
+
+To add a release, copy one `<li class="rel">` block; newest goes first. Only the newest
+carries `rel--latest`, which fills its timeline node and draws the `جديد` badge. The three
+summary tiles above the timeline are `data-mock="true"` and need updating alongside it.
+
+### Shared sub-page chrome
+
+`developer.html` and `updates.html` both set `<body class="subpage">` and use `.pagebar`
+for the top bar and `.pagewrap` for the content column. All three live in `styles.css`, so
+a change to the back-link bar applies to every sub-page at once. Anything genuinely unique
+to a page stays in that page's own stylesheet.
+
 ### Other things to fill in
 
 - `og:image` is not set. Add one plus `og:url` once the site has a domain.
@@ -177,8 +230,10 @@ root.
 ```text
 index.html                 the landing page, plus its inline icon sprite
 developer.html             the developer page, plus its own sprite
-assets/css/styles.css      tokens, reset, shared components, landing page
+updates.html               the changelog, plus its own sprite
+assets/css/styles.css      tokens, reset, shared components, sub-page chrome
 assets/css/developer.css   developer page only, loaded after styles.css
+assets/css/updates.css     updates page only, loaded after styles.css
 assets/js/main.js          stats data, count-up, scroll reveals, link guard
 assets/js/developer.js     skill bars, loaded after main.js
 assets/fonts/              self-hosted woff2, no external font requests
@@ -191,7 +246,7 @@ macOS do not care, but Linux static hosts are case-sensitive, so a reference wri
 reference in this repo already matches the folder exactly. If you rename the folder to
 lowercase for consistency, update both `index.html` and `developer.html` with it.
 
-Both pages inline their own copy of the icon sprite, holding only the symbols that page
+All three pages inline their own copy of the icon sprite, holding only the symbols that page
 uses. That keeps each page self-contained with no extra request, at the cost of a little
 duplication for the icons they share.
 
@@ -200,7 +255,7 @@ duplication for the icons they share.
 | Anchor | Heading | Purpose |
 | --- | --- | --- |
 | (hero) | سيرفرك مرتب، وانت مرتاح | value prop, primary CTA |
-| `#features` | كل اللي يحتاجه سيرفرك | the four systems, bento grid |
+| `#features` | كل اللي يحتاجه سيرفرك | the five systems, bento grid |
 | `#stats` | مساعد بالأرقام | public counters (mock, see above) |
 | `#about` | مبني لمجتمعات عربية | about the **bot**: Arabic-first, tenant-isolated |
 | `#about-us` | من نحن | about the **project and people**, plus the community server |
@@ -223,9 +278,35 @@ in six places:
 | `سيرفر مساعد` community panel icon | `.community__logo` | 44px |
 | developer page social button | `.social img` | 22px |
 
-It ships in full colour, which is the brand-correct default. Against the green button
-blurple is a strong contrast; Discord's guidelines also permit solid black and solid white
-marks, and both are one uncommented line in the `.btn__logo` rule in `styles.css`.
+**The mark is treated per background, because one colour cannot serve both.**
+
+- **On the blurple CTAs** it is rendered solid white via `filter: brightness(0) invert(1)`.
+  That is Discord's own treatment for the logo on a blurple field, and it matches the
+  button label exactly.
+- **On the dark panels** (community icon, developer social button) it is left at its
+  natural colour, which clears 7.2:1 there and needs no correction.
+
+### Two accents, on purpose
+
+The page accent is green (`--accent`). The primary CTAs are **Discord blurple**, because
+every one of them is an action that leads to Discord: three `ضيف البوت` buttons and
+`ادخل سيرفرنا`. Colouring them by destination reads as "this button goes to Discord",
+which is the same convention as a "Sign in with Google" button carrying Google's colours.
+
+| Token | Value | Notes |
+| --- | --- | --- |
+| `--discord` | `#5a63d8` | button fill. White label at 4.99:1 |
+| `--discord-hover` | `#4e56c6` | darkens on hover, label rises to 6.05:1 |
+| `--on-discord` | `#ffffff` | button label |
+
+`#5a63d8` is deliberately deeper and slightly less saturated than Discord's own `#5865f2`,
+so it is not an exact brand match.
+
+The blurple is **scoped to `.btn--primary` only**. Do not spread it further, or it stops
+reading as "Discord" and starts reading as a second brand colour. Everything else stays
+green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 30
+`var(--accent)` usages across icons, headings, stat numerals, chips, hairlines, skill
+bars and the ghost-button hover.
 
 Two glyphs stay as inline SVG on purpose: the `سيرفر` stat icon and the footer `سيرفرنا`
 link. Both are tinted to the accent and transition colour on hover, which a fixed-colour

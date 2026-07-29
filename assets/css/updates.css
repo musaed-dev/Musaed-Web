@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Updates / changelog page (updates.html)
+   Loaded AFTER styles.css, which owns the tokens, fonts, reset, buttons and
+   the shared .subpage / .pagebar / .pagewrap chrome.
+
+   Palette note: the reference design for this layout used a rose/pink
+   accent. This page uses the site accent, same decision as developer.html,
+   so the sub-pages read as one product.
+   ========================================================================== */
+
+/* ---------- header ---------- */
+
+.uphead {
+  text-align: center;
+  max-width: 60ch;
+  margin: 44px auto 0;
+}
+
+.uphead__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--bg-1);
+  color: var(--text-dim);
+  font-size: 0.83rem;
+}
+.uphead__pill svg { width: 15px; height: 15px; fill: var(--accent); }
+
+.uphead__title {
+  margin-top: 22px;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.25;
+}
+.uphead__title span { color: var(--accent); }
+
+.uphead__sub {
+  margin-top: 16px;
+  color: var(--text-dim);
+  font-size: 1.03rem;
+}
+
+/* ---------- summary tiles ---------- */
+
+.upstats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 40px auto 0;
+  max-width: 760px;
+}
+
+.upstat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 20px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  text-align: center;
+}
+
+.upstat__icon { width: 19px; height: 19px; fill: var(--accent); opacity: .8; }
+
+.upstat__value {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.upstat__label { color: var(--text-dim); font-size: 0.82rem; }
+
+/* ---------- timeline ----------
+   Mobile: one column, rail pinned to the reading edge (right in RTL),
+   every release on the same side.
+   Desktop: rail down the centre, releases alternate, and each release's
+   version/date sits opposite its card.
+*/
+
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 56px 0 0;
+  padding: 0;
+}
+
+/* the rail */
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 6px;
+  inset-inline-start: 7px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--line-strong) 8%,
+    var(--line-strong) 92%,
+    transparent
+  );
+}
+
+.rel {
+  position: relative;
+  padding-inline-start: 34px;
+  padding-bottom: 34px;
+}
+.rel:last-child { padding-bottom: 0; }
+
+/* the node on the rail */
+.rel::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  inset-inline-start: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--line-strong);
+}
+.rel--latest::before {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.rel__meta { margin-bottom: 12px; }
+
+.rel__version {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.rel__date {
+  margin-top: 6px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.rel__card {
+  position: relative;
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  transition: border-color .25s var(--ease);
+}
+.rel__card:hover { border-color: var(--line-strong); }
+
+.rel--latest .rel__card {
+  border-color: var(--line-strong);
+  background:
+    radial-gradient(100% 130% at 100% 0%, rgb(55 224 138 / 0.08), transparent 58%),
+    var(--bg-1);
+}
+
+.rel__badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.rel__title { font-size: 1.22rem; }
+
+.rel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rel__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text-dim);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.rel__list svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin-top: 4px;
+  fill: var(--accent);
+  opacity: .85;
+}
+
+/* ---------- closing line ---------- */
+
+.upfoot {
+  margin-top: 56px;
+  text-align: center;
+  color: var(--text-dim);
+}
+.upfoot a {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 1px solid rgb(55 224 138 / 0.35);
+  transition: border-color .2s var(--ease);
+}
+.upfoot a:hover { border-color: var(--accent); }
+
+/* ---------- desktop: centred rail, alternating sides ---------- */
+
+@media (min-width: 820px) {
+  .timeline::before {
+    inset-inline-start: 50%;
+    transform: translateX(50%);
+  }
+
+  .rel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0 64px;
+    padding-inline-start: 0;
+    padding-bottom: 12px;
+  }
+
+  .rel::before {
+    top: 50%;
+    inset-inline-start: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  /* Odd releases: card on the leading side, meta opposite.
+     Even releases: the two swap, which is what makes it alternate. */
+  .rel:nth-child(odd) .rel__card { grid-column: 1; }
+  .rel:nth-child(odd) .rel__meta { grid-column: 2; text-align: start; }
+
+  .rel:nth-child(even) .rel__card { grid-column: 2; }
+  .rel:nth-child(even) .rel__meta { grid-column: 1; text-align: end; }
+
+  .rel__meta { margin-bottom: 0; }
+  .rel__version { font-size: 2.4rem; }
+}
