@@ -2,20 +2,19 @@
    Updates / changelog page (updates.html)
    Loaded AFTER styles.css, which owns the tokens, fonts, reset and buttons.
 
-   This page deliberately breaks two site-wide rules, because the layout it
-   is built from is a terminal / blueprint treatment and both rules are what
-   make it read that way:
+   This page deliberately breaks a site-wide rule, because the layout it is
+   built from is a terminal / blueprint treatment and the rule is what makes
+   it read that way:
 
-     1. RADIUS IS ZERO here. The rest of the site uses --r-sm / --r-md. Every
-        mark on this page is a hard square: the panel, the badge, the rail
-        nodes, the status dots. Rounding them makes the page look like the
-        landing page wearing a costume. To undo it, add a radius to .uppanel,
-        .rel__badge, .rel__node and .upbar__dots i.
+     RADIUS IS ZERO here. The rest of the site uses --r-sm / --r-md. Every
+     mark on this page is a hard square: the panel, the badge, the rail
+     nodes, the status dots. Rounding them makes the page look like the
+     landing page wearing a costume. To undo it, add a radius to .uppanel,
+     .rel__badge, .rel__node and .upbar__dots i.
 
-     2. It does NOT use .pagebar / .pagewrap. The shared sub-page chrome is a
-        bar floating above a plain column; this design needs the bar INSIDE
-        the glass panel. developer.html still uses the shared chrome, so
-        nothing there is affected. The back link lives in .upbar instead.
+   This page builds its own chrome: the bar sits INSIDE the glass panel, so
+   the back link lives in .upbar rather than in any shared bar. styles.css
+   contributes only the .subpage backdrop.
 
    Greys: the reference palette was pure neutral (#fafafa / #b9b9b9 / #8a8a8a).
    Those are nudged a few points toward green below so the page still reads as

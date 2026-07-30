@@ -137,7 +137,7 @@ made.
 
 ### Placeholder links
 
-Seven anchors still need a real destination. All are tagged:
+Six anchors still need a real destination. All are tagged:
 
 ```bash
 grep -rn "data-placeholder-link" index.html
@@ -148,7 +148,7 @@ grep -rn "data-placeholder-link" index.html
 | `discord-invite` | 3 | the bot-invite URL (nav, hero, about section) |
 | `privacy` | 1 | a privacy policy |
 | `terms` | 1 | terms of use |
-| `email` | 2 | the contact address (footer + developer page). Also change `href` to `mailto:` |
+| `email` | 1 | the contact address (footer). Also change `href` to `mailto:` |
 
 The footer rows came from a reference design and are **claims about the product, not just
 missing URLs**. Before launch, either give each one a real page or delete the row.
@@ -168,38 +168,19 @@ While `href="#"`, a small guard in `main.js` swallows the click so the page does
 to the top, and logs which link is unwired. Once you set real URLs, that guard stops
 applying on its own (it only targets `href="#"`).
 
-### The developer page
+### The developer page was removed
 
-`developer.html` is a second page, reached from `المطور` in the footer. It shares
-`styles.css` (tokens, fonts, reset, reveals) and `main.js` (reveal observer, placeholder
-guard), and adds `developer.css` + `developer.js` on top.
+There used to be a third page, `developer.html`, reached from `المطور` in the footer: an
+avatar, a bio, joke stat tiles and a set of skill bars. **It is gone**, along with
+`assets/css/developer.css` and `assets/js/developer.js`, its footer link, the `#i-user`
+sprite symbol that only it used, and the shared `.pagebar` / `.pagewrap` chrome that had no
+other consumer.
 
-**It contains no real identity, because none was supplied.** Everything personal is
-tagged `data-placeholder` and needs your details before launch:
-
-```bash
-grep -rn "data-placeholder=" developer.html
-```
-
-| Marker | What to replace |
-| --- | --- |
-| `avatar` | a square image at `assets/Pics/developer.png`. Swap the `.avatar__ring` block for the `<img>` shown in the comment above it. A monogram renders until you do |
-| `dev-name` | the heading currently reads `المطوّر`. Put a real name or handle here |
-| `dev-bio` | two paragraphs written about the project, not about a person. Rewrite in your own voice |
-| `dev-quote` | the signed line at the bottom of the panel |
-
-The **skill bar technologies are real** (they are what Musaed runs on) but **every
-percentage is invented**. Edit `data-skill` and the visible label together, they are
-independent on purpose: the last row is a joke that displays `1000%` while filling the
-track to 100%. `developer.js` clamps anything above 100 so it cannot overflow.
-
-The three tiles (`أفكار`, `سهرات`, `فنجان قهوة`) are jokes in the spirit of the original
-reference. The coffee count and the launch year carry `data-mock="true"`.
-
-**Palette.** The layout came from a reference that used a rose/pink accent. This page uses
-the site's green instead so it reads as part of Musaed rather than a separate product. To
-switch, change `--dev-a` and `--dev-b` at the top of `developer.css`; the reference values
-are in the comment beside them. Nothing else needs touching.
+It held no real identity — every personal field was still a `data-placeholder` and every
+skill percentage was invented — so nothing real was lost. If you ever want a page about the
+maintainer again, `#about-us` on the landing page already carries that role in neutral
+project voice, and building a new sub-page should follow `updates.html`'s pattern rather
+than resurrecting `.pagebar`.
 
 ### The updates page
 
@@ -211,17 +192,15 @@ column rather than a pseudo-element, consecutive releases join into one unbroken
 with no offset maths. Under 860px it collapses to rail plus content, with the version
 stacked above its release and the sticky dropped.
 
-Two site-wide rules are broken here on purpose, and both are load-bearing for the
-terminal look:
+One site-wide rule is broken here on purpose, and it is load-bearing for the terminal look:
 
 - **Radius is zero.** Everywhere else uses `--r-sm` / `--r-md`. Every mark on this page
   is a hard square: the panel, the `جديد` badge, the rail nodes, the status dots.
   Rounding them makes the page look like the landing page in costume. The four
   selectors to change are named in the comment at the top of `updates.css`.
-- **It does not use `.pagebar` / `.pagewrap`.** The shared sub-page chrome is a bar
-  floating above a plain column; this design needs the bar *inside* the panel, so the
-  back link lives in `.upbar`. `developer.html` still uses the shared chrome, so
-  nothing there changed.
+
+This page also builds **all** of its own chrome: the bar sits *inside* the glass panel, so
+the back link lives in `.upbar`. `styles.css` contributes only the `.subpage` backdrop.
 
 The greys were nudged a few points toward green from the neutral reference values, so
 the page still reads as part of Musaed rather than a stock terminal template. They are
@@ -272,10 +251,13 @@ only, which is how the markup already has it.
 
 ### Shared sub-page chrome
 
-`developer.html` and `updates.html` both set `<body class="subpage">` and use `.pagebar`
-for the top bar and `.pagewrap` for the content column. All three live in `styles.css`, so
-a change to the back-link bar applies to every sub-page at once. Anything genuinely unique
-to a page stays in that page's own stylesheet.
+There is barely any left. `updates.html` is now the only page that is not the landing page.
+It sets `<body class="subpage">` for the backdrop gradient in `styles.css` and builds
+everything else itself (`.upbar` / `.uppanel` in `updates.css`).
+
+`styles.css` used to also carry a `.pagebar` / `.pagewrap` bar-and-column pair, but
+`developer.html` was its only consumer, so it went with that page. A second sub-page should
+copy `updates.html`'s approach, not reintroduce it.
 
 ### Other things to fill in
 
@@ -313,26 +295,26 @@ root.
 
 ```text
 index.html                 the landing page, plus its inline icon sprite
-developer.html             the developer page, plus its own sprite
 updates.html               the changelog, plus its own sprite
-assets/css/styles.css      tokens, reset, shared components, sub-page chrome
-assets/css/developer.css   developer page only, loaded after styles.css
+assets/css/styles.css      tokens, reset, shared components, sub-page backdrop
 assets/css/updates.css     updates page only, loaded after styles.css
 assets/js/main.js          stats data, count-up, scroll reveals, link guard
-assets/js/developer.js     skill bars, loaded after main.js
 assets/fonts/              self-hosted woff2, no external font requests
 assets/Pics/               brand marks + images. Note the capital P, see below
 ```
+
+Two pages, two stylesheets, one script. There is no third page: `developer.html`,
+`developer.css` and `developer.js` were removed.
 
 **Path casing.** `assets/Pics/` is capitalised while its siblings are not. Windows and
 macOS do not care, but Linux static hosts are case-sensitive, so a reference written as
 `assets/pics/...` will 404 in production while working perfectly on your machine. Every
 reference in this repo already matches the folder exactly. If you rename the folder to
-lowercase for consistency, update both `index.html` and `developer.html` with it.
+lowercase for consistency, update both `index.html` and `updates.html` with it.
 
-All three pages inline their own copy of the icon sprite, holding only the symbols that page
+Both pages inline their own copy of the icon sprite, holding only the symbols that page
 uses. That keeps each page self-contained with no extra request, at the cost of a little
-duplication for the icons they share.
+duplication for the icons they share. `updates.html` needs exactly one symbol.
 
 ### Page sections
 
@@ -358,7 +340,7 @@ solo maintainer, or to carry your handle, that is the section to edit.
 ### The Discord mark
 
 `assets/Pics/Discord-Icon.png` (100x100, transparent) is the real Discord logo. It renders
-in six places:
+in five places, all on `index.html`:
 
 | Where | Class | Size |
 | --- | --- | --- |
@@ -366,15 +348,14 @@ in six places:
 | `ضيف البوت` CTA, hero and about | `.btn__logo` | 18px |
 | `ادخل سيرفرنا` CTA, community panel | `.btn__logo` | 18px |
 | `سيرفر مساعد` community panel icon | `.community__logo` | 44px |
-| developer page social button | `.social img` | 22px |
 
 **The mark is treated per background, because one colour cannot serve both.**
 
 - **On the blurple CTAs** it is rendered solid white via `filter: brightness(0) invert(1)`.
   That is Discord's own treatment for the logo on a blurple field, and it matches the
   button label exactly.
-- **On the dark panels** (community icon, developer social button) it is left at its
-  natural colour, which clears 7.2:1 there and needs no correction.
+- **On the dark community panel** it is left at its natural colour, which clears 7.2:1
+  there and needs no correction.
 
 ### Two accents, on purpose
 
@@ -394,9 +375,10 @@ so it is not an exact brand match.
 
 The blurple is **scoped to `.btn--primary` only**. Do not spread it further, or it stops
 reading as "Discord" and starts reading as a second brand colour. Everything else stays
-green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 30
-`var(--accent)` usages across icons, headings, stat numerals, chips, hairlines, skill
-bars and the ghost-button hover.
+green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 29
+`var(--accent)` usages across the two stylesheets (17 in `styles.css`, 12 in
+`updates.css`) — icons, headings, stat numerals, chips, command names, hairlines, the
+changelog rail and the ghost-button hover.
 
 Two glyphs stay as inline SVG on purpose: the `سيرفر` stat icon and the footer `سيرفرنا`
 link. Both are tinted to the accent and transition colour on hover, which a fixed-colour
@@ -446,10 +428,10 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
 
 These five were audited and fixed, and each is easy to undo by accident. Keep them.
 
-- **44px is the floor for tap targets.** Footer rows, nav links, the updates back link and
-  the developer social buttons all sit at or just over 44px. Several get there through
-  `padding-block` cancelled by a negative margin, so the target grew without the layout
-  moving. If you tighten padding for looks, you shrink the target.
+- **44px is the floor for tap targets.** Footer rows, nav links and the updates back link
+  all sit at or just over 44px. Several get there through `padding-block` cancelled by a
+  negative margin, so the target grew without the layout moving. If you tighten padding
+  for looks, you shrink the target.
 - **Never `display: none` a label that is a control's accessible name.** The updates back
   link hides its text under 560px, so it is clipped out of view while staying in the
   accessibility tree. `display: none` there would leave screen readers announcing an
@@ -479,7 +461,7 @@ Two width limits, both measured rather than inferred:
   re-measure before adding one, and prefer a footer-only link.
 
 Everything above was measured in a real browser at 320, 375, 390, 412, 768, 1024 and
-1440px, across all three pages: 100 assertions, plus 17 for the menu's behaviour.
+1440px, across both pages: 72 assertions, plus 17 for the menu's behaviour.
 
 Verify with:
 
@@ -541,8 +523,8 @@ Two constraints worth preserving if you extend this:
 
 | File | Size | Used as |
 | --- | --- | --- |
-| `musaed-avatar.png` | 1024x1024 | brand mark in the landing nav and footer (30px), and in the sub-page bars (25px). Also the `apple-touch-icon` |
-| `musaed-favicon.png` | 512x512 | `rel="icon"` on all three pages |
+| `musaed-avatar.png` | 1024x1024 | brand mark in the landing nav and footer (30px). Also the `apple-touch-icon` |
+| `musaed-favicon.png` | 512x512 | `rel="icon"` on both pages |
 | `musaed-banner.png` | 960x540 | **not wired up yet.** See below |
 
 Both marks are fully transparent outside the glyph, so they sit on the dark chrome with no
@@ -550,19 +532,19 @@ plate behind them. The nav mark used to be a filled accent square with a م type
 the real logo replaces both the square and the letter.
 
 `musaed-banner.png` is the `og:image`, the card that renders when the site is linked in
-Discord, Twitter or Slack. All three pages carry a full Open Graph + Twitter card block
+Discord, Twitter or Slack. Both pages carry a full Open Graph + Twitter card block
 with a `summary_large_image` card, plus a `canonical` link.
 
 ### The hardcoded domain
 
 Social crawlers reject relative URLs, so the site URL is written literally into
-`og:url`, `og:image`, `twitter:image` and `canonical` on **all three pages**:
+`og:url`, `og:image`, `twitter:image` and `canonical` on **both pages**:
 
 ```text
 https://musaed-web-production.up.railway.app
 ```
 
-If you move to a custom domain, find and replace that string across the three HTML files.
+If you move to a custom domain, find and replace that string across both HTML files.
 Nothing else references it.
 
 Two notes on the card:

@@ -439,10 +439,14 @@ img, svg { display: block; max-width: 100%; }
   }
 }
 
-/* ---------- Sub-page chrome ----------
-   Shared by every page that is not the landing page (developer.html,
-   updates.html). Those pages set <body class="subpage"> and use .pagebar
-   for the top bar and .pagewrap for the content column.
+/* ---------- Sub-page background ----------
+   `updates.html` is the only page that is not the landing page. It sets
+   <body class="subpage"> for this backdrop and then builds its own chrome
+   (.upbar / .uppanel in updates.css), so this rule is all that is shared.
+
+   Keep it that way: a second sub-page should copy updates.html's approach
+   rather than growing a shared top-bar component back into this file. See
+   the README for why the last one was removed.
 */
 
 .subpage {
@@ -450,64 +454,6 @@ img, svg { display: block; max-width: 100%; }
     radial-gradient(85% 55% at 50% 0%, rgb(55 224 138 / 0.07), transparent 70%),
     var(--bg);
   min-height: 100dvh;
-}
-
-.pagebar {
-  max-width: 1080px;
-  margin: 22px auto 0;
-  padding-inline: 20px;
-}
-
-.pagebar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  height: 58px;
-  padding-inline: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
-  background: var(--bg-1);
-}
-
-/* The negative inline margin keeps the label flush with the bar edge while
-   the padding carries the target past 44px. Measured at 70x26 before it. */
-.pagebar__back {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding-inline: 10px;
-  margin-inline-start: -10px;
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  transition: color .2s var(--ease);
-}
-.pagebar__back:hover { color: var(--accent); }
-
-/* The arrow glyph points right, which is "back" in a right-to-left page. */
-.pagebar__back .icon { width: 17px; height: 17px; }
-
-/* Page name plus the brand mark, sitting at the outer edge of the bar.
-   The mark identifies the site, the label identifies the page. */
-.pagebar__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pagebar__label {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text);
-}
-
-.pagebar__logo { width: 25px; height: 25px; flex: none; }
-
-.pagewrap {
-  max-width: 1080px;
-  margin-inline: auto;
-  padding: 26px 20px 80px;
 }
 
 /* ---------- Hero ---------- */
