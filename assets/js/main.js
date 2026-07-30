@@ -225,7 +225,7 @@
     // Stagger siblings inside a group so each cluster reads in sequence
     // rather than all landing at once. Elements that already carry an
     // inline --d (the hero) keep their hand-tuned timing.
-    var GROUPS = ".bento, .stats, .team, .about";
+    var GROUPS = ".bento, .cmds, .stats, .guards, .team, .about";
     document.querySelectorAll(GROUPS).forEach(function (group) {
       group.querySelectorAll(".reveal").forEach(function (el, i) {
         if (!el.style.getPropertyValue("--d")) {

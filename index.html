@@ -6,7 +6,7 @@
 <!-- Runs before first paint so scroll-reveal elements are only hidden when JS can reveal them. -->
 <script>document.documentElement.classList.remove("no-js");</script>
 <title>Musaed |مساعد</title>
-<meta name="description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta name="description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا — كله بأوامر سلاش.">
 <meta name="theme-color" content="#080a09">
 
 <link rel="icon" href="assets/Pics/musaed-favicon.png" type="image/png">
@@ -21,7 +21,7 @@
 <meta property="og:locale" content="ar_SA">
 <meta property="og:url" content="https://musaed-web-production.up.railway.app/">
 <meta property="og:title" content="Musaed |مساعد">
-<meta property="og:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta property="og:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا — كله بأوامر سلاش.">
 <meta property="og:image" content="https://musaed-web-production.up.railway.app/assets/Pics/musaed-banner.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="960">
@@ -29,7 +29,7 @@
 <meta property="og:image:alt" content="مساعد">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Musaed |مساعد">
-<meta name="twitter:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب بالأعضاء، وبادئة مرنة لكل سيرفر.">
+<meta name="twitter:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا — كله بأوامر سلاش.">
 <meta name="twitter:image" content="https://musaed-web-production.up.railway.app/assets/Pics/musaed-banner.png">
 
 <link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -50,7 +50,6 @@
   <symbol id="i-wave" viewBox="0 0 256 256"><path d="M220.17,100,202.86,70a28,28,0,0,0-38.24-10.25,27.69,27.69,0,0,0-9,8.34L138.2,38a28,28,0,0,0-48.48,0A28,28,0,0,0,48.15,74l1.59,2.76A27.67,27.67,0,0,0,38,80.41a28,28,0,0,0-10.24,38.25l40,69.32a87.47,87.47,0,0,0,53.43,41,88.56,88.56,0,0,0,22.92,3,88,88,0,0,0,76.06-132Zm-6.66,62.64A72,72,0,0,1,81.62,180l-40-69.32a12,12,0,0,1,20.78-12L81.63,132a8,8,0,1,0,13.85-8L62,66A12,12,0,1,1,82.78,54L114,108a8,8,0,1,0,13.85-8L103.57,58h0a12,12,0,1,1,20.78-12l33.42,57.9a48,48,0,0,0-5.54,60.6,8,8,0,0,0,13.24-9A32,32,0,0,1,172.78,112a8,8,0,0,0,2.13-10.4L168.23,90A12,12,0,1,1,189,78l17.31,30A71.56,71.56,0,0,1,213.51,162.62ZM184.25,31.71A8,8,0,0,1,194,26a59.62,59.62,0,0,1,36.53,28l.33.57a8,8,0,1,1-13.85,8l-.33-.57a43.67,43.67,0,0,0-26.8-20.5A8,8,0,0,1,184.25,31.71ZM80.89,237a8,8,0,0,1-11.23,1.33A119.56,119.56,0,0,1,40.06,204a8,8,0,0,1,13.86-8,103.67,103.67,0,0,0,25.64,29.72A8,8,0,0,1,80.89,237Z"/></symbol>
   <symbol id="i-terminal" viewBox="0 0 256 256"><path d="M128,128a8,8,0,0,1-3,6.25l-40,32a8,8,0,1,1-10-12.5L107.19,128,75,102.25a8,8,0,1,1,10-12.5l40,32A8,8,0,0,1,128,128Zm48,24H136a8,8,0,0,0,0,16h40a8,8,0,0,0,0-16Zm56-96V200a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56ZM216,200V56H40V200H216Z"/></symbol>
   <symbol id="i-discord" viewBox="0 0 256 256"><path d="M104,140a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm60-12a12,12,0,1,0,12,12A12,12,0,0,0,164,128Zm74.45,64.9-67,29.71a16.17,16.17,0,0,1-21.71-9.1l-8.11-22q-6.72.45-13.63.46t-13.63-.46l-8.11,22a16.18,16.18,0,0,1-21.71,9.1l-67-29.71a15.93,15.93,0,0,1-9.06-18.51L38,58A16.07,16.07,0,0,1,51,46.14l36.06-5.93a16.22,16.22,0,0,1,18.26,11.88l3.26,12.84Q118.11,64,128,64t19.4.93l3.26-12.84a16.21,16.21,0,0,1,18.26-11.88L205,46.14A16.07,16.07,0,0,1,218,58l29.53,116.38A15.93,15.93,0,0,1,238.45,192.9ZM232,178.28,202.47,62s0,0-.08,0L166.33,56a.17.17,0,0,0-.17,0l-2.83,11.14c5,.94,10,2.06,14.83,3.42A8,8,0,0,1,176,86.31a8.09,8.09,0,0,1-2.16-.3A172.25,172.25,0,0,0,128,80a172.25,172.25,0,0,0-45.84,6,8,8,0,1,1-4.32-15.4c4.82-1.36,9.78-2.48,14.82-3.42L89.83,56s0,0-.12,0h0L53.61,61.93a.17.17,0,0,0-.09,0L24,178.33,91,208a.23.23,0,0,0,.22,0L98,189.72a173.2,173.2,0,0,1-20.14-4.32A8,8,0,0,1,82.16,170,171.85,171.85,0,0,0,128,176a171.85,171.85,0,0,0,45.84-6,8,8,0,0,1,4.32,15.41A173.2,173.2,0,0,1,158,189.72L164.75,208a.22.22,0,0,0,.21,0Z"/></symbol>
-  <symbol id="i-gauge" viewBox="0 0 256 256"><path d="M207.06,72.67A111.24,111.24,0,0,0,128,40h-.4C66.07,40.21,16,91,16,153.13V176a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V152A111.25,111.25,0,0,0,207.06,72.67ZM224,176H119.71l54.76-75.3a8,8,0,0,0-12.94-9.42L99.92,176H32V153.13c0-3.08.15-6.12.43-9.13H56a8,8,0,0,0,0-16H35.27c10.32-38.86,44-68.24,84.73-71.66V80a8,8,0,0,0,16,0V56.33A96.14,96.14,0,0,1,221,128H200a8,8,0,0,0,0,16h23.67c.21,2.65.33,5.31.33,8Z"/></symbol>
   <symbol id="i-users" viewBox="0 0 256 256"><path d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"/></symbol>
   <symbol id="i-chats" viewBox="0 0 256 256"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"/></symbol>
   <symbol id="i-sparkle" viewBox="0 0 256 256"><path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/></symbol>
@@ -59,6 +58,12 @@
   <symbol id="i-file" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol>
   <symbol id="i-pulse" viewBox="0 0 256 256"><path d="M240,128a8,8,0,0,1-8,8H204.94l-37.78,75.58A8,8,0,0,1,160,216h-.4a8,8,0,0,1-7.08-5.14L95.35,60.76,63.28,131.31A8,8,0,0,1,56,136H24a8,8,0,0,1,0-16H50.85L88.72,36.69a8,8,0,0,1,14.76.46l57.51,151,31.85-63.71A8,8,0,0,1,200,120h32A8,8,0,0,1,240,128Z"/></symbol>
+  <symbol id="i-hourglass" viewBox="0 0 256 256"><path d="M200,75.64V40a16,16,0,0,0-16-16H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.6A16.05,16.05,0,0,0,200,75.64ZM184,216H72V180l56-42,56,42.35Zm0-140.36L128,118,72,76V40H184Z"/></symbol>
+  <symbol id="i-seal-check" viewBox="0 0 256 256"><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
+  <symbol id="i-history" viewBox="0 0 256 256"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/></symbol>
+  <symbol id="i-user-check" viewBox="0 0 256 256"><path d="M144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17a8,8,0,0,0,12.25,10.3C50.25,181.19,77.91,168,108,168s57.75,13.19,77.87,37.15a8,8,0,0,0,12.25-10.3C183.18,177.07,164.6,164.44,144,157.68ZM56,100a52,52,0,1,1,52,52A52.06,52.06,0,0,1,56,100Zm197.66,33.66-32,32a8,8,0,0,1-11.32,0l-16-16a8,8,0,0,1,11.32-11.32L216,148.69l26.34-26.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
 </svg>
 
 <header class="nav" id="top">
@@ -79,6 +84,7 @@
 
     <nav class="nav__links" id="nav-menu" aria-label="روابط الصفحة">
       <a href="#features">المميزات</a>
+      <a href="#commands">الأوامر</a>
       <a href="#stats">الأرقام</a>
       <a href="#about">عن البوت</a>
       <a href="#about-us">من نحن</a>
@@ -105,7 +111,8 @@
           سيرفرك مرتب،<br>وانت مرتاح
         </h1>
         <p class="hero__sub reveal" style="--d:90ms">
-          مساعد بوت عربي يتولى الإشراف والحماية والترحيب في سيرفرك، وكل شي فيه تضبطه على كيفك.
+          مساعد بوت عربي يتولى الإشراف والحماية والترحيب وبوابة الدخول في سيرفرك،
+          وكل شي فيه تضبطه على كيفك.
         </p>
         <div class="hero__actions reveal" style="--d:180ms">
           <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
@@ -132,22 +139,29 @@
     <div class="shell">
       <header class="section__head reveal">
         <h2 class="section__title">كل اللي يحتاجه سيرفرك</h2>
-        <p class="section__lede">أربعة أنظمة تشتغل مع بعض، وكل وحدة تضبطها لحالها.</p>
+        <p class="section__lede">
+          خمسة أنظمة تشتغل مع بعض، وكل وحدة تشغّلها أو تطفيها وتضبطها لحالها.
+        </p>
       </header>
 
+      <!-- Every command name below is a real registered slash command. If the
+           bot's command surface changes, this grid and the #commands section
+           are the two places on the site that go stale. -->
       <div class="bento">
 
         <article class="card card--accent reveal">
           <svg class="card__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>
           <h3 class="card__title">الإشراف</h3>
           <p class="card__body">
-            طرد، حظر، إسكات مؤقت، وتحذيرات تنحفظ كلها في سجل السيرفر عشان ترجع لها وقت ما تبي.
+            طرد، حظر، إسكات مؤقت، وتحذيرات. كل إجراء ينحفظ في سجل سيرفرك مع سببه
+            ومين سواه، وترجع له وقت ما تبي بأمر واحد.
           </p>
           <ul class="chips">
-            <li class="chip">!طرد</li>
-            <li class="chip">!حظر</li>
-            <li class="chip">!اسكات</li>
-            <li class="chip">!تحذير</li>
+            <li class="chip" dir="ltr">/kick</li>
+            <li class="chip" dir="ltr">/ban</li>
+            <li class="chip" dir="ltr">/timeout</li>
+            <li class="chip" dir="ltr">/warn</li>
+            <li class="chip" dir="ltr">/modlogs</li>
           </ul>
         </article>
 
@@ -155,7 +169,8 @@
           <svg class="card__icon" aria-hidden="true"><use href="#i-shield"></use></svg>
           <h3 class="card__title">الحماية التلقائية</h3>
           <p class="card__body">
-            فلتر كلمات ممنوعة وكشف سبام يشتغلان لحالهما على مدار الساعة، بدون ما تراقب.
+            فلتر كلمات ممنوعة، وكشف سبام بحد تحدده أنت، وكشف هجمات الدخول الجماعي —
+            كلها تشتغل لحالها على مدار الساعة بدون ما تراقب.
           </p>
         </article>
 
@@ -163,38 +178,278 @@
           <svg class="card__icon" aria-hidden="true"><use href="#i-wave"></use></svg>
           <h3 class="card__title">الترحيب</h3>
           <p class="card__body">
-            رسالة ترحيب تكتبها بنفسك، ورتبة تنعطى تلقائي لكل عضو جديد يدخل السيرفر.
+            رسالة ترحيب تكتبها بنفسك وتحط فيها اسم العضو واسم السيرفر وعدد الأعضاء،
+            ورتبة تنعطى تلقائي لكل عضو جديد. وتقدر تشوف شكلها قبل ما تعتمدها.
           </p>
         </article>
 
         <article class="card card--accent reveal">
-          <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
-          <h3 class="card__title">بادئة لكل سيرفر</h3>
+          <svg class="card__icon" aria-hidden="true"><use href="#i-hourglass"></use></svg>
+          <h3 class="card__title">بوابة عمر الحساب</h3>
           <p class="card__body">
-            كل سيرفر يختار البادئة اللي تناسبه، وتقدر تغيرها في أي وقت بدون ما تأثر على غيرك.
+            الحسابات المسوّاة قبل شوي عشان تسوي مشاكل ما تدخل أصلاً. تحدد أقل عمر
+            مسموح للحساب، ومساعد يطرد اللي أقل منه ويوصله في الخاص متى يقدر يرجع.
           </p>
           <ul class="chips">
-            <li class="chip">!</li>
-            <li class="chip">؟</li>
-            <li class="chip">.</li>
-            <li class="chip">-</li>
+            <li class="chip" dir="ltr">/agegate minage</li>
+            <li class="chip" dir="ltr">/agegate message</li>
           </ul>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-seal-check"></use></svg>
+          <h3 class="card__title">التحقق بالكابتشا</h3>
+          <p class="card__body">
+            العضو الجديد يجاوب على تحدي بسيط قبل ما يوصل لقنواتك. تختار نوع التحدي
+            وعدد المحاولات، وتقدر تقفل القنوات على اللي ما تحقق لحد ما يخلص.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
+          <h3 class="card__title">أوامر سلاش بس</h3>
+          <p class="card__body">
+            ما فيه بادئات ولا أوامر محفوظة. كل شي يطلع لك من قائمة ديسكورد نفسها مع
+            شرح كل خيار، وكل أمر عليه حد استخدام يمنع الضغط عليه.
+          </p>
         </article>
 
         <article class="card card--full card--accent reveal">
           <div class="card__lead">
-            <svg class="card__icon" aria-hidden="true"><use href="#i-gauge"></use></svg>
-            <h3 class="card__title">تحديد المعدّل</h3>
+            <svg class="card__icon" aria-hidden="true"><use href="#i-clock"></use></svg>
+            <h3 class="card__title">المدد تكتبها زي ما تنطقها</h3>
             <p class="card__body">
-              تحدد كم رسالة يقدر العضو يرسلها في فترة معينة، ومساعد يهدّي اللي يتجاوز
-              الحد تلقائي. يوقف موجات السبام قبل لا توصل لأعضائك.
+              أي مدة في البوت — إسكات، أقل عمر للحساب، مسح الرسايل — تكتبها بالشكل
+              اللي يريحك: مختصر بالإنجليزي، أو بالعربي بالكلمة الكاملة، وبالأرقام
+              العربية أو الإنجليزية. ولو كتبت رقم لحاله يحسبه بوحدة الأمر الافتراضية،
+              فما تحتاج تحوّل شي بنفسك.
             </p>
           </div>
           <ul class="chips">
-            <li class="chip">3 / 5ث</li>
-            <li class="chip">5 / 10ث</li>
-            <li class="chip">10 / 30ث</li>
-            <li class="chip">!تهدئة</li>
+            <li class="chip" dir="ltr">30m</li>
+            <li class="chip" dir="ltr">1h30m</li>
+            <li class="chip" dir="ltr">7d</li>
+            <li class="chip" dir="ltr">2w</li>
+            <li class="chip chip--ar">٣٠ يوم</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= COMMANDS =========================
+       Reference listing. Mirrors the bot's real registered command surface;
+       every group is a slash-command group and every row is a real
+       subcommand. The "perm" pill is the Discord permission the group
+       requires, which is what a server owner actually needs to know before
+       handing a feature to a moderator.
+
+       /prefix is deliberately NOT listed: the bot registers no prefix
+       commands, so a per-server prefix has no user-visible effect yet.
+       See README ("Copy accuracy") before adding it back.
+  -->
+  <section class="section section--commands" id="commands">
+    <div class="shell">
+      <header class="section__head reveal">
+        <h2 class="section__title">كل الأوامر</h2>
+        <p class="section__lede">
+          كلها أوامر سلاش، تطلع لك من قائمة ديسكورد مع شرح كل خيار. وجانب كل مجموعة
+          الصلاحية اللي لازم تكون عند اللي يستخدمها.
+        </p>
+      </header>
+
+      <div class="cmds">
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>
+            <h3 class="cmdgroup__title">الإشراف</h3>
+            <p class="cmdgroup__perm">صلاحيات ديسكورد</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/kick</code>
+              <span class="cmd__desc">يطرد عضو من السيرفر، والسبب ينكتب في سجل ديسكورد وسجل مساعد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/ban</code>
+              <span class="cmd__desc">يحظر عضو، وتقدر تخليه يمسح رسايله من فترة تحددها.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/timeout</code>
+              <span class="cmd__desc">إسكات مؤقت بمدة تكتبها بالعربي أو بالإنجليزي.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/warn</code>
+              <span class="cmd__desc">تحذير ينحفظ على العضو بدون أي عقوبة عليه.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/modlogs</code>
+              <span class="cmd__desc">يعرض لك كل إجراء صار على عضو معين ومين سواه.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+            <h3 class="cmdgroup__title">الحماية التلقائية</h3>
+            <p class="cmdgroup__perm">إدارة السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod status</code>
+              <span class="cmd__desc">يعرض إعدادات الحماية الحالية في سيرفرك.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod addwords</code>
+              <span class="cmd__desc">يضيف كلمات ممنوعة، وحدة أو أكثر مرة واحدة.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod removeword</code>
+              <span class="cmd__desc">يشيل كلمة من قائمة الممنوعات.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod listwords</code>
+              <span class="cmd__desc">يعرض كل الكلمات الممنوعة عندك.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod clearwords</code>
+              <span class="cmd__desc">يفرّغ القائمة كلها مرة واحدة.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/automod spam</code>
+              <span class="cmd__desc">يحدد كم رسالة في وقت قصير تعتبر سبام.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-wave"></use></svg>
+            <h3 class="cmdgroup__title">الترحيب</h3>
+            <p class="cmdgroup__perm">إدارة السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome setup</code>
+              <span class="cmd__desc">يحدد القناة اللي تنزل فيها رسالة الترحيب.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome message</code>
+              <span class="cmd__desc">تكتب نص الترحيب وتحط فيه اسم العضو والسيرفر وعدد الأعضاء.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome autorole</code>
+              <span class="cmd__desc">رتبة تنعطى لكل عضو جديد يدخل.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome preview</code>
+              <span class="cmd__desc">يوريك شكل الرسالة النهائي قبل ما تعتمدها.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome status</code>
+              <span class="cmd__desc">يعرض إعدادات الترحيب الحالية.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/welcome disable</code>
+              <span class="cmd__desc">يوقف الترحيب بدون ما يمسح إعداداتك.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-hourglass"></use></svg>
+            <h3 class="cmdgroup__title">بوابة عمر الحساب</h3>
+            <p class="cmdgroup__perm">مدير السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/agegate minage</code>
+              <span class="cmd__desc">أقل عمر مسموح لحساب العضو الجديد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/agegate message</code>
+              <span class="cmd__desc">الرسالة اللي توصل العضو المرفوض في الخاص.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/agegate enable</code>
+              <span class="cmd__desc">يشغّل البوابة على الداخلين الجدد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/agegate disable</code>
+              <span class="cmd__desc">يطفي البوابة ويخلي الدخول مفتوح.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/agegate status</code>
+              <span class="cmd__desc">يعرض السياسة المطبقة حالياً.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-seal-check"></use></svg>
+            <h3 class="cmdgroup__title">التحقق بالكابتشا</h3>
+            <p class="cmdgroup__perm">إدارة السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha roles</code>
+              <span class="cmd__desc">رتبة قبل التحقق ورتبة بعده.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha channel</code>
+              <span class="cmd__desc">القناة اللي ينزل فيها التحدي.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha type</code>
+              <span class="cmd__desc">نوع التحدي اللي يجاوب عليه العضو.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha attempts</code>
+              <span class="cmd__desc">كم محاولة تعطيه قبل ما ينطرد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha message</code>
+              <span class="cmd__desc">نص الرسالة اللي تظهر مع التحدي.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha enable</code>
+              <span class="cmd__desc">يشغّل التحقق بعد ما تضبط الرتب.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha disable</code>
+              <span class="cmd__desc">يطفي التحقق ويخلي الدخول مباشر.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha lockdown</code>
+              <span class="cmd__desc">يقفل قنواتك على اللي ما تحقق لحد ما يخلص.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha unlock</code>
+              <span class="cmd__desc">يرجع صلاحيات القنوات زي ما كانت.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-info"></use></svg>
+            <h3 class="cmdgroup__title">معلومات</h3>
+            <p class="cmdgroup__perm">متاح للكل</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/serverinfo</code>
+              <span class="cmd__desc">ملخص عن سيرفرك: الأعضاء، القنوات، الرتب، وتاريخ إنشائه.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/about</code>
+              <span class="cmd__desc">معلومات عن مساعد ونسخته الحالية.</span>
+            </li>
           </ul>
         </article>
 
@@ -238,13 +493,64 @@
     </div>
   </section>
 
+  <!-- ========================= GUARANTEES =========================
+       Product guarantees, not marketing claims. Each one describes real
+       behaviour of the bot. Keep the wording free of numbers that are
+       configurable server-side (retention window, thresholds) — those are
+       defaults, not promises.
+  -->
+  <section class="section section--trust" id="trust">
+    <div class="shell">
+      <header class="section__head reveal">
+        <h2 class="section__title">بيانات سيرفرك تبقى لسيرفرك</h2>
+      </header>
+
+      <div class="guards">
+
+        <article class="guard reveal">
+          <div class="guard__head">
+            <svg class="guard__icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+            <h3 class="guard__title">عزل تام بين السيرفرات</h3>
+          </div>
+          <p class="guard__body">
+            كل بيانات سيرفرك مربوطة بسيرفرك وحده. وهذا مو مجرد قاعدة نمشي عليها وقت
+            البرمجة — فيه حاجز يرفض أي قراءة ما تحدد السيرفر قبل لا تنفّذ.
+          </p>
+        </article>
+
+        <article class="guard reveal">
+          <div class="guard__head">
+            <svg class="guard__icon" aria-hidden="true"><use href="#i-history"></use></svg>
+            <h3 class="guard__title">إعداداتك ترجع لك</h3>
+          </div>
+          <p class="guard__body">
+            لو حذفت مساعد ورجعته بعدها، إعداداتك ما تروح. تنحفظ فترة سماح قبل ما
+            تنحذف نهائياً، فما تعيد الضبط من الصفر لأن البوت خرج ورجع.
+          </p>
+        </article>
+
+        <article class="guard reveal">
+          <div class="guard__head">
+            <svg class="guard__icon" aria-hidden="true"><use href="#i-user-check"></use></svg>
+            <h3 class="guard__title">صلاحياتك هي القرار</h3>
+          </div>
+          <p class="guard__body">
+            مساعد ما يعطي أحد صلاحية ما هي عنده أصلاً. أوامر الإشراف تتحقق من صلاحيات
+            ديسكورد ومن ترتيب الرتب قبل أي إجراء، فما ينفع أحد يتجاوز اللي فوقه.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ========================= ABOUT ========================= -->
   <section class="section section--about" id="about">
     <div class="shell about">
       <h2 class="section__title reveal">مبني لمجتمعات عربية</h2>
       <p class="about__body reveal">
         مساعد مكتوب بالعربي من أول يوم. أوامره ورسايله وردوده كلها بلهجة يفهمها أعضاء سيرفرك،
-        مو ترجمة حرفية من بوت أجنبي. وكل سيرفر عنده إعداداته وبياناته لحاله، ما تختلط مع غيره أبد.
+        مو ترجمة حرفية من بوت أجنبي — حتى المدد تكتبها بالعربي وهو يفهمها.
       </p>
       <div class="about__actions reveal">
         <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
@@ -308,8 +614,10 @@
         <h2 class="fcol__title">الموقع</h2>
         <ul class="fcol__list">
           <li><a href="#features"><svg class="fcol__icon" aria-hidden="true"><use href="#i-gavel"></use></svg>المميزات</a></li>
+          <li><a href="#commands"><svg class="fcol__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>الأوامر</a></li>
           <li><a href="#stats"><svg class="fcol__icon" aria-hidden="true"><use href="#i-users"></use></svg>الأرقام</a></li>
-          <li><a href="#about"><svg class="fcol__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>عن البوت</a></li>
+          <li><a href="#trust"><svg class="fcol__icon" aria-hidden="true"><use href="#i-shield"></use></svg>الأمان</a></li>
+          <li><a href="#about"><svg class="fcol__icon" aria-hidden="true"><use href="#i-info"></use></svg>عن البوت</a></li>
           <li><a href="#about-us"><svg class="fcol__icon" aria-hidden="true"><use href="#i-chats"></use></svg>من نحن</a></li>
         </ul>
       </div>

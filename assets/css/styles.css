@@ -410,7 +410,11 @@ img, svg { display: block; max-width: 100%; }
   .nav__links {
     position: static;
     display: flex;
-    gap: 20px;                  /* tightened to keep 5 links on one line */
+    /* Six links, and 768px is where they first have to share one line with
+       the brand and the CTA. Measured there: ~70px of slack left over at
+       this gap. A seventh link would eat roughly 75px, so re-measure before
+       adding one — that is the width that breaks first. */
+    gap: 20px;
     margin-inline-start: auto;
     padding: 0;
     background: none;
@@ -637,7 +641,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .card:hover { border-color: var(--line-strong); background: var(--bg-2); }
 
-/* The two wide cells carry a tinted field so the grid is not 4 flat boxes. */
+/* The two 7-wide cells and the full-width closer carry a tinted field, so the
+   grid is not seven flat boxes. Do not tint more than these three. */
 .card--accent {
   background:
     radial-gradient(100% 130% at 100% 0%, rgb(55 224 138 / 0.08), transparent 58%),
@@ -678,19 +683,31 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.5;
 }
 
+/* For a chip whose content is Arabic. Plex Mono carries no Arabic glyphs, so
+   --mono falls back part-way through the string and opens a wide advance gap
+   between the numerals and the word. */
+.chip--ar { font-family: var(--sans); }
+
 /* The full-width fifth cell spreads horizontally so the row does not read
    as one very wide paragraph. Text leads, chips trail. */
 .card--full .card__lead { max-width: 60ch; }
 
 @media (min-width: 860px) {
-  /* 5 items, 5 cells, no gaps: 7+5, then 5+7, then one full-width row.
-     Reversing the split between rows keeps the grid from looking striped. */
+  /* 7 items, 7 cells, no gaps: 7+5, then 5+7, then 6+6, then one full-width
+     row. Reversing the split between the first two rows keeps the grid from
+     looking striped, and the even third row breaks the rhythm before the
+     full-width closer.
+
+     Scoped with `.bento >` on purpose: an unscoped .card:nth-child() would
+     also fire on any future .card that happens to sit in another grid. */
   .bento { grid-template-columns: repeat(12, 1fr); }
-  .card:nth-child(1) { grid-column: span 7; }
-  .card:nth-child(2) { grid-column: span 5; }
-  .card:nth-child(3) { grid-column: span 5; }
-  .card:nth-child(4) { grid-column: span 7; }
-  .card:nth-child(5) { grid-column: span 12; }
+  .bento > .card:nth-child(1) { grid-column: span 7; }
+  .bento > .card:nth-child(2) { grid-column: span 5; }
+  .bento > .card:nth-child(3) { grid-column: span 5; }
+  .bento > .card:nth-child(4) { grid-column: span 7; }
+  .bento > .card:nth-child(5) { grid-column: span 6; }
+  .bento > .card:nth-child(6) { grid-column: span 6; }
+  .bento > .card:nth-child(7) { grid-column: span 12; }
 
   .card--full {
     flex-direction: row;
@@ -699,6 +716,149 @@ img, svg { display: block; max-width: 100%; }
     gap: 40px;
   }
   .card--full .chips { margin-top: 0; flex: none; }
+}
+
+/* ---------- Panels: command reference + guarantees ----------
+   Both sections are lists of bordered panels whose heading is led by an
+   INLINE icon. The bento above puts its icon above the title; keeping these
+   inline is what stops three consecutive panel grids reading as one long
+   run of the same box.
+*/
+
+.cmdgroup,
+.guard {
+  padding: 26px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+}
+
+.cmdgroup__head,
+.guard__head {
+  display: flex;
+  align-items: center;
+  /* The perm pill is pushed to the far edge and can be wider than the slack
+     left beside a long title, so at phone widths it drops to its own line
+     rather than overflowing the panel. */
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+
+.cmdgroup__icon,
+.guard__icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  fill: var(--accent);
+}
+
+/* ---------- Command reference ---------- */
+
+/* Hairline separator, matching .section--team. Features and Commands are both
+   plain-background panel grids, so the rule marks the change of content type. */
+.section--commands { border-top: 1px solid var(--line); }
+
+.cmds { display: grid; gap: 16px; }
+
+.cmdgroup__head { margin-bottom: 16px; }
+
+.cmdgroup__title { font-size: 1.15rem; }
+
+/* Not decoration: this is the Discord permission the group requires, which is
+   what a server owner needs to know before handing a feature to a moderator. */
+.cmdgroup__perm {
+  margin-inline-start: auto;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.cmdlist { display: flex; flex-direction: column; }
+
+.cmd {
+  padding-block: 10px;
+  border-top: 1px solid var(--line);
+}
+/* Not links, so the 44px tap-target floor does not apply and the first row
+   can sit flush against the heading. */
+.cmd:first-child { padding-block-start: 0; border-top: 0; }
+
+/* Command names carry dir="ltr" in the markup, which isolates them from the
+   surrounding RTL text so the leading slash stays on the left.
+
+   That dir also flips the block's own alignment, which left-aligns the names
+   while the Arabic descriptions stay right-aligned — a zigzag once they stack
+   on phones. `end` resolves against the element's OWN direction (ltr), so it
+   means the right edge here: the names line up on the page's reading edge
+   while their characters still run left to right. */
+.cmd__name {
+  display: block;
+  text-align: end;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.cmd__desc {
+  color: var(--text-dim);
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+/* Two columns once there is room for the longest name (/automod removeword)
+   plus a readable description beside it. Below this they stack. */
+@media (min-width: 560px) {
+  .cmd {
+    display: grid;
+    grid-template-columns: minmax(0, 172px) minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+  }
+}
+
+/* Two balanced columns, NOT a two-column grid. The groups are wildly uneven
+   in length (Captcha has 9 rows, Info has 2), so a grid pairs them row by row
+   and leaves a ~400px void beside the tallest one. Multi-column flows them
+   continuously and balances the two column heights instead, which also means
+   adding or removing a command never re-opens that hole.
+
+   Reading order becomes column-major: down the first column, then the next.
+   For a reference list that is the natural way to read it anyway. */
+@media (min-width: 900px) {
+  .cmds {
+    display: block;
+    columns: 2;
+    column-gap: 16px;
+    /* Cancels the trailing margin on the last panel of each column. */
+    margin-bottom: -16px;
+  }
+  .cmdgroup {
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+}
+
+/* ---------- Guarantees ---------- */
+
+/* No top border here on purpose: this section follows .section--stats, which
+   already draws one on its own bottom edge. Adding a second would stack two
+   hairlines into what reads as a 2px rule. */
+.guards { display: grid; gap: 16px; }
+
+.guard__head { margin-bottom: 12px; }
+
+.guard__title { font-size: 1.1rem; }
+
+.guard__body { color: var(--text-dim); }
+
+@media (min-width: 860px) {
+  .guards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* ---------- Public stats ---------- */

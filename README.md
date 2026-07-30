@@ -20,8 +20,10 @@ Concretely, this repo:
 
 - has **no** backend, no server process, and no build step
 - makes **no** network requests as shipped. There is exactly one `fetch` in the codebase,
-  in `readStats()`, and it is unreachable while `STATS_ENDPOINT` is `null`. Verify with
-  `grep -n "STATS_ENDPOINT =" assets/js/main.js`
+  in `readStats()`, and it is unreachable while `STATS_ENDPOINT` is `null` — `readStats()`
+  returns the local `STATS` object before reaching it. Verify with
+  `grep -n "STATS_ENDPOINT" assets/js/main.js` (the declaration is space-aligned, so a
+  pattern with a single space before `=` matches nothing and looks like the guard is gone)
 - reads **no** environment variables. There is no `DATABASE_URL`, no `DISCORD_BOT_TOKEN`,
   no secrets of any kind, and no code path that could consume one
 - imports **no** database, Discord, or auth libraries. No SQLAlchemy, no asyncpg,
@@ -31,6 +33,40 @@ Concretely, this repo:
 If a future change needs live numbers, it must go through a **separate, purpose-built
 public endpoint** that returns aggregate counts only. Never `guild_id`, never per-server
 rows, never member identities. See "Placeholder data" below for where that would plug in.
+
+---
+
+## Copy accuracy
+
+The statistics on this page are invented (see below), but **everything else describes a
+real bot, and must stay true to it.** A marketing page that lists a command the bot does
+not answer to is worse than one that lists nothing.
+
+Two places go stale when the bot's command surface changes, and only these two:
+
+1. the `.chip` lists in `#features` — command names shown as examples
+2. `#commands` — the full reference: 6 groups, 33 rows
+
+Both are plain HTML in `index.html`. There is no generator; keep them in sync by hand.
+
+**What was corrected here.** The page originally advertised prefix commands
+(`!طرد`, `!حظر`, `!اسكات`, `!تحذير`), a per-server prefix feature with a `!` / `؟` / `.`
+chip row, and a `تحديد المعدّل` card with a `!تهدئة` command. None of those exist: the bot
+registers **slash commands only**. The meta description also promised
+`وبادئة مرنة لكل سيرفر`. All of it is gone.
+
+**`/prefix` is deliberately not listed.** The command group exists and writes a prefix to
+the database, but the bot registers no prefix commands, so setting one has no user-visible
+effect. Listing it would advertise a no-op. If prefix commands are ever registered, add a
+seventh group to `#commands` — and note that the nav is at its width limit (see below), so
+`/prefix` gets a group but **not** a nav link.
+
+**Do not publish deployment internals.** Infrastructure identifiers, environment variable
+names, internal module paths, table and column names, and the bot's current command scope
+are all absent from this site on purpose. The guarantees in `#trust` describe *behaviour*
+only. In particular, `#trust` deliberately quotes **no numbers** for the settings-retention
+window or the automod thresholds, because those are server-configurable defaults rather
+than promises — do not add figures to that section.
 
 ---
 
@@ -191,22 +227,44 @@ The greys were nudged a few points toward green from the neutral reference value
 the page still reads as part of Musaed rather than a stock terminal template. They are
 local tokens at the top of `updates.css` (`--up-head`, `--up-body`, and so on).
 
-**Every version number, date and bullet in it is invented.** It is a layout demonstration,
-not a record of what shipped. The feature bullets describe systems the site already
-advertises, but the releases they are attributed to and all six dates are made up.
+**The changelog is now real, and short.** It holds exactly one release — `1.0.0`,
+`أغسطس 2026`, titled `البداية` and described as `أول نسخة لمساعد.` — supplied by the project
+owner. The three invented releases that used to sit here (`1.2` / `1.1` / `1.0`, dated
+Mar 2026 / Jan 2026 / Nov 2025) are gone. **There are no `data-mock` attributes left on
+this page**; verify with `grep -c data-mock updates.html` (expect `0`). Do not add a release
+you cannot date.
 
-> Replace the whole `<ol class="timeline">` with your real history before launch. A
-> changelog that says things happened on dates they did not is worse than having no
-> changelog page at all.
+To add the next release, copy the `<li class="rel">` block and put it **above** the existing
+one — newest first — then move `rel--latest` onto it. That class lights its node on the rail
+and draws the `جديد` badge, and only one release may carry it. Each block holds three
+children in order: `.rel__meta` (version + date), `.rel__rail` (the line and its node),
+`.rel__body` (title, badge, then the release's content).
 
-To add a release, copy one `<li class="rel">` block; newest goes first. Only the newest
-carries `rel--latest`, which lights its node on the rail and draws the `جديد` badge. Each
-block holds three children in order: `.rel__meta` (version + date), `.rel__rail` (the line
-and its node), `.rel__body` (title, badge, bullets). Bullets are `.rel__item` rows, not a
-card, and each one opens with a mono `+`.
+A release states its content one of two ways, and both are styled:
 
-The two summary figures above the timeline are `data-mock="true"` and need updating
-alongside it. The `∞` is not a figure so it stays as is.
+| Element | Use it when | Looks like |
+| --- | --- | --- |
+| `<p class="rel__desc">` | the release is one sentence | plain line under a hairline |
+| `<ul class="rel__list">` of `.rel__item` | the release has several entries | rows, each led by a mono `+` |
+
+`.rel__desc` deliberately has no `+`. A `+` reads as "this was added", which is wrong for a
+sentence describing the release as a whole. `1.0.0` uses two consecutive `.rel__desc`
+paragraphs; `.rel__list` is unused right now but kept, since the next release will
+probably want it.
+
+**Consecutive `.rel__desc` paragraphs are one description.** Only the first draws the
+hairline that separates the description from the release title — `.rel__desc + .rel__desc`
+zeroes the border and top padding. Without that rule a second sentence gets its own rule
+and the prose reads as two unrelated rows, which is what `.rel__item` is for. Add as many
+sentences as you like; they will keep flowing as one block.
+
+Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the five systems
+`#features` advertises on the landing page — **both are kept in step by hand.** That row
+previously read `+12 ميزة وتحسين` and `3 إصدارات`, which contradicted a changelog whose only
+entry is the first release. The `∞` is not a figure so it stays as is.
+
+The version numeral has room: `1.0.0` measures 152px in a 216px column at desktop, and
+`1.10.0` would still fit at 182px.
 
 **Do not put `.reveal` on `.rel__meta`.** That class animates `transform`, and a
 transformed ancestor traps the sticky version block inside it. Reveals go on `.rel__body`
@@ -281,10 +339,16 @@ duplication for the icons they share.
 | Anchor | Heading | Purpose |
 | --- | --- | --- |
 | (hero) | سيرفرك مرتب، وانت مرتاح | value prop, primary CTA |
-| `#features` | كل اللي يحتاجه سيرفرك | the five systems, bento grid |
+| `#features` | كل اللي يحتاجه سيرفرك | the five systems, bento grid of 7 cards |
+| `#commands` | كل الأوامر | full command reference, 6 groups / 33 rows |
 | `#stats` | مساعد بالأرقام | public counters (mock, see above) |
-| `#about` | مبني لمجتمعات عربية | about the **bot**: Arabic-first, tenant-isolated |
+| `#trust` | بيانات سيرفرك تبقى لسيرفرك | the three product guarantees |
+| `#about` | مبني لمجتمعات عربية | about the **bot**: Arabic-first |
 | `#about-us` | من نحن | about the **project and people**, plus the community server |
+
+`#about` and `#trust` used to overlap: `#about` asserted tenant isolation in one clause.
+That claim now lives in `#trust`, where it has room to say *how*, and `#about` is purely
+the Arabic-first argument. Do not put the isolation claim back into both.
 
 `#about` and `#about-us` are intentionally separate. The first positions the product,
 the second introduces who is behind it. The copy in `#about-us` is written in neutral
@@ -358,7 +422,7 @@ not scale it past about 50px, which is where upscaling starts to show.
 
 ### The phone menu
 
-Below 768px the five nav links become a panel under the bar, opened by `.nav__toggle`.
+Below 768px the six nav links become a panel under the bar, opened by `.nav__toggle`.
 It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay.
 
 - **DOM order is brand, button, panel, CTA.** The button sits immediately before the panel
@@ -367,7 +431,7 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
   is why the button is inboard of the CTA rather than at the far edge.
 - **The panel is hidden with `visibility`, not `opacity` alone.** That is what keeps its
   links out of the tab order and the accessibility tree while closed. Verified: the nav
-  exposes 2 links closed, 7 open.
+  exposes 2 links closed, 8 open.
 - **Mobile is the base, desktop is the override.** `.nav__links` defaults to the dropped
   panel; the `min-width: 768px` block turns it back into a row.
 - **Opening the menu pins the bar solid.** `nav-solidify` leaves the bar at 35% opacity
@@ -380,7 +444,7 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
 
 ### Accessibility invariants
 
-These four were audited and fixed, and each is easy to undo by accident. Keep them.
+These five were audited and fixed, and each is easy to undo by accident. Keep them.
 
 - **44px is the floor for tap targets.** Footer rows, nav links, the updates back link and
   the developer social buttons all sit at or just over 44px. Several get there through
@@ -397,26 +461,55 @@ These four were audited and fixed, and each is easy to undo by accident. Keep th
   because that is not where they have to survive.
 - **Line length is capped.** `.rel__item` text stops at `68ch`. Without it the changelog
   bullets run about 95 characters, past the point where the eye loses the line return.
+- **Latin code tokens inside RTL text are isolated *and* realigned.** Every `.cmd__name`
+  and every Latin `.chip` carries `dir="ltr"` so the leading slash stays on the left
+  instead of being reordered by the surrounding Arabic. `dir` also flips the block's own
+  alignment, so `.cmd__name` sets `text-align: end` — which resolves against the element's
+  own `ltr` direction and therefore means *right*, putting the names on the page's reading
+  edge while their characters still run left to right. Verified: all five name right-edges
+  in the first group share one x at both 375px and 1200px. Dropping either half brings
+  back a zigzag, or a slash on the wrong side.
 
-All of the above were measured in a real browser at 320, 375, 390, 412 and 768px, not
-inferred from the stylesheet. The 320px column is the one that breaks first: the nav bar
-there has about 6px of slack, so widening the brand, the menu button or the CTA will
-overflow it before it shows anywhere else.
+Two width limits, both measured rather than inferred:
+
+- **320px** is where the nav bar breaks first. It has about 6px of slack, so widening the
+  brand, the menu button or the CTA overflows there before it shows anywhere else.
+- **768px** is where the six links first share one line with the brand and the CTA.
+  Measured slack: **69.8px**. A seventh link costs roughly 75px, so it would not fit —
+  re-measure before adding one, and prefer a footer-only link.
+
+Everything above was measured in a real browser at 320, 375, 390, 412, 768, 1024 and
+1440px, across all three pages: 100 assertions, plus 17 for the menu's behaviour.
 
 Verify with:
 
 ```bash
 grep -rn "min-height: 44px" assets/css/
 grep -rn "clip-path: inset(50%)" assets/css/
+grep -o 'dir="ltr"' index.html | wc -l  # 44: 33 command names + 11 Latin chips
 ```
+
+**Note on tooling.** The audit scripts drove headless **Edge**, which no longer works:
+Edge 150 turned `Application/msedge.exe` into a stub that spawns the real binary under
+`EdgeCore/<version>/` and exits, so the launcher sees the process die immediately
+(`Code: 0`, empty stderr), and pointing at the `EdgeCore` binary directly still produces
+no headless output in any mode. Use a standalone `chrome-headless-shell` instead
+(`npx @puppeteer/browsers install chrome-headless-shell@stable`). Install it outside this
+repo — the site itself must stay dependency-free.
 
 ### Motion, in two layers
 
 **1. Entry reveals (baseline, works everywhere).** `IntersectionObserver` in `main.js`
 adds `.is-in` once, and CSS transitions the element in. One-shot by design: content does
-not fade back out when you scroll up. Siblings inside `.bento`, `.stats`, `.team`, and
-`.about` are staggered 80ms apart; the hero keeps its hand-tuned delays via an inline
-`--d`.
+not fade back out when you scroll up. Siblings inside `.bento`, `.cmds`, `.stats`,
+`.guards`, `.team`, and `.about` are staggered 80ms apart; the hero keeps its hand-tuned
+delays via an inline `--d`. **A new grid of panels has to be added to that `GROUPS`
+selector in `main.js`** or its children all land at once instead of sequencing.
+
+That stagger is also a trap when screenshotting: the last card in `.bento` waits
+`6 x 80ms` before its 700ms fade even starts, so a short fixed wait catches late elements
+mid-transition and makes a perfectly correct layout look like missing content. Disable the
+transition outright instead of waiting it out.
 
 **2. Scroll-linked effects (progressive enhancement).** Native CSS scroll-driven
 timelines, scrubbed to scroll position, in one `@supports (animation-timeline: view())`
@@ -484,6 +577,11 @@ Two notes on the card:
 
 - Icons: [Phosphor Icons](https://phosphoricons.com) "regular" set (MIT), inlined as an
   SVG sprite in `index.html`. The paths are copied verbatim from `@phosphor-icons/core`.
+  Do not hand-draw or hand-edit one. To add a symbol, pull the package
+  (`npm pack @phosphor-icons/core`, extracted outside this repo) and copy the `d` attribute
+  out of `assets/regular/<name>.svg` unchanged. `#i-hourglass`, `#i-seal-check`,
+  `#i-clock`, `#i-info`, `#i-history` (`clock-counter-clockwise`) and `#i-user-check` were
+  added that way; the id is shortened but the geometry is untouched.
 - Fonts: IBM Plex Sans Arabic and IBM Plex Mono (SIL Open Font License 1.1), subset files
   taken from Fontsource.
 
@@ -492,6 +590,14 @@ Two notes on the card:
 ## What this site still needs
 
 The one asset it does not have is **real screenshots of the bot in action**: a moderation
-command running, an automod catch, a welcome message. A showcase page for a Discord bot is
-much stronger showing the product than describing it. Drop them in and add a section
-between the features grid and the stats band.
+command running, an automod catch, a welcome message, a captcha challenge. A showcase page
+for a Discord bot is much stronger showing the product than describing it. Drop them in and
+add a section between `#commands` and the stats band.
+
+Two things to confirm before launch, both outside this repo:
+
+- **The invite has to actually work.** If the bot's commands are still published to a single
+  development guild rather than globally, adding it to a new server gets you a bot with no
+  visible commands — and this page has four `ضيف البوت` CTAs pointing at that experience.
+- **The `1.0.0` release is dated `أغسطس 2026`.** If the site goes live before then, the
+  changelog's only entry is dated in the future. Either ship in August or adjust the date.

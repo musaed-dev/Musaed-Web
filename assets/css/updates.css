@@ -361,6 +361,29 @@
    line. The hairline rules still span the full width. */
 .rel__item > :not(.rel__plus) { max-width: 68ch; }
 
+/* A release that describes itself in prose uses this instead of a bullet list.
+   Same type, colour, rhythm and hairline as .rel__item, minus the grid and the
+   leading "+" — a "+" reads as "this was added", which is wrong for a sentence
+   describing the release as a whole. */
+.rel__desc {
+  max-width: 68ch;
+  padding: 16px 12px;
+  border-top: 1px solid var(--up-hair);
+  font-size: 0.9375rem;
+  line-height: 1.95;
+  color: var(--up-body);
+  text-wrap: pretty;
+}
+
+/* Consecutive sentences are ONE description, so only the first draws the rule
+   that separates the description from the release title. Without this, a second
+   paragraph gets its own hairline and the prose reads as two unrelated rows —
+   which is what .rel__item is for. */
+.rel__desc + .rel__desc {
+  padding-top: 0;
+  border-top: 0;
+}
+
 /* ---------- closing line ---------- */
 
 .upfoot {
@@ -440,5 +463,6 @@
     white-space: nowrap;
   }
 
-  .rel__item { padding-inline: 0; }
+  .rel__item,
+  .rel__desc { padding-inline: 0; }
 }

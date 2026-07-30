@@ -77,20 +77,25 @@
         كل ميزة تنضاف وكل تحسين يصير، تلقاه هنا مرتب من الأحدث للأقدم.
       </p>
 
-      <!-- placeholder: both numbers are mock, update them alongside the
-           timeline below. The infinity mark is not a figure, so it stays. -->
+      <!-- Both figures here are real and both have to be kept in step by hand:
+           "إصدارات" counts the <li class="rel"> blocks in the timeline below,
+           and "أنظمة" mirrors the five systems the landing page advertises in
+           its #features lede. The infinity mark is not a figure, so it stays.
+
+           This row used to read "+12 ميزة وتحسين" and "3 إصدارات", which
+           contradicted a changelog whose only entry is the first release. -->
       <dl class="upstats">
         <div class="upstat upstat--live">
           <dt class="upstat__label">تطوير مستمر</dt>
           <dd class="upstat__value">∞</dd>
         </div>
         <div class="upstat">
-          <dt class="upstat__label">ميزة وتحسين</dt>
-          <dd class="upstat__value" data-mock="true"><bdi>+12</bdi></dd>
+          <dt class="upstat__label">أنظمة</dt>
+          <dd class="upstat__value"><bdi>5</bdi></dd>
         </div>
         <div class="upstat">
           <dt class="upstat__label">إصدارات</dt>
-          <dd class="upstat__value" data-mock="true"><bdi>3</bdi></dd>
+          <dd class="upstat__value"><bdi>1</bdi></dd>
         </div>
       </dl>
     </header>
@@ -98,94 +103,37 @@
     <!-- =====================================================================
          CHANGELOG TIMELINE
 
-         EVERY version number, date and bullet below is a PLACEHOLDER. This is
-         a layout demonstration, not a record of what actually shipped. The
-         feature bullets describe systems the site already advertises, but the
-         versions they are attributed to and the dates are invented.
+         One release, and it is real: version, date and text were all given by
+         the project owner. The three invented releases that used to sit here
+         (1.2 / 1.1 / 1.0, dated Mar 2026 / Jan 2026 / Nov 2025) were removed
+         because none of them shipped. Do not re-add a release you cannot date.
 
-         Replace the whole <ol> with your real history before launch. A
-         changelog that says things happened on dates they did not is worse
-         than having no changelog page at all.
+         To add the next one, copy the <li class="rel"> block below and put it
+         ABOVE this one — newest first. Move the "rel--latest" class to it as
+         you go: that class is what lights the node on the rail and draws the
+         جديد badge, and only one release may carry it.
 
-         To add a release, copy one <li class="rel"> block. Newest goes first.
-         Give only the newest one the "rel--latest" class, which lights its
-         node on the rail and draws the جديد badge.
+         A release describes itself with a single <p class="rel__desc">. If a
+         release has several things to list, use <ul class="rel__list"> with
+         one <li class="rel__item"> per entry instead (styles are still there).
          ===================================================================== -->
     <ol class="timeline">
 
       <li class="rel rel--latest">
         <div class="rel__meta">
           <div class="rel__metain">
-            <p class="rel__version" data-mock="true"><bdi>1.2</bdi></p>
-            <p class="rel__date" data-mock="true">مارس <bdi>2026</bdi></p>
+            <p class="rel__version"><bdi>1.0.0</bdi></p>
+            <p class="rel__date">أغسطس <bdi>2026</bdi></p>
           </div>
         </div>
         <div class="rel__rail"><span class="rel__node"></span></div>
         <div class="rel__body reveal">
           <div class="rel__head">
-            <h2 class="rel__title">تحديد المعدّل</h2>
+            <h2 class="rel__title">البداية</h2>
             <span class="rel__badge">جديد</span>
           </div>
-          <ul class="rel__list">
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>نظام تحديد المعدّل: تحدد كم رسالة يقدر العضو يرسلها في فترة معينة.</span>
-            </li>
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>تهدئة تلقائية لأي عضو يتجاوز الحد، بدون تدخل منك.</span>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="rel">
-        <div class="rel__meta">
-          <div class="rel__metain">
-            <p class="rel__version" data-mock="true"><bdi>1.1</bdi></p>
-            <p class="rel__date" data-mock="true">يناير <bdi>2026</bdi></p>
-          </div>
-        </div>
-        <div class="rel__rail"><span class="rel__node"></span></div>
-        <div class="rel__body reveal">
-          <div class="rel__head">
-            <h2 class="rel__title">الترحيب والبادئة</h2>
-          </div>
-          <ul class="rel__list">
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>نظام ترحيب كامل: رسالة تكتبها بنفسك ورتبة تنعطى تلقائي لكل عضو جديد.</span>
-            </li>
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>بادئة مرنة: كل سيرفر يختار بادئته ويغيرها وقت ما يبي.</span>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li class="rel">
-        <div class="rel__meta">
-          <div class="rel__metain">
-            <p class="rel__version" data-mock="true"><bdi>1.0</bdi></p>
-            <p class="rel__date" data-mock="true">نوفمبر <bdi>2025</bdi></p>
-          </div>
-        </div>
-        <div class="rel__rail"><span class="rel__node"></span></div>
-        <div class="rel__body reveal">
-          <div class="rel__head">
-            <h2 class="rel__title">الإطلاق</h2>
-          </div>
-          <ul class="rel__list">
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>أوامر الإشراف: طرد، حظر، إسكات مؤقت، وتحذيرات محفوظة في سجل السيرفر.</span>
-            </li>
-            <li class="rel__item">
-              <span class="rel__plus" aria-hidden="true">+</span>
-              <span>الحماية التلقائية: فلتر كلمات ممنوعة وكشف سبام يشتغل على مدار الساعة.</span>
-            </li>
-          </ul>
+          <p class="rel__desc">أول نسخة لمساعد.</p>
+          <p class="rel__desc">هدف واضح من البداية</p>
         </div>
       </li>
 
