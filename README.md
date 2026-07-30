@@ -541,19 +541,31 @@ Social crawlers reject relative URLs, so the site URL is written literally into
 `og:url`, `og:image`, `twitter:image` and `canonical` on **both pages**:
 
 ```text
-https://musaed-web-production.up.railway.app
+https://musaed.up.railway.app
 ```
 
-If you move to a custom domain, find and replace that string across both HTML files.
-Nothing else references it.
+There are **eight** occurrences, four per page: `canonical`, `og:url`, `og:image` and
+`twitter:image`. If you move again, find and replace the host across both HTML files —
+nothing else in the repo references it. Then re-check all eight, because the two `og:url`
+and `canonical` values are page-specific (`/` and `/updates.html`) while the two image
+URLs are not:
 
-Two notes on the card:
+```bash
+grep -ohE 'https://[a-z0-9.-]+' index.html updates.html | sort -u
+```
 
-- The banner is **960x540**. It renders fine, but `1200x630` is the size every platform
-  optimises for. Worth regenerating at that size when convenient.
-- `og:image` points at a path that only exists **after you redeploy**. At the time of
-  writing the live deploy predates these assets, so the URL 404s and the card will render
-  blank until the current files ship.
+That should print exactly two hosts: the site's, and `discord.gg` for the community invite.
+
+**This has already bitten once.** The site moved from `musaed-web-production.up.railway.app`
+to the host above, and the old one now returns 404 — so every social card was pointing at a
+dead image until the metadata was updated. A domain change is not done when the site loads
+at the new address; it is done when all eight URLs are updated.
+
+One note on the card: the banner is **960x540**. It renders fine, but `1200x630` is the
+size every platform optimises for. Worth regenerating at that size when convenient.
+
+Verified live at the current host: `/`, `/updates.html` and the banner all return 200, and
+the banner serves as `image/png` (30 KB) rather than an HTML error page.
 
 ### Vendored assets
 
