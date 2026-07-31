@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Legal documents (privacy.html, terms.html)
+   Loaded AFTER styles.css, which owns the tokens, fonts and reset.
+
+   ONE stylesheet, TWO pages. These are the same kind of page — a back bar
+   above a single column of prose — so unlike updates.css this file is shared.
+   Anything added here shows up on both documents; that is the point.
+
+   These pages load NO JavaScript at all. Legal text has to be readable, and
+   crawlable, with scripting off, and neither page has anything that needs it:
+   no reveals (fading in a privacy policy is the wrong instinct), no tabs, no
+   placeholder-link guard. Keep it that way.
+
+   Layout is a plain centred column rather than the landing page's panels.
+   A legal document should look like a document.
+   ========================================================================== */
+
+.subpage--legal {
+  --doc-measure: 68ch;             /* one source of truth for the column */
+}
+
+/* ---------- top bar ---------- */
+
+.docbar {
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 22px 20px 0;
+}
+
+.docbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The padding carries the target past 44px while the negative margin keeps
+   the label flush with the column edge. Same trick as the footer rows. */
+.docbar__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding-inline: 10px;
+  margin-inline-start: -10px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  transition: color .2s var(--ease);
+}
+.docbar__back:hover { color: var(--accent); }
+
+/* The arrow glyph points right, which is "back" in a right-to-left page. */
+.docbar__back .icon { width: 17px; height: 17px; }
+
+.docbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.docbar__logo { width: 25px; height: 25px; flex: none; }
+
+/* ---------- document column ---------- */
+
+.docwrap {
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 40px 20px 90px;
+}
+
+.doc { max-width: var(--doc-measure); }
+
+.dockicker {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;          /* Latin/label tracking only, never Arabic body */
+  margin-bottom: 12px;
+}
+
+.doctitle {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  margin-bottom: 16px;
+}
+
+/* The "last updated" stamp sits above the body, which is where a reader looks
+   to decide whether the version they are reading is current. */
+.docmeta {
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.docmeta strong { color: var(--text); font-weight: 600; }
+
+.doclede {
+  color: var(--text);
+  font-size: 1.06rem;
+  margin-bottom: 8px;
+}
+
+/* ---------- prose ----------
+   Element selectors on purpose: this wraps supplied copy, and the author
+   should not have to remember class names to write a paragraph.
+*/
+
+.docbody { color: var(--text-dim); }
+
+.docbody > * + * { margin-top: 1.05em; }
+
+.docbody h2 {
+  margin-top: 2.2em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.docbody h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+
+.docbody ul,
+.docbody ol {
+  padding-inline-start: 1.35em;
+  list-style: revert;              /* the global reset strips markers */
+}
+.docbody li + li { margin-top: 0.6em; }
+.docbody li::marker { color: var(--accent); }
+
+.docbody strong { color: var(--text); font-weight: 600; }
+
+.docbody a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.docbody a:hover { text-decoration-thickness: 2px; }
+
+.docbody code {
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg-1);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.85em;
+}
+
+/* ---------- sibling document link ----------
+   The two documents reference each other, so each ends with a link to the
+   other. It replaces what tabs would have done, without costing a page.
+*/
+
+.docnext {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: var(--doc-measure);
+  min-height: 44px;
+  margin-top: 48px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  color: var(--text);
+  font-weight: 600;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+.docnext:hover { border-color: var(--accent); background: var(--bg-2); }
+
+.docnext__label {
+  color: var(--text-dim);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* The arrow points left: "onward" in a right-to-left page. */
+.docnext__arrow {
+  width: 17px;
+  height: 17px;
+  margin-inline-start: auto;
+  fill: var(--accent);
+  transform: scaleX(-1);
+}

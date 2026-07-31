@@ -90,8 +90,17 @@
       <a href="updates.html">التحديثات</a>
     </nav>
 
-    <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
-    <a class="btn btn--primary btn--sm nav__cta" href="#" data-placeholder-link="discord-invite">
+    <!-- Real bot-invite URL. It appears THREE times on this page (nav, hero,
+         about) and the three copies must stay identical.
+
+         The `permissions` integer is what Discord pre-ticks on the authorize
+         screen, so editing it changes what the bot is granted on join. It
+         currently requests 23 permissions and deliberately NOT Administrator.
+         The ampersands are written &amp; because this is an HTML attribute;
+         the browser sends plain & in the request. -->
+    <a class="btn btn--primary btn--sm nav__cta"
+       href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
+       target="_blank" rel="noopener noreferrer">
       <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
       ضيف البوت
     </a>
@@ -114,8 +123,10 @@
           وكل شي فيه تضبطه على كيفك.
         </p>
         <div class="hero__actions reveal" style="--d:180ms">
-          <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
-          <a class="btn btn--primary" href="#" data-placeholder-link="discord-invite">
+          <!-- Bot-invite URL. Keep identical to the nav copy; see the comment there. -->
+          <a class="btn btn--primary"
+             href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
+             target="_blank" rel="noopener noreferrer">
             <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
             ضيف البوت
           </a>
@@ -552,8 +563,10 @@
         مو ترجمة حرفية من بوت أجنبي — حتى المدد تكتبها بالعربي وهو يفهمها.
       </p>
       <div class="about__actions reveal">
-        <!-- PLACEHOLDER LINK: swap for the real Discord bot-invite URL. -->
-        <a class="btn btn--primary" href="#" data-placeholder-link="discord-invite">
+        <!-- Bot-invite URL. Keep identical to the nav copy; see the comment there. -->
+        <a class="btn btn--primary"
+           href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
+           target="_blank" rel="noopener noreferrer">
           <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
           ضيف البوت
         </a>
@@ -632,12 +645,11 @@
       <div class="fcol">
         <h2 class="fcol__title">قانوني</h2>
         <ul class="fcol__list">
-          <!-- PLACEHOLDER LINK: needs a real privacy policy. -->
-          <li><a href="#" data-placeholder-link="privacy"><svg class="fcol__icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a></li>
-          <!-- PLACEHOLDER LINK: needs real terms of use. -->
-          <li><a href="#" data-placeholder-link="terms"><svg class="fcol__icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a></li>
-          <!-- PLACEHOLDER LINK: replace with the real contact address, then change href to mailto:. -->
-          <li><a href="#" data-placeholder-link="email"><svg class="fcol__icon" aria-hidden="true"><use href="#i-mail"></use></svg><bdi>بريد التواصل</bdi></a></li>
+          <!-- Real pages, not anchors. Both URLs are what Discord's Developer
+               Portal wants in its Privacy Policy and Terms of Service fields. -->
+          <li><a href="privacy.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a></li>
+          <li><a href="terms.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a></li>
+          <li><a href="mailto:support@musaed.dev"><svg class="fcol__icon" aria-hidden="true"><use href="#i-mail"></use></svg><bdi>بريد التواصل</bdi></a></li>
         </ul>
       </div>
 

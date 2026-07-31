@@ -16,4 +16,8 @@ yarn-error.log*
 # contain bot credentials or a database URL. See README.md.
 .env
 .env.*
+
+# Local scratch. txt.txt held the source text for the legal pages before it
+# was moved into privacy.html / terms.html; it is not the copy of record.
 TODO.md
+txt.txt

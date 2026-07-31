@@ -137,18 +137,30 @@ made.
 
 ### Placeholder links
 
-Six anchors still need a real destination. All are tagged:
+**There are none left.** Every link on the site now points somewhere real:
 
 ```bash
-grep -rn "data-placeholder-link" index.html
+grep -c "data-placeholder-link" index.html   # 0
 ```
 
-| Marker | Count | Needs |
-| --- | --- | --- |
-| `discord-invite` | 3 | the bot-invite URL (nav, hero, about section) |
-| `privacy` | 1 | a privacy policy |
-| `terms` | 1 | terms of use |
-| `email` | 1 | the contact address (footer). Also change `href` to `mailto:` |
+The footer's قانوني column was the last of them: `الخصوصية` and `شروط الاستخدام` go to the
+two legal pages, and `بريد التواصل` is a live `mailto:`. The `href="#"` click guard in
+`main.js` still exists but now matches nothing, which is the intended end state — it only
+ever targeted `href="#"`.
+
+**The bot invite is live.** The three `ضيف البوت` CTAs (nav, hero, about) carry the real
+OAuth2 authorize URL. All three copies must stay **identical** — there is no single source
+for them, so a change to one is a change to three:
+
+```bash
+grep -c "oauth2/authorize" index.html    # 3
+```
+
+The `permissions` integer in that URL is what Discord pre-ticks on the authorize screen, so
+editing it changes what the bot is granted on join. It currently requests 23 permissions and
+**not** Administrator. Ampersands are written `&amp;` because this is an HTML attribute; the
+browser sends plain `&`. Verified: the resolved `a.href` matches the intended URL exactly and
+all four query parameters parse.
 
 The footer rows came from a reference design and are **claims about the product, not just
 missing URLs**. Before launch, either give each one a real page or delete the row.
@@ -249,15 +261,52 @@ The version numeral has room: `1.0.0` measures 152px in a 216px column at deskto
 transformed ancestor traps the sticky version block inside it. Reveals go on `.rel__body`
 only, which is how the markup already has it.
 
+### The legal pages
+
+`privacy.html` and `terms.html` hold the project owner's own text, reproduced as written;
+only Markdown was converted to HTML. Both are linked from the footer's قانوني column, and
+both are what Discord's Developer Portal wants in its **Privacy Policy URL** and **Terms of
+Service URL** fields:
+
+```text
+https://musaed.up.railway.app/privacy.html
+https://musaed.up.railway.app/terms.html
+```
+
+That requirement is why these are real pages rather than tabs or a dialog on the landing
+page — a portal field needs a URL that resolves to a document on its own.
+
+**Neither page loads any JavaScript.** No `<script>`, and no `class="no-js"` on `<html>`,
+because nothing on them depends on scripting. A legal document has to be readable by a
+person with JS disabled and by a crawler that does not run it. Do not add `main.js` "for
+consistency" — the scroll reveals would fade a privacy policy in, which is the wrong
+instinct for a document someone may be reading for a reason.
+
+`legal.css` is shared by both, unlike `updates.css` which serves one page. That is
+deliberate: they are the same kind of page — a back bar above a single column of prose — so
+anything added there shows up on both. `--doc-measure` on `.subpage--legal` is the single
+source of truth for the column width.
+
+Prose inside `.docbody` is styled with **element** selectors (`h2`, `p`, `ul`, `code`,
+`strong`, `a`) rather than classes, so whoever edits the policy text does not have to
+remember class names to write a paragraph.
+
+Each document ends with a `.docnext` link to the other one, which is what tabs would have
+provided without costing a page.
+
+Both documents are dated `2026/08/01`. The source had left the terms date as `[التاريخ]`;
+the project owner filled it in. **No text placeholders remain on either page** — the only
+invented values left anywhere on the site are the three `#stats` numbers.
+
 ### Shared sub-page chrome
 
-There is barely any left. `updates.html` is now the only page that is not the landing page.
-It sets `<body class="subpage">` for the backdrop gradient in `styles.css` and builds
-everything else itself (`.upbar` / `.uppanel` in `updates.css`).
+There is barely any. Every page that is not the landing page sets `<body class="subpage">`
+for the backdrop gradient in `styles.css`, and builds the rest itself — `.upbar` / `.uppanel`
+in `updates.css`, `.docbar` / `.docwrap` in `legal.css`.
 
 `styles.css` used to also carry a `.pagebar` / `.pagewrap` bar-and-column pair, but
-`developer.html` was its only consumer, so it went with that page. A second sub-page should
-copy `updates.html`'s approach, not reintroduce it.
+`developer.html` was its only consumer, so it went with that page. The legal pages did not
+reintroduce it; they define their own bar, which is the pattern to follow.
 
 ### Other things to fill in
 
@@ -296,25 +345,32 @@ root.
 ```text
 index.html                 the landing page, plus its inline icon sprite
 updates.html               the changelog, plus its own sprite
+privacy.html               privacy policy          } same layout,
+terms.html                 terms of use            } one shared stylesheet
 assets/css/styles.css      tokens, reset, shared components, sub-page backdrop
 assets/css/updates.css     updates page only, loaded after styles.css
+assets/css/legal.css       BOTH legal pages, loaded after styles.css
 assets/js/main.js          stats data, count-up, scroll reveals, link guard
 assets/fonts/              self-hosted woff2, no external font requests
 assets/Pics/               brand marks + images. Note the capital P, see below
 ```
 
-Two pages, two stylesheets, one script. There is no third page: `developer.html`,
-`developer.css` and `developer.js` were removed.
+Four pages, three stylesheets, one script. `developer.html` and its CSS/JS were removed and
+should not come back.
+
+**Only `index.html` and `updates.html` load `main.js`.** The two legal pages load no
+JavaScript at all — see "The legal pages" below.
 
 **Path casing.** `assets/Pics/` is capitalised while its siblings are not. Windows and
 macOS do not care, but Linux static hosts are case-sensitive, so a reference written as
 `assets/pics/...` will 404 in production while working perfectly on your machine. Every
 reference in this repo already matches the folder exactly. If you rename the folder to
-lowercase for consistency, update both `index.html` and `updates.html` with it.
+lowercase for consistency, update all four HTML files with it.
 
-Both pages inline their own copy of the icon sprite, holding only the symbols that page
+All four pages inline their own copy of the icon sprite, holding only the symbols that page
 uses. That keeps each page self-contained with no extra request, at the cost of a little
-duplication for the icons they share. `updates.html` needs exactly one symbol.
+duplication for the icons they share. `updates.html`, `privacy.html` and `terms.html` need
+exactly one symbol each; `index.html` holds 18.
 
 ### Page sections
 
@@ -375,10 +431,10 @@ so it is not an exact brand match.
 
 The blurple is **scoped to `.btn--primary` only**. Do not spread it further, or it stops
 reading as "Discord" and starts reading as a second brand colour. Everything else stays
-green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 29
-`var(--accent)` usages across the two stylesheets (17 in `styles.css`, 12 in
-`updates.css`) — icons, headings, stat numerals, chips, command names, hairlines, the
-changelog rail and the ghost-button hover.
+green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 36
+`var(--accent)` usages across the three stylesheets (17 in `styles.css`, 12 in
+`updates.css`, 7 in `legal.css`) — icons, headings, stat numerals, chips, command names,
+hairlines, list markers, the changelog rail and the ghost-button hover.
 
 Two glyphs stay as inline SVG on purpose: the `سيرفر` stat icon and the footer `سيرفرنا`
 link. Both are tinted to the accent and transition colour on hover, which a fixed-colour
@@ -461,7 +517,7 @@ Two width limits, both measured rather than inferred:
   re-measure before adding one, and prefer a footer-only link.
 
 Everything above was measured in a real browser at 320, 375, 390, 412, 768, 1024 and
-1440px, across both pages: 72 assertions, plus 17 for the menu's behaviour.
+1440px, across all four pages: 128 assertions, plus 17 for the menu's behaviour.
 
 Verify with:
 
@@ -523,8 +579,8 @@ Two constraints worth preserving if you extend this:
 
 | File | Size | Used as |
 | --- | --- | --- |
-| `musaed-avatar.png` | 1024x1024 | brand mark in the landing nav and footer (30px). Also the `apple-touch-icon` |
-| `musaed-favicon.png` | 512x512 | `rel="icon"` on both pages |
+| `musaed-avatar.png` | 1024x1024 | brand mark in the landing nav and footer (30px), and in the legal-page bars (25px). Also the `apple-touch-icon` |
+| `musaed-favicon.png` | 512x512 | `rel="icon"` on all four pages |
 | `musaed-banner.png` | 960x540 | **not wired up yet.** See below |
 
 Both marks are fully transparent outside the glyph, so they sit on the dark chrome with no
@@ -532,40 +588,44 @@ plate behind them. The nav mark used to be a filled accent square with a م type
 the real logo replaces both the square and the letter.
 
 `musaed-banner.png` is the `og:image`, the card that renders when the site is linked in
-Discord, Twitter or Slack. Both pages carry a full Open Graph + Twitter card block
+Discord, Twitter or Slack. All four pages carry a full Open Graph + Twitter card block
 with a `summary_large_image` card, plus a `canonical` link.
 
 ### The hardcoded domain
 
 Social crawlers reject relative URLs, so the site URL is written literally into
-`og:url`, `og:image`, `twitter:image` and `canonical` on **both pages**:
+`og:url`, `og:image`, `twitter:image` and `canonical` on **all four pages**:
 
 ```text
 https://musaed.up.railway.app
 ```
 
-There are **eight** occurrences, four per page: `canonical`, `og:url`, `og:image` and
-`twitter:image`. If you move again, find and replace the host across both HTML files —
-nothing else in the repo references it. Then re-check all eight, because the two `og:url`
-and `canonical` values are page-specific (`/` and `/updates.html`) while the two image
-URLs are not:
+There are **sixteen** occurrences, four per page: `canonical`, `og:url`, `og:image` and
+`twitter:image`. If you move again, find and replace the host across all four HTML files —
+nothing else in the repo references it. Then re-check all sixteen, because each page's
+`og:url` and `canonical` are page-specific (`/`, `/updates.html`, `/privacy.html`,
+`/terms.html`) while the two image URLs are shared:
 
 ```bash
-grep -ohE 'https://[a-z0-9.-]+' index.html updates.html | sort -u
+grep -ohE 'https://[a-z0-9.-]+' *.html | sort -u
 ```
 
-That should print exactly two hosts: the site's, and `discord.gg` for the community invite.
+That should print exactly three hosts: the site's, `discord.gg` for the community invite,
+and `discord.com` for the bot-invite URL and the link to Discord's own terms.
 
 **This has already bitten once.** The site moved from `musaed-web-production.up.railway.app`
 to the host above, and the old one now returns 404 — so every social card was pointing at a
 dead image until the metadata was updated. A domain change is not done when the site loads
-at the new address; it is done when all eight URLs are updated.
+at the new address; it is done when all sixteen URLs are updated.
 
 One note on the card: the banner is **960x540**. It renders fine, but `1200x630` is the
 size every platform optimises for. Worth regenerating at that size when convenient.
 
 Verified live at the current host: `/`, `/updates.html` and the banner all return 200, and
-the banner serves as `image/png` (30 KB) rather than an HTML error page.
+the banner serves as `image/png` (30 KB) rather than an HTML error page. `/privacy.html` and
+`/terms.html` were added after that check and go live on the next deploy — **re-verify them
+before pasting either into Discord's Developer Portal**, because the portal rejects a URL
+that does not resolve.
 
 ### Vendored assets
 
