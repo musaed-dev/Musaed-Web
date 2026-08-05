@@ -63,6 +63,10 @@
   <symbol id="i-info" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></symbol>
   <symbol id="i-history" viewBox="0 0 256 256"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/></symbol>
   <symbol id="i-user-check" viewBox="0 0 256 256"><path d="M144,157.68a68,68,0,1,0-71.9,0c-20.65,6.76-39.23,19.39-54.17,37.17a8,8,0,0,0,12.25,10.3C50.25,181.19,77.91,168,108,168s57.75,13.19,77.87,37.15a8,8,0,0,0,12.25-10.3C183.18,177.07,164.6,164.44,144,157.68ZM56,100a52,52,0,1,1,52,52A52.06,52.06,0,0,1,56,100Zm197.66,33.66-32,32a8,8,0,0,1-11.32,0l-16-16a8,8,0,0,1,11.32-11.32L216,148.69l26.34-26.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 256 256"><path d="M232,104a8,8,0,0,0,8-8V64a16,16,0,0,0-16-16H32A16,16,0,0,0,16,64V96a8,8,0,0,0,8,8,24,24,0,0,1,0,48,8,8,0,0,0-8,8v32a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V160a8,8,0,0,0-8-8,24,24,0,0,1,0-48ZM32,167.2a40,40,0,0,0,0-78.4V64H88V192H32Zm192,0V192H104V64H224V88.8a40,40,0,0,0,0,78.4Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 256 256"><path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24a8,8,0,0,0-8,8V200a8,8,0,0,0,8,8H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a8,8,0,0,0,8-8V56A8,8,0,0,0,232,48ZM96,192H32V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm128,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h64Z"/></symbol>
+  <symbol id="i-lightning" viewBox="0 0 256 256"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></symbol>
+  <symbol id="i-sign-in" viewBox="0 0 256 256"><path d="M141.66,133.66l-40,40a8,8,0,0,1-11.32-11.32L116.69,136H24a8,8,0,0,1,0-16h92.69L90.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,141.66,133.66ZM200,32H136a8,8,0,0,0,0,16h56V208H136a8,8,0,0,0,0,16h64a8,8,0,0,0,8-8V40A8,8,0,0,0,200,32Z"/></symbol>
 </svg>
 
 <header class="nav" id="top">
@@ -104,6 +108,17 @@
       <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
       ضيف البوت
     </a>
+
+    <!-- Same destination as the hero's login button - icon only, hidden
+         below 768px on purpose. The phone-width row is measured at ~6px of
+         slack and cannot take anything else; the hero copy
+         already carries this control at every width, so nothing is lost by
+         hiding it here below 768px. Opens the dashboard's own Discord OAuth2
+         flow - a separate origin/deployable, not something
+         this repo implements. -->
+    <a class="nav__login" href="https://musaed-dashboard-production.up.railway.app/auth/login" aria-label="تسجيل الدخول">
+      <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
+    </a>
   </div>
   <div class="nav__progress" aria-hidden="true"></div>
 </header>
@@ -131,6 +146,14 @@
             ضيف البوت
           </a>
           <a class="btn btn--ghost" href="#features">شوف المميزات</a>
+          <!-- Leads to the dashboard's own Discord OAuth2 login - a separate
+               deployable on its own origin. No auth happens
+               in this repo; this is an outbound link, same category as the
+               bot-invite buttons above. -->
+          <a class="btn btn--ghost" href="https://musaed-dashboard-production.up.railway.app/auth/login">
+            <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
+            تسجيل الدخول
+          </a>
         </div>
       </div>
 
@@ -150,7 +173,7 @@
       <header class="section__head reveal">
         <h2 class="section__title">كل اللي يحتاجه سيرفرك</h2>
         <p class="section__lede">
-          خمسة أنظمة تشتغل مع بعض، وكل وحدة تشغّلها أو تطفيها وتضبطها لحالها.
+          سبعة أنظمة تشتغل مع بعض، وكل وحدة تشغّلها أو تطفيها وتضبطها لحالها.
         </p>
       </header>
 
@@ -216,11 +239,31 @@
         </article>
 
         <article class="card reveal">
-          <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
-          <h3 class="card__title">أوامر سلاش بس</h3>
+          <svg class="card__icon" aria-hidden="true"><use href="#i-ticket"></use></svg>
+          <h3 class="card__title">تذاكر الدعم</h3>
           <p class="card__body">
-            ما فيه بادئات ولا أوامر محفوظة. كل شي يطلع لك من قائمة ديسكورد نفسها مع
-            شرح كل خيار، وكل أمر عليه حد استخدام يمنع الضغط عليه.
+            زر ثابت في قناة تحددها يفتح لكل عضو قناة خاصة بينه وبين فريقك. ما ينفتح له
+            أكثر من تذكرة وحدة بنفس الوقت، وتقدر تسكرها بسبب يوصله ملخص عنه في الخاص.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-lightning"></use></svg>
+          <h3 class="card__title">اختصارات نصية</h3>
+          <p class="card__body">
+            تحدد كلمة تختارها بنفسك، ولما تكتبها مع منشن عضو تسوي حظر أو طرد أو
+            إسكات على طول من الشات. كل كلمة مربوطة بنفس صلاحية أمرها الأصلي، فما
+            يستخدمها إلا اللي يملكها.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <svg class="card__icon" aria-hidden="true"><use href="#i-terminal"></use></svg>
+          <h3 class="card__title">أوامر واضحة</h3>
+          <p class="card__body">
+            كل أمر يطلع لك من قائمة ديسكورد نفسها مع شرح كل خيار، وعليه حد استخدام
+            يمنع الضغط المتكرر. بعض إجراءات الإشراف السريعة تقدر تسويها بكلمة تكتبها
+            بالشات مباشرة، ولو ما عندك الصلاحية المطلوبة ما يصير شي.
           </p>
         </article>
 
@@ -407,6 +450,10 @@
           </div>
           <ul class="cmdlist">
             <li class="cmd">
+              <code class="cmd__name" dir="ltr">/captcha status</code>
+              <span class="cmd__desc">يعرض إعدادات التحقق الحالية.</span>
+            </li>
+            <li class="cmd">
               <code class="cmd__name" dir="ltr">/captcha roles</code>
               <span class="cmd__desc">رتبة قبل التحقق ورتبة بعده.</span>
             </li>
@@ -447,6 +494,66 @@
 
         <article class="cmdgroup reveal">
           <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-ticket"></use></svg>
+            <h3 class="cmdgroup__title">تذاكر الدعم</h3>
+            <p class="cmdgroup__perm">إدارة السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets setup</code>
+              <span class="cmd__desc">يحدد قناة فتح التذاكر ورتبة فريق الدعم وقناة السجل، ويشغّل النظام كله بأمر واحد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets panel</code>
+              <span class="cmd__desc">ينشر أو يحدّث لوحة الزر اللي يفتح منها الأعضاء تذاكرهم.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets message</code>
+              <span class="cmd__desc">يخصص نص الرسالة اللي تنزل وقت ما تنفتح التذكرة.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets status</code>
+              <span class="cmd__desc">يعرض إعدادات نظام التذاكر الحالية.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets disable</code>
+              <span class="cmd__desc">يوقف النظام بدون ما يمسح إعداداتك.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets add</code>
+              <span class="cmd__desc">يضيف نوع تذكرة جديد بأيقونة ورتبة تنبيه ورسالة خاصة فيه.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets remove</code>
+              <span class="cmd__desc">يشيل نوع تذكرة، وما يقدر يشيله إذا له تذاكر مفتوحة بعد.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets list</code>
+              <span class="cmd__desc">يعرض كل أنواع التذاكر المتاحة وترتيبها.</span>
+            </li>
+            <li class="cmd">
+              <code class="cmd__name" dir="ltr">/tickets edit</code>
+              <span class="cmd__desc">يعدل اسم أو أيقونة أو رتبة أو رسالة نوع تذكرة موجود.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-lightning"></use></svg>
+            <h3 class="cmdgroup__title">اختصارات نصية</h3>
+            <p class="cmdgroup__perm">مدير السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
+              <code class="cmd__name cmd__name--ar">/اختصار</code>
+              <span class="cmd__desc">يفتح نافذة تسوي فيها كلمة اختصار مربوطة بحظر أو طرد أو إسكات.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
             <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-info"></use></svg>
             <h3 class="cmdgroup__title">معلومات</h3>
             <p class="cmdgroup__perm">متاح للكل</p>
@@ -457,8 +564,22 @@
               <span class="cmd__desc">ملخص عن سيرفرك: الأعضاء، القنوات، الرتب، وتاريخ إنشائه.</span>
             </li>
             <li class="cmd">
+              <code class="cmd__name" dir="ltr">/musaed</code>
+              <span class="cmd__desc">تعريف سريع بالبوت، يشتغل حتى قبل ما تضيفه، ومعه زر يضيفه لسيرفرك.</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="cmdgroup reveal">
+          <div class="cmdgroup__head">
+            <svg class="cmdgroup__icon" aria-hidden="true"><use href="#i-book"></use></svg>
+            <h3 class="cmdgroup__title">دليل الأوامر</h3>
+            <p class="cmdgroup__perm">إدارة السيرفر</p>
+          </div>
+          <ul class="cmdlist">
+            <li class="cmd">
               <code class="cmd__name" dir="ltr">/about</code>
-              <span class="cmd__desc">معلومات عن مساعد ونسخته الحالية.</span>
+              <span class="cmd__desc">دليل بكل أوامر البوت، يتولد من الأوامر المسجلة فعلياً فيصير محدث تلقائي.</span>
             </li>
           </ul>
         </article>

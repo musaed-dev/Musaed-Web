@@ -3,8 +3,8 @@
 Public showcase site for **مساعد (Musaed)**, an Arabic (Saudi dialect) moderation and
 automod bot for Discord.
 
-This is a marketing page. It is not a dashboard, there is no login, and it does not
-manage anything. Its only job is to explain the bot to server owners before they add it.
+This is a marketing page. It is not a dashboard and it does not manage anything. Its only
+job is to explain the bot to server owners before they add it.
 
 ---
 
@@ -45,7 +45,7 @@ not answer to is worse than one that lists nothing.
 Two places go stale when the bot's command surface changes, and only these two:
 
 1. the `.chip` lists in `#features` — command names shown as examples
-2. `#commands` — the full reference: 6 groups, 33 rows
+2. `#commands` — the full reference: 9 groups, 45 rows
 
 Both are plain HTML in `index.html`. There is no generator; keep them in sync by hand.
 
@@ -58,8 +58,31 @@ registers **slash commands only**. The meta description also promised
 **`/prefix` is deliberately not listed.** The command group exists and writes a prefix to
 the database, but the bot registers no prefix commands, so setting one has no user-visible
 effect. Listing it would advertise a no-op. If prefix commands are ever registered, add a
-seventh group to `#commands` — and note that the nav is at its width limit (see below), so
+group to `#commands` — and note that the nav is at its width limit (see below), so
 `/prefix` gets a group but **not** a nav link.
+
+**In-chat moderation triggers exist but are deliberately not enumerated here.**
+`ban`/`timeout`/`untimeout`/`warn` also have plain-word triggers typed directly in chat, each
+gated by the same Discord permission as its slash equivalent and silent for anyone lacking
+it. The "أوامر واضحة" card in `#features` mentions this in one generic sentence — no trigger
+words, no confirmation of which words, nothing about them being configurable per deployment
+— on purpose: naming them here would be the site publishing exactly what the bot's own
+design keeps unlisted. Do not add a `#commands` row for these; they are not slash commands,
+and `#commands`'s lede promises everything listed there is one.
+
+**Shortcuts are a different feature and are listed.** Do not confuse them with the fixed
+in-chat triggers above. `/اختصار` (Administrator) is a real, registered slash command that
+lets a server admin define their *own* trigger word — any word they pick — that maps to
+ban, kick, or timeout. Since the word is per-guild and admin-chosen rather than a fixed
+set the bot ships with, publishing that the feature exists reveals nothing guild-specific;
+unlike the fixed triggers, an admin has to know `/اختصار` exists to use it at all, so hiding
+it would only make the feature undiscoverable. It gets its own bento card ("اختصارات
+نصية") and its own `#commands` group, same treatment as agegate/captcha/tickets — it is a
+fourth registered feature in the bot's settings layer, not a sub-feature of moderation.
+`/اختصار` is also the one Arabic command name on the page: its `.cmd__name` carries no
+`dir="ltr"` (reversing real Arabic would be wrong) and instead gets `.cmd__name--ar`,
+which right-aligns it via `text-align: start` against its natural RTL direction and swaps
+off `--mono` (no Arabic glyphs) the same way `.chip--ar` does.
 
 **Do not publish deployment internals.** Infrastructure identifiers, environment variable
 names, internal module paths, table and column names, and the bot's current command scope
@@ -249,7 +272,7 @@ zeroes the border and top padding. Without that rule a second sentence gets its 
 and the prose reads as two unrelated rows, which is what `.rel__item` is for. Add as many
 sentences as you like; they will keep flowing as one block.
 
-Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the five systems
+Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the seven systems
 `#features` advertises on the landing page — **both are kept in step by hand.** That row
 previously read `+12 ميزة وتحسين` and `3 إصدارات`, which contradicted a changelog whose only
 entry is the first release. The `∞` is not a figure so it stays as is.
@@ -370,15 +393,15 @@ lowercase for consistency, update all four HTML files with it.
 All four pages inline their own copy of the icon sprite, holding only the symbols that page
 uses. That keeps each page self-contained with no extra request, at the cost of a little
 duplication for the icons they share. `updates.html`, `privacy.html` and `terms.html` need
-exactly one symbol each; `index.html` holds 18.
+exactly one symbol each; `index.html` holds 23.
 
 ### Page sections
 
 | Anchor | Heading | Purpose |
 | --- | --- | --- |
 | (hero) | سيرفرك مرتب، وانت مرتاح | value prop, primary CTA |
-| `#features` | كل اللي يحتاجه سيرفرك | the five systems, bento grid of 7 cards |
-| `#commands` | كل الأوامر | full command reference, 6 groups / 33 rows |
+| `#features` | كل اللي يحتاجه سيرفرك | the seven systems, bento grid of 9 cards |
+| `#commands` | كل الأوامر | full command reference, 9 groups / 45 rows |
 | `#stats` | مساعد بالأرقام | public counters (mock, see above) |
 | `#trust` | بيانات سيرفرك تبقى لسيرفرك | the three product guarantees |
 | `#about` | مبني لمجتمعات عربية | about the **bot**: Arabic-first |
@@ -499,14 +522,19 @@ These five were audited and fixed, and each is easy to undo by accident. Keep th
   because that is not where they have to survive.
 - **Line length is capped.** `.rel__item` text stops at `68ch`. Without it the changelog
   bullets run about 95 characters, past the point where the eye loses the line return.
-- **Latin code tokens inside RTL text are isolated *and* realigned.** Every `.cmd__name`
-  and every Latin `.chip` carries `dir="ltr"` so the leading slash stays on the left
-  instead of being reordered by the surrounding Arabic. `dir` also flips the block's own
-  alignment, so `.cmd__name` sets `text-align: end` — which resolves against the element's
-  own `ltr` direction and therefore means *right*, putting the names on the page's reading
-  edge while their characters still run left to right. Verified: all five name right-edges
-  in the first group share one x at both 375px and 1200px. Dropping either half brings
-  back a zigzag, or a slash on the wrong side.
+- **Latin code tokens inside RTL text are isolated *and* realigned.** Every Latin
+  `.cmd__name` and every Latin `.chip` carries `dir="ltr"` so the leading slash stays on
+  the left instead of being reordered by the surrounding Arabic. `dir` also flips the
+  block's own alignment, so `.cmd__name` sets `text-align: end` — which resolves against
+  the element's own `ltr` direction and therefore means *right*, putting the names on the
+  page's reading edge while their characters still run left to right. Verified: all five
+  name right-edges in the first group share one x at both 375px and 1200px. Dropping
+  either half brings back a zigzag, or a slash on the wrong side. `/اختصار` is the one
+  exception, and it isn't a bug: it's genuinely Arabic, so reversing it with `dir="ltr"`
+  would be wrong rather than merely inconsistent. It gets `.cmd__name--ar` instead —
+  `text-align: start`, which lands on the *same* right edge because the element is left at
+  its natural RTL direction, plus a swap off `--mono` (no Arabic glyphs) the same way
+  `.chip--ar` handles Arabic in a chip.
 
 Two width limits, both measured rather than inferred:
 
@@ -524,7 +552,7 @@ Verify with:
 ```bash
 grep -rn "min-height: 44px" assets/css/
 grep -rn "clip-path: inset(50%)" assets/css/
-grep -o 'dir="ltr"' index.html | wc -l  # 44: 33 command names + 11 Latin chips
+grep -o 'dir="ltr"' index.html | wc -l  # 55: 44 command names + 11 Latin chips (45 rows total; /اختصار is Arabic)
 ```
 
 **Note on tooling.** The audit scripts drove headless **Edge**, which no longer works:

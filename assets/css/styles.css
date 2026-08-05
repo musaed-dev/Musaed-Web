@@ -404,8 +404,36 @@ img, svg { display: block; max-width: 100%; }
 
 .nav__cta { margin-inline-start: 0; }
 
+/* Icon-only login trigger beside the invite CTA. Hidden by default (see the
+   768px override below) - mirrors .nav__toggle's box model so the two read
+   as the same "compact icon control" family. */
+.nav__login {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .2s var(--ease), color .2s var(--ease);
+}
+.nav__login:hover { border-color: var(--accent); color: var(--accent); }
+.nav__login .icon { width: 18px; height: 18px; }
+
 @media (min-width: 768px) {
   .nav__toggle { display: none; }
+
+  /* Unverified estimate, not a re-measurement: 44px + the 18px nav__inner
+     gap ≈ 62px against the ~70px of slack measured for a
+     PLAIN LINK at this exact breakpoint, before this button existed. Close
+     enough to plausibly fit, not close enough to trust without checking in
+     a real browser. */
+  .nav__login { display: inline-flex; }
 
   .nav__links {
     position: static;
@@ -639,10 +667,14 @@ img, svg { display: block; max-width: 100%; }
 .card--full .card__lead { max-width: 60ch; }
 
 @media (min-width: 860px) {
-  /* 7 items, 7 cells, no gaps: 7+5, then 5+7, then 6+6, then one full-width
-     row. Reversing the split between the first two rows keeps the grid from
-     looking striped, and the even third row breaks the rhythm before the
-     full-width closer.
+  /* 9 items, 9 cells, no gaps: 7+5, then 5+7, then 6+6, then 6+6, then one
+     full-width closer. Reversing the split between the first two rows keeps
+     the grid from looking striped, and the even third row breaks the rhythm
+     before the closer. The fourth row (7+8) pairs the shortcuts card with
+     "أوامر واضحة" on purpose — both are about how you issue a command, one
+     typed, one picked from the slash menu — leaving "المدد تكتبها" as the
+     sole full-width closer instead of two, since adding a card here shifted
+     one pair out of the former double-closer.
 
      Scoped with `.bento >` on purpose: an unscoped .card:nth-child() would
      also fire on any future .card that happens to sit in another grid. */
@@ -653,7 +685,9 @@ img, svg { display: block; max-width: 100%; }
   .bento > .card:nth-child(4) { grid-column: span 7; }
   .bento > .card:nth-child(5) { grid-column: span 6; }
   .bento > .card:nth-child(6) { grid-column: span 6; }
-  .bento > .card:nth-child(7) { grid-column: span 12; }
+  .bento > .card:nth-child(7) { grid-column: span 6; }
+  .bento > .card:nth-child(8) { grid-column: span 6; }
+  .bento > .card:nth-child(9) { grid-column: span 12; }
 
   .card--full {
     flex-direction: row;
@@ -749,6 +783,17 @@ img, svg { display: block; max-width: 100%; }
   font-family: var(--mono);
   font-size: 0.85rem;
   line-height: 1.6;
+}
+
+/* /اختصار is the one Arabic command name, so it carries no
+   dir="ltr" — reversing real Arabic text would be wrong, not just
+   inconsistent. Left at its natural RTL direction, `start` is the right
+   edge, landing it in the same visual column as every dir="ltr" row without
+   touching direction at all. --mono has no Arabic glyphs (same reason
+   .chip--ar exists), so the face is swapped here too. */
+.cmd__name--ar {
+  text-align: start;
+  font-family: var(--sans);
 }
 
 .cmd__desc {
