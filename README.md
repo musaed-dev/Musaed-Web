@@ -219,7 +219,9 @@ than resurrecting `.pagebar`.
 
 ### The updates page
 
-`updates.html` is a changelog, reached from `التحديثات` in both the nav and the footer.
+`updates.html` is a changelog. As of 2026-08-06 it is deliberately unlinked from the nav and
+the footer — the page, `updates.css`, and its content are untouched and still deploy at
+`/updates.html`, just not reachable from site navigation anymore.
 
 Layout is a three-column timeline inside a glass panel: a sticky version block, the
 rail itself as a real 1px grid column, then the release body. Because the rail is a
@@ -483,7 +485,7 @@ not scale it past about 50px, which is where upscaling starts to show.
 
 ### The phone menu
 
-Below 768px the six nav links become a panel under the bar, opened by `.nav__toggle`.
+Below 768px the five nav links become a panel under the bar, opened by `.nav__toggle`.
 It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay.
 
 - **DOM order is brand, button, panel, CTA.** The button sits immediately before the panel
@@ -491,8 +493,9 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
   visual and focus order agree at *both* breakpoints. No `order` property anywhere. This
   is why the button is inboard of the CTA rather than at the far edge.
 - **The panel is hidden with `visibility`, not `opacity` alone.** That is what keeps its
-  links out of the tab order and the accessibility tree while closed. Verified: the nav
-  exposes 2 links closed, 8 open.
+  links out of the tab order and the accessibility tree while closed. Last verified count
+  was 2 links closed, 8 open, against the old 6-link nav; now unverified against the current
+  5-link nav (expect 7 open) since `updates.html` was unlinked.
 - **Mobile is the base, desktop is the override.** `.nav__links` defaults to the dropped
   panel; the `min-width: 768px` block turns it back into a row.
 - **Opening the menu pins the bar solid.** `nav-solidify` leaves the bar at 35% opacity
