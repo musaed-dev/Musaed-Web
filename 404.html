@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الصفحة غير موجودة | مساعد</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#080a09">
+
+<link rel="icon" href="assets/Pics/musaed-favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
+
+<link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-mono-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!--
+  Served automatically by Caddy (Railway's static-site host) for any 404 -
+  see the provider's default Caddyfile: `handle_errors { rewrite *
+  /{err.status_code}.html }`. No app code routes here; the filename itself
+  is the wiring. No <script> for the same reason as privacy.html/terms.html:
+  an error page must render with scripting off, and there is nothing here
+  that needs it.
+
+  Scoped styles below instead of growing styles.css - this page shares the
+  shared file's tokens/reset/buttons but needs only a handful of one-off
+  layout rules, not worth the shared stylesheet's tracked selector counts
+  for a single page.
+-->
+<style>
+  .notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-height: 100dvh;
+    padding: 24px;
+    text-align: center;
+  }
+  .notfound__code {
+    font-family: var(--mono);
+    font-size: clamp(3.5rem, 14vw, 6rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .notfound__title { font-size: 1.35rem; }
+  .notfound__body { max-width: 46ch; color: var(--text-dim); }
+</style>
+</head>
+<body class="subpage">
+
+<main class="notfound">
+  <p class="notfound__code" aria-hidden="true">404</p>
+  <h1 class="notfound__title">الصفحة ماهي موجودة</h1>
+  <p class="notfound__body">
+    الرابط اللي تبي تروح له مو موجود، يمكن انحذف أو انكتب غلط.
+  </p>
+  <a class="btn btn--primary" href="/">رجوع للرئيسية</a>
+</main>
+
+</body>
+</html>
