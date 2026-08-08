@@ -60,6 +60,13 @@
 
 /* ---------- Tokens ---------- */
 
+/* Tells the UA the page is dark, which painting a dark background does not.
+   Without it the overscroll gutter and the scrollbar render in light-mode
+   chrome, so on a phone the rubber-band area flashes light behind a dark page.
+   theme-color (in every page's <head>) covers the browser chrome; this covers
+   what the page itself hands to the UA. The two are not substitutes. */
+:root { color-scheme: dark; }
+
 :root {
   --bg:          #080a09;
   --bg-1:        #0d100f;
