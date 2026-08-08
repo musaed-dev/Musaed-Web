@@ -117,16 +117,16 @@
         </li>
       </ul>
 
-      <!-- The one scope that reads as alarming on Discord's own consent screen
-           ("Join servers for you"). Granted generally and not narrowable to a
-           single guild at consent time, so the limit is a promise the dashboard
-           keeps rather than something Discord enforces - which is why it is
-           stated here in bold instead of being left to the consent screen. -->
+      <!-- This used to say the opposite - that `guilds.join` was requested and
+           would only ever be used for the support server. The scope is gone, so
+           the claim had to go with it: a disclosure describing a permission
+           Discord no longer asks for is worse than no disclosure. Keep this in
+           step with the dashboard's copy at app/templates/connect.html. -->
       <p class="notice">
         <strong>
-          ديسكورد بيطلب منك إذن «الانضمام للسيرفرات نيابة عنك». ما نستخدمه إلا لسيرفر
-          واحد — سيرفر مساعد الرسمي، عشان اللوحة تشتغل لك كاملة. ما نضيفك لأي سيرفر
-          ثاني، ولا نستخدم الإذن لأي شي غير كذا.
+          ما نضيفك لأي سيرفر، ولا نطلب صلاحية تخلينا نسوي كذا. إذا تبي توصل لصفحات
+          الفريق، تدخل سيرفر مساعد الرسمي بنفسك ومتى ما تحب — اختيارك انت، واللوحة
+          تشتغل لك كاملة على سيرفراتك بدون ما تدخله.
         </strong>
       </p>
 
