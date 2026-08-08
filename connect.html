@@ -10,9 +10,6 @@
 <link rel="icon" href="assets/Pics/musaed-favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
 
-<!-- Open Graph / social card. Crawlers require ABSOLUTE urls, so the domain
-     is hardcoded. If it changes, update canonical + og:url + og:image +
-     twitter:image on ALL FIVE pages - this one included. -->
 <link rel="canonical" href="https://musaed.dev/connect.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Musaed">
@@ -35,31 +32,11 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/legal.css">
 </head>
-<!--
-  This page explains what the dashboard's Discord login will read, immediately
-  before the user is handed to it. It is a CONTENT page, not auth: no session,
-  no OAuth, no protected state, no environment access - the "continue" button
-  is an outbound link to another origin, exactly like the invite buttons on
-  index.html. Login is never scaffolded in this repo; if this page ever needs to *know* something about the
-  visitor, that means it belongs on the dashboard instead.
 
-  The dashboard serves its own copy of this same disclosure at
-  /auth/connect, because /auth/login is a public URL reachable without ever
-  passing through this site. THE TWO WORDINGS MUST STAY IN SYNC - the other one
-  is app/templates/connect.html in the Musaed-Dashboard repo.
-
-  NO <script>, same reasoning as the legal pages: a disclosure has to be
-  readable with JS off.
--->
 <body class="subpage subpage--legal">
 
 <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
 
-<!--
-  Icon sprite. Official Phosphor Icons "regular" set (MIT), from
-  @phosphor-icons/core. This page needs exactly one symbol.
-  Do not hand-edit this path.
--->
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-back" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
 </svg>
@@ -101,11 +78,7 @@
           <strong>اسمك وصورتك ومعرّفك بديسكورد</strong> — عشان نعرف مين داخل، ونعرض
           اسمك فوق باللوحة.
         </li>
-        <!-- Says "the servers you're in", not "the servers you and the bot are
-             both in". Discord hands over the WHOLE list on the `guilds` scope;
-             the mutual-guild filter runs on the dashboard afterwards.
-             Describing the filtered result would understate what is actually
-             read, which is the one failure mode this page exists to prevent. -->
+
         <li>
           <strong>قائمة السيرفرات اللي انت فيها وصلاحياتك فيها</strong> — عشان نعرض لك
           بس اللي فيها البوت وتقدر تتحكم فيها. بدونها ما نعرف وش نعرض لك أصلًا.
@@ -120,12 +93,6 @@
         </li>
       </ul>
 
-      <!-- This paragraph once said the opposite - that `guilds.join` was
-           requested and would only ever be used for the support server. The
-           scope is gone, so the claim went with it: a page describing a
-           permission Discord no longer asks for is a lie in the safe direction,
-           and still a lie here. Keep in step with the dashboard's copy at
-           app/templates/connect.html. -->
       <p class="notice">
         <strong>
           ما نضيفك لأي سيرفر، وما نطلب صلاحية نغيّر فيه شي. لو حبيت وصول أوسع باللوحة،
@@ -137,10 +104,7 @@
       <ul>
         <li>ما نقرأ رسايلك، خاص ولا سيرفر.</li>
         <li>ما ندخل على محتوى سيرفراتك ولا قوائم أعضائها.</li>
-        <!-- "We don't sell or share", NOT "we don't collect or store".
-             Settings are stored - that is the product - and privacy.html says
-             so plainly. A disclosure that contradicts the privacy policy is
-             worse than one that says less. -->
+
         <li>ما نبيع بيانات سيرفرك ولا نشاركها مع أي جهة.</li>
         <li>ما يتغيّر شي بسيرفرك إلا اللي تغيّره انت بنفسك.</li>
       </ul>
@@ -151,13 +115,6 @@
       </p>
     </div>
 
-    <!-- Outbound links to the dashboard origin, same category as the invite
-         buttons on index.html. Nothing here is a form and nothing is posted. -->
-    <!-- Three actions, one of them optional. "كمّل" stays the only primary: the
-         server is a choice the copy above explicitly says you can skip, so
-         giving it equal weight here would contradict the paragraph it belongs
-         to. The invite opens in a new tab (same as every other outbound Discord
-         link on this site) so joining does not cost someone their place. -->
     <div class="doccta">
       <a class="btn btn--primary" href="https://dashboard.musaed.dev/auth/login">
         <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">

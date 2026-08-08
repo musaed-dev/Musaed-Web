@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="ar" dir="rtl" class="no-js">
-<head>  
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Runs before first paint so scroll-reveal elements are only hidden when JS can reveal them. -->
+
 <script>document.documentElement.classList.remove("no-js");</script>
 <title>Musaed |مساعد</title>
 <meta name="description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا — كله بأوامر سلاش.">
@@ -12,10 +12,6 @@
 <link rel="icon" href="assets/Pics/musaed-favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
 
-<!-- Open Graph / social card. Crawlers require ABSOLUTE urls, so the domain
-     is hardcoded. If it changes, update canonical + og:url + og:image +
-     twitter:image on ALL FIVE pages - 20 URLs, not 3. The banner is
-     960x540; 1200x630 would be the ideal size. -->
 <link rel="canonical" href="https://musaed.dev/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Musaed">
@@ -41,10 +37,6 @@
 
 <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
 
-<!--
-  Icon sprite. Paths are the official Phosphor Icons "regular" set (MIT),
-  from the @phosphor-icons/core package. Do not hand-edit these paths.
--->
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-gavel" viewBox="0 0 256 256"><path d="M243.32,116.69l-16-16a16,16,0,0,0-20.84-1.53L156.84,49.52a16,16,0,0,0-1.52-20.84l-16-16a16,16,0,0,0-22.63,0l-64,64a16,16,0,0,0,0,22.63l16,16a16,16,0,0,0,20.83,1.52L96.69,124,31.31,189.38A25,25,0,0,0,66.63,224.7L132,159.32l7.17,7.16a16,16,0,0,0,1.52,20.84l16,16a16,16,0,0,0,22.63,0l64-64A16,16,0,0,0,243.32,116.69ZM80,104,64,88l64-64,16,16ZM55.32,213.38a9,9,0,0,1-12.69,0,9,9,0,0,1,0-12.68L108,135.32,120.69,148ZM101,105.66,145.66,61,195,110.34,150.35,155ZM168,192l-16-16,4-4h0l56-56h0l4-4,16,16Z"/></symbol>
   <symbol id="i-shield" viewBox="0 0 256 256"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol>
@@ -76,10 +68,6 @@
       <span class="brand__name">مساعد</span>
     </a>
 
-    <!-- Phone-width menu button. Sits BEFORE the panel it controls and after
-         the brand, so DOM order, visual order and focus order agree at every
-         width and no `order` property is needed. Hidden from 768px up, where
-         the links lay out as a normal row. -->
     <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
       <span class="nav__burger" aria-hidden="true"></span>
       <span class="nav__toggle-text">القائمة</span>
@@ -93,14 +81,6 @@
       <a href="#about-us">من نحن</a>
     </nav>
 
-    <!-- Real bot-invite URL. It appears THREE times on this page (nav, hero,
-         about) and the three copies must stay identical.
-
-         The `permissions` integer is what Discord pre-ticks on the authorize
-         screen, so editing it changes what the bot is granted on join. It
-         currently requests 23 permissions and deliberately NOT Administrator.
-         The ampersands are written &amp; because this is an HTML attribute;
-         the browser sends plain & in the request. -->
     <a class="btn btn--primary btn--sm nav__cta"
        href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
        target="_blank" rel="noopener noreferrer">
@@ -108,16 +88,6 @@
       ضيف البوت
     </a>
 
-    <!-- Same destination as the hero's login button - icon only, hidden
-         below 768px on purpose. The phone-width row is measured at ~6px of
-         slack and cannot take anything else; the hero copy
-         already carries this control at every width, so nothing is lost by
-         hiding it here below 768px. Opens the dashboard's own Discord OAuth2
-         flow - a separate origin/deployable, not something
-         this repo implements. Goes via connect.html, which explains what that
-         login reads before handing anyone over; the dashboard serves the same
-         disclosure at /auth/login's own entry, so a stale link elsewhere still
-         gets it. -->
     <a class="nav__login" href="connect.html" aria-label="تسجيل الدخول">
       <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
     </a>
@@ -127,7 +97,6 @@
 
 <main id="main">
 
-  <!-- ========================= HERO ========================= -->
   <section class="hero">
     <div class="shell hero__inner">
 
@@ -140,7 +109,7 @@
           وكل شي فيه تضبطه على كيفك.
         </p>
         <div class="hero__actions reveal" style="--d:180ms">
-          <!-- Bot-invite URL. Keep identical to the nav copy; see the comment there. -->
+
           <a class="btn btn--primary"
              href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
              target="_blank" rel="noopener noreferrer">
@@ -148,11 +117,7 @@
             ضيف البوت
           </a>
           <a class="btn btn--ghost" href="#features">شوف المميزات</a>
-          <!-- Leads to the dashboard's own Discord OAuth2 login - a separate
-               deployable on its own origin. No auth happens
-               in this repo; this is an outbound link, same category as the
-               bot-invite buttons above. Routed through connect.html so the
-               disclosure comes before the handoff, not after. -->
+
           <a class="btn btn--ghost" href="connect.html">
             <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
             تسجيل الدخول
@@ -170,7 +135,6 @@
     </div>
   </section>
 
-  <!-- ========================= FEATURES ========================= -->
   <section class="section" id="features">
     <div class="shell">
       <header class="section__head reveal">
@@ -180,9 +144,6 @@
         </p>
       </header>
 
-      <!-- Every command name below is a real registered slash command. If the
-           bot's command surface changes, this grid and the #commands section
-           are the two places on the site that go stale. -->
       <div class="bento">
 
         <article class="card card--accent reveal">
@@ -294,17 +255,6 @@
     </div>
   </section>
 
-  <!-- ========================= COMMANDS =========================
-       Reference listing. Mirrors the bot's real registered command surface;
-       every group is a slash-command group and every row is a real
-       subcommand. The "perm" pill is the Discord permission the group
-       requires, which is what a server owner actually needs to know before
-       handing a feature to a moderator.
-
-       /prefix is deliberately NOT listed: the bot registers no prefix
-       commands, so a per-server prefix has no user-visible effect yet.
-       See README ("Copy accuracy") before adding it back.
-  -->
   <section class="section section--commands" id="commands">
     <div class="shell">
       <header class="section__head reveal">
@@ -591,11 +541,6 @@
     </div>
   </section>
 
-  <!-- ========================= PUBLIC STATS =========================
-       Every number in this section is MOCK DATA.
-       The values live in one place: the STATS object at the top of
-       assets/js/main.js. See README.md ("Placeholder data") before launch.
-  -->
   <section class="section section--stats" id="stats">
     <div class="shell">
       <header class="section__head section__head--center reveal">
@@ -605,21 +550,21 @@
       <dl class="stats">
         <div class="stat reveal">
           <svg class="stat__icon" aria-hidden="true"><use href="#i-discord"></use></svg>
-          <!-- placeholder: value comes from STATS.servers in assets/js/main.js -->
+
           <dd class="stat__value" data-stat="servers" data-mock="true"><bdi>0</bdi></dd>
           <dt class="stat__label">سيرفر يشغّل مساعد</dt>
         </div>
 
         <div class="stat reveal">
           <svg class="stat__icon" aria-hidden="true"><use href="#i-users"></use></svg>
-          <!-- placeholder: value comes from STATS.members in assets/js/main.js -->
+
           <dd class="stat__value" data-stat="members" data-mock="true"><bdi>0</bdi></dd>
           <dt class="stat__label">عضو داخل هالسيرفرات</dt>
         </div>
 
         <div class="stat reveal">
           <svg class="stat__icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-          <!-- placeholder: value comes from STATS.uptime in assets/js/main.js -->
+
           <dd class="stat__value" data-stat="uptime" data-mock="true"><bdi>0</bdi></dd>
           <dt class="stat__label">نسبة التشغيل خلال ٣٠ يوم</dt>
         </div>
@@ -627,12 +572,6 @@
     </div>
   </section>
 
-  <!-- ========================= GUARANTEES =========================
-       Product guarantees, not marketing claims. Each one describes real
-       behaviour of the bot. Keep the wording free of numbers that are
-       configurable server-side (retention window, thresholds) — those are
-       defaults, not promises.
-  -->
   <section class="section section--trust" id="trust">
     <div class="shell">
       <header class="section__head reveal">
@@ -678,7 +617,6 @@
     </div>
   </section>
 
-  <!-- ========================= ABOUT ========================= -->
   <section class="section section--about" id="about">
     <div class="shell about">
       <h2 class="section__title reveal">مبني لمجتمعات عربية</h2>
@@ -687,7 +625,7 @@
         مو ترجمة حرفية من بوت أجنبي — حتى المدد تكتبها بالعربي وهو يفهمها.
       </p>
       <div class="about__actions reveal">
-        <!-- Bot-invite URL. Keep identical to the nav copy; see the comment there. -->
+
         <a class="btn btn--primary"
            href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=2261802189843670&amp;integration_type=0&amp;scope=bot+applications.commands"
            target="_blank" rel="noopener noreferrer">
@@ -698,7 +636,6 @@
     </div>
   </section>
 
-  <!-- ========================= ABOUT US ========================= -->
   <section class="section section--team" id="about-us">
     <div class="shell team">
 
@@ -768,8 +705,7 @@
       <div class="fcol">
         <h2 class="fcol__title">قانوني</h2>
         <ul class="fcol__list">
-          <!-- Real pages, not anchors. Both URLs are what Discord's Developer
-               Portal wants in its Privacy Policy and Terms of Service fields. -->
+
           <li><a href="privacy.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a></li>
           <li><a href="terms.html"><svg class="fcol__icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a></li>
           <li><a href="mailto:support@musaed.dev"><svg class="fcol__icon" aria-hidden="true"><use href="#i-mail"></use></svg><bdi>بريد التواصل</bdi></a></li>

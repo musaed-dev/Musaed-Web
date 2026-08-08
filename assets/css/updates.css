@@ -1,43 +1,16 @@
-/* ==========================================================================
-   Updates / changelog page (updates.html)
-   Loaded AFTER styles.css, which owns the tokens, fonts, reset and buttons.
-
-   This page deliberately breaks a site-wide rule, because the layout it is
-   built from is a terminal / blueprint treatment and the rule is what makes
-   it read that way:
-
-     RADIUS IS ZERO here. The rest of the site uses --r-sm / --r-md. Every
-     mark on this page is a hard square: the panel, the badge, the rail
-     nodes, the status dots. Rounding them makes the page look like the
-     landing page wearing a costume. To undo it, add a radius to .uppanel,
-     .rel__badge, .rel__node and .upbar__dots i.
-
-   This page builds its own chrome: the bar sits INSIDE the glass panel, so
-   the back link lives in .upbar rather than in any shared bar. styles.css
-   contributes only the .subpage backdrop.
-
-   Greys: the reference palette was pure neutral (#fafafa / #b9b9b9 / #8a8a8a).
-   Those are nudged a few points toward green below so the page still reads as
-   part of Musaed rather than a stock terminal template.
-   ========================================================================== */
-
 .subpage--updates {
-  --up-head:  #f4f8f5;              /* headings, brighter than --text      */
-  --up-body:  #b4c0b8;              /* bullet copy, sits between the two   */
-  --up-mute:  var(--text-dim);      /* lead paragraph, footer              */
-  /* Both of these are small text over the glass panel, and the panel is
-     half-transparent, so the accent glow behind it is the worst case, not
-     the plain background. Measured against the composite there:
-     faint 5.05:1, dim 4.81:1. The values they replaced were 4.12 and 3.06,
-     which failed 4.5:1 outright. Do not darken them back. */
-  --up-faint: #7d8c84;              /* stat labels                         */
-  --up-dim:   #7b8880;              /* dates                               */
-  --up-off:   #2b322e;              /* rail node, shipped releases         */
-  --up-dot:   #1c211f;              /* the two inactive status squares     */
+  --up-head:  #f4f8f5;
+  --up-body:  #b4c0b8;
+  --up-mute:  var(--text-dim);
 
-  --up-line: rgb(255 255 255 / 0.09);   /* bar + section rules   */
-  --up-hair: rgb(255 255 255 / 0.06);   /* between bullets       */
-  --up-rail: rgb(255 255 255 / 0.10);   /* the vertical timeline */
+  --up-faint: #7d8c84;
+  --up-dim:   #7b8880;
+  --up-off:   #2b322e;
+  --up-dot:   #1c211f;
+
+  --up-line: rgb(255 255 255 / 0.09);
+  --up-hair: rgb(255 255 255 / 0.06);
+  --up-rail: rgb(255 255 255 / 0.10);
 
   background: var(--bg);
   min-height: 100dvh;
@@ -46,11 +19,6 @@
   align-items: center;
   padding: 36px 24px 96px;
 }
-
-/* ---------- fixed backdrop ----------
-   Sits behind the panel and never scrolls, so the glass has something with
-   structure to blur. Two layers: an accent glow and a 56px lattice.
-*/
 
 .upbg {
   position: fixed;
@@ -80,8 +48,6 @@
     repeating-linear-gradient(90deg, rgb(255 255 255 / 0.05) 0 1px, transparent 1px 56px);
 }
 
-/* ---------- glass panel ---------- */
-
 .uppanel {
   position: relative;
   z-index: 1;
@@ -94,13 +60,9 @@
   -webkit-backdrop-filter: blur(20px) saturate(1.15);
 }
 
-/* Browsers without backdrop-filter would show the grid straight through the
-   text. Give them an opaque panel instead. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .uppanel { background: #0b0d0c; }
 }
-
-/* ---------- top bar ---------- */
 
 .upbar {
   display: flex;
@@ -117,9 +79,6 @@
   gap: 16px;
 }
 
-/* min-height rather than padding: under 560px the label is hidden and the
-   only content left is a 17px icon, so padding alone collapsed this to 37px.
-   The negative block margin keeps the bar its original height. */
 .upbar__back {
   display: inline-flex;
   align-items: center;
@@ -132,11 +91,8 @@
 }
 .upbar__back:hover { color: var(--accent); }
 
-/* The arrow points right, which is "back" in a right-to-left page. */
 .upbar__back .icon { width: 17px; height: 17px; }
 
-/* Three status squares. The lit one is the accent, matching the newest
-   release marker further down the rail. */
 .upbar__dots {
   display: flex;
   gap: 6px;
@@ -153,8 +109,6 @@
   font-weight: 500;
   color: var(--accent);
 }
-
-/* ---------- hero ---------- */
 
 .uphead {
   display: flex;
@@ -180,7 +134,6 @@
 }
 .uphead__title span { color: var(--accent); }
 
-/* Sits on the title's baseline, so it grows visually with the clamp. */
 .uphead__bar {
   width: 14px;
   height: 44px;
@@ -196,16 +149,12 @@
   text-wrap: pretty;
 }
 
-/* ---------- summary figures ---------- */
-
 .upstats {
   display: flex;
   flex-wrap: wrap;
   padding-top: 18px;
 }
 
-/* column-reverse, not a DOM reorder: <dl> requires the <dt> before its <dd>,
-   but the figure has to sit above its label. */
 .upstat {
   display: flex;
   flex-direction: column-reverse;
@@ -229,12 +178,6 @@
   color: var(--up-faint);
 }
 
-/* ---------- timeline ----------
-   Three columns: version block, the rail itself, then the release body. The
-   rail is a real grid column rather than a pseudo-element, so consecutive
-   rows join into one unbroken line with no maths.
-*/
-
 .timeline {
   list-style: none;
   margin: 0;
@@ -247,17 +190,12 @@
   align-items: start;
 }
 
-/* Stretches so the sticky child below has somewhere to travel. The reference
-   left this at the default and the sticky never fired. */
 .rel__meta {
   align-self: stretch;
   padding-block: 52px;
   padding-inline: 4px 0;
 }
 
-/* Keeps the version number in view while its bullets scroll past. No .reveal
-   on this column: that class animates transform, and a transformed ancestor
-   would trap the sticky element. */
 .rel__metain {
   position: sticky;
   top: 24px;
@@ -354,16 +292,8 @@
   line-height: inherit;
 }
 
-/* Caps the measure at roughly 68 characters. Without this the bullets run the
-   full width of the release column, about 95 characters at the widest, which
-   is well past the point where the eye loses its place returning to the next
-   line. The hairline rules still span the full width. */
 .rel__item > :not(.rel__plus) { max-width: 68ch; }
 
-/* A release that describes itself in prose uses this instead of a bullet list.
-   Same type, colour, rhythm and hairline as .rel__item, minus the grid and the
-   leading "+" — a "+" reads as "this was added", which is wrong for a sentence
-   describing the release as a whole. */
 .rel__desc {
   max-width: 68ch;
   padding: 16px 12px;
@@ -374,16 +304,10 @@
   text-wrap: pretty;
 }
 
-/* Consecutive sentences are ONE description, so only the first draws the rule
-   that separates the description from the release title. Without this, a second
-   paragraph gets its own hairline and the prose reads as two unrelated rows —
-   which is what .rel__item is for. */
 .rel__desc + .rel__desc {
   padding-top: 0;
   border-top: 0;
 }
-
-/* ---------- closing line ---------- */
 
 .upfoot {
   padding: 40px 4px 0;
@@ -398,11 +322,6 @@
   transition: border-color .2s var(--ease);
 }
 .upfoot a:hover { border-color: var(--accent); }
-
-/* ---------- narrow ----------
-   The 220px version column stops paying for itself here. Collapse to rail +
-   content, stack the version above its release, and drop the sticky.
-*/
 
 @media (max-width: 860px) {
   .subpage--updates { padding: 20px 14px 64px; }
@@ -435,7 +354,7 @@
 }
 
 @media (max-width: 560px) {
-  /* Three across rather than wrapping, so the dividers stay meaningful. */
+
   .upstats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -445,10 +364,6 @@
   .upstat__value { font-size: 1.5rem; }
   .upstat__label { font-size: 0.72rem; }
 
-  /* The label is hidden VISUALLY, not removed. This span is the link's only
-     accessible name (the icon is aria-hidden), so `display: none` here would
-     leave screen readers announcing an unlabelled link. Never swap this back.
-     The inline padding replaces the hit area the text was contributing. */
   .upbar__back {
     padding-inline: 14px;
     margin-inline-start: -14px;
