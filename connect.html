@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>قبل ما تسجل دخولك | مساعد</title>
+<title>تسجيل الدخول بديسكورد | مساعد</title>
 <meta name="description" content="وش يقرأ مساعد لما تسجل دخولك بديسكورد، ووش ما يقراه — قبل ما تكمّل.">
 <meta name="theme-color" content="#080a09">
 
@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Musaed">
 <meta property="og:locale" content="ar_SA">
 <meta property="og:url" content="https://musaed.dev/connect.html">
-<meta property="og:title" content="قبل ما تسجل دخولك | مساعد">
+<meta property="og:title" content="تسجيل الدخول بديسكورد | مساعد">
 <meta property="og:description" content="وش يقرأ مساعد لما تسجل دخولك بديسكورد، ووش ما يقراه — قبل ما تكمّل.">
 <meta property="og:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
 <meta property="og:image:type" content="image/png">
@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="540">
 <meta property="og:image:alt" content="مساعد">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="قبل ما تسجل دخولك | مساعد">
+<meta name="twitter:title" content="تسجيل الدخول بديسكورد | مساعد">
 <meta name="twitter:description" content="وش يقرأ مساعد لما تسجل دخولك بديسكورد، ووش ما يقراه — قبل ما تكمّل.">
 <meta name="twitter:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
 
@@ -82,65 +82,72 @@
 
     <p class="dockicker">قبل ما تكمّل</p>
     <h1 class="doctitle">تسجيل الدخول بديسكورد</h1>
-    <p class="docmeta">دقيقة وحدة تقرأ فيها وش بيصير — بعدين كمّل.</p>
+    <p class="docmeta">دقيقة وحدة، وبعدها تدخل.</p>
 
     <div class="docbody">
       <p class="doclede">
-        لما تضغط «فهمت، كمّل»، بنحوّلك لديسكورد عشان توافق على الدخول. هذي الصفحة
-        تقول لك بالضبط وش نقرأ ووش ما نقراه، قبل ما تسوي أي شي.
+        هذي الصفحة توضح وش نشوف بالضبط قبل لا توافق على أي شي.
       </p>
 
       <h2>ليش نتحقق من عضويتك</h2>
       <p>
-        نتحقق من رتبتك في سيرفر مساعد الرسمي عشان نحدد وش تقدر توصل له في اللوحة.
-        التحقق يصير من طرف البوت نفسه — ما نطلب منك صلاحيات زيادة عشانه.
+        نتحقق من رتبتك بسيرفر مساعد الرسمي عشان نعرف وش تقدر توصل له باللوحة. البوت
+        نفسه يسوي هذا التحقق — ما نطلب منك إذن إضافي عشانه.
       </p>
 
       <h2>وش نقرأ بالضبط</h2>
       <ul>
         <li>
-          <strong>اسمك وصورتك ومعرّفك في ديسكورد</strong> — عشان نعرف مين انت داخل اللوحة
-          ونعرض اسمك فوق.
+          <strong>اسمك وصورتك ومعرّفك بديسكورد</strong> — عشان نعرف مين داخل، ونعرض
+          اسمك فوق باللوحة.
         </li>
+        <!-- Says "the servers you're in", not "the servers you and the bot are
+             both in". Discord hands over the WHOLE list on the `guilds` scope;
+             the mutual-guild filter runs on the dashboard afterwards.
+             Describing the filtered result would understate what is actually
+             read, which is the one failure mode this page exists to prevent. -->
         <li>
           <strong>قائمة السيرفرات اللي انت فيها وصلاحياتك فيها</strong> — عشان نعرض لك
-          بس السيرفرات اللي فيها مساعد وتقدر تتحكم فيها. بدونها ما نعرف وش نعرض لك.
+          بس اللي فيها البوت وتقدر تتحكم فيها. بدونها ما نعرف وش نعرض لك أصلًا.
         </li>
         <li>
-          <strong>رتبتك في سيرفر مساعد الرسمي</strong> — سيرفر واحد بس، وهذا اللي يحدد
-          إذا كان عندك وصول لصفحات الفريق.
+          <strong>رتبتك بسيرفر مساعد الرسمي</strong> — سيرفر واحد بس. هذا اللي يحدد
+          وصولك لصفحات إضافية.
         </li>
         <li>
-          <strong>أسماء الرتب والقنوات في سيرفرك</strong> — عشان تختار من قائمة جاهزة
-          بدل ما تلصق أرقام. هذي يقراها البوت نفسه لأنه أصلاً موجود في سيرفرك، مو شي
-          يجي من تسجيل دخولك.
+          <strong>أسماء الرتب والقنوات بسيرفرك</strong> — عشان تختار من قائمة جاهزة بدل
+          ما تلصق أرقام. البوت يقراها من نفسه، مو من تسجيل دخولك.
         </li>
       </ul>
 
-      <!-- This used to say the opposite - that `guilds.join` was requested and
-           would only ever be used for the support server. The scope is gone, so
-           the claim had to go with it: a disclosure describing a permission
-           Discord no longer asks for is worse than no disclosure. Keep this in
-           step with the dashboard's copy at app/templates/connect.html. -->
+      <!-- This paragraph once said the opposite - that `guilds.join` was
+           requested and would only ever be used for the support server. The
+           scope is gone, so the claim went with it: a page describing a
+           permission Discord no longer asks for is a lie in the safe direction,
+           and still a lie here. Keep in step with the dashboard's copy at
+           app/templates/connect.html. -->
       <p class="notice">
         <strong>
-          ما نضيفك لأي سيرفر، ولا نطلب صلاحية تخلينا نسوي كذا. إذا تبي توصل لصفحات
-          الفريق، تدخل سيرفر مساعد الرسمي بنفسك ومتى ما تحب — اختيارك انت، واللوحة
-          تشتغل لك كاملة على سيرفراتك بدون ما تدخله.
+          ما نضيفك لأي سيرفر، وما نطلب صلاحية نغيّر فيه شي. لو حبيت وصول أوسع باللوحة،
+          تدخل سيرفر مساعد الرسمي متى ما تحب — اختيارك انت، واللوحة تشتغل كاملة بدونه.
         </strong>
       </p>
 
       <h2>وش ما نسويه</h2>
       <ul>
-        <li>ما نقرأ رسايلك، لا في الخاص ولا في أي سيرفر.</li>
-        <li>ما ندخل على محتوى سيرفراتك ولا على قوائم أعضائها.</li>
-        <li>ما نجمع ولا نخزن ولا نبيع بيانات سيرفرك لأي جهة.</li>
-        <li>ما نغيّر شي في سيرفرك إلا اللي تغيّره انت بنفسك من اللوحة.</li>
+        <li>ما نقرأ رسايلك، خاص ولا سيرفر.</li>
+        <li>ما ندخل على محتوى سيرفراتك ولا قوائم أعضائها.</li>
+        <!-- "We don't sell or share", NOT "we don't collect or store".
+             Settings are stored - that is the product - and privacy.html says
+             so plainly. A disclosure that contradicts the privacy policy is
+             worse than one that says less. -->
+        <li>ما نبيع بيانات سيرفرك ولا نشاركها مع أي جهة.</li>
+        <li>ما يتغيّر شي بسيرفرك إلا اللي تغيّره انت بنفسك.</li>
       </ul>
 
       <p>
-        نفس اللي مكتوب في <a href="privacy.html">سياسة الخصوصية</a>، بس هنا قدامك قبل
-        ما تدخل مو بعدها. تقدر تقرأ كمان <a href="terms.html">شروط الاستخدام</a>.
+        <a href="privacy.html">سياسة الخصوصية</a> و<a href="terms.html">شروط الاستخدام</a>
+        تحت، لو تبي التفاصيل كاملة.
       </p>
     </div>
 
