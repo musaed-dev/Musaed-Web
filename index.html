@@ -14,7 +14,7 @@
 
 <!-- Open Graph / social card. Crawlers require ABSOLUTE urls, so the domain
      is hardcoded. If it changes, update canonical + og:url + og:image +
-     twitter:image on ALL FOUR pages - 16 URLs, not 3. The banner is
+     twitter:image on ALL FIVE pages - 20 URLs, not 3. The banner is
      960x540; 1200x630 would be the ideal size. -->
 <link rel="canonical" href="https://musaed.dev/">
 <meta property="og:type" content="website">
@@ -114,8 +114,11 @@
          already carries this control at every width, so nothing is lost by
          hiding it here below 768px. Opens the dashboard's own Discord OAuth2
          flow - a separate origin/deployable, not something
-         this repo implements. -->
-    <a class="nav__login" href="https://dashboard.musaed.dev/auth/login" aria-label="تسجيل الدخول">
+         this repo implements. Goes via connect.html, which explains what that
+         login reads before handing anyone over; the dashboard serves the same
+         disclosure at /auth/login's own entry, so a stale link elsewhere still
+         gets it. -->
+    <a class="nav__login" href="connect.html" aria-label="تسجيل الدخول">
       <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
     </a>
   </div>
@@ -148,8 +151,9 @@
           <!-- Leads to the dashboard's own Discord OAuth2 login - a separate
                deployable on its own origin. No auth happens
                in this repo; this is an outbound link, same category as the
-               bot-invite buttons above. -->
-          <a class="btn btn--ghost" href="https://dashboard.musaed.dev/auth/login">
+               bot-invite buttons above. Routed through connect.html so the
+               disclosure comes before the handoff, not after. -->
+          <a class="btn btn--ghost" href="connect.html">
             <svg class="icon" aria-hidden="true"><use href="#i-sign-in"></use></svg>
             تسجيل الدخول
           </a>

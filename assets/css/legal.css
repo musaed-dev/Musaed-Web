@@ -187,3 +187,16 @@
   fill: var(--accent);
   transform: scaleX(-1);
 }
+
+/* The consent screen's actions (connect.html).
+   Two outbound links, not a form. Sits at the same measure as the prose above
+   it so the page keeps one left edge, and wraps rather than shrinking the
+   buttons below the 44px tap floor on a narrow phone. */
+.doccta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  max-width: var(--doc-measure);
+  margin-top: 40px;
+}
