@@ -200,3 +200,19 @@
   max-width: var(--doc-measure);
   margin-top: 40px;
 }
+
+/* A statement the reader must not skim past (connect.html) - used for the one
+   scope Discord grants generally and the dashboard limits by promise.
+   Accent-tinted rather than a new hue: the emphasis comes from
+   the fill and the inline-start rule, which sits on the right in RTL. Arabic
+   body copy, so line-height 1.7 and no negative tracking. */
+.notice {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border: 1px solid var(--line-strong);
+  border-inline-start: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  line-height: 1.7;
+}
+.notice strong { color: var(--text); font-weight: 600; }
