@@ -180,8 +180,9 @@ grep -c "oauth2/authorize" index.html    # 3
 ```
 
 The `permissions` integer in that URL is what Discord pre-ticks on the authorize screen, so
-editing it changes what the bot is granted on join. It currently requests 23 permissions and
-**not** Administrator. Ampersands are written `&amp;` because this is an HTML attribute; the
+editing it changes what the bot is granted on join. As of 2026-08-10 it requests
+`permissions=8` — Administrator, a deliberate change from the previous 23-permission
+least-privilege set. Ampersands are written `&amp;` because this is an HTML attribute; the
 browser sends plain `&`. Verified: the resolved `a.href` matches the intended URL exactly and
 all four query parameters parse.
 
