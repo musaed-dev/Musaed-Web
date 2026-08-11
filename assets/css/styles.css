@@ -651,6 +651,57 @@ img, svg { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
+.cmdgroup__note {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.cmdgroup__note a {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 1px solid rgb(55 224 138 / 0.35);
+  transition: border-color .2s var(--ease);
+}
+.cmdgroup__note a:hover { border-color: var(--accent); }
+
+.section--dashfeatures { padding-block: 40px; border-top: 1px solid var(--line); }
+
+.dashfeatures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  margin-top: 20px;
+}
+
+.dashfeatures li {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg-1);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.dashfeatures__note {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.dashfeatures__note a {
+  color: var(--accent);
+  font-weight: 600;
+  border-bottom: 1px solid rgb(55 224 138 / 0.35);
+  transition: border-color .2s var(--ease);
+}
+.dashfeatures__note a:hover { border-color: var(--accent); }
+
 @media (min-width: 560px) {
   .cmd {
     display: grid;
