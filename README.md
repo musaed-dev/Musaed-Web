@@ -45,7 +45,7 @@ not answer to is worse than one that lists nothing.
 Two places go stale when the bot's command surface changes, and only these two:
 
 1. the `.chip` lists in `#features` — command names shown as examples
-2. `#commands` — the full reference: 9 groups, 45 rows
+2. `#commands` — a curated list, not a full reference: 7 groups, 16 rows
 
 Both are plain HTML in `index.html`. There is no generator; keep them in sync by hand.
 
@@ -275,7 +275,7 @@ zeroes the border and top padding. Without that rule a second sentence gets its 
 and the prose reads as two unrelated rows, which is what `.rel__item` is for. Add as many
 sentences as you like; they will keep flowing as one block.
 
-Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the seven systems
+Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the eight systems
 `#features` advertises on the landing page — **both are kept in step by hand.** That row
 previously read `+12 ميزة وتحسين` and `3 إصدارات`, which contradicted a changelog whose only
 entry is the first release. The `∞` is not a figure so it stays as is.
@@ -403,9 +403,10 @@ exactly one symbol each; `index.html` holds 23.
 | Anchor | Heading | Purpose |
 | --- | --- | --- |
 | (hero) | سيرفرك مرتب، وانت مرتاح | value prop, primary CTA |
-| `#features` | كل اللي يحتاجه سيرفرك | the seven systems, bento grid of 9 cards |
-| `#commands` | كل الأوامر | full command reference, 9 groups / 45 rows |
-| `#stats` | مساعد بالأرقام | public counters (mock, see above) |
+| `#features` | كل اللي يحتاجه سيرفرك | the eight systems, bento grid of 10 cards |
+| `#commands` | كل الأوامر | curated command list, 7 groups / 16 rows |
+| `#dashboard-features` | ميزات تُدار من الداشبورد | the 3 systems with no slash commands |
+| `#stats` | مساعد بالأرقام | public counters (mock, see above) — **`hidden`** |
 | `#trust` | بيانات سيرفرك تبقى لسيرفرك | the three product guarantees |
 | `#about` | مبني لمجتمعات عربية | about the **bot**: Arabic-first |
 | `#about-us` | من نحن | about the **project and people**, plus the community server |
@@ -544,19 +545,22 @@ Two width limits, both measured rather than inferred:
 
 - **320px** is where the nav bar breaks first. It has about 6px of slack, so widening the
   brand, the menu button or the CTA overflows there before it shows anywhere else.
-- **768px** is where the six links first share one line with the brand and the CTA.
-  Measured slack: **69.8px**. A seventh link costs roughly 75px, so it would not fit —
-  re-measure before adding one, and prefer a footer-only link.
+- **768px** is where the nav links first share one line with the brand and the CTA. There
+  are **four** links now, not six — `التحديثات` and `الأرقام` were both removed. Measured
+  slack: **191.5px** (2026-08-17), with every link clearing 44×44. The old **69.8px** figure
+  was taken against the six-link nav and no longer applies; at four links the binding
+  constraint is 320px, not this breakpoint.
 
-Everything above was measured in a real browser at 320, 375, 390, 412, 768, 1024 and
-1440px, across all four pages: 128 assertions, plus 17 for the menu's behaviour.
+Everything above was measured in a real browser at 320, 375, 390, 412, 768, 860, 900, 1024
+and 1440px, across all five pages: **154 assertions (2026-08-17)**. The menu's 17 behaviour
+assertions were not part of that run and have not been re-verified since 2026-08-05.
 
 Verify with:
 
 ```bash
 grep -rn "min-height: 44px" assets/css/
 grep -rn "clip-path: inset(50%)" assets/css/
-grep -o 'dir="ltr"' index.html | wc -l  # 55: 44 command names + 11 Latin chips (45 rows total; /اختصار is Arabic)
+grep -o 'dir="ltr"' index.html | wc -l  # 27: 16 command names + 11 Latin chips (16 rows total; every name is Latin now)
 ```
 
 **Note on tooling.** The audit scripts drove headless **Edge**, which no longer works:
