@@ -202,6 +202,11 @@ img, svg { display: block; max-width: 100%; }
   height: 100%;
 }
 
+@media (max-width: 359px) {
+  .nav__inner { gap: 4px; padding-inline: 10px; }
+  .nav__cta { padding-inline: 8px; }
+}
+
 @media (min-width: 768px) {
   .nav__inner { gap: 18px; }
 }
@@ -333,7 +338,7 @@ img, svg { display: block; max-width: 100%; }
 .nav__cta { margin-inline-start: 0; }
 
 .nav__login {
-  display: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -343,17 +348,15 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
   background: transparent;
-  color: var(--text);
+  color: var(--accent);
   cursor: pointer;
   transition: border-color .2s var(--ease), color .2s var(--ease);
 }
-.nav__login:hover { border-color: var(--accent); color: var(--accent); }
+.nav__login:hover { border-color: var(--accent); }
 .nav__login .icon { width: 18px; height: 18px; }
 
 @media (min-width: 768px) {
   .nav__toggle { display: none; }
-
-  .nav__login { display: inline-flex; }
 
   .nav__links {
     position: static;
