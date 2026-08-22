@@ -295,8 +295,8 @@ both are what Discord's Developer Portal wants in its **Privacy Policy URL** and
 Service URL** fields:
 
 ```text
-https://musaed.up.railway.app/privacy.html
-https://musaed.up.railway.app/terms.html
+https://musaed.dev/privacy.html
+https://musaed.dev/terms.html
 ```
 
 That requirement is why these are real pages rather than tabs or a dialog on the landing
@@ -630,29 +630,38 @@ with a `summary_large_image` card, plus a `canonical` link.
 ### The hardcoded domain
 
 Social crawlers reject relative URLs, so the site URL is written literally into
-`og:url`, `og:image`, `twitter:image` and `canonical` on **all four pages**:
+`og:url`, `og:image`, `twitter:image` and `canonical` on **all five pages**:
 
 ```text
-https://musaed.up.railway.app
+https://musaed.dev
 ```
 
-There are **sixteen** occurrences, four per page: `canonical`, `og:url`, `og:image` and
-`twitter:image`. If you move again, find and replace the host across all four HTML files —
-nothing else in the repo references it. Then re-check all sixteen, because each page's
-`og:url` and `canonical` are page-specific (`/`, `/updates.html`, `/privacy.html`,
-`/terms.html`) while the two image URLs are shared:
+There are **twenty** occurrences, four per page: `canonical`, `og:url`, `og:image` and
+`twitter:image`. (`404.html` carries none of them — an error page has no canonical address.)
+If you move again, find and replace the host across all five HTML files, **and by hand in
+`sitemap.xml` and `robots.txt`**, which hold absolute URLs but are invisible to the `*.html`
+grep below. Then re-check all twenty, because each page's `og:url` and `canonical` are
+page-specific (`/`, `/updates.html`, `/privacy.html`, `/terms.html`, `/connect.html`) while
+the two image URLs are shared:
 
 ```bash
 grep -ohE 'https://[a-z0-9.-]+' *.html | sort -u
 ```
 
-That should print exactly three hosts: the site's, `discord.gg` for the community invite,
-and `discord.com` for the bot-invite URL and the link to Discord's own terms.
+That should print exactly four hosts: the site's, `discord.gg` for the community invite,
+`discord.com` for the bot-invite URL and the link to Discord's own terms, and
+`dashboard.musaed.dev` for the dashboard.
 
-**This has already bitten once.** The site moved from `musaed-web-production.up.railway.app`
-to the host above, and the old one now returns 404 — so every social card was pointing at a
-dead image until the metadata was updated. A domain change is not done when the site loads
-at the new address; it is done when all sixteen URLs are updated.
+**This has already bitten twice, in opposite directions.** First the site moved from
+`musaed-web-production.up.railway.app` and the old host started returning 404, so every
+social card pointed at a dead image until the metadata was updated — that kind announces
+itself. Then on 2026-08-08 it moved from `musaed.up.railway.app` to `musaed.dev` while the
+old host kept serving the identical site, so nothing looked wrong at all and `canonical`
+quietly published the branded domain as a duplicate of its own Railway URL. That kind does
+not announce itself, and this file went a further ten days still naming the old host — which
+is what the paragraph above is for. `musaed.up.railway.app` is retired as of 2026-08-18; do
+not reintroduce it. A domain change is not done when the site loads at the new address; it is
+done when all twenty URLs, plus `sitemap.xml` and `robots.txt`, are updated.
 
 One note on the card: the banner is **960x540**. It renders fine, but `1200x630` is the
 size every platform optimises for. Worth regenerating at that size when convenient.
