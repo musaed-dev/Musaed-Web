@@ -151,22 +151,6 @@
   transform: scaleX(-1);
 }
 
-.doccta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  max-width: var(--doc-measure);
-  margin-top: 40px;
-}
-
-.notice {
-  margin-top: 20px;
-  padding: 16px 18px;
-  border: 1px solid var(--line-strong);
-  border-inline-start: 3px solid var(--accent);
-  border-radius: var(--r-sm);
-  background: var(--accent-soft);
-  line-height: 1.7;
-}
-.notice strong { color: var(--text); font-weight: 600; }
+/* .doccta and .notice lived here until 2026-08-25. They styled connect.html's
+   CTA row and its highlighted "we never do this" box, and connect.html was the
+   only page that ever used either — removed with it. */

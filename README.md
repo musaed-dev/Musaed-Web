@@ -31,7 +31,6 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 index.html      the main landing page
 privacy.html    privacy policy
 terms.html      terms of use
-connect.html    the screen shown before logging into the dashboard
 404.html        the not-found page
 
 assets/css/     stylesheets

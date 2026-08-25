@@ -1,6 +1,10 @@
 /* ==========================================================================
    Musaed (مساعد) - landing page behaviour
    Static site. No dependencies, no network calls, no backend.
+
+   The page is a set of tab panels. Every panel is rendered in the HTML and
+   nothing is hidden until this file runs, so a crawler and a browser with
+   scripting off both get the whole document and every anchor still works.
    ========================================================================== */
 
 (function () {
@@ -142,8 +146,9 @@
 
   /* --------------------------------------------------------- stat counters
      Counts a number up when its section first enters the viewport.
-     Motivated: the stats band exists to make three numbers land; the
-     count-up is what draws the eye to them. It runs once, never loops.
+     #stats is `hidden` right now, so this observes nodes inside a
+     display:none subtree and simply never fires. Harmless, and it starts
+     working again the moment the attribute comes off.
   */
 
   function countUp(el, target, kind) {
@@ -199,42 +204,316 @@
   }
 
   /* ------------------------------------------------------- scroll reveals
-     IntersectionObserver only. No scroll listeners, no scroll math.
+     IntersectionObserver only. No scroll listeners, no scroll maths.
+
+     Panels start life inside a `hidden` ancestor, where an observed element
+     never intersects. IntersectionObserver does notice the display change
+     when a panel is shown, but re-observing on activation forces a fresh
+     check straight away instead of waiting for the next frame budget.
   */
+
+  var revealObserver = null;
 
   function initReveals() {
     var nodes = document.querySelectorAll(".reveal");
     if (!nodes.length) return;
+
+    // Stagger siblings inside a group so each cluster reads in sequence
+    // rather than all landing at once. Elements that already carry an
+    // inline --d (the hero) keep their hand-tuned timing.
+    document.querySelectorAll("[data-stagger]").forEach(function (group) {
+      group.querySelectorAll(".reveal").forEach(function (el, i) {
+        if (!el.style.getPropertyValue("--d")) {
+          el.style.setProperty("--d", Math.min(i, 8) * 70 + "ms");
+        }
+      });
+    });
 
     if (prefersReducedMotion || !("IntersectionObserver" in window)) {
       nodes.forEach(function (node) { node.classList.add("is-in"); });
       return;
     }
 
-    var observer = new IntersectionObserver(
+    revealObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-in");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
-    // Stagger siblings inside a group so each cluster reads in sequence
-    // rather than all landing at once. Elements that already carry an
-    // inline --d (the hero) keep their hand-tuned timing.
-    var GROUPS = ".bento, .cmds, .stats, .guards, .team, .about";
-    document.querySelectorAll(GROUPS).forEach(function (group) {
-      group.querySelectorAll(".reveal").forEach(function (el, i) {
-        if (!el.style.getPropertyValue("--d")) {
-          el.style.setProperty("--d", i * 80 + "ms");
+    nodes.forEach(function (node) { revealObserver.observe(node); });
+  }
+
+  function refreshReveals(scope) {
+    if (!revealObserver || !scope) return;
+    scope.querySelectorAll(".reveal").forEach(function (node) {
+      if (node.classList.contains("is-in")) return;
+      revealObserver.unobserve(node);
+      revealObserver.observe(node);
+    });
+  }
+
+  /* ------------------------------------------------------------------ tabs
+     Sections are panels; the sidebar links are the tabs. The link href IS
+     the panel id, so with scripting off these stay ordinary anchors into a
+     fully rendered page — the same URLs keep working either way.
+
+     A hash can also point at something nested (#about, #stats,
+     #dashboard-features). Those resolve to their owning panel, which is
+     opened before the browser is asked to scroll to the element.
+  */
+
+  function initTabs() {
+    var panels = Array.prototype.slice.call(
+      document.querySelectorAll("[data-panel]")
+    );
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+    if (!panels.length || !tabs.length) return;
+
+    var crumb = document.querySelector("[data-crumb]");
+
+    /* Opening a panel puts you at the top of it.
+
+       On a cold load of /#faq the browser still performs its own scroll to
+       the element named in the fragment, and it does that AFTER this script
+       has run — landing the panel flush under the sticky bar instead of at
+       the top of the page. A single reset loses that race, so the initial
+       one is re-asserted for a few frames and again at `load`, by which
+       point the browser has finished. Later resets (tab clicks) have no such
+       competition and only need the one call. */
+    function resetScroll(persist) {
+      window.scrollTo(0, 0);
+      if (!persist) return;
+
+      var frames = 0;
+      (function again() {
+        window.scrollTo(0, 0);
+        if (++frames < 6) requestAnimationFrame(again);
+      })();
+
+      window.addEventListener("load", function once() {
+        window.removeEventListener("load", once);
+        window.scrollTo(0, 0);
+      });
+    }
+
+    function panelFor(id) {
+      if (!id) return null;
+      var direct = panels.filter(function (p) { return p.id === id; })[0];
+      if (direct) return direct;
+
+      // Nested anchor: find the panel that contains it.
+      var el = document.getElementById(id);
+      return el ? el.closest("[data-panel]") : null;
+    }
+
+    function activate(panel, opts) {
+      if (!panel) return;
+      opts = opts || {};
+
+      panels.forEach(function (p) {
+        if (p === panel) p.removeAttribute("hidden");
+        else p.setAttribute("hidden", "");
+      });
+
+      var label = "";
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute("href") === "#" + panel.id;
+        if (on) {
+          tab.setAttribute("aria-current", "page");
+          label = tab.textContent.trim();
+        } else {
+          tab.removeAttribute("aria-current");
         }
+      });
+
+      if (crumb && label) crumb.textContent = label;
+
+      refreshReveals(panel);
+
+      if (opts.scrollTo) {
+        // Let the panel paint before measuring the target's position.
+        requestAnimationFrame(function () {
+          opts.scrollTo.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "start"
+          });
+        });
+      } else if (opts.reset) {
+        resetScroll(opts.persist);
+      }
+
+      // Keyboard users need to land inside what they just opened, or the
+      // next Tab press resumes from a control that is no longer on screen.
+      if (opts.focus) {
+        panel.setAttribute("tabindex", "-1");
+        panel.focus({ preventScroll: true });
+      }
+    }
+
+    function syncFromHash(opts) {
+      var id = (location.hash || "").replace(/^#/, "");
+      var panel = panelFor(id) || panels[0];
+      var nested = id && panel.id !== id ? document.getElementById(id) : null;
+      activate(panel, {
+        reset: !nested,
+        persist: opts && opts.persist,
+        scrollTo: nested,
+        focus: opts && opts.focus
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function (event) {
+        var id = (tab.getAttribute("href") || "").replace(/^#/, "");
+        var panel = panelFor(id);
+        if (!panel || event.metaKey || event.ctrlKey || event.shiftKey) return;
+
+        event.preventDefault();
+        if (location.hash !== "#" + id) {
+          history.pushState(null, "", "#" + id);
+        }
+        activate(panel, { reset: true, focus: true });
       });
     });
 
-    nodes.forEach(function (node) { observer.observe(node); });
+    // Any other in-page link (hero CTA, brand mark, footer) routes the same
+    // way, so nothing can leave the page showing a panel the tabs disagree
+    // with. External and cross-page links are untouched.
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest('a[href^="#"]');
+      if (!link || link.classList.contains("tab")) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+
+      var id = (link.getAttribute("href") || "").replace(/^#/, "");
+      if (!id) return;
+
+      var panel = panelFor(id);
+      if (!panel) return;
+
+      event.preventDefault();
+      if (location.hash !== "#" + id) history.pushState(null, "", "#" + id);
+
+      var nested = panel.id !== id ? document.getElementById(id) : null;
+      activate(panel, { reset: !nested, scrollTo: nested, focus: true });
+    });
+
+    // pushState fires popstate on back/forward; a hash typed or pasted into
+    // the address bar fires hashchange instead. Both land here.
+    window.addEventListener("popstate", function () { syncFromHash(); });
+    window.addEventListener("hashchange", function () { syncFromHash(); });
+
+    // The initial route is the one that has to out-wait the browser's own
+    // fragment scroll, hence persist.
+    syncFromHash({ persist: true });
+  }
+
+  /* ------------------------------------------------------------- phone menu
+     Below 900px the tabs live in a panel under the bar, opened by
+     .side__toggle. A plain disclosure, not a modal: no focus trap, no scroll
+     lock, no overlay.
+
+     The button owns aria-expanded and the panel is the next element in the
+     DOM, so tabbing out of the button lands in the menu with no focus
+     juggling. The panel is hidden with `visibility` in CSS, which is what
+     keeps its links out of the tab order while closed — nothing here manages
+     that.
+  */
+
+  function initMenu() {
+    var side = document.querySelector(".side");
+    var toggle = document.querySelector(".side__toggle");
+    if (!side || !toggle) return;
+
+    var panel = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!panel) return;
+
+    function isOpen() {
+      return toggle.getAttribute("aria-expanded") === "true";
+    }
+
+    function setOpen(open) {
+      side.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    toggle.addEventListener("click", function () { setOpen(!isOpen()); });
+
+    /* Every link either switches tab or leaves the page. Either way, leaving
+       the menu open would cover the thing just navigated to. */
+    panel.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setOpen(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || !isOpen()) return;
+      setOpen(false);
+      toggle.focus();
+    });
+
+    /* A tap anywhere else dismisses it, which is what the panel looks like it
+       should do. Listening on the document means page content counts. */
+    document.addEventListener("click", function (event) {
+      if (!isOpen() || side.contains(event.target)) return;
+      setOpen(false);
+    });
+
+    /* Rotating the phone can cross the breakpoint with the panel open, which
+       would otherwise leave `is-open` set on a sidebar that has no panel. */
+    var wide = window.matchMedia("(min-width: 900px)");
+    var onChange = function (event) { if (event.matches) setOpen(false); };
+    if (wide.addEventListener) wide.addEventListener("change", onChange);
+    else if (wide.addListener) wide.addListener(onChange);
+  }
+
+  /* --------------------------------------------------------- command filter
+     Category buttons over the command list. The buttons are hidden with CSS
+     when scripting is off, since all sixteen rows are rendered anyway.
+  */
+
+  function initFilters() {
+    var buttons = Array.prototype.slice.call(
+      document.querySelectorAll("[data-filter]")
+    );
+    var list = document.querySelector("[data-cmds]");
+    if (!buttons.length || !list) return;
+
+    var rows = Array.prototype.slice.call(list.querySelectorAll("[data-cat]"));
+    var empty = document.querySelector("[data-cmds-empty]");
+
+    function apply(value) {
+      var shown = 0;
+
+      rows.forEach(function (row) {
+        var on = value === "all" || row.dataset.cat === value;
+        if (on) {
+          row.removeAttribute("hidden");
+          shown++;
+        } else {
+          row.setAttribute("hidden", "");
+        }
+      });
+
+      buttons.forEach(function (button) {
+        button.setAttribute(
+          "aria-pressed",
+          button.dataset.filter === value ? "true" : "false"
+        );
+      });
+
+      if (empty) empty.toggleAttribute("hidden", shown > 0);
+      list.toggleAttribute("hidden", shown === 0);
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        apply(button.dataset.filter);
+      });
+    });
   }
 
   /* ---------------------------------------------------- placeholder links
@@ -258,69 +537,12 @@
       });
   }
 
-  /* ---------------------------------------------------------------- nav
-     Phone-width menu. A plain disclosure: the button owns aria-expanded and
-     the panel is the next element in the DOM, so tabbing out of the button
-     lands in the menu without any focus juggling.
-
-     The panel is hidden with `visibility` in CSS, which keeps its links out
-     of the tab order while closed. Nothing here needs to manage that.
-  */
-
-  function initNav() {
-    var nav = document.querySelector(".nav");
-    var toggle = document.querySelector(".nav__toggle");
-    if (!nav || !toggle) return;
-
-    var panel = document.getElementById(toggle.getAttribute("aria-controls"));
-    if (!panel) return;
-
-    function setOpen(open) {
-      nav.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    }
-
-    function isOpen() {
-      return toggle.getAttribute("aria-expanded") === "true";
-    }
-
-    toggle.addEventListener("click", function () {
-      setOpen(!isOpen());
-    });
-
-    /* Every link either jumps to a section on this page or leaves it. In both
-       cases leaving the menu open would cover the thing just navigated to. */
-    panel.addEventListener("click", function (event) {
-      if (event.target.closest("a")) setOpen(false);
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key !== "Escape" || !isOpen()) return;
-      setOpen(false);
-      toggle.focus();
-    });
-
-    /* A tap anywhere else dismisses it, which is what the panel looks like it
-       should do. Listening on the document means a tap on page content counts. */
-    document.addEventListener("click", function (event) {
-      if (!isOpen() || nav.contains(event.target)) return;
-      setOpen(false);
-    });
-
-    /* Rotating the phone can cross the breakpoint with the panel open, which
-       would otherwise leave `is-open` set on a nav that no longer has one. */
-    var wide = window.matchMedia("(min-width: 768px)");
-    var onChange = function (event) {
-      if (event.matches) setOpen(false);
-    };
-    if (wide.addEventListener) wide.addEventListener("change", onChange);
-    else if (wide.addListener) wide.addListener(onChange);
-  }
-
   /* ------------------------------------------------------------------ go */
 
-  initNav();
   initReveals();
+  initTabs();
+  initMenu();
+  initFilters();
   initStats();
   initPlaceholderLinks();
 })();
