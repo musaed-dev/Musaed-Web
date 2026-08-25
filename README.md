@@ -215,77 +215,25 @@ other consumer.
 It held no real identity — every personal field was still a `data-placeholder` and every
 skill percentage was invented — so nothing real was lost. If you ever want a page about the
 maintainer again, `#about-us` on the landing page already carries that role in neutral
-project voice, and building a new sub-page should follow `updates.html`'s pattern rather
-than resurrecting `.pagebar`.
+project voice, and building a new sub-page should follow the legal pages' pattern (its own
+`.docbar`/`.docwrap` bar-and-column chrome in `legal.css`) rather than resurrecting
+`.pagebar`.
 
-### The updates page
+### The updates page was also removed
 
-`updates.html` is a changelog. As of 2026-08-06 it is deliberately unlinked from the nav and
-the footer — the page, `updates.css`, and its content are untouched and still deploy at
-`/updates.html`, just not reachable from site navigation anymore.
+There used to be a fourth page here, `updates.html` — a changelog, laid out as a three-column
+timeline inside a glass panel with its own `assets/css/updates.css` (local `--up-*` tokens, a
+zero-radius terminal look, `.upbar`/`.uppanel` chrome it built entirely itself). It had been
+deliberately unlinked from the nav and footer since 2026-08-06 but stayed live at
+`/updates.html`, still indexed via `sitemap.xml`. On 2026-08-25 the project owner had it
+removed outright rather than kept as a dead-but-crawlable page — nothing on the site linked
+to it, and an unlinked page with no path back to it is a liability, not a convenience.
 
-Layout is a three-column timeline inside a glass panel: a sticky version block, the
-rail itself as a real 1px grid column, then the release body. Because the rail is a
-column rather than a pseudo-element, consecutive releases join into one unbroken line
-with no offset maths. Under 860px it collapses to rail plus content, with the version
-stacked above its release and the sticky dropped.
-
-One site-wide rule is broken here on purpose, and it is load-bearing for the terminal look:
-
-- **Radius is zero.** Everywhere else uses `--r-sm` / `--r-md`. Every mark on this page
-  is a hard square: the panel, the `جديد` badge, the rail nodes, the status dots.
-  Rounding them makes the page look like the landing page in costume. The four
-  selectors to change are named in the comment at the top of `updates.css`.
-
-This page also builds **all** of its own chrome: the bar sits *inside* the glass panel, so
-the back link lives in `.upbar`. `styles.css` contributes only the `.subpage` backdrop.
-
-The greys were nudged a few points toward green from the neutral reference values, so
-the page still reads as part of Musaed rather than a stock terminal template. They are
-local tokens at the top of `updates.css` (`--up-head`, `--up-body`, and so on).
-
-**The changelog is now real, and short.** It holds exactly one release — `1.0.0`,
-`أغسطس 2026`, titled `البداية` and described as `أول نسخة لمساعد.` — supplied by the project
-owner. The three invented releases that used to sit here (`1.2` / `1.1` / `1.0`, dated
-Mar 2026 / Jan 2026 / Nov 2025) are gone. **There are no `data-mock` attributes left on
-this page**; verify with `grep -c data-mock updates.html` (expect `0`). Do not add a release
-you cannot date.
-
-To add the next release, copy the `<li class="rel">` block and put it **above** the existing
-one — newest first — then move `rel--latest` onto it. That class lights its node on the rail
-and draws the `جديد` badge, and only one release may carry it. Each block holds three
-children in order: `.rel__meta` (version + date), `.rel__rail` (the line and its node),
-`.rel__body` (title, badge, then the release's content).
-
-A release states its content one of two ways, and both are styled:
-
-| Element | Use it when | Looks like |
-| --- | --- | --- |
-| `<p class="rel__desc">` | the release is one sentence | plain line under a hairline |
-| `<ul class="rel__list">` of `.rel__item` | the release has several entries | rows, each led by a mono `+` |
-
-`.rel__desc` deliberately has no `+`. A `+` reads as "this was added", which is wrong for a
-sentence describing the release as a whole. `1.0.0` uses two consecutive `.rel__desc`
-paragraphs; `.rel__list` is unused right now but kept, since the next release will
-probably want it.
-
-**Consecutive `.rel__desc` paragraphs are one description.** Only the first draws the
-hairline that separates the description from the release title — `.rel__desc + .rel__desc`
-zeroes the border and top padding. Without that rule a second sentence gets its own rule
-and the prose reads as two unrelated rows, which is what `.rel__item` is for. Add as many
-sentences as you like; they will keep flowing as one block.
-
-Above the timeline, `إصدارات` counts the `.rel` blocks and `أنظمة` mirrors the eight systems
-`#features` advertises on the landing page — **both are kept in step by hand.** That row
-previously read `+12 ميزة وتحسين` and `3 إصدارات`, which contradicted a changelog whose only
-entry is the first release. The `∞` is not a figure so it stays as is.
-
-The version numeral has room: `1.0.0` measures 152px in a 216px column at desktop, and
-`1.10.0` would still fit at 182px.
-
-**Do not put `.reveal` on `.rel__meta`.** That class animates `transform`, and a
-transformed ancestor traps the sticky version block inside it. Reveals go on `.rel__body`
-only, which is how the markup already has it.
+Removed with it: `updates.css`, its 1-symbol sprite, its `sitemap.xml` entry, and its four
+`canonical`/`og:url`/`og:image`/`twitter:image` URLs (the "hardcoded domain" count below
+dropped from 20 to 16 accordingly). Its single real release (`1.0.0`, `أغسطس 2026`,
+`البداية`) is gone with the page — there is nothing to relink or resurrect; a changelog page
+would need to be rebuilt from scratch if wanted again.
 
 ### The legal pages
 
@@ -308,10 +256,10 @@ person with JS disabled and by a crawler that does not run it. Do not add `main.
 consistency" — the scroll reveals would fade a privacy policy in, which is the wrong
 instinct for a document someone may be reading for a reason.
 
-`legal.css` is shared by both, unlike `updates.css` which serves one page. That is
-deliberate: they are the same kind of page — a back bar above a single column of prose — so
-anything added there shows up on both. `--doc-measure` on `.subpage--legal` is the single
-source of truth for the column width.
+`legal.css` is shared by both — the only stylesheet besides `styles.css` still in the repo.
+That is deliberate: they are the same kind of page — a back bar above a single column of
+prose — so anything added there shows up on both. `--doc-measure` on `.subpage--legal` is the
+single source of truth for the column width.
 
 Prose inside `.docbody` is styled with **element** selectors (`h2`, `p`, `ul`, `code`,
 `strong`, `a`) rather than classes, so whoever edits the policy text does not have to
@@ -327,8 +275,8 @@ invented values left anywhere on the site are the three `#stats` numbers.
 ### Shared sub-page chrome
 
 There is barely any. Every page that is not the landing page sets `<body class="subpage">`
-for the backdrop gradient in `styles.css`, and builds the rest itself — `.upbar` / `.uppanel`
-in `updates.css`, `.docbar` / `.docwrap` in `legal.css`.
+for the backdrop gradient in `styles.css`, and builds the rest itself — `.docbar` /
+`.docwrap` in `legal.css`.
 
 `styles.css` used to also carry a `.pagebar` / `.pagewrap` bar-and-column pair, but
 `developer.html` was its only consumer, so it went with that page. The legal pages did not
@@ -370,33 +318,32 @@ root.
 
 ```text
 index.html                 the landing page, plus its inline icon sprite
-updates.html               the changelog, plus its own sprite
 privacy.html               privacy policy          } same layout,
 terms.html                 terms of use            } one shared stylesheet
 assets/css/styles.css      tokens, reset, shared components, sub-page backdrop
-assets/css/updates.css     updates page only, loaded after styles.css
 assets/css/legal.css       BOTH legal pages, loaded after styles.css
 assets/js/main.js          stats data, count-up, scroll reveals, link guard
 assets/fonts/              self-hosted woff2, no external font requests
 assets/Pics/               brand marks + images. Note the capital P, see below
 ```
 
-Four pages, three stylesheets, one script. `developer.html` and its CSS/JS were removed and
-should not come back.
+Three pages, two stylesheets, one script. `developer.html` and its CSS/JS were removed and
+should not come back; `updates.html` and `updates.css` followed on 2026-08-25 — see "The
+updates page was also removed" above.
 
-**Only `index.html` and `updates.html` load `main.js`.** The two legal pages load no
-JavaScript at all — see "The legal pages" below.
+**Only `index.html` loads `main.js`.** The two legal pages load no JavaScript at all — see
+"The legal pages" below.
 
 **Path casing.** `assets/Pics/` is capitalised while its siblings are not. Windows and
 macOS do not care, but Linux static hosts are case-sensitive, so a reference written as
 `assets/pics/...` will 404 in production while working perfectly on your machine. Every
 reference in this repo already matches the folder exactly. If you rename the folder to
-lowercase for consistency, update all four HTML files with it.
+lowercase for consistency, update all three HTML files with it.
 
-All four pages inline their own copy of the icon sprite, holding only the symbols that page
+All three pages inline their own copy of the icon sprite, holding only the symbols that page
 uses. That keeps each page self-contained with no extra request, at the cost of a little
-duplication for the icons they share. `updates.html`, `privacy.html` and `terms.html` need
-exactly one symbol each; `index.html` holds 23.
+duplication for the icons they share. `privacy.html` and `terms.html` need exactly one
+symbol each; `index.html` holds 22.
 
 ### Page sections
 
@@ -458,10 +405,12 @@ so it is not an exact brand match.
 
 The blurple is **scoped to `.btn--primary` only**. Do not spread it further, or it stops
 reading as "Discord" and starts reading as a second brand colour. Everything else stays
-green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 36
-`var(--accent)` usages across the three stylesheets (17 in `styles.css`, 12 in
-`updates.css`, 7 in `legal.css`) — icons, headings, stat numerals, chips, command names,
-hairlines, list markers, the changelog rail and the ghost-button hover.
+green: `--on-accent` still drives the skip link and the `م` brand mark, and there are 29
+`var(--accent)` usages across the two remaining stylesheets (21 in `styles.css`, 8 in
+`legal.css`; measured via `grep -c 'var(--accent)' assets/css/*.css`) — icons, headings, stat
+numerals, chips, command names, hairlines, list markers, and the ghost-button hover.
+`updates.css` used to contribute 12 more before it was removed with `updates.html`
+(2026-08-25); that also took the changelog rail's usage with it.
 
 Two glyphs stay as inline SVG on purpose: the `سيرفر` stat icon and the footer `سيرفرنا`
 link. Both are tinted to the accent and transition colour on hover, which a fixed-colour
@@ -496,8 +445,9 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
   is why the button is inboard of the CTA rather than at the far edge.
 - **The panel is hidden with `visibility`, not `opacity` alone.** That is what keeps its
   links out of the tab order and the accessibility tree while closed. Last verified count
-  was 2 links closed, 8 open, against the old 6-link nav; now unverified against the current
-  5-link nav (expect 7 open) since `updates.html` was unlinked.
+  was 2 links closed, 8 open, against the old 6-link nav; unverified since (the nav-link count has moved more than once, first
+  when `updates.html` was unlinked, then when `#stats` was hidden, then again when
+  `updates.html` was removed outright on 2026-08-25).
 - **Mobile is the base, desktop is the override.** `.nav__links` defaults to the dropped
   panel; the `min-width: 768px` block turns it back into a row.
 - **Opening the menu pins the bar solid.** `nav-solidify` leaves the bar at 35% opacity
@@ -512,21 +462,29 @@ It is a plain disclosure, not a modal: no focus trap, no scroll lock, no overlay
 
 These five were audited and fixed, and each is easy to undo by accident. Keep them.
 
-- **44px is the floor for tap targets.** Footer rows, nav links and the updates back link
-  all sit at or just over 44px. Several get there through `padding-block` cancelled by a
-  negative margin, so the target grew without the layout moving. If you tighten padding
-  for looks, you shrink the target.
-- **Never `display: none` a label that is a control's accessible name.** The updates back
-  link hides its text under 560px, so it is clipped out of view while staying in the
-  accessibility tree. `display: none` there would leave screen readers announcing an
-  unlabelled link, since the icon is `aria-hidden`.
-- **Contrast is measured against the worst case, not the average.** The updates panel is
-  half-transparent, so small text has to clear 4.5:1 over the *accent glow* behind it, not
-  over the plain background. `--up-faint` and `--up-dim` were re-picked for that: 5.05:1
-  and 4.81:1 in the glow. They look darker than they need to be against plain background
-  because that is not where they have to survive.
-- **Line length is capped.** `.rel__item` text stops at `68ch`. Without it the changelog
-  bullets run about 95 characters, past the point where the eye loses the line return.
+- **44px is the floor for tap targets.** Footer rows and nav links all sit at or just over
+  44px. Several get there through `padding-block` cancelled by a negative margin, so the
+  target grew without the layout moving. If you tighten padding for looks, you shrink the
+  target. (The updates back link used to be the third example here; it left with
+  `updates.html`, 2026-08-25.)
+- **Never `display: none` a label that is a control's accessible name.** `.nav__toggle-text`
+  (the hamburger button's label) hides its text by clipping it, so it is clipped out of view
+  while staying in the accessibility tree. `display: none` there would leave screen readers
+  announcing an unlabelled button, since the burger icon is `aria-hidden`. The updates back
+  link used to be the example here; it left with `updates.html` (2026-08-25).
+- **Contrast has to be measured against the worst case, not the average, on any
+  half-transparent panel.** The updates panel used to be the concrete example: it was
+  half-transparent, so its small text had to clear 4.5:1 over the *accent glow* behind it,
+  not over the plain background, and `--up-faint`/`--up-dim` (5.05:1 / 4.81:1 in the glow)
+  looked darker than necessary in isolation because that was never where they had to
+  survive. That page is gone (2026-08-25) and nothing on the site currently has a
+  half-transparent text panel, but the sticky nav (`background: rgb(8 10 9 / 0.82)`,
+  `backdrop-filter: blur(14px)`) is the same shape — re-apply this check the moment anything
+  adds text contrast requirements over it.
+- **Line length is capped.** `legal.css`'s `--doc-measure: 68ch` caps the privacy/terms
+  prose column for the same reason: past a certain width the eye loses the line return.
+  `updates.html`'s `.rel__item` used to cap at the same `68ch` for its changelog bullets;
+  that page is gone (2026-08-25), but the principle — and the exact measure — live on here.
 - **Latin code tokens inside RTL text are isolated *and* realigned.** Every Latin
   `.cmd__name` and every Latin `.chip` carries `dir="ltr"` so the leading slash stays on
   the left instead of being reordered by the surrounding Arabic. `dir` also flips the
@@ -552,8 +510,10 @@ Two width limits, both measured rather than inferred:
   constraint is 320px, not this breakpoint.
 
 Everything above was measured in a real browser at 320, 375, 390, 412, 768, 860, 900, 1024
-and 1440px, across all five pages: **154 assertions (2026-08-17)**. The menu's 17 behaviour
-assertions were not part of that run and have not been re-verified since 2026-08-05.
+and 1440px, across all five pages (now four — `updates.html` was removed 2026-08-25; this
+count is stale by one page and hasn't been rerun since): **154 assertions (2026-08-17)**.
+The menu's 17 behaviour assertions were not part of that run and have not been re-verified
+since 2026-08-05.
 
 Verify with:
 
@@ -630,19 +590,20 @@ with a `summary_large_image` card, plus a `canonical` link.
 ### The hardcoded domain
 
 Social crawlers reject relative URLs, so the site URL is written literally into
-`og:url`, `og:image`, `twitter:image` and `canonical` on **all five pages**:
+`og:url`, `og:image`, `twitter:image` and `canonical` on **all four pages** (index,
+connect, privacy, terms — was five until `updates.html` was removed 2026-08-25):
 
 ```text
 https://musaed.dev
 ```
 
-There are **twenty** occurrences, four per page: `canonical`, `og:url`, `og:image` and
-`twitter:image`. (`404.html` carries none of them — an error page has no canonical address.)
-If you move again, find and replace the host across all five HTML files, **and by hand in
-`sitemap.xml` and `robots.txt`**, which hold absolute URLs but are invisible to the `*.html`
-grep below. Then re-check all twenty, because each page's `og:url` and `canonical` are
-page-specific (`/`, `/updates.html`, `/privacy.html`, `/terms.html`, `/connect.html`) while
-the two image URLs are shared:
+There are **sixteen** occurrences, four per page: `canonical`, `og:url`, `og:image` and
+`twitter:image`. (`404.html` carries none of them — an error page has no canonical address.
+This was twenty across five pages before the removal above.) If you move again, find and
+replace the host across all four HTML files, **and by hand in `sitemap.xml` and
+`robots.txt`**, which hold absolute URLs but are invisible to the `*.html` grep below. Then
+re-check all sixteen, because each page's `og:url` and `canonical` are page-specific
+(`/`, `/privacy.html`, `/terms.html`, `/connect.html`) while the two image URLs are shared:
 
 ```bash
 grep -ohE 'https://[a-z0-9.-]+' *.html | sort -u
@@ -661,14 +622,14 @@ quietly published the branded domain as a duplicate of its own Railway URL. That
 not announce itself, and this file went a further ten days still naming the old host — which
 is what the paragraph above is for. `musaed.up.railway.app` is retired as of 2026-08-18; do
 not reintroduce it. A domain change is not done when the site loads at the new address; it is
-done when all twenty URLs, plus `sitemap.xml` and `robots.txt`, are updated.
+done when all sixteen URLs, plus `sitemap.xml` and `robots.txt`, are updated.
 
 One note on the card: the banner is **960x540**. It renders fine, but `1200x630` is the
 size every platform optimises for. Worth regenerating at that size when convenient.
 
-Verified live at the current host: `/`, `/updates.html` and the banner all return 200, and
-the banner serves as `image/png` (30 KB) rather than an HTML error page. `/privacy.html` and
-`/terms.html` were added after that check and go live on the next deploy — **re-verify them
+Verified live at the current host: `/` and the banner both return 200, and the banner serves
+as `image/png` (30 KB) rather than an HTML error page. `/privacy.html` and `/terms.html`
+were added after that check and go live on the next deploy — **re-verify them
 before pasting either into Discord's Developer Portal**, because the portal rejects a URL
 that does not resolve.
 
@@ -693,10 +654,8 @@ command running, an automod catch, a welcome message, a captcha challenge. A sho
 for a Discord bot is much stronger showing the product than describing it. Drop them in and
 add a section between `#commands` and the stats band.
 
-Two things to confirm before launch, both outside this repo:
+One thing to confirm before launch, outside this repo:
 
 - **The invite has to actually work.** If the bot's commands are still published to a single
   development guild rather than globally, adding it to a new server gets you a bot with no
-  visible commands — and this page has four `ضيف البوت` CTAs pointing at that experience.
-- **The `1.0.0` release is dated `أغسطس 2026`.** If the site goes live before then, the
-  changelog's only entry is dated in the future. Either ship in August or adjust the date.
+  visible commands — and this page has `ضيف البوت` CTAs pointing at that experience.
