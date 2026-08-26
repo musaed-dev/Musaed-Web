@@ -35,10 +35,11 @@
   /* ======================================================================
      RATE LIMITING FOR THE STATS FETCH
      ----------------------------------------------------------------------
-     STATS_ENDPOINT is null, so nothing below makes a network request yet
-     and the page stays fully static. Set it to your public aggregate
-     endpoint and the whole path switches on with throttling already in
-     place. Nothing else needs editing.
+     STATS_ENDPOINT now points at Musaed-Dashboard's public aggregate
+     endpoint (no auth, no per-server data - see that repo's
+     app/routers/public.py). Setting it back to `null` returns to the fully
+     static page with the placeholder numbers above, and nothing else needs
+     editing either way.
 
      Three protections, so a popular page cannot hammer the endpoint:
        1. Throttle - at most one request per STATS_TTL_MS per browser tab.
@@ -53,7 +54,7 @@
      try/catch because private-mode browsers can throw on access.
      ====================================================================== */
 
-  var STATS_ENDPOINT   = null;              // e.g. "https://<public-api>/v1/stats"
+  var STATS_ENDPOINT   = "https://dashboard.musaed.dev/api/public/stats";
   var STATS_TTL_MS     = 5 * 60 * 1000;     // one request per 5 minutes
   var STATS_BACKOFF_MS = 15 * 60 * 1000;    // pause after a 429 or failure
   var STATS_CACHE_KEY  = "musaed:stats";
@@ -76,12 +77,21 @@
   }
 
   /* Maps the endpoint's payload onto the shape the renderer expects.
-     Adjust the field names here to match whatever your API returns. */
+     Adjust the field names here to match whatever your API returns.
+
+     `status` rides along on the same object rather than a second fetch - the
+     public endpoint already answers both questions ("how many servers" and
+     "is the bot up") in one response, and readStats()'s cache/throttle/
+     backoff already covers it for free. `uptime` still reads a field
+     (`uptime_30d`) the endpoint does not send yet, so it stays undefined and
+     the #stats tile that would show it stays `hidden` in index.html - not
+     wired until there is a real rolling percentage to report. */
   function shapeStats(payload) {
     return {
       servers: { value: payload.guild_count,  kind: "int" },
       members: { value: payload.member_count, kind: "int" },
-      uptime:  { value: payload.uptime_30d,   kind: "percent" }
+      uptime:  { value: payload.uptime_30d,   kind: "percent" },
+      status:  payload.status
     };
   }
 
@@ -200,6 +210,27 @@
       );
 
       nodes.forEach(function (node) { observer.observe(node); });
+    });
+  }
+
+  /* ------------------------------------------------------------- status
+     The desktop topbar's "البوت شغّال" badge, wired to the same fetch
+     initStats() uses (readStats() caches/throttles it - this costs no
+     second request). While STATS_ENDPOINT is null, or before it resolves,
+     the badge simply keeps the text and pulse it was born with in the HTML.
+  */
+
+  function initStatus() {
+    var el = document.querySelector(".status");
+    if (!el) return;
+
+    readStats().then(function (stats) {
+      // The local placeholder object carries no `status` at all - nothing
+      // to change until a real payload says otherwise.
+      if (!stats.status) return;
+      var down = stats.status === "down";
+      el.classList.toggle("status--down", down);
+      el.textContent = down ? "البوت متوقف" : "البوت شغّال";
     });
   }
 
@@ -544,5 +575,6 @@
   initMenu();
   initFilters();
   initStats();
+  initStatus();
   initPlaceholderLinks();
 })();

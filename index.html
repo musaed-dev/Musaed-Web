@@ -216,22 +216,26 @@
             </p>
           </section>
 
-          <!-- #stats is hidden, not removed. The markup, its three mock
-               values and initStats() are intact; drop `hidden` to show it. -->
-          <section class="dashfeat" id="stats" hidden>
+          <!-- Servers/members are live now, from STATS_ENDPOINT in main.js.
+               Uptime stays hidden, not removed: the endpoint does not send
+               uptime_30d yet, and showing this tile against an undefined
+               field would be exactly the invented-number problem this
+               section's placeholders were marked against in the first
+               place. Drop `hidden` from the .stat below once it does. -->
+          <section class="dashfeat" id="stats">
             <h2 class="shead__title">مساعد بالأرقام</h2>
             <dl class="stats" style="margin-top:24px">
               <div class="stat">
                 <svg class="stat__icon" aria-hidden="true"><use href="#i-discord"></use></svg>
-                <dd class="stat__value" data-stat="servers" data-mock="true"><bdi>0</bdi></dd>
+                <dd class="stat__value" data-stat="servers"><bdi>0</bdi></dd>
                 <dt class="stat__label">سيرفر يشغّل مساعد</dt>
               </div>
               <div class="stat">
                 <svg class="stat__icon" aria-hidden="true"><use href="#i-users"></use></svg>
-                <dd class="stat__value" data-stat="members" data-mock="true"><bdi>0</bdi></dd>
+                <dd class="stat__value" data-stat="members"><bdi>0</bdi></dd>
                 <dt class="stat__label">عضو داخل هالسيرفرات</dt>
               </div>
-              <div class="stat">
+              <div class="stat" hidden>
                 <svg class="stat__icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
                 <dd class="stat__value" data-stat="uptime" data-mock="true"><bdi>0</bdi></dd>
                 <dt class="stat__label">نسبة التشغيل خلال ٣٠ يوم</dt>
