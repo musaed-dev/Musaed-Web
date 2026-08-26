@@ -2,19 +2,33 @@
   --doc-measure: 68ch;
 }
 
+/* ------------------------------------------------------------------ docbar
+   Sticky + blurred, same recipe as the phone .topbar in styles.css (rgb(11
+   13 12 / 0.88) + blur(12px)) so this reads as the same product, not a
+   different page pasted in. Full-bleed so the border runs edge to edge;
+   .docbar__inner carries the 900px measure. Sticky at every width, not just
+   phone — these are the longest-scrolling pages on the site, and "back" /
+   the jump-to-section list should stay one tap away the whole way down.
+*/
+
 .docbar {
-  max-width: 900px;
-  margin-inline: auto;
-  padding: 22px 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgb(11 13 12 / 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
 }
 
 .docbar__inner {
+  max-width: 900px;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--line);
+  padding: 14px 20px;
 }
 
 .docbar__back {
@@ -78,19 +92,94 @@
   margin-bottom: 8px;
 }
 
-.docbody { color: var(--text-dim); }
+/* -------------------------------------------------------------- jump list
+   A plain anchor list — no JS, no scrollspy, just <a href="#id">. On a page
+   this long that is the difference between "usable on phone" and a wall of
+   text you fight to scroll through. scroll-margin-top on the headings below
+   keeps a jumped-to section clear of the sticky bar.
+*/
+
+.doctoc {
+  max-width: var(--doc-measure);
+  margin-top: 28px;
+}
+
+.doctoc__label {
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.doctoc__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.doctoc__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--bg-1);
+  color: var(--text-dim);
+  font-size: 0.84rem;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease),
+              color .2s var(--ease);
+}
+.doctoc__list a:hover {
+  border-color: var(--accent-line);
+  background: var(--bg-2);
+  color: var(--accent);
+}
+
+.docbody {
+  counter-reset: doc-section;
+  color: var(--text-dim);
+  margin-top: 34px;
+}
 
 .docbody > * + * { margin-top: 1.05em; }
 
+/* Numbered accent badge instead of a plain rule above each heading — same
+   mono-numeral language as .stat__value, and it turns the jump list above
+   into a real map of the page instead of a guess. */
 .docbody h2 {
-  margin-top: 2.2em;
-  padding-top: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2.4em;
+  padding-top: 1.3em;
   border-top: 1px solid var(--line);
   color: var(--text);
   font-size: 1.2rem;
   font-weight: 700;
+  scroll-margin-top: calc(var(--bar-h) + 24px);
 }
 .docbody h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+
+.docbody h2::before {
+  counter-increment: doc-section;
+  content: counter(doc-section);
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--accent-line);
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 
 .docbody ul,
 .docbody ol {
@@ -133,9 +222,14 @@
   background: var(--bg-1);
   color: var(--text);
   font-weight: 600;
-  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+  transition: transform .2s var(--ease), border-color .2s var(--ease),
+              background-color .2s var(--ease);
 }
-.docnext:hover { border-color: var(--accent); background: var(--bg-2); }
+.docnext:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  background: var(--bg-2);
+}
 
 .docnext__label {
   color: var(--text-dim);
@@ -149,6 +243,26 @@
   margin-inline-start: auto;
   fill: var(--accent);
   transform: scaleX(-1);
+}
+
+/* Smooth anchor jumps for the TOC above — scoped to these two pages only
+   and gated on prefers-reduced-motion. index.html deliberately skips a
+   global scroll-behavior (see styles.css) because its router already
+   animates the jump itself; these pages have no router and no JS at all,
+   so there's no race to lose. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.subpage--legal) { scroll-behavior: smooth; }
+}
+
+/* ============================================================== responsive
+   Nothing above breaks at any width — .doc's max-width is a cap, not a
+   fixed size, and .docbar__inner / .doctoc__list already wrap. This just
+   tightens the rhythm once there's less room.
+*/
+@media (max-width: 640px) {
+  .docwrap { padding: 28px 18px 70px; }
+  .docbody h2 { gap: 11px; }
+  .docbody h2::before { width: 26px; height: 26px; font-size: 0.74rem; }
 }
 
 /* .doccta and .notice lived here until 2026-08-25. They styled connect.html's
