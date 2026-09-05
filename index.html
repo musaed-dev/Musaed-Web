@@ -29,33 +29,108 @@
 <meta name="twitter:description" content="مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا. كله بأوامر سلاش.">
 <meta name="twitter:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
 
-<!-- Structured data for search and AI answer engines. No ratings or install
-     counts - none are real yet. Free tier is real, so isAccessibleForFree. -->
+<!-- Structured data for search and AI answer engines. One @graph: the org,
+     the site, the app (no ratings or install counts - none are real yet;
+     the free tier is real, so isAccessibleForFree), and the FAQ. Every
+     Question/Answer here must stay word-for-word with the visible #faq
+     section below. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "مساعد",
-  "alternateName": "Musaed",
-  "url": "https://musaed.dev/",
-  "inLanguage": "ar",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Discord",
-  "description": "مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا. كله بأوامر سلاش.",
-  "image": "https://musaed.dev/assets/Pics/musaed-avatar.png",
-  "isAccessibleForFree": true,
-  "featureList": [
-    "إشراف",
-    "حماية تلقائية",
-    "ترحيب",
-    "بوابة عمر الحساب",
-    "تحقق بالكابتشا"
-  ],
-  "author": {
-    "@type": "Organization",
-    "name": "Musaed",
-    "url": "https://musaed.dev/"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://musaed.dev/#org",
+      "name": "Musaed",
+      "alternateName": "مساعد",
+      "url": "https://musaed.dev/",
+      "logo": "https://musaed.dev/assets/Pics/musaed-avatar.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://musaed.dev/#website",
+      "url": "https://musaed.dev/",
+      "name": "مساعد",
+      "inLanguage": "ar",
+      "publisher": { "@id": "https://musaed.dev/#org" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://musaed.dev/#app",
+      "name": "مساعد",
+      "alternateName": "Musaed",
+      "url": "https://musaed.dev/",
+      "inLanguage": "ar",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Discord",
+      "description": "مساعد بوت عربي لسيرفرات ديسكورد: إشراف، حماية تلقائية، ترحيب، بوابة عمر، وتحقق بالكابتشا. كله بأوامر سلاش.",
+      "image": "https://musaed.dev/assets/Pics/musaed-avatar.png",
+      "isAccessibleForFree": true,
+      "featureList": [
+        "إشراف",
+        "حماية تلقائية",
+        "ترحيب",
+        "بوابة عمر الحساب",
+        "تحقق بالكابتشا"
+      ],
+      "publisher": { "@id": "https://musaed.dev/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://musaed.dev/#faq",
+      "inLanguage": "ar",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "أحتاج أعطيه صلاحية أدمن؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "رابط الإضافة يطلب صلاحية أدمن. بوابة عمر الحساب تحتاجها فعلاً، وباقي الأنظمة تكفيها «إدارة السيرفر». بس صلاحية البوت شي وصلاحيتك شي ثاني: كل أمر إشراف يتحقق من صلاحياتك انت ومن ترتيب رتبتك قبل أي إجراء، ومساعد ما يعطي أحد صلاحية ما هي عنده أصلاً."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "مساعد مجاني؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أي. الأنظمة الأساسية مجانية لكل السيرفرات بدون حد وقت، وباقة برو اختيارية فوقها لو احتجتها."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كل شي بالعربي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أي، كله بالعربي: الأوامر وشرحها والردود ورسايل الأخطاء والمدد، كلها مكتوبة من الأساس بلهجة أهل سيرفرك، مو ترجمة حرفية من بوت أجنبي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "وين أضبط الأنظمة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أغلب الإعدادات من dashboard.musaed.dev، وفيه أوامر سيتب سريعة للأساسيات زي التذاكر والترحيب تخلص الضبط من الشات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لو حذفت البوت وبعدين رجعته، إعداداتي تروح؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا. إعداداتك تنحفظ فترة سماح بعد الحذف، فلو رجعته خلال هذي الفترة تلقى كل شي زي ما تركته."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "فيه دعم لو واجهت مشكلة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أي. عندنا سيرفر فيه فريق الدعم، وقناة للتحديثات، وقناة تقترح فيها الميزات اللي تبيها."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
@@ -1043,7 +1118,7 @@
       </nav>
 
       <div class="foot__base">
-        <p>جميع الحقوق محفوظة لمساعد 2026.</p>
+        <p>جميع الحقوق محفوظة لمساعد 2026. · آخر تحديث <time datetime="2026-09-05">2026/09/05</time></p>
         <nav class="foot__links" aria-label="روابط أسفل الصفحة">
           <a href="privacy.html"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a>
           <a href="terms.html"><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a>

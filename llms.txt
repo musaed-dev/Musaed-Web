@@ -1,0 +1,40 @@
+# Musaed (مساعد)
+
+> Musaed is an Arabic (Saudi dialect) moderation and automation bot for Discord servers.
+> It is written in Arabic from the ground up — every command, reply, error message and
+> duration input is native Arabic, not a translation layer. Core features are free for
+> every server with no time limit and no card; an optional Pro tier raises some limits.
+
+Musaed runs eight independent systems that a server owner toggles per server: moderation
+with a full audit log; automatic protection (banned-word filter, spam detection, raid
+defense); an account-age gate; captcha verification; welcome messages; support tickets;
+auto-responses; and text shortcuts for quick moderation. Most settings are configured from
+the dashboard at https://dashboard.musaed.dev; a few systems also have in-chat setup
+commands. Durations can be written in plain Arabic ("أسبوع", "30 يوم") or the short form
+(1h30m).
+
+This site (musaed.dev) is a static three-page marketing site. It has no login, no account,
+and no connection to the bot's data — the bot enforces strict per-server data isolation.
+
+## Pages
+
+- [Landing page](https://musaed.dev/): what the bot does, the eight systems, the command list, pricing, a comparison with MEE6 and Dyno, and an FAQ
+- [Privacy policy](https://musaed.dev/privacy.html)
+- [Terms of use](https://musaed.dev/terms.html)
+- [Structured pricing](https://musaed.dev/pricing.txt)
+
+## Key facts
+
+- Language: Arabic (Saudi dialect), right-to-left
+- Platform: Discord
+- Pricing: all eight systems free for every server, no time limit, no card; optional Pro tier, numeric price not yet announced, assigned by the Musaed team (no self-serve checkout yet)
+- Add the bot: https://discord.com/oauth2/authorize?client_id=1341863717247258655&permissions=8&scope=bot+applications.commands
+- Dashboard: https://dashboard.musaed.dev
+- Community / support server: https://discord.gg/CcwRT6K5qv
+- How Musaed compares to MEE6 and Dyno: the "ليش مساعد؟" panel at https://musaed.dev/#why-musaed
+
+## Not this site
+
+- Musaed is not affiliated with Discord.
+- The dashboard (dashboard.musaed.dev) is a separate application with its own login.
+- There is no public API, no user accounts, and no downloadable software — Musaed runs as a hosted Discord bot.

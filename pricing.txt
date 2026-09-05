@@ -1,0 +1,37 @@
+# Pricing — Musaed (مساعد)
+
+All eight systems are free for every Discord server, with no time limit and no card
+required. Pro is an optional tier that raises some per-server limits and adds a custom
+embed style. Numbers below mirror the pricing panel on https://musaed.dev/#pricing and
+come from the bot's plans table; if the two ever disagree, the site's panel is correct.
+
+Last updated: 2026-09-05
+
+## Free
+
+- Price: 0
+- Included: all eight systems (moderation, automatic protection, account-age gate, welcome, support tickets, captcha verification, auto-responses, text shortcuts) at full access
+- Text shortcuts: up to 7
+- Ticket types: up to 6
+- Ticket panels: 1
+- Quick-open buttons per panel: not available
+- Auto-responses: up to 20
+- Auto-response reply length: up to 15 words
+- Embed style: the bot's default color
+
+## Pro
+
+- Price: not yet announced. Assigned by the Musaed team; there is no self-serve checkout yet.
+- Upgrade flow: https://dashboard.musaed.dev/pricing/get-pro
+- Text shortcuts: up to 14
+- Ticket panels: up to 3
+- Quick-open buttons per panel: up to 3
+- Auto-responses: up to 40
+- Auto-response reply length: up to 50 words
+- Embed style: custom (brand color + footer)
+- Ticket types: unchanged at 6
+
+## Notes
+
+- Early Access is not a Pro perk. It grants no higher limits, and its own features may change or become paid.
+- Full limits and terms for each plan are governed by https://musaed.dev/terms.html and https://musaed.dev/privacy.html.
