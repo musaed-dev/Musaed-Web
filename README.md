@@ -48,4 +48,4 @@ There's nothing to build. Upload the folder as-is to any static hosting provider
 
 - Website: [musaed.dev](https://musaed.dev)
 - Dashboard: [dashboard.musaed.dev](https://dashboard.musaed.dev)
-- Community: [discord.gg/QvNXvDDFtz](https://discord.gg/QvNXvDDFtz)
+- Community: [discord.gg/CcwRT6K5qv](https://discord.gg/CcwRT6K5qv)
