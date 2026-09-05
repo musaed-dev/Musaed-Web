@@ -215,6 +215,19 @@ button { font: inherit; color: inherit; }
 }
 .btn--ghost:hover { border-color: var(--line-strong); color: var(--accent); }
 
+/* Solid accent fill. --primary (blurple) stays scoped to Discord destinations;
+   this is the green answer for a non-Discord CTA that still has to carry a
+   panel — currently just the Pro upgrade link on #pricing. */
+.btn--accent {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 4px 16px rgb(15 227 125 / 0.22);
+}
+.btn--accent:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 22px rgb(15 227 125 / 0.30);
+}
+
 .btn--block { display: flex; width: 100%; }
 .btn--sm { min-height: 40px; padding: 9px 16px; font-size: 0.875rem; }
 .btn--sm .btn__logo { width: 16px; height: 16px; }
@@ -804,6 +817,232 @@ button { font: inherit; color: inherit; }
   color: var(--text-dim);
 }
 
+/* ------------------------------------------------------------------ plans
+   Two pricing cards, built on the same card visual language (--bg-1, --line,
+   --r-md) rather than a <table> — matches how the rest of the page presents
+   grouped info (.cmds, .stats) and stays readable in RTL without column
+   juggling on phones.
+*/
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 18px;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: clamp(24px, 3vw, 32px);
+  transition: transform .22s var(--ease),
+              border-color .22s var(--ease);
+}
+.plan:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+
+.plan--pro {
+  border-color: var(--accent-line);
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgb(15 227 125 / 0.1), transparent 60%),
+    var(--bg-1);
+}
+.plan--pro:hover { border-color: var(--accent); }
+
+.plan__badge {
+  position: absolute;
+  top: clamp(24px, 3vw, 32px);
+  inset-inline-end: clamp(24px, 3vw, 32px);
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  animation: status-pulse 2.6s ease-in-out infinite;
+}
+
+.plan__name { font-size: 1.3rem; font-weight: 700; }
+
+.plan__tag {
+  margin-top: 6px;
+  max-width: 30ch;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--text-mute);
+}
+
+.plan__price {
+  margin-top: 18px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.plan__price--pending { font-size: 1.1rem; color: var(--text-dim); }
+
+.plan__list {
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.plan__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 14px;
+  font-size: 0.86rem;
+}
+.plan__row-label { color: var(--text-dim); }
+.plan__row-val {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.plan__delta {
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+/* Arabic in a delta badge falls back part-way through on Plex Mono, same
+   reason .chip--ar exists. */
+.plan__delta--ar { font-family: var(--sans); }
+
+.plan__note {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-faint);
+}
+.plan__note a { color: var(--accent); border-bottom: 1px solid transparent; }
+.plan__note a:hover { border-bottom-color: var(--accent); }
+
+.plan .btn { margin-top: 24px; }
+
+/* A compact free-vs-pro table, same div-grid approach as .cmds rather than
+   a <table> - matches how the rest of the page presents tabular info and
+   needs no separate mobile stack, since every value here is short. */
+
+.compare {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.compare__row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px clamp(14px, 2vw, 24px);
+  align-items: center;
+  padding: 12px clamp(16px, 2.4vw, 24px);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.86rem;
+  transition: background-color .16s var(--ease);
+}
+.compare__row:last-child { border-bottom: 0; }
+.compare__row:not(.compare__head):hover { background: rgb(15 227 125 / 0.04); }
+
+.compare__head {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.compare__label { color: var(--text-dim); }
+
+.compare__col {
+  min-width: 60px;
+  text-align: center;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.compare__col--pro { color: var(--accent); }
+.compare__head .compare__col { color: var(--text-faint); font-weight: 700; }
+.compare__head .compare__col--pro { color: var(--accent); }
+/* Pure-number cells read as figures, same reasoning as .cmd__name's mono
+   default; cells holding an Arabic word/phrase stay on --sans. */
+.compare__col--mono { font-family: var(--mono); }
+
+/* ------------------------------------------------------------ why musaed
+   The "ليش مساعد؟" panel. One .vs block visible at a time (initVersus);
+   all rendered so a no-JS visitor stacks them. Reuses .compare but the
+   cells here hold sentences, not short values, so the row grid and the
+   column alignment are overridden for prose.
+*/
+
+.vs { margin-top: clamp(26px, 4vw, 40px); }
+.vs[hidden] { display: none; }
+
+.vs__title { font-size: 1.2rem; font-weight: 700; }
+
+.vs__verdict {
+  margin-top: 10px;
+  max-width: 62ch;
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--text-dim);
+}
+
+.vs .compare { margin-top: 18px; }
+
+.vs .compare__row {
+  grid-template-columns: minmax(7rem, 1fr) 1fr 1fr;
+  align-items: start;
+}
+
+.vs .compare__label { font-weight: 600; color: var(--text); }
+
+.vs .compare__col {
+  min-width: 0;
+  text-align: start;
+  white-space: normal;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+.vs .compare__col--pro { color: var(--text); }
+.vs .compare__head .compare__col { color: var(--text-faint); font-weight: 700; }
+.vs .compare__head .compare__col--pro { color: var(--accent); }
+
+.vs__foot {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--text-faint);
+}
+
+/* Switching comparison blocks: initVersus toggles [hidden], so a block going
+   from display:none back to shown replays this - title, verdict and table
+   cascade in. The reduced-motion block's global animation clamp flattens it. */
+.vs:not([hidden]) > * {
+  animation: vs-in 0.34s var(--ease) both;
+}
+.vs:not([hidden]) > *:nth-child(2) { animation-delay: 0.06s; }
+.vs:not([hidden]) > *:nth-child(3) { animation-delay: 0.12s; }
+
+@keyframes vs-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* ------------------------------------------------------------------- faq
    Native <details>, so it opens with JS off and gets the disclosure
    semantics for free. name="faq" makes it an exclusive accordion where
@@ -1121,6 +1360,7 @@ button { font: inherit; color: inherit; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn:active { transform: none; }
   .card:hover { transform: none; }
+  .plan:hover { transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

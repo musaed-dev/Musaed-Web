@@ -547,6 +547,41 @@
     });
   }
 
+  /* --------------------------------------------------------- versus switch
+     "ليش مساعد؟" panel: a row of buttons, one comparison block shown at a
+     time. Same shape as initFilters - the buttons reuse .filter and are
+     hidden by `.no-js .filters` when scripting is off, where all the .vs
+     blocks are rendered and simply stack.
+  */
+
+  function initVersus() {
+    var buttons = Array.prototype.slice.call(
+      document.querySelectorAll("[data-vs]")
+    );
+    var blocks = Array.prototype.slice.call(
+      document.querySelectorAll("[data-vs-panel]")
+    );
+    if (!buttons.length || !blocks.length) return;
+
+    function apply(value) {
+      blocks.forEach(function (block) {
+        block.toggleAttribute("hidden", block.dataset.vsPanel !== value);
+      });
+      buttons.forEach(function (button) {
+        button.setAttribute(
+          "aria-pressed",
+          button.dataset.vs === value ? "true" : "false"
+        );
+      });
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () { apply(button.dataset.vs); });
+    });
+
+    apply(buttons[0].dataset.vs);
+  }
+
   /* ---------------------------------------------------- placeholder links
      Every anchor tagged with data-placeholder-link still needs a real URL.
      Until then, swallow the click so the page does not jump to the top.
@@ -574,6 +609,7 @@
   initTabs();
   initMenu();
   initFilters();
+  initVersus();
   initStats();
   initStatus();
   initPlaceholderLinks();
