@@ -307,6 +307,11 @@
 
     var crumb = document.querySelector("[data-crumb]");
 
+    // The full keyworded <title> is the landing (#top) title and the one
+    // crawlers see. Every other panel gets "<tab label> | مساعد" so the
+    // browser tab reflects where you are instead of repeating the pitch.
+    var baseTitle = document.title;
+
     /* Opening a panel puts you at the top of it.
 
        On a cold load of /#faq the browser still performs its own scroll to
@@ -363,6 +368,9 @@
       });
 
       if (crumb && label) crumb.textContent = label;
+
+      document.title =
+        panel.id === "top" || !label ? baseTitle : label + " | مساعد";
 
       refreshReveals(panel);
 
