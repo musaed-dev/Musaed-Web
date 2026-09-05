@@ -558,10 +558,17 @@ button { font: inherit; color: inherit; }
   padding: clamp(48px, 8vw, 104px) var(--gutter) clamp(44px, 7vw, 88px);
 }
 
+.hero__kicker {
+  margin-bottom: 14px;
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .hero__title {
-  font-size: clamp(2.1rem, 6.4vw, 4rem);
-  line-height: 1.18;
-  max-width: 15ch;
+  font-size: clamp(2rem, 5.6vw, 3.4rem);
+  line-height: 1.22;
+  max-width: 20ch;
   text-wrap: balance;
 }
 
