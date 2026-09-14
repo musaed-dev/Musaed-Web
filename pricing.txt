@@ -1,16 +1,16 @@
 # Pricing — Musaed (مساعد)
 
-All eight systems are free for every Discord server, with no time limit and no card
+All nine systems are free for every Discord server, with no time limit and no card
 required. Pro is an optional tier that raises some per-server limits and adds a custom
 embed style. Numbers below mirror the pricing panel on https://musaed.dev/#pricing and
 come from the bot's plans table; if the two ever disagree, the site's panel is correct.
 
-Last updated: 2026-09-05
+Last updated: 2026-09-14
 
 ## Free
 
 - Price: 0
-- Included: all eight systems (moderation, automatic protection, account-age gate, welcome, support tickets, captcha verification, auto-responses, text shortcuts) at full access
+- Included: all nine systems (moderation, automatic protection, account-age gate, welcome, support tickets, captcha verification, auto-responses, text shortcuts, trap channel) at full access
 - Text shortcuts: up to 7
 - Ticket types: up to 6
 - Ticket panels: 1

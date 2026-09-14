@@ -136,7 +136,7 @@
 
 <link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
 </head>
 <body>
 
@@ -259,35 +259,71 @@
 
         <div class="hero">
           <div class="hero__inner">
-            <p class="hero__kicker reveal" style="--d:0ms">سيرفرك مرتب، وانت مرتاح</p>
-            <h1 class="hero__title reveal" style="--d:70ms">مساعد، بوت ديسكورد عربي للإشراف وحماية سيرفرك</h1>
-            <p class="hero__sub reveal" style="--d:140ms">
-              يشيل عنك الإشراف والحماية والترحيب وبوابة الدخول في سيرفرك،
-              وكل شي فيه تضبطه على كيفك من مكان واحد.
-            </p>
+            <div class="hero__content">
+              <p class="hero__kicker reveal" style="--d:0ms">سيرفرك مرتب، وانت مرتاح</p>
+              <h1 class="hero__title reveal" style="--d:70ms">مساعد، بوت ديسكورد عربي للإشراف وحماية سيرفرك</h1>
+              <p class="hero__sub reveal" style="--d:140ms">
+                يشيل عنك الإشراف والحماية والترحيب وبوابة الدخول في سيرفرك،
+                وكل شي فيه تضبطه على كيفك من مكان واحد.
+              </p>
 
-            <div class="hero__actions reveal" style="--d:210ms">
-              <a class="btn btn--primary"
-                 href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands"
-                 target="_blank" rel="noopener noreferrer">
-                <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
-                ضيف البوت
-              </a>
-              <a class="btn btn--ghost" href="#features">شوف الأنظمة</a>
+              <div class="hero__actions reveal" style="--d:210ms">
+                <a class="btn btn--primary"
+                   href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands"
+                   target="_blank" rel="noopener noreferrer">
+                  <img class="btn__logo" src="assets/Pics/Discord-Icon.png" alt="" width="18" height="18" decoding="async">
+                  ضيف البوت
+                </a>
+                <a class="btn btn--ghost" href="#features">شوف الأنظمة</a>
+              </div>
+
+              <div class="hero__facts reveal" style="--d:280ms">
+                <div class="fact">
+                  <span class="fact__value"><bdi>9</bdi> أنظمة</span>
+                  <span class="fact__label">تشغّل اللي تحتاجه بس</span>
+                </div>
+                <div class="fact">
+                  <span class="fact__value"><bdi>24</bdi> ساعة</span>
+                  <span class="fact__label">حماية بدون ما تراقب</span>
+                </div>
+                <div class="fact">
+                  <span class="fact__value">عربي</span>
+                  <span class="fact__label">من أول يوم، مو ترجمة</span>
+                </div>
+              </div>
             </div>
 
-            <div class="hero__facts reveal" style="--d:280ms">
-              <div class="fact">
-                <span class="fact__value"><bdi>8</bdi> أنظمة</span>
-                <span class="fact__label">تشغّل اللي تحتاجه بس</span>
-              </div>
-              <div class="fact">
-                <span class="fact__value"><bdi>24</bdi> ساعة</span>
-                <span class="fact__label">حماية بدون ما تراقب</span>
-              </div>
-              <div class="fact">
-                <span class="fact__value">عربي</span>
-                <span class="fact__label">من أول يوم، مو ترجمة</span>
+            <!-- Decorative only: illustrates real commands/features,
+                 not a claim about specific events. aria-hidden, no interactive/AT content lost. -->
+            <div class="hero__mock reveal" style="--d:180ms" aria-hidden="true">
+              <div class="mock">
+                <div class="mock__bar">
+                  <span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span>
+                </div>
+                <div class="mock__body">
+                  <p class="mock__row">
+                    <span class="mock__cmd" dir="ltr">/timeout</span>
+                    <span class="mock__arg">عضو#4821</span>
+                    <span class="mock__val" dir="ltr">1h30m</span>
+                  </p>
+                  <p class="mock__log">
+                    <svg class="icon" aria-hidden="true"><use href="#i-seal-check"></use></svg>
+                    تم الإسكات — السبب: سبام متكرر
+                  </p>
+                  <p class="mock__row">
+                    <span class="mock__cmd" dir="ltr">/warn</span>
+                    <span class="mock__arg">عضو#1190</span>
+                  </p>
+                  <p class="mock__log">
+                    <svg class="icon" aria-hidden="true"><use href="#i-seal-check"></use></svg>
+                    تحذير محفوظ في <span class="mock__cmd" dir="ltr">/modlogs</span>
+                  </p>
+                  <p class="mock__row mock__row--trap">قناة الفخ</p>
+                  <p class="mock__log mock__log--warn">
+                    <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+                    محاولة كتابة مرفوضة — إسكات تلقائي
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -362,7 +398,7 @@
           <header class="shead">
             <h2 class="shead__title reveal">أنظمة مساعد</h2>
             <p class="shead__lede">
-              ثمانية أنظمة تشتغل مع بعض، وكل وحدة بيدك: تشغّلها، تطفيها، وتضبطها زي ما
+              تسعة أنظمة تشتغل مع بعض، وكل وحدة بيدك: تشغّلها، تطفيها، وتضبطها زي ما
               يناسب سيرفرك.
             </p>
           </header>
@@ -439,6 +475,16 @@
                 تحدد كلمة تختارها بنفسك، ولما تكتبها مع منشن عضو تسوي حظر أو طرد أو إسكات
                 على طول من الشات. كل كلمة مربوطة بنفس صلاحية أمرها الأصلي، فما يستخدمها إلا
                 اللي يملكها.
+              </p>
+            </article>
+
+            <article class="card reveal">
+              <svg class="card__icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+              <h3 class="card__title">قناة الفخ</h3>
+              <p class="card__body">
+                تعيّن قناة عندك كفخ وتحط فيها تنبيه واضح إنه ممنوع الكتابة فيها. أي حساب
+                يخالف التنبيه يتعاقب تلقائي — إسكات، طرد، أو حظر حسب ما تختار — والإجراء
+                ينحفظ في سجل سيرفرك زي أي عقوبة ثانية.
               </p>
             </article>
 
@@ -615,6 +661,7 @@
               <li>الحماية التلقائية</li>
               <li>بوابة عمر الحساب</li>
               <li>الردود التلقائية</li>
+              <li>قناة الفخ</li>
             </ul>
           </section>
         </div>
@@ -1119,7 +1166,7 @@
       </nav>
 
       <div class="foot__base">
-        <p>جميع الحقوق محفوظة لمساعد 2026. · آخر تحديث <time datetime="2026-09-05">2026/09/05</time></p>
+        <p>جميع الحقوق محفوظة لمساعد 2026. · آخر تحديث <time datetime="2026-09-14">2026/09/14</time></p>
         <nav class="foot__links" aria-label="روابط أسفل الصفحة">
           <a href="privacy.html"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>الخصوصية</a>
           <a href="terms.html"><svg class="icon" aria-hidden="true"><use href="#i-file"></use></svg>شروط الاستخدام</a>
