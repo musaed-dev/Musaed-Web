@@ -257,6 +257,82 @@ button { font: inherit; color: inherit; }
   filter: brightness(0) invert(1);
 }
 
+/* ------------------------------------------------------------------ modal
+   Native <dialog>, opened with .showModal() from main.js. Centered by the
+   UA stylesheet; only the box and the backdrop need styling here. Closes
+   on Escape for free (native <dialog> behaviour) — main.js adds the
+   backdrop-click and the explicit button.
+*/
+dialog.modal {
+  max-width: 400px;
+  width: calc(100% - 40px);
+  margin: auto;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  color: var(--text);
+
+  /* Fades + rises in on .showModal(), reverses on .close() - allow-discrete
+     keeps the dialog (and its ::backdrop below) painted in the top layer
+     for the exit transition instead of vanishing the instant [open] drops. */
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  transition: opacity .2s var(--ease), transform .2s var(--ease),
+              overlay .2s var(--ease) allow-discrete,
+              display .2s var(--ease) allow-discrete;
+}
+dialog.modal[open] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* The state a browser that supports @starting-style transitions FROM on the
+   frame [open] is added - without this the open transition has no "before"
+   to animate from and the dialog just appears at its end state. Browsers
+   that don't support @starting-style ignore this block and get the same
+   instant appearance either way, so this degrades safely. */
+@starting-style {
+  dialog.modal[open] {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+dialog.modal::backdrop {
+  background: rgb(0 0 0 / 0);
+  transition: background-color .2s var(--ease),
+              overlay .2s var(--ease) allow-discrete,
+              display .2s var(--ease) allow-discrete;
+}
+dialog.modal[open]::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+@starting-style {
+  dialog.modal[open]::backdrop {
+    background-color: rgb(0 0 0 / 0);
+  }
+}
+.modal__kicker {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.modal__title { margin: 0 0 10px; font-size: 1.25rem; }
+.modal__body {
+  margin: 0 0 22px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* No-JS visitor never sees a button that can't open the dialog; a JS one
+   never sees the plain static line sitting under it. Same .no-js/.js split
+   as .no-js .filters above. */
+.no-js [data-open-modal] { display: none; }
+.js .pro-cta-fallback { display: none; }
+
 /* ============================================================== app shell
    Two columns at >=900px: a sticky sidebar and the scrolling main column.
    Below that the sidebar collapses into a sticky header whose nav is a
@@ -1513,6 +1589,11 @@ button { font: inherit; color: inherit; }
   .btn:hover, .btn:active { transform: none; }
   .card:hover { transform: none; }
   .plan:hover { transform: none; }
+  dialog.modal { transform: none; }
+  /* ::backdrop isn't reached by the `*, *::before, *::after` rule below -
+     it's its own pseudo-element, not one of those two - so its transition
+     needs its own line here or reduced motion would still fade it. */
+  dialog.modal::backdrop { transition-duration: 0.01ms !important; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

@@ -611,6 +611,34 @@
       });
   }
 
+  /* ----------------------------------------------------------------- modal
+     Native <dialog>, so Escape and focus trapping are the browser's job.
+     Two things this still has to do by hand: close on a backdrop click
+     (clicking the dialog element itself, since its padding box IS the
+     backdrop click target once open), and wire whatever button inside asks
+     to close it.
+  */
+
+  function initModals() {
+    var openers = document.querySelectorAll("[data-open-modal]");
+    if (!openers.length) return;
+
+    openers.forEach(function (opener) {
+      var dialog = document.getElementById(opener.dataset.openModal);
+      if (!dialog) return;
+      opener.addEventListener("click", function () { dialog.showModal(); });
+    });
+
+    document.querySelectorAll("dialog.modal").forEach(function (dialog) {
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.querySelectorAll("[data-close-modal]").forEach(function (btn) {
+        btn.addEventListener("click", function () { dialog.close(); });
+      });
+    });
+  }
+
   /* ------------------------------------------------------------------ go */
 
   initReveals();
@@ -621,4 +649,5 @@
   initStats();
   initStatus();
   initPlaceholderLinks();
+  initModals();
 })();

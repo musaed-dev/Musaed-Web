@@ -136,7 +136,7 @@
 
 <link rel="preload" href="assets/fonts/plex-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/plex-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 </head>
 <body>
 
@@ -765,14 +765,26 @@
 
               <p class="plan__note">* التفاصيل والحدود الكاملة لكل باقة تخضع لـ<a href="terms.html">شروط الاستخدام</a> و<a href="privacy.html">سياسة الخصوصية</a>.</p>
 
-              <!-- Self-serve upgrade lives on the dashboard (separate app). Same
-                   first-party treatment as the «لوحة التحكم» links - no target/rel,
-                   no new tab. Non-Discord destination -> .btn--accent (green), not
-                   .btn--primary (blurple stays scoped to Discord links). -->
-              <a class="btn btn--accent btn--block"
-                 href="https://dashboard.musaed.dev/pricing/get-pro">
+              <!-- Self-serve upgrade isn't live yet - the dashboard's own
+                   /pricing/get-pro only proves the click-through UX end to
+                   end, it never actually charges anyone. Sending a visitor there reads
+                   as a working purchase flow, so the CTA stays on this page
+                   and opens #pro-unavailable instead of navigating. Swap this
+                   back to an <a href="https://dashboard.musaed.dev/pricing/get-pro">
+                   the day real billing ships.
+
+                   Two elements, one hidden by CSS depending on .no-js/.js on
+                   <html> (see the inline script in <head>): a no-JS visitor
+                   gets the plain "not yet" line instead of a button that
+                   would do nothing when clicked - same reasoning as
+                   .no-js .filters elsewhere on this page. -->
+              <button type="button" class="btn btn--accent btn--block"
+                      data-open-modal="pro-unavailable">
                 ترقّى لبرو
-              </a>
+              </button>
+              <p class="btn btn--ghost btn--block pro-cta-fallback">
+                مو متاح بعد
+              </p>
             </article>
 
           </div>
@@ -1179,6 +1191,18 @@
   </div>
 </div>
 
-<script src="assets/js/main.js?v=1" defer></script>
+<dialog id="pro-unavailable" class="modal">
+  <p class="modal__kicker">برو</p>
+  <h2 class="modal__title">مو متاح بعد</h2>
+  <p class="modal__body">
+    ترقية برو ما جاهزة للبيع الحين، بس نشتغل عليها. تابعنا وبنعلن أول ما تصير
+    متاحة.
+  </p>
+  <button type="button" class="btn btn--ghost btn--block" data-close-modal>
+    تمام
+  </button>
+</dialog>
+
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
