@@ -16,23 +16,25 @@ commands. Durations can be written in plain Arabic ("أسبوع", "30 يوم") o
 
 This site (musaed.dev) is a static three-page marketing site. It has no login, no account,
 and no connection to the bot's data — the bot enforces strict per-server data isolation.
+The landing page is bilingual: Arabic loads by default, with a one-click toggle to English
+(?lang=ar / ?lang=en also force a language). All visible copy, including the join-gate demo
+and the interactive dashboard preview, is illustrative UI, not live data from any server.
 
 ## Pages
 
-- [Landing page](https://musaed.dev/): what the bot does, the nine systems, the command list, pricing, a comparison with MEE6 and Dyno, and an FAQ
+- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the four protection layers, the toolkit (tickets, shortcuts, auto-responses, welcome, mod logs, member DMs), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)
 
 ## Key facts
 
-- Language: Arabic (Saudi dialect), right-to-left
+- Language: Arabic (Saudi dialect) by default, English available as a toggle; right-to-left in Arabic
 - Platform: Discord
-- Pricing: all nine systems free for every server, no time limit, no card; optional Pro tier, numeric price not yet announced, assigned by the Musaed team (no self-serve checkout yet)
+- Pricing: all systems free for every server, no time limit, no card; Pro is not yet launched — "coming soon", no numeric price, assigned by the Musaed team when it ships (no self-serve checkout)
 - Add the bot: https://discord.com/oauth2/authorize?client_id=1341863717247258655&permissions=8&scope=bot+applications.commands
 - Dashboard: https://dashboard.musaed.dev
 - Community / support server: https://discord.gg/CcwRT6K5qv
-- How Musaed compares to MEE6 and Dyno: the "ليش مساعد؟" panel at https://musaed.dev/#why-musaed
 
 ## Not this site
 
