@@ -244,19 +244,27 @@ ul, ol { padding: 0; }
   padding: clamp(120px, 16vh, 170px) 0 clamp(72px, 9vw, 110px);
 }
 .hero-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* The grid's edges fade under an overlay in the page colour, not a mask-image:
+   on a real iPhone the masked grid painted as nothing at all. Every grid sits
+   on the plain body background, so a --bg overlay looks the same as the mask
+   did. --fade is the overlay; each use sets its own shape. */
 .grid {
+  --fade: radial-gradient(ellipse 75% 60% at 50% 25%, transparent 25%, var(--bg) 75%);
   position: absolute; inset: 0;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 56px 56px; background-position: center top;
-  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, #000 25%, transparent 75%);
-  mask-image: radial-gradient(ellipse 75% 60% at 50% 25%, #000 25%, transparent 75%);
 }
-.hero .grid::after {
-  content: ''; position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(15, 227, 125, .35) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 227, 125, .35) 1px, transparent 1px);
-  background-size: 56px 56px; background-position: center top;
-  -webkit-mask-image: radial-gradient(220px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
-  mask-image: radial-gradient(220px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
+.grid::after { content: ''; position: absolute; inset: 0; background: var(--fade); }
+/* The pointer glow is desktop-only (main.js only tracks a fine pointer), so it
+   keeps its mask and never ships to a phone. ::before, so the fade covers it. */
+@media (hover: hover) and (pointer: fine) {
+  .hero .grid::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(15, 227, 125, .35) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 227, 125, .35) 1px, transparent 1px);
+    background-size: 56px 56px; background-position: center top;
+    -webkit-mask-image: radial-gradient(220px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
+    mask-image: radial-gradient(220px circle at var(--mx, -500px) var(--my, -500px), #000, transparent 70%);
+  }
 }
 .scan {
   position: absolute; left: 0; right: 0; top: 0; height: 1px;
@@ -871,17 +879,26 @@ output { font: 500 13.5px var(--f-mono); color: var(--text); white-space: nowrap
 /* ---------- Finale ---------- */
 .finale { position: relative; isolation: isolate; overflow: hidden; text-align: center; padding: clamp(100px, 14vw, 180px) 0; border-top: 1px solid var(--line); }
 .finale-bg { position: absolute; inset: 0; z-index: -1; }
-.finale-bg .grid { -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 20%, transparent 75%); }
+.finale-bg .grid { --fade: radial-gradient(ellipse 55% 60% at 50% 45%, transparent 20%, var(--bg) 75%); }
 .finale-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 45% 45% at 50% 42%, rgba(15, 227, 125, .14), transparent 70%); }
+/* Two solid copies of the word (from data-word) over the element's own
+   invisible text, which only holds the space: ::before is the dim one, faded
+   with opacity; ::after is the fill, revealed from the right by clip-path as
+   --fill goes 0 → 1. Not background-clip:text with an animated
+   background-size: iOS WebKit painted that once and never repainted it as
+   --fill changed, so on a phone the word stayed dim. And not a translucent
+   `color`: Alexandria's overlapping contours show through one; `opacity` flattens the
+   glyphs first, so they don't. */
 .finale-ar {
+  position: relative;
   direction: rtl; font: 900 clamp(6rem, 24vw, 19rem)/1.15 var(--f-display); letter-spacing: normal;
   color: transparent;
-  background:
-    linear-gradient(var(--accent), var(--accent)) no-repeat right center / calc(var(--fill, 0) * 100%) 100%,
-    linear-gradient(rgba(15, 227, 125, .13), rgba(15, 227, 125, .13));
-  -webkit-background-clip: text; background-clip: text;
   filter: drop-shadow(0 0 50px rgba(15, 227, 125, .2));
 }
+.finale-ar::before,
+.finale-ar::after { content: attr(data-word); position: absolute; inset: 0; color: var(--accent); }
+.finale-ar::before { opacity: .13; }
+.finale-ar::after { clip-path: inset(0 0 0 calc((1 - var(--fill, 0)) * 100%)); }
 .finale-title { font: 800 clamp(1.9rem, 4.4vw, 3.6rem)/1.12 var(--f-display); letter-spacing: -.035em; max-width: 19ch; margin: 8px auto 40px; text-wrap: balance; }
 html[lang="ar"] .finale-title { line-height: 1.45; }
 .finale-title em { font-style: normal; color: var(--accent); }
@@ -900,7 +917,7 @@ html[lang="ar"] .finale-title { line-height: 1.45; }
 
 /* ---------- 404 ---------- */
 .nf { min-height: 100svh; display: grid; place-items: center; position: relative; isolation: isolate; overflow: hidden; text-align: center; padding: 40px 16px; }
-.nf .hero-bg .grid { -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 20%, transparent 75%); }
+.nf .hero-bg .grid { --fade: radial-gradient(ellipse 60% 60% at 50% 50%, transparent 20%, var(--bg) 75%); }
 .nf-mark { width: 64px; height: 64px; margin: 0 auto 8px; color: var(--accent); filter: drop-shadow(0 0 30px rgba(15, 227, 125, .5)); }
 .nf-code { font: 900 clamp(6rem, 22vw, 14rem)/1 var(--f-display); letter-spacing: -.06em; color: #0e3824; }
 .nf h1 { font: 800 clamp(1.8rem, 4vw, 2.8rem)/1.2 var(--f-display); margin: 8px 0 6px; }
