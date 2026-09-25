@@ -244,14 +244,18 @@ ul, ol { padding: 0; }
   padding: clamp(120px, 16vh, 170px) 0 clamp(72px, 9vw, 110px);
 }
 .hero-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-/* The grid's edges fade under an overlay in the page colour, not a mask-image:
-   on a real iPhone the masked grid painted as nothing at all. Every grid sits
-   on the plain body background, so a --bg overlay looks the same as the mask
-   did. --fade is the overlay; each use sets its own shape. */
+/* The grid is one 56px SVG tile (a 1px line along its top and its left, in
+   --line's colour) repeated, and its edges fade under an overlay in the page
+   colour. Neither a mask-image nor 1px hard-stop linear-gradient tiles: on a
+   real iPhone the grid painted as nothing with either, while desktop engines,
+   Playwright's WebKit included, drew it fine. Every grid sits on the plain body
+   background, so a --bg overlay looks the same as a mask. --fade is the
+   overlay; each use sets its own shape. The SVG can't read var(--line), so its
+   stroke is --line spelled out (#f3f5f3 at .08) — change both together. */
 .grid {
   --fade: radial-gradient(ellipse 75% 60% at 50% 25%, transparent 25%, var(--bg) 75%);
   position: absolute; inset: 0;
-  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M0 .5H56M.5 0V56' fill='none' stroke='%23f3f5f3' stroke-opacity='.08'/%3E%3C/svg%3E");
   background-size: 56px 56px; background-position: center top;
 }
 .grid::after { content: ''; position: absolute; inset: 0; background: var(--fade); }
