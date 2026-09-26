@@ -331,7 +331,8 @@
   /* ---------- Dashboard ---------- */
   (function dashboard() {
     const form = $('[data-dash]');
-    const state = { age: true, captcha: true, honeypot: true, days: 7, type: 'math', attempts: 3 };
+    const state = { age: true, captcha: true, honeypot: true, days: 7, type: 'math', diff: 'medium', attempts: 3 };
+    const diffRow = $('[data-diff-row]', form);
     const range = $('[data-range="age"]', form);
     const outAge = $('[data-out="age"]', form);
     const outAtt = $('[data-out="attempts"]', form);
@@ -356,9 +357,12 @@
         steps[0].disabled = state.attempts <= 1;
         steps[1].disabled = state.attempts >= 10;
       }
+      const diffOn = state.captcha && state.type === 'math';
+      diffRow.classList.toggle('off', !diffOn);
+      $$('input', diffRow).forEach(c => { c.disabled = !diffOn; });
 
       prev('title').textContent = d.prev.title;
-      prev('desc').textContent = !state.captcha ? d.prev.off : state.type === 'math' ? d.prev.math(state.attempts) : d.prev.button;
+      prev('desc').textContent = !state.captcha ? d.prev.off : state.type === 'math' ? d.prev.math(state.attempts, state.diff) : d.prev.button;
       prev('age').textContent = state.age ? d.prev.age(state.days) : '';
       const btn = prev('btn');
       btn.hidden = !state.captcha;
@@ -382,6 +386,7 @@
     range.addEventListener('input', () => { state.days = Number(range.value); render(false); });
     range.addEventListener('change', () => render(true));
     $$('input[name="ctype"]', form).forEach(r => r.addEventListener('change', () => { state.type = r.value; render(true); }));
+    $$('input[name="cdiff"]', form).forEach(r => r.addEventListener('change', () => { state.diff = r.value; render(true); }));
     steps.forEach(b => b.addEventListener('click', () => {
       state.attempts = clamp(state.attempts + Number(b.dataset.step), 1, 10);
       render(true);

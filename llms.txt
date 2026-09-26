@@ -5,11 +5,19 @@
 > duration input is native Arabic, not a translation layer. Core features are free for
 > every server with no time limit and no card; an optional Pro tier raises some limits.
 
-Musaed runs nine independent systems that a server owner toggles per server: moderation
-with a full audit log; automatic protection (banned-word filter, spam detection, raid
-defense); an account-age gate; captcha verification; welcome messages; support tickets;
-auto-responses; text shortcuts for quick moderation; and a trap channel that auto-punishes
-anyone who posts in a channel marked off-limits. Most settings are configured from
+Musaed's features are independent and toggled per server: moderation with a full audit
+log; automatic protection (a banned-word filter that also catches stretched-out, spaced,
+symbol-swapped and Arabizi spellings and edited messages, with an optional ready-made word
+list from the Musaed team; spam detection; raid defense); anti-nuke protection, on by
+default, which strips the roles of anyone mass-deleting channels or roles or mass-banning
+or mass-kicking members and alerts staff; an account-age gate; captcha verification (in the
+verification channel or by DM, button or math at three difficulty levels); welcome and
+goodbye messages; separate auto-roles for new members and new bots; support tickets;
+auto-responses; text shortcuts for quick moderation; a trap channel that mutes, kicks or
+bans anyone who posts in a channel marked off-limits; a server log channel (message
+deletes and edits, joins and leaves, role and nickname changes, channel and role creates
+and deletes — nothing stored by Musaed); and /checkup, plus a one-time alert when an
+enabled feature stops working. Most settings are configured from
 the dashboard at https://dashboard.musaed.dev; a few systems also have in-chat setup
 commands. Durations can be written in plain Arabic ("أسبوع", "30 يوم") or the short form
 (1h30m).
@@ -22,7 +30,7 @@ and the interactive dashboard preview, is illustrative UI, not live data from an
 
 ## Pages
 
-- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the four protection layers, the toolkit (tickets, shortcuts, auto-responses, welcome, mod logs, member DMs), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
+- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, member DMs), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)

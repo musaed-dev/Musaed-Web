@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>مساعد — بوت ديسكورد اللي يحرس الباب</title>
-  <meta name="description" content="مساعد يفحص كل عضو جديد ببوابة عمر الحساب والكابتشا وقناة الفخ، ويحمي سيرفرك بالحماية التلقائية والتذاكر واختصارات الإدارة. عربي من الأساس، وتضبطه من لوحة تحكم على الويب.">
+  <meta name="description" content="مساعد يفحص كل عضو جديد ببوابة عمر الحساب والكابتشا وقناة الفخ، ويحمي سيرفرك من السبام والتخريب، ومعه التذاكر واختصارات الإدارة وسجل الأحداث. عربي من الأساس، وتضبطه من لوحة تحكم على الويب.">
   <meta name="theme-color" content="#0b0d0c">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:locale:alternate" content="en_US">
@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=7">
+  <link rel="stylesheet" href="assets/css/styles.css?v=8">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,7 +53,7 @@
       "inLanguage": "ar",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Discord",
-      "description": "مساعد يفحص كل عضو جديد ببوابة عمر الحساب والكابتشا وقناة الفخ، ويحمي سيرفرك بالحماية التلقائية والتذاكر واختصارات الإدارة. عربي من الأساس، وتضبطه من لوحة تحكم على الويب.",
+      "description": "مساعد يفحص كل عضو جديد ببوابة عمر الحساب والكابتشا وقناة الفخ، ويحمي سيرفرك من السبام والتخريب، ومعه التذاكر واختصارات الإدارة وسجل الأحداث. عربي من الأساس، وتضبطه من لوحة تحكم على الويب.",
       "image": "https://musaed.dev/assets/Pics/musaed-avatar.png",
       "isAccessibleForFree": true,
       "featureList": [
@@ -61,7 +61,11 @@
         "الكابتشا",
         "قناة الفخ",
         "الحماية التلقائية",
+        "الحماية من التخريب",
         "التذاكر",
+        "الترحيب والوداع والرتب التلقائية",
+        "سجل الأحداث",
+        "فحص السيرفر",
         "لوحة تحكم ويب"
       ],
       "publisher": { "@id": "https://musaed.dev/#org" }
@@ -108,7 +112,7 @@
           "name": "متى ينزل برو؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "قريبًا. كل مزايا الباقة المجانية شغالة من اليوم، وبرو بيضيف حدود أعلى للسيرفرات الكبيرة. وبنعلن عن نزوله بسيرفر الدعم."
+            "text": "قريبًا. كل مزايا الباقة المجانية شغالة من اليوم، وبرو بيضيف حدود أعلى، ولون وتذييل خاص بسيرفرك على رسايل مساعد، وأكثر من لوحة تذاكر. وبنعلن عن نزوله بسيرفر الدعم."
           }
         },
         {
@@ -117,6 +121,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "أكيد. كل ميزة تنفعّل وتنطفي لحالها، فمساعد يحرس الباب وبوتاتك الثانية تكمل شغلها."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "وش هو الوصول المبكر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "طريقة يجرّب فيها السيرفر مزايا مساعد الجديدة قبل ما تنطلق للكل. ما يعطيك أكثر من برو، وما يرفع أي حد. والميزة اللي فيه ممكن تتغير أو تنشال، وممكن تصير مدفوعة بعدين. وبنعلن طريقة الانضمام بسيرفر الدعم."
           }
         }
       ]
@@ -137,8 +149,8 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=2" defer></script>
-  <script src="assets/js/main.js?v=3" defer></script>
+  <script src="assets/js/i18n.js?v=4" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -172,6 +184,13 @@
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
     <symbol id="i-layout" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-shieldalert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-userminus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></symbol>
   </svg>
 
   <header class="nav" id="nav">
@@ -222,7 +241,7 @@
         <div class="hero-copy">
           <p class="eyebrow-pill fade-up" style="--d:0ms"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Musaed means “the helper” in Arabic</span></p>
           <h1 class="display fade-up" style="--d:120ms" data-i18n="hero.title">Trouble stops <em>at the door.</em></h1>
-          <p class="lede fade-up" style="--d:260ms" data-i18n="hero.sub">Musaed checks every new member through an age gate, a captcha and a honeypot before they can cause trouble, then keeps watch with automod, tickets and one-word mod shortcuts. All of it is set up from a web dashboard.</p>
+          <p class="lede fade-up" style="--d:260ms" data-i18n="hero.sub">Musaed checks every new member through an age gate, a captcha and a honeypot before they can cause trouble, then keeps watch with automod, anti-nuke, tickets and one-word mod shortcuts. All of it is set up from a web dashboard.</p>
           <div class="cta-row fade-up" style="--d:380ms">
             <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.addLong">Add Musaed to your server</span></a>
             <a class="btn btn-ghost btn-lg" href="#gate"><span data-i18n="hero.cta2">Watch the gate</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -276,7 +295,7 @@
             </div>
             <div class="station gate" data-station="captcha">
               <span class="node"><svg class="i"><use href="#i-badge"/></svg></span>
-              <div class="st-text"><b data-i18n="st.captcha">Captcha</b><small data-i18n="st.captchaSub">math question by DM</small><p class="gate-log" data-log="captcha"></p></div>
+              <div class="st-text"><b data-i18n="st.captcha">Captcha</b><small data-i18n="st.captchaSub">math question in #verify</small><p class="gate-log" data-log="captcha"></p></div>
             </div>
             <div class="station gate" data-station="honeypot">
               <span class="node"><svg class="i"><use href="#i-target"/></svg></span>
@@ -295,10 +314,10 @@
     <section class="ticker" aria-label="Features" data-i18n-attr="aria-label:ticker.aria">
       <div class="ticker-track">
         <ul>
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
+          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
         </ul>
         <ul aria-hidden="true">
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
+          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
         </ul>
       </div>
     </section>
@@ -308,7 +327,7 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <p class="eyebrow">01 — <span data-i18n="prot.eyebrow">Protection</span></p>
-          <h2 class="h2" data-i18n="prot.title">Four layers. <em>One quiet server.</em></h2>
+          <h2 class="h2" data-i18n="prot.title">Five layers. <em>One quiet server.</em></h2>
           <p class="sec-sub" data-i18n="prot.sub">Each layer catches what slipped past the one before it. Most raiders never make it past the first.</p>
         </div>
 
@@ -335,22 +354,22 @@
             <div class="layer-copy">
               <span class="layer-n">02</span>
               <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg><span data-i18n="l2.tag">Captcha</span></span>
-              <h3 data-i18n="l2.title">A quick check in their DMs.</h3>
-              <p data-i18n="l2.desc">New members get an Unverified role and a challenge by DM: one button, or a math question. Too many wrong answers and they're out. Lockdown hides every channel except verification.</p>
+              <h3 data-i18n="l2.title">A quick check before they get in.</h3>
+              <p data-i18n="l2.desc">New members get an Unverified role and a challenge in the verification channel, or by DM if you choose: one button, or a math question at easy, medium or hard. Too many wrong answers and they're out. Lockdown hides every channel except verification.</p>
             </div>
             <div class="layer-vis vis-dm" aria-hidden="true">
-              <div class="dm-head"><svg class="i"><use href="#i-message"/></svg><span data-i18n="l2.dm">Direct message</span></div>
+              <div class="dm-head"><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l2.dm">verify</span></div>
               <div class="dm-msg">
                 <span class="bot-av"><svg><use href="#glyph"/></svg></span>
                 <div>
                   <p class="dm-meta"><b>Musaed</b><span class="badge">BOT</span></p>
                   <div class="embed">
                     <strong data-i18n="l2.q">Answer to get into the server</strong>
-                    <span class="math">7 + 5 = ?</span>
+                    <span class="math">7 + 5 + 3 = ?</span>
                   </div>
                 </div>
               </div>
-              <div class="dm-input"><span class="typed">12</span><span class="caret"></span><span class="dm-send" data-i18n="l2.submit">Submit</span></div>
+              <div class="dm-input"><span class="typed">15</span><span class="caret"></span><span class="dm-send" data-i18n="l2.submit">Submit</span></div>
               <div class="dm-result"><svg class="i"><use href="#i-check"/></svg><span data-i18n="l2.ok">Verified. Unverified role removed.</span></div>
             </div>
           </article>
@@ -361,7 +380,7 @@
               <span class="layer-n">03</span>
               <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><span data-i18n="l3.tag">Honeypot</span></span>
               <h3 data-i18n="l3.title">A trap only bots fall into.</h3>
-              <p data-i18n="l3.desc">Pick one channel no real member would post in. Any account that writes there is kicked or timed out automatically. It catches captcha-solving bots and hijacked accounts.</p>
+              <p data-i18n="l3.desc">Pick one channel no real member would post in. Any account that writes there is muted, kicked or banned automatically, and you choose whether its message is deleted or stays. It catches captcha-solving bots and hijacked accounts.</p>
             </div>
             <div class="layer-vis vis-honey" aria-hidden="true">
               <ul class="chans">
@@ -383,7 +402,7 @@
               <span class="layer-n">04</span>
               <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="l4.tag">AutoMod</span></span>
               <h3 data-i18n="l4.title">Spam, banned words and raids, handled.</h3>
-              <p data-i18n="l4.desc">Banned-word filtering and spam detection on every message, plus raid detection that watches how fast people join.</p>
+              <p data-i18n="l4.desc">Banned words are caught even stretched out, spaced apart, swapped for symbols or typed in Arabizi, and in messages edited after sending. A ready-made list from the Musaed team covers several dialects, and you can turn it off. Spam detection and raid detection run alongside.</p>
             </div>
             <div class="layer-vis vis-auto" aria-hidden="true">
               <div class="vis-top"><span data-i18n="l4.window">Messages in 5 seconds</span><b data-i18n="l4.limit">limit 5</b></div>
@@ -393,9 +412,30 @@
               </div>
               <div class="auto-chip"><svg class="i"><use href="#i-zap"/></svg><span data-i18n="l4.muted">Spam stopped · member timed out</span></div>
               <div class="words">
-                <span data-i18n="l4.words">Banned words</span>
-                <em>████</em><em>██████</em><em>███</em><em>█████</em>
+                <span data-i18n="l4.words">Banned words, even disguised</span>
+                <em>████</em><em>█ █ █ █</em><em>██$█</em><em>█████</em>
               </div>
+            </div>
+          </article>
+
+          <!-- Layer 5: Anti-nuke. Threshold matches the bot's default: 5 destructive actions in 60 seconds. -->
+          <article class="layer reveal" style="--n:4">
+            <div class="layer-copy">
+              <span class="layer-n">05</span>
+              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-shieldalert"/></svg><span data-i18n="l5.tag">Anti-nuke</span></span>
+              <h3 data-i18n="l5.title">Stopped before the server is gone.</h3>
+              <p data-i18n="l5.desc">If someone starts deleting channels or roles, or mass-banning or mass-kicking members, Musaed removes their roles right away and alerts your staff. It's on from the moment you add the bot, and you can turn it off.</p>
+            </div>
+            <div class="layer-vis vis-nuke" aria-hidden="true">
+              <div class="vis-top"><span data-i18n="l5.window">Destructive actions in 60 seconds</span><b data-i18n="l5.limit">limit 5</b></div>
+              <ol class="audit">
+                <li style="--i:0"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a1">deleted #general</span><b>1</b></li>
+                <li style="--i:1"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a2">deleted #rules</span><b>2</b></li>
+                <li style="--i:2"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a3">deleted the @Mods role</span><b>3</b></li>
+                <li style="--i:3"><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a4">banned layla</span><b>4</b></li>
+                <li style="--i:4" class="hit"><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a5">banned omar</span><b>5</b></li>
+              </ol>
+              <div class="nuke-stop"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="l5.stop">rogue_mod stopped · roles removed, staff alerted</span></div>
             </div>
           </article>
         </div>
@@ -448,8 +488,8 @@
 
           <article class="card c-welcome reveal">
             <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-userplus"/></svg><span data-i18n="t4.tag">Welcome</span></span>
-            <h3 data-i18n="t4.title">A welcome message and a starting role.</h3>
-            <p data-i18n="t4.desc">Greet every member in the channel you pick, give them a role automatically, and check how it looks with /welcome preview.</p>
+            <h3 data-i18n="t4.title">Welcome message, goodbye message and auto-role.</h3>
+            <p data-i18n="t4.desc">Greet every member in the channel you pick, and say goodbye when they leave (not when they're kicked or banned). New members get one role automatically, new bots a separate one.</p>
             <div class="vis-welcome" aria-hidden="true">
               <span class="w-av">S</span>
               <div><b data-i18n="t4.hi">Welcome, @sara!</b><small data-i18n="t4.num">You're member #1,204. Glad you're here.</small></div>
@@ -467,6 +507,34 @@
                 <div><dt data-i18n="t5.strikes">AutoMod strikes</dt><dd>1</dd></div>
                 <div><dt data-i18n="t5.joined">Joined</dt><dd data-i18n="t5.when">3 months ago</dd></div>
               </dl>
+            </div>
+          </article>
+
+          <article class="card c-log reveal">
+            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="t7.tag">Server log</span></span>
+            <h3 data-i18n="t7.title">Everything that happens, in one channel.</h3>
+            <p data-i18n="t7.desc">Every deleted or edited message, every join and leave, every role or nickname change, and every channel or role created or deleted. Musaed keeps no copy of any of it.</p>
+            <ul class="vis-log" aria-hidden="true">
+              <li style="--i:0"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="t7.l1">Message deleted in #general</span></li>
+              <li style="--i:1"><svg class="i"><use href="#i-pencil"/></svg><span data-i18n="t7.l2">Message edited in #clips</span></li>
+              <li style="--i:2" class="in-ok"><svg class="i"><use href="#i-userplus"/></svg><span data-i18n="t7.l3">sara joined</span></li>
+              <li style="--i:3"><svg class="i"><use href="#i-userminus"/></svg><span data-i18n="t7.l4">omar left</span></li>
+              <li style="--i:4" class="in-ok"><svg class="i"><use href="#i-badge"/></svg><span data-i18n="t7.l5">@Helpers role created</span></li>
+            </ul>
+          </article>
+
+          <article class="card c-check reveal">
+            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-activity"/></svg><span data-i18n="t8.tag">Server checkup</span></span>
+            <h3 data-i18n="t8.title">Tells you what's broken.</h3>
+            <p data-i18n="t8.desc">/checkup checks your server's setup. If a feature you turned on stops working (the bot's role got moved down, a channel was deleted, a permission is missing), Musaed sends you one alert about it. And if the trap channel couldn't punish someone, it lets you know.</p>
+            <div class="vis-check" aria-hidden="true">
+              <div class="lk-head"><svg class="i"><use href="#i-activity"/></svg><b data-i18n="t8.head">Server checkup</b><code>/checkup</code></div>
+              <ul>
+                <li class="ok"><svg class="i"><use href="#i-check"/></svg><b data-i18n="t8.f1">Captcha</b><span data-i18n="t8.fine">working</span></li>
+                <li class="bad"><svg class="i"><use href="#i-alert"/></svg><b data-i18n="t8.f2">Welcome</b><span data-i18n="t8.why2">channel was deleted</span></li>
+                <li class="bad"><svg class="i"><use href="#i-alert"/></svg><b data-i18n="t8.f3">Auto-role</b><span data-i18n="t8.why3">role is above Musaed's</span></li>
+              </ul>
+              <div class="chk-alert"><svg class="i"><use href="#i-bell"/></svg><span data-i18n="t8.alert">One alert sent to your admins</span></div>
             </div>
           </article>
 
@@ -527,7 +595,7 @@
               </div>
 
               <div class="setting">
-                <div class="set-text"><b id="lbl-cap" data-i18n="dash.captcha">Captcha</b><small data-i18n="dash.captchaSub">Challenge new members by DM.</small></div>
+                <div class="set-text"><b id="lbl-cap" data-i18n="dash.captcha">Captcha</b><small data-i18n="dash.captchaSub">Challenge new members in #verify, or by DM.</small></div>
                 <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-cap" data-toggle="captcha"></button>
               </div>
               <div class="setting sub" data-dep="captcha">
@@ -535,6 +603,14 @@
                 <div class="seg" role="radiogroup" aria-labelledby="lbl-type">
                   <label><input type="radio" name="ctype" value="button"><span data-i18n="dash.button">Button</span></label>
                   <label><input type="radio" name="ctype" value="math" checked><span data-i18n="dash.math">Math question</span></label>
+                </div>
+              </div>
+              <div class="setting sub" data-dep="captcha" data-diff-row>
+                <span id="lbl-diff" data-i18n="dash.diff">Math difficulty</span>
+                <div class="seg" role="radiogroup" aria-labelledby="lbl-diff">
+                  <label><input type="radio" name="cdiff" value="easy"><span data-i18n="dash.easy">Easy</span></label>
+                  <label><input type="radio" name="cdiff" value="medium" checked><span data-i18n="dash.medium">Medium</span></label>
+                  <label><input type="radio" name="cdiff" value="hard"><span data-i18n="dash.hard">Hard</span></label>
                 </div>
               </div>
               <div class="setting sub" data-dep="captcha">
@@ -645,21 +721,23 @@
             <a class="btn btn-ghost" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><span data-i18n="cta.add">Add to Discord</span></a>
             <ul>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f1">Age gate, captcha and honeypot</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f2">AutoMod with raid detection</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f3">Tickets, welcome, shortcuts and auto-responses</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f4">Mod logs and /lookup</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f2">AutoMod, anti-nuke and raid detection</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f3">Tickets, welcome and goodbye, auto-roles, shortcuts and auto-responses</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f4">Mod logs, the server log and /lookup</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f6">/checkup and alerts when a feature breaks</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f5">The full web dashboard</span></li>
             </ul>
           </article>
           <article class="plan pro reveal">
             <span class="ribbon" data-i18n="plans.ribbon">Coming soon</span>
             <h3>Pro</h3>
-            <p class="plan-for" data-i18n="plans.proFor">Higher limits for bigger communities.</p>
+            <p class="plan-for" data-i18n="plans.proFor">Higher limits and your own look, for bigger communities.</p>
             <span class="btn btn-soon" role="button" aria-disabled="true"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="plans.proCta">Coming soon</span></span>
             <ul>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p1">Everything in Free</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher allowances for tickets, shortcuts and auto-responses</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p3">Early access to new features</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p4">Your server's own colour and footer on Musaed's messages</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p5">More than one ticket panel, with buttons that open a ticket type in one click</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher allowances for shortcuts and auto-responses</span></li>
             </ul>
           </article>
         </div>
@@ -678,8 +756,9 @@
           <details><summary><span data-i18n="faq.q2">Where do I change settings?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a2">In the <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">web dashboard</a>. Sign in with Discord, pick your server, and every feature has its own page. Ticket and verification panels in Discord update on their own when you save.</p></details>
           <details><summary><span data-i18n="faq.q3">Will the age gate kick real people?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a3">Only accounts younger than the minimum you choose, and only when they join. They get a DM explaining why, so a real person knows to come back once their account is old enough.</p></details>
           <details><summary><span data-i18n="faq.q4">What does the honeypot catch that the captcha doesn't?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a4">Accounts that already passed verification: captcha-solving bots, hijacked accounts, or anyone ignoring a channel labelled "don't post here". Unverified accounts can't even see the trap.</p></details>
-          <details><summary><span data-i18n="faq.q5">When is Pro coming?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a5">Soon. Everything in the free plan works today, and Pro will add higher limits for bigger servers. We'll announce the launch in the <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">support server</a>.</p></details>
+          <details><summary><span data-i18n="faq.q5">When is Pro coming?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a5">Soon. Everything in the free plan works today. Pro will add higher limits, your server's own colour and footer on Musaed's messages, and more than one ticket panel. We'll announce the launch in the <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">support server</a>.</p></details>
           <details><summary><span data-i18n="faq.q6">Can I use Musaed with other bots?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a6">Yes. Every feature can be turned on or off by itself, so Musaed can guard the door while your other bots keep their jobs.</p></details>
+          <details><summary><span data-i18n="faq.q7">What is Early Access?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a7">A way for a server to try new Musaed features before they launch for everyone. It never gives more than Pro and never raises a limit. A feature in it can change or be removed, and it can become paid later. We'll announce how to join in the <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">support server</a>.</p></details>
         </div>
       </div>
     </section>
