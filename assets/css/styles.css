@@ -466,6 +466,32 @@ html:not(.js) .g-fill { opacity: 1; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes marqueeRtl { to { transform: translateX(50%); } }
 
+/* ---------- Film (the 22-second spot) ---------- */
+.film-frame {
+  position: relative; max-width: 1100px; margin-inline: auto; aspect-ratio: 16 / 9;
+  border-radius: clamp(16px, 2.4vw, 28px); overflow: hidden;
+  border: 1px solid var(--line-2); background: var(--bg-1);
+  box-shadow: 0 40px 100px -40px rgba(0, 0, 0, .9), 0 0 120px -60px rgba(15, 227, 125, .5);
+}
+.film-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* The whole poster is the button; the mint disc is just its face. */
+.film-play {
+  position: absolute; inset: 0; display: grid; place-items: center; padding: 0; border: 0; cursor: pointer;
+  background: linear-gradient(180deg, transparent 55%, rgba(11, 13, 12, .45));
+}
+.film-play[hidden] { display: none; }
+.film-play span {
+  width: clamp(64px, 9vw, 96px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center;
+  background: var(--accent); color: var(--on-accent);
+  box-shadow: 0 0 0 10px rgba(15, 227, 125, .15), 0 20px 50px -10px rgba(15, 227, 125, .75);
+  transition: transform .25s var(--ease), box-shadow .3s;
+}
+.film-play:hover span { transform: scale(1.06); box-shadow: 0 0 0 14px rgba(15, 227, 125, .18), 0 24px 60px -10px rgba(15, 227, 125, .9); }
+.film-play:focus-visible { outline-offset: -6px; border-radius: inherit; }
+/* A play triangle points right in both languages, so it is not mirrored in RTL;
+   the nudge is optical centring, hence physical margin-left. */
+.film-play .i { width: 42%; height: 42%; fill: currentColor; stroke: none; margin-left: 6%; }
+
 /* ---------- Section heads ---------- */
 .sec-head { max-width: 800px; margin-bottom: clamp(44px, 6vw, 72px); }
 .sec-head.center { margin-inline: auto; text-align: center; }
