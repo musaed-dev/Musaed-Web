@@ -44,6 +44,7 @@ and the interactive dashboard preview, is illustrative UI, not live data from an
 - Dashboard: https://dashboard.musaed.dev
 - Community / support server: https://discord.gg/CcwRT6K5qv
 - Short videos: https://www.youtube.com/@musaed_dev · https://www.tiktok.com/@musaed_dev · https://www.instagram.com/musaed_dev
+- GitHub: https://github.com/musaed-dev (the website's source is public there; the bot's is not)
 
 ## Not this site
 
