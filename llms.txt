@@ -43,6 +43,7 @@ and the interactive dashboard preview, is illustrative UI, not live data from an
 - Add the bot: https://discord.com/oauth2/authorize?client_id=1341863717247258655&permissions=8&scope=bot+applications.commands
 - Dashboard: https://dashboard.musaed.dev
 - Community / support server: https://discord.gg/CcwRT6K5qv
+- Short videos: https://www.youtube.com/@musaed_dev · https://www.tiktok.com/@musaed_dev · https://www.instagram.com/musaed_dev
 
 ## Not this site
 
