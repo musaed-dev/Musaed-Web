@@ -141,6 +141,21 @@
     });
   }
 
+  /* ---------- Film: native controls without JS; a big play button with it ---------- */
+  (function film() {
+    const box = $('[data-film]');
+    if (!box) return;
+    const video = $('video', box);
+    const play = $('[data-film-play]', box);
+    video.controls = false;
+    play.hidden = false;
+    play.addEventListener('click', () => {
+      play.hidden = true;
+      video.controls = true;
+      video.play().catch(() => {});   // if playback is refused, the native controls are still there
+    });
+  })();
+
   /* ---------- Join-gate demo ---------- */
   (function gateDemo() {
     const demo = $('[data-demo]');

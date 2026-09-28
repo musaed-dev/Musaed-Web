@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=8">
+  <link rel="stylesheet" href="assets/css/styles.css?v=9">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -149,8 +149,8 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=4" defer></script>
-  <script src="assets/js/main.js?v=4" defer></script>
+  <script src="assets/js/i18n.js?v=5" defer></script>
+  <script src="assets/js/main.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -190,6 +190,7 @@
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
     <symbol id="i-userminus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.6v14.8a1 1 0 0 0 1.52.85l12.02-7.4a1 1 0 0 0 0-1.7L8.52 3.75A1 1 0 0 0 7 4.6Z"/></symbol>
     <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></symbol>
   </svg>
 
@@ -319,6 +320,26 @@
         <ul aria-hidden="true">
           <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- FILM: the 22-second spot, self-hosted (no third-party player). preload="none", so
+         nothing downloads until someone presses play. Without JS it's a plain <video controls>;
+         main.js swaps the native controls for the big play button until first play. -->
+    <section class="section film" id="film">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <p class="eyebrow" data-i18n="film.eyebrow">Musaed in 22 seconds</p>
+          <h2 class="h2" data-i18n="film.title">Watch it <em>guard the door.</em></h2>
+          <p class="sec-sub" data-i18n="film.sub">A rogue mod deleting channels, fake accounts at the door, a bot posting in the trap. See what Musaed does with each one. The video is in Arabic.</p>
+        </div>
+        <div class="film-frame reveal" data-film>
+          <video src="assets/video/musaed-spot.mp4?v=1" poster="assets/video/musaed-spot.jpg?v=1" preload="none" controls playsinline width="1920" height="1080" aria-describedby="film-desc"></video>
+          <button class="film-play" type="button" data-film-play hidden data-i18n-attr="aria-label:film.play" aria-label="Play the video">
+            <span><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></span>
+          </button>
+        </div>
+        <p class="sr-only" id="film-desc" data-i18n="film.desc">A 22-second video with music and Arabic on-screen text, no speech. A moderator starts deleting channels and banning members; at the fifth action within 60 seconds Musaed removes their roles and alerts the staff. New members then pass through the age gate, the captcha and the honeypot, and the suspicious accounts are stopped. An account posts "free nitro for everyone" in the honeypot channel and is muted at once. It ends on the website address, musaed.dev.</p>
       </div>
     </section>
 
