@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دليل مساعد</title>
+  <meta name="description" content="دليل مساعد: شرح بسيط لكل ميزة، وكيف تفعّلها، وايش تسوي لو صار شي.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0d0c">
+  <link rel="icon" href="../assets/Pics/musaed-favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../assets/Pics/musaed-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/Pics/musaed-avatar.png">
+  <link rel="canonical" href="https://musaed.dev/guide/">
+  <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    // Motion is gated on .js so the page is fully visible without script; if guide.js never runs, show everything after 3s.
+    document.documentElement.classList.add('js');
+    setTimeout(function () { var d = document.documentElement; if (!d.classList.contains('gd-ready')) d.classList.add('gd-show'); }, 3000);
+  </script>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/legal.css?v=2">
+  <link rel="stylesheet" href="../assets/css/guide.css?v=2">
+  <script src="../assets/js/guide.js?v=2" defer></script>
+</head>
+<body class="guide-page guide-hub">
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="glyph" viewBox="0 0 1024 1024"><path fill="currentColor" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-dash" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+  </svg>
+
+  <header class="lg-bar">
+    <div class="lg-bar-in">
+      <a href="../index.html" class="brand" aria-label="مساعد، الرئيسية">
+        <span class="brand-mark"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
+        <span class="brand-name">Musaed</span><span class="brand-ar" aria-hidden="true">مساعد</span>
+      </a>
+      <nav class="lg-links" aria-label="صفحات">
+        <a href="../index.html">الرئيسية</a>
+        <a href="index.html" aria-current="page">الدليل</a>
+        <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">الدعم</a>
+      </nav>
+      <a class="btn btn-primary btn-sm lg-add" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>أضفه لديسكورد</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lg-hero">
+      <div class="hero-bg" aria-hidden="true"><div class="grid"></div><div class="aurora"></div></div>
+      <div class="wrap">
+        <p class="eyebrow gd-rise" style="--i:0">دليل مساعد</p>
+        <h1 class="lg-title">كل شي عن مساعد، بمكان وحد.</h1>
+        <p class="lg-lede gd-rise" style="--i:4">
+          شرح بسيط لكل ميزة: وش تسوي، وكيف تفعّلها من لوحة التحكم، وايش تسوي لو صار شي.
+        </p>
+
+        <form class="gd-search gd-rise" style="--i:5" role="search" autocomplete="off">
+          <label for="gd-q">ابحث بالدليل</label>
+          <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="gd-q" type="search" placeholder="ابحث، مثلًا: كابتشا، رتبة، تذاكر…" enterkeyhint="search">
+        </form>
+        <ul class="gd-results" id="gd-results" hidden></ul>
+        <p class="gd-empty" id="gd-empty" hidden>
+          <strong>ما لقينا شي يطابق بحثك.</strong>
+          جرّب كلمة أبسط، أو تصفّح الأقسام تحت، أو اسأل
+          <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">بسيرفر الدعم</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="wrap gd-main">
+      <h2 class="gd-h2 reveal">ابدأ بثلاث خطوات</h2>
+      <p class="gd-h2-sub reveal" style="--i:1">أول ما تضيف مساعد، هذي أهم ثلاث أشياء.</p>
+      <ol class="gd-quick">
+        <li class="reveal" style="--i:0">
+          <strong>أضفه لسيرفرك</strong>
+          <span>اضغط <a href="start.html#add">أضفه لديسكورد</a> واختار سيرفرك.</span>
+        </li>
+        <li class="reveal" style="--i:1">
+          <strong>ارفع رتبته</strong>
+          <span>حط رتبة مساعد فوق الرتب اللي يتعامل معها، وإلا بعض الميزات ما تشتغل. <a href="start.html#roles">كيف؟</a></span>
+        </li>
+        <li class="reveal" style="--i:2">
+          <strong>فعّل من اللوحة</strong>
+          <span>ادخل <a href="start.html#dashboard">لوحة التحكم</a>، وفعّل الميزات اللي تبيها.</span>
+        </li>
+      </ol>
+
+      <h2 class="gd-h2 reveal">تصفّح الأقسام</h2>
+      <p class="gd-h2-sub reveal" style="--i:1">كل قسم فيه الميزات مرتبة، وكل ميزة تشرح لك الإعداد خطوة خطوة.</p>
+      <div class="gd-cards">
+        <a class="gd-card reveal" style="--i:0" href="start.html">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg></span>
+          <h3>البداية</h3>
+          <p>إضافة مساعد، ترتيب الرتب، لوحة التحكم، وأول ضبط مقترح.</p>
+          <span class="gd-card-more">افتح القسم <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="gd-card reveal" style="--i:1" href="protection.html">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <h3>الحماية</h3>
+          <p>بوابة العمر، الكابتشا، قناة الفخ، الحماية التلقائية، والحماية من التخريب.</p>
+          <span class="gd-card-more">افتح القسم <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="gd-card reveal" style="--i:2" href="toolkit.html">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+          <h3>الأدوات</h3>
+          <p>التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات، ورسائل الأعضاء.</p>
+          <span class="gd-card-more">افتح القسم <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="gd-card reveal" style="--i:3" href="commands.html">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg></span>
+          <h3>الأوامر</h3>
+          <p>كل أوامر السلاش، ومين يقدر يستخدم كل أمر، وكيف تكتب المدة.</p>
+          <span class="gd-card-more">افتح القسم <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="gd-card reveal" style="--i:4" href="start.html#dashboard">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-dash"/></svg></span>
+          <h3>لوحة التحكم</h3>
+          <p>كيف تدخل، ومين يقدر يغيّر وش، وإيش يصير بعد ما تحفظ.</p>
+          <span class="gd-card-more">اقرأ <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="gd-card reveal" style="--i:5" href="troubleshooting.html">
+          <span class="gd-card-ic"><svg class="i" aria-hidden="true"><use href="#i-lifebuoy"/></svg></span>
+          <h3>حل المشاكل</h3>
+          <p>ميزة ما تشتغل؟ رتبة؟ قناة؟ هنا الأسباب الشائعة وحلها.</p>
+          <span class="gd-card-more">افتح القسم <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+      </div>
+
+      <div class="gd-help reveal">
+        <div>
+          <h2>ما لقيت اللي تبي؟</h2>
+          <p>اسأل بسيرفر الدعم وبنساعدك.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>سيرفر الدعم</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="lg-foot">
+    <div class="wrap lg-foot-in">
+      <span>© 2026 مساعد. غير تابع لشركة Discord.</span>
+      <nav aria-label="روابط">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../privacy.html">الخصوصية</a>
+        <a href="../terms.html">الشروط</a>
+        <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">لوحة التحكم</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

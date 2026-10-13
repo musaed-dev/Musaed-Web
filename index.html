@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=10">
+  <link rel="stylesheet" href="assets/css/styles.css?v=12">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -155,7 +155,7 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=5" defer></script>
+  <script src="assets/js/i18n.js?v=7" defer></script>
   <script src="assets/js/main.js?v=5" defer></script>
 </head>
 <body>
@@ -217,6 +217,7 @@
         <a href="#commands" data-i18n="nav.commands">Commands</a>
         <a href="#plans" data-i18n="nav.plans">Plans</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a class="is-new" href="guide/index.html" data-i18n="nav.guide">Guide</a>
       </nav>
       <div class="nav-cta">
         <button class="lang-btn" type="button" data-lang-toggle aria-label="اقرأ الصفحة بالعربي">
@@ -239,6 +240,7 @@
       <a href="#commands" data-i18n="nav.commands">Commands</a>
       <a href="#plans" data-i18n="nav.plans">Plans</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="is-new" href="guide/index.html" data-i18n="nav.guide">Guide</a>
       <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener" data-i18n="nav.login">Log in</a>
       <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.add">Add to Discord</span></a>
     </div>
@@ -685,6 +687,7 @@
         </div>
         <div class="dash-cta reveal">
           <a class="btn btn-primary btn-lg" href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener"><span data-i18n="dash.open">Open the dashboard</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost btn-lg" href="guide/index.html" data-i18n="dash.guide">Setup guide (Arabic)</a>
           <span data-i18n="dash.openNote">Sign in with Discord. Free, no card needed.</span>
         </div>
       </div>
@@ -781,6 +784,9 @@
         <div class="sec-head reveal">
           <p class="eyebrow">07 — <span data-i18n="faq.eyebrow">Questions</span></p>
           <h2 class="h2" data-i18n="faq.title">Before you <em>add it.</em></h2>
+          <div class="dash-cta">
+            <a class="btn btn-ghost" href="guide/index.html"><span data-i18n="faq.guide">Read the full guide (Arabic)</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
         </div>
         <div class="faq-list reveal">
           <details><summary><span data-i18n="faq.q1">Does Musaed speak Arabic?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a1">Yes. Musaed was built Arabic-first. Its replies, panels and command descriptions are all in Arabic.</p></details>
@@ -824,7 +830,7 @@
           </ul>
         </div>
         <nav aria-label="Product" data-i18n-attr="aria-label:foot.product"><h3 data-i18n="foot.product">Product</h3><ul><li><a href="#protection" data-i18n="nav.protection">Protection</a></li><li><a href="#toolkit" data-i18n="nav.toolkit">Toolkit</a></li><li><a href="#dashboard" data-i18n="nav.dashboard">Dashboard</a></li><li><a href="#commands" data-i18n="nav.commands">Commands</a></li></ul></nav>
-        <nav aria-label="Resources" data-i18n-attr="aria-label:foot.res"><h3 data-i18n="foot.res">Resources</h3><ul><li><a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="foot.support">Support server</a></li><li><a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener" data-i18n="foot.dash">Dashboard</a></li><li><a href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener" data-i18n="foot.invite">Invite Musaed</a></li><li><a href="#plans" data-i18n="nav.plans">Plans</a></li></ul></nav>
+        <nav aria-label="Resources" data-i18n-attr="aria-label:foot.res"><h3 data-i18n="foot.res">Resources</h3><ul><li><a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="foot.support">Support server</a></li><li><a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener" data-i18n="foot.dash">Dashboard</a></li><li><a href="guide/index.html" data-i18n="foot.guide">User guide (Arabic)</a></li><li><a href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener" data-i18n="foot.invite">Invite Musaed</a></li><li><a href="#plans" data-i18n="nav.plans">Plans</a></li></ul></nav>
         <nav aria-label="Legal" data-i18n-attr="aria-label:foot.legal"><h3 data-i18n="foot.legal">Legal</h3><ul><li><a href="privacy.html" data-i18n="foot.privacy">Privacy</a></li><li><a href="terms.html" data-i18n="foot.terms">Terms</a></li></ul></nav>
       </div>
       <div class="foot-bottom">
