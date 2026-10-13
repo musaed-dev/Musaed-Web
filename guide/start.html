@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>البداية | دليل مساعد</title>
+  <meta name="description" content="كيف تضيف مساعد لسيرفرك، وتضبط الرتب، وتدخل لوحة التحكم، وتتأكد إن كل شي شغال.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0d0c">
+  <link rel="icon" href="../assets/Pics/musaed-favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../assets/Pics/musaed-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/Pics/musaed-avatar.png">
+  <link rel="canonical" href="https://musaed.dev/guide/start.html">
+  <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/legal.css?v=2">
+  <link rel="stylesheet" href="../assets/css/guide.css?v=2">
+  <script src="../assets/js/guide.js?v=2" defer></script>
+</head>
+<body class="guide-page">
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="lg-progress" aria-hidden="true"><i></i></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="glyph" viewBox="0 0 1024 1024"><path fill="currentColor" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  </svg>
+
+  <header class="lg-bar">
+    <div class="lg-bar-in">
+      <a href="../index.html" class="brand" aria-label="مساعد، الرئيسية">
+        <span class="brand-mark"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
+        <span class="brand-name">Musaed</span><span class="brand-ar" aria-hidden="true">مساعد</span>
+      </a>
+      <nav class="lg-links" aria-label="صفحات">
+        <a href="../index.html">الرئيسية</a>
+        <a href="index.html" aria-current="page">الدليل</a>
+        <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">الدعم</a>
+      </nav>
+      <a class="btn btn-primary btn-sm lg-add" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>أضفه لديسكورد</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lg-hero">
+      <div class="hero-bg" aria-hidden="true"><div class="grid"></div><div class="aurora"></div></div>
+      <div class="wrap">
+        <nav class="gd-crumbs" aria-label="مسار الصفحة"><a href="index.html">الدليل</a><span class="sep" aria-hidden="true">/</span><span>البداية</span></nav>
+        <h1 class="lg-title">البداية</h1>
+        <p class="lg-lede">
+          من إضافة مساعد لين ما يشتغل بسيرفرك. تاخذ منك عشر دقايق تقريبًا.
+        </p>
+      </div>
+    </section>
+
+    <nav class="gd-tabs" aria-label="أقسام الدليل">
+      <div class="wrap">
+        <ul>
+          <li><a href="start.html" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg>البداية</a></li>
+          <li><a href="protection.html"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>الحماية</a></li>
+          <li><a href="toolkit.html"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>الأدوات</a></li>
+          <li><a href="commands.html"><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg>الأوامر</a></li>
+          <li><a href="troubleshooting.html"><svg class="i" aria-hidden="true"><use href="#i-lifebuoy"/></svg>حل المشاكل</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrap lg-layout">
+      <nav class="lg-toc" aria-label="محتويات الصفحة">
+        <p class="lg-toc-label">في هذي الصفحة</p>
+        <ol>
+          <li><a href="#add">أضف مساعد لسيرفرك</a></li>
+          <li><a href="#roles">رتبة مساعد فوق الرتب</a></li>
+          <li><a href="#dashboard">لوحة التحكم</a></li>
+          <li><a href="#setup">وش تضبط أول؟</a></li>
+          <li><a href="#checkup">تأكد إن كل شي شغال</a></li>
+        </ol>
+      </nav>
+
+      <article class="lg-body">
+        <section class="gd-feature">
+          <h2 id="add"><span class="n">01</span>أضف مساعد لسيرفرك</h2>
+          <p>
+            اضغط الزر، اختار سيرفرك من ديسكورد، ووافق على الصلاحيات. لازم تكون عندك صلاحية
+            <code dir="ltr">Manage Server</code> بالسيرفر عشان يطلع لك السيرفر بالقائمة.
+          </p>
+          <p>
+            <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener" style="color:var(--on-accent)"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>أضفه لديسكورد</a>
+          </p>
+          <div class="gd-callout">
+            <svg class="i" aria-hidden="true"><use href="#i-info"/></svg>
+            <div>
+              <p><strong>ليش يطلب صلاحية <bdi dir="ltr">Administrator</bdi>؟</strong></p>
+              <p>
+                مساعد يعدّل صلاحيات القنوات (مثلًا وقت قفل التحقق)، وديسكورد يحسب بعض الصلاحيات
+                لكل قناة لحالها. بدون <bdi dir="ltr">Administrator</bdi> ممكن تتعطل ميزة بقناة وحدة
+                وما تدري ليش.
+              </p>
+              <p>
+                لو ما تبي تعطيه هالصلاحية، اكتب <code dir="ltr">/musaed</code> بأي سيرفر فيه مساعد
+                وتلقى رابط ثاني بصلاحيات أقل.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="roles"><span class="n">02</span>رتبة مساعد فوق الرتب</h2>
+          <p>
+            ديسكورد ما يخلي أي بوت يعطي أو يسحب رتبة هي فوق رتبته، ولا يعاقب عضو رتبته فوقه.
+            فلازم رتبة مساعد تكون أعلى من الرتب اللي يتعامل معها.
+          </p>
+          <ol class="gd-steps">
+            <li>افتح <strong>إعدادات السيرفر ← الرتب</strong>.</li>
+            <li>اسحب رتبة <strong>مساعد</strong> فوق رتبة الأعضاء، ورتبة غير المتحقق، ورتبة المتحقق.</li>
+            <li>وخلها فوق أي رتبة تبي مساعد يقدر يعاقب أعضاءها، أو يوقفها لو تخرّبت.</li>
+          </ol>
+          <div class="gd-callout warn">
+            <svg class="i" aria-hidden="true"><use href="#i-warn"/></svg>
+            <p>
+              هذي أكثر مشكلة تعطّل الميزات عند الناس. ولو فيه رتبة فوق مساعد وفيها صلاحيات خطيرة،
+              الحماية من التخريب ما تقدر توقف اللي ياخذها.
+            </p>
+          </div>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="dashboard"><span class="n">03</span>لوحة التحكم</h2>
+          <p>
+            كل الإعدادات من لوحة التحكم على الويب. مجانية وبدون بطاقة، وتدخلها بحساب ديسكورد.
+          </p>
+          <ol class="gd-steps">
+            <li>افتح <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">لوحة التحكم</a> وسجّل دخولك بديسكورد.</li>
+            <li>اختار سيرفرك.</li>
+            <li>افتح صفحة الميزة اللي تبيها، غيّر الإعدادات، واحفظ.</li>
+          </ol>
+          <p>
+            لوحات التذاكر والتحقق اللي بديسكورد تتحدث لحالها أول ما تحفظ. وبعض الإعدادات ممكن
+            ياخذ لحظات قبل ما تشتغل.
+          </p>
+
+          <h3>مين يقدر يغيّر وش؟</h3>
+          <p>الصلاحية اللي لازم تكون عندك بالسيرفر تختلف حسب الميزة:</p>
+          <dl class="gd-facts">
+            <div>
+              <dt><bdi dir="ltr">Administrator</bdi></dt>
+              <dd>بوابة العمر، قناة الفخ، الحماية من التخريب، الاختصارات، والردود التلقائية.</dd>
+            </div>
+            <div>
+              <dt><bdi dir="ltr">Manage Server</bdi></dt>
+              <dd>الكابتشا، التذاكر، الترحيب والوداع والرتب التلقائية، الحماية التلقائية، سجل الأحداث، وفحص السيرفر.</dd>
+            </div>
+          </dl>
+          <p>
+            السبب إن الميزات اللي تعاقب أعضاء بدون ما أحد يراجع، أو تخلي أحد يتحكم بكل الأعضاء،
+            محصورة بالمدراء.
+          </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="setup"><span class="n">04</span>وش تضبط أول؟</h2>
+          <p>
+            مو لازم تفعّل كل شي. هذا ترتيب يمشّي أغلب السيرفرات:
+          </p>
+          <ol class="gd-steps">
+            <li>
+              <strong>الكابتشا</strong>: حدد رتبتين وقناة تحقق، وشغّلها.
+              <a href="protection.html#captcha">الشرح</a>.
+            </li>
+            <li>
+              <strong>قناة الفخ</strong>: سوّي قناة وحط الفخ فيها.
+              <a href="protection.html#honeypot">الشرح</a>.
+            </li>
+            <li>
+              <strong>بوابة العمر</strong> (اختياري): حدد أقل عمر للحساب.
+              <a href="protection.html#agegate">الشرح</a>.
+            </li>
+            <li>
+              <strong>الترحيب</strong>: قناة ورسالة.
+              <a href="toolkit.html#welcome">الشرح</a>.
+            </li>
+            <li>
+              <strong>التذاكر</strong> لو عندك فريق دعم.
+              <a href="toolkit.html#tickets">الشرح</a>.
+            </li>
+          </ol>
+
+          <h3>اللي يشتغل من أول يوم</h3>
+          <p>
+            <strong>الحماية التلقائية</strong> (الكلمات الممنوعة والسبام) و<strong>الحماية من التخريب</strong>
+            شغّالتين لحالهم من أول ما تضيف مساعد، وتقدر تضبطهم أو تطفي اللي تبي.
+            الباقي مطفي لين ما تفعّله.
+          </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="checkup"><span class="n">05</span>تأكد إن كل شي شغال</h2>
+          <p>
+            اكتب <code dir="ltr">/checkup</code> بأي قناة. مساعد يفحص إعدادات سيرفرك ويقولك وش المعطّل
+            وليش.
+          </p>
+          <dl class="gd-facts">
+            <div>
+              <dt>«كل شي تمام»</dt>
+              <dd>ما لقى شي معطّل.</dd>
+            </div>
+            <div>
+              <dt>لازم تتصلح</dt>
+              <dd>ميزة مفعّلة بس ما تقدر تشتغل. مثلًا رتبة فوق رتبة مساعد، أو قناة انحذفت، أو صلاحية ناقصة.</dd>
+            </div>
+            <div>
+              <dt>ملاحظات</dt>
+              <dd>الميزات شغّالة، بس فيه شي يستاهل تشوفه.</dd>
+            </div>
+          </dl>
+          <div class="gd-callout tip">
+            <svg class="i" aria-hidden="true"><use href="#i-bulb"/></svg>
+            <p>
+              ما تحتاج تتذكر تفحص. لو ميزة مفعّلة وقفت عن الشغل، يوصلك تنبيه واحد عنها.
+              <a href="toolkit.html#checkup">إعدادات التنبيهات</a>.
+            </p>
+          </div>
+          <p>الأمر يحتاج صلاحية <code dir="ltr">Administrator</code> أو <code dir="ltr">Manage Server</code>.</p>
+        </section>
+
+        <div class="gd-pager">
+          <a class="lg-next" href="protection.html">
+            <span>
+              <span class="lg-next-label">القسم اللي بعده</span>
+              <span class="lg-next-title">الحماية</span>
+            </span>
+            <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="lg-foot">
+    <div class="wrap lg-foot-in">
+      <span>© 2026 مساعد. غير تابع لشركة Discord.</span>
+      <nav aria-label="روابط">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../privacy.html">الخصوصية</a>
+        <a href="../terms.html">الشروط</a>
+        <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">لوحة التحكم</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="lg-top" type="button" aria-label="ارجع لفوق"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></button>
+</body>
+</html>

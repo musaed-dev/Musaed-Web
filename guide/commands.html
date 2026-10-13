@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الأوامر | دليل مساعد</title>
+  <meta name="description" content="كل أوامر السلاش في مساعد، ومين يقدر يستخدم كل أمر، وكيف تكتب المدة.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0d0c">
+  <link rel="icon" href="../assets/Pics/musaed-favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../assets/Pics/musaed-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/Pics/musaed-avatar.png">
+  <link rel="canonical" href="https://musaed.dev/guide/commands.html">
+  <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/legal.css?v=2">
+  <link rel="stylesheet" href="../assets/css/guide.css?v=2">
+  <script src="../assets/js/guide.js?v=2" defer></script>
+</head>
+<body class="guide-page">
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="lg-progress" aria-hidden="true"><i></i></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="glyph" viewBox="0 0 1024 1024"><path fill="currentColor" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></symbol>
+  </svg>
+
+  <header class="lg-bar">
+    <div class="lg-bar-in">
+      <a href="../index.html" class="brand" aria-label="مساعد، الرئيسية">
+        <span class="brand-mark"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
+        <span class="brand-name">Musaed</span><span class="brand-ar" aria-hidden="true">مساعد</span>
+      </a>
+      <nav class="lg-links" aria-label="صفحات">
+        <a href="../index.html">الرئيسية</a>
+        <a href="index.html" aria-current="page">الدليل</a>
+        <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">الدعم</a>
+      </nav>
+      <a class="btn btn-primary btn-sm lg-add" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>أضفه لديسكورد</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lg-hero">
+      <div class="hero-bg" aria-hidden="true"><div class="grid"></div><div class="aurora"></div></div>
+      <div class="wrap">
+        <nav class="gd-crumbs" aria-label="مسار الصفحة"><a href="index.html">الدليل</a><span class="sep" aria-hidden="true">/</span><span>الأوامر</span></nav>
+        <h1 class="lg-title">الأوامر</h1>
+        <p class="lg-lede">
+          الإعداد مكانه لوحة التحكم، وهذي الأوامر للحظات اللي تحتاج تتصرف فيها على طول.
+        </p>
+      </div>
+    </section>
+
+    <nav class="gd-tabs" aria-label="أقسام الدليل">
+      <div class="wrap">
+        <ul>
+          <li><a href="start.html"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg>البداية</a></li>
+          <li><a href="protection.html"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>الحماية</a></li>
+          <li><a href="toolkit.html"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>الأدوات</a></li>
+          <li><a href="commands.html" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg>الأوامر</a></li>
+          <li><a href="troubleshooting.html"><svg class="i" aria-hidden="true"><use href="#i-lifebuoy"/></svg>حل المشاكل</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrap lg-layout">
+      <nav class="lg-toc" aria-label="محتويات الصفحة">
+        <p class="lg-toc-label">في هذي الصفحة</p>
+        <ol>
+          <li><a href="#before">قبل ما تبدأ</a></li>
+          <li><a href="#list">قائمة الأوامر</a></li>
+          <li><a href="#duration">كيف تكتب المدة</a></li>
+        </ol>
+      </nav>
+
+      <article class="lg-body">
+        <section class="gd-feature">
+          <h2 id="before"><span class="n">01</span>قبل ما تبدأ</h2>
+          <p>
+            كل أوامر مساعد أوامر سلاش: اكتب <code dir="ltr">/</code> واختار الأمر من القائمة.
+          </p>
+          <ul>
+            <li>
+              الأمر يظهر لك بس لو عندك الصلاحية اللي يحتاجها، وإلا ديسكورد يخفيه عنك غالبًا.
+            </li>
+            <li>
+              الطرد والحظر والكتم والإنذار تحتاج صلاحية <strong>لك</strong>، وأغلبها يحتاج نفس
+              الصلاحية <strong>لمساعد</strong>. وما تنفّذ على من رتبته فوق رتبتك أو فوق رتبة مساعد.
+            </li>
+            <li>كل إجراء إداري ينسجل بسجل الإجراءات.</li>
+          </ul>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="list"><span class="n">02</span>قائمة الأوامر</h2>
+          <form class="gd-filter" role="search" autocomplete="off">
+            <div class="gd-search">
+              <label for="gd-cmd-q">ابحث بالأوامر</label>
+              <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+              <input id="gd-cmd-q" type="search" placeholder="ابحث عن أمر…" enterkeyhint="search">
+            </div>
+            <div class="gd-chips" role="group" aria-label="صنّف حسب النوع">
+              <button type="button" data-cat="all" aria-pressed="true">الكل</button>
+              <button type="button" data-cat="mod" aria-pressed="false">الإدارة</button>
+              <button type="button" data-cat="verify" aria-pressed="false">التحقق</button>
+              <button type="button" data-cat="setup" aria-pressed="false">الإعداد</button>
+              <button type="button" data-cat="info" aria-pressed="false">معلومات</button>
+            </div>
+          </form>
+
+          <ul class="gd-cmds">
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/kick</code><span class="gd-who">يحتاج <bdi>Kick Members</bdi></span></div>
+              <p>اطرد عضو من السيرفر ويتسجل بالسجل.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/ban</code><span class="gd-who">يحتاج <bdi>Ban Members</bdi></span></div>
+              <p>احظر عضو من السيرفر ويتسجل بالسجل. تقدر تحدد حذف رسايله، بمدة <a href="#duration">تكتبها هنا</a>.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/unban</code><span class="gd-who">يحتاج <bdi>Ban Members</bdi></span></div>
+              <p>فك الحظر عن حساب بالايدي حقه.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/timeout</code><span class="gd-who">يحتاج <bdi>Moderate Members</bdi></span></div>
+              <p>اكتم عضو مدة محددة ويتسجل بالسجل. المدة <a href="#duration">تكتبها كذا</a>.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/warn</code><span class="gd-who">يحتاج <bdi>Moderate Members</bdi></span></div>
+              <p>أنذر عضو ويتسجل الإنذار بالسجل.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/modlogs</code><span class="gd-who">يحتاج <bdi>Moderate Members</bdi></span></div>
+              <p>اعرض سجل الإجراءات الإدارية بالسيرفر.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod" id="lookup">
+              <div class="gd-cmd-top"><code>/lookup</code><span class="gd-who">يحتاج <bdi>Moderate Members</bdi></span></div>
+              <p>بطاقة وحدة عن عضو: إنذاراته وضربات الحماية وتواريخه.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/deletems</code><span class="gd-who">يحتاج <bdi>Manage Messages</bdi></span></div>
+              <p>
+                احذف رسايل من القناة الحالية، وتقدر تخصها بعضو واحد. ما يحذف الرسايل الأقدم من 14 يوم،
+                ويقولك كم رسالة تجاوزها.
+              </p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/lock</code><span class="gd-who">يحتاج <bdi>Manage Channels</bdi></span></div>
+              <p>اقفل القناة الحالية عن الأعضاء. القفل يبقى لين ما تفتحها بـ <code dir="ltr">/unlock</code>، ما فيه مؤقت.</p>
+            </li>
+            <li class="gd-cmd" data-cat="mod">
+              <div class="gd-cmd-top"><code>/unlock</code><span class="gd-who">يحتاج <bdi>Manage Channels</bdi></span></div>
+              <p>شِل قفل القناة الحالية وخل الأعضاء يكتبون فيها.</p>
+            </li>
+            <li class="gd-cmd" data-cat="verify">
+              <div class="gd-cmd-top"><code>/captcha lockdown</code><span class="gd-who">يحتاج <bdi>Manage Server</bdi></span></div>
+              <p>اخف كل القنوات عن غير المتحقق إلا قناة التحقق. <a href="protection.html#captcha">الشرح</a>.</p>
+            </li>
+            <li class="gd-cmd" data-cat="verify">
+              <div class="gd-cmd-top"><code>/captcha unlock</code><span class="gd-who">يحتاج <bdi>Manage Server</bdi></span></div>
+              <p>شِل قفل غير المتحقق عن كل القنوات.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/tickets setup</code><span class="gd-who">يحتاج <bdi>Manage Server</bdi></span></div>
+              <p>حدد قناة اللوحة ورتبة الدعم وقناة السجل، وفعّل نظام التذاكر. <a href="toolkit.html#tickets">الشرح</a>.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/tickets panel</code><span class="gd-who">يحتاج <bdi>Manage Server</bdi></span></div>
+              <p>غيّر النص اللي يظهر بلوحة فتح التذاكر.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/checkup</code><span class="gd-who">يحتاج <bdi>Administrator</bdi> أو <bdi>Manage Server</bdi></span></div>
+              <p>افحص إعدادات السيرفر وشوف وش المعطل فيها. <a href="start.html#checkup">الشرح</a>.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/welcome preview</code><span class="gd-who">يحتاج <bdi>Manage Server</bdi></span></div>
+              <p>شوف شكل رسالة الترحيب على حسابك.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/prefix show</code><span class="gd-who">يحتاج <bdi>Administrator</bdi> أو <bdi>Manage Server</bdi></span></div>
+              <p>اعرض بادئة الأوامر الحالية.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/prefix set</code><span class="gd-who">يحتاج <bdi>Administrator</bdi> أو <bdi>Manage Server</bdi></span></div>
+              <p>غيّر بادئة الأوامر للسيرفر.</p>
+            </li>
+            <li class="gd-cmd" data-cat="setup">
+              <div class="gd-cmd-top"><code>/prefix reset</code><span class="gd-who">يحتاج <bdi>Administrator</bdi> أو <bdi>Manage Server</bdi></span></div>
+              <p>رجّع البادئة للوضع الافتراضي.</p>
+            </li>
+            <li class="gd-cmd" data-cat="info">
+              <div class="gd-cmd-top"><code>/serverinfo</code><span class="gd-who">للكل</span></div>
+              <p>معلومات عن السيرفر.</p>
+            </li>
+            <li class="gd-cmd" data-cat="info">
+              <div class="gd-cmd-top"><code>/whois</code><span class="gd-who">للكل</span></div>
+              <p>معلومات عن عضو بالسيرفر.</p>
+            </li>
+            <li class="gd-cmd" data-cat="info">
+              <div class="gd-cmd-top"><code>/avatar</code><span class="gd-who">للكل</span></div>
+              <p>اعرض صورة عضو بالحجم الكامل مع روابط تحميلها.</p>
+            </li>
+            <li class="gd-cmd" data-cat="info">
+              <div class="gd-cmd-top"><code>/about</code><span class="gd-who">يحتاج <bdi>Administrator</bdi> أو <bdi>Manage Server</bdi></span></div>
+              <p>دليل كامل لكل أوامر مساعد وطريقة استخدامها.</p>
+            </li>
+            <li class="gd-cmd" data-cat="info">
+              <div class="gd-cmd-top"><code>/musaed</code><span class="gd-who">للكل</span></div>
+              <p>تعرف على مساعد، وشوف رابط الإضافة وقائمة الأوامر. يشتغل حتى بالخاص.</p>
+            </li>
+          </ul>
+          <p class="gd-empty" id="gd-cmd-empty" hidden>
+            <strong>ما فيه أمر يطابق بحثك.</strong> جرّب كلمة ثانية، أو اختار «الكل».
+          </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="duration"><span class="n">03</span>كيف تكتب المدة</h2>
+          <p>
+            الأوامر اللي تطلب مدة (مثل <code dir="ltr">/timeout</code>) تاخذها كنص، مو رقم بس.
+          </p>
+          <dl class="gd-facts">
+            <div><dt><code dir="ltr">30m</code></dt><dd>30 دقيقة</dd></div>
+            <div><dt><code dir="ltr">1h30m</code></dt><dd>ساعة ونص. تقدر تجمع أكثر من وحدة.</dd></div>
+            <div><dt><code dir="ltr">7d</code></dt><dd>7 أيام</dd></div>
+            <div><dt><code dir="ltr">2w</code></dt><dd>أسبوعين</dd></div>
+            <div><dt><code dir="ltr">3mon</code></dt><dd>3 شهور. الشهر عندنا 30 يوم.</dd></div>
+            <div><dt><code dir="ltr">1y</code></dt><dd>سنة. السنة عندنا 365 يوم.</dd></div>
+          </dl>
+          <ul>
+            <li>تقدر تكتبها بالعربي، مثل «30 يوم».</li>
+            <li>
+              لو كتبت رقم بس، مساعد يفترض وحدة افتراضية: دقايق بـ <code dir="ltr">/timeout</code>،
+              وأيام بخيار حذف الرسايل بـ <code dir="ltr">/ban</code>.
+            </li>
+          </ul>
+        </section>
+
+        <div class="gd-pager two">
+          <a class="lg-next" href="toolkit.html">
+            <span>
+              <span class="lg-next-label">القسم اللي قبله</span>
+              <span class="lg-next-title">الأدوات</span>
+            </span>
+          </a>
+          <a class="lg-next" href="troubleshooting.html">
+            <span>
+              <span class="lg-next-label">القسم اللي بعده</span>
+              <span class="lg-next-title">حل المشاكل</span>
+            </span>
+            <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="lg-foot">
+    <div class="wrap lg-foot-in">
+      <span>© 2026 مساعد. غير تابع لشركة Discord.</span>
+      <nav aria-label="روابط">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../privacy.html">الخصوصية</a>
+        <a href="../terms.html">الشروط</a>
+        <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">لوحة التحكم</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="lg-top" type="button" aria-label="ارجع لفوق"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></button>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>حل المشاكل | دليل مساعد</title>
+  <meta name="description" content="ميزة ما تشتغل؟ رتبة؟ قناة؟ الأسباب الشائعة وكيف تصلحها.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0d0c">
+  <link rel="icon" href="../assets/Pics/musaed-favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../assets/Pics/musaed-favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/Pics/musaed-avatar.png">
+  <link rel="canonical" href="https://musaed.dev/guide/troubleshooting.html">
+  <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/legal.css?v=2">
+  <link rel="stylesheet" href="../assets/css/guide.css?v=2">
+  <script src="../assets/js/guide.js?v=2" defer></script>
+</head>
+<body class="guide-page">
+  <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="lg-progress" aria-hidden="true"><i></i></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="glyph" viewBox="0 0 1024 1024"><path fill="currentColor" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  </svg>
+
+  <header class="lg-bar">
+    <div class="lg-bar-in">
+      <a href="../index.html" class="brand" aria-label="مساعد، الرئيسية">
+        <span class="brand-mark"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
+        <span class="brand-name">Musaed</span><span class="brand-ar" aria-hidden="true">مساعد</span>
+      </a>
+      <nav class="lg-links" aria-label="صفحات">
+        <a href="../index.html">الرئيسية</a>
+        <a href="index.html" aria-current="page">الدليل</a>
+        <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">الدعم</a>
+      </nav>
+      <a class="btn btn-primary btn-sm lg-add" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>أضفه لديسكورد</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="lg-hero">
+      <div class="hero-bg" aria-hidden="true"><div class="grid"></div><div class="aurora"></div></div>
+      <div class="wrap">
+        <nav class="gd-crumbs" aria-label="مسار الصفحة"><a href="index.html">الدليل</a><span class="sep" aria-hidden="true">/</span><span>حل المشاكل</span></nav>
+        <h1 class="lg-title">حل المشاكل</h1>
+        <p class="lg-lede">
+          أغلب المشاكل سببها رتبة أو قناة أو صلاحية ناقصة. ابدأ بـ <code dir="ltr">/checkup</code>،
+          وهو يقولك وش المعطّل. وإذا ما كفى، هنا الأسباب الشائعة.
+        </p>
+      </div>
+    </section>
+
+    <nav class="gd-tabs" aria-label="أقسام الدليل">
+      <div class="wrap">
+        <ul>
+          <li><a href="start.html"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg>البداية</a></li>
+          <li><a href="protection.html"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>الحماية</a></li>
+          <li><a href="toolkit.html"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>الأدوات</a></li>
+          <li><a href="commands.html"><svg class="i" aria-hidden="true"><use href="#i-terminal"/></svg>الأوامر</a></li>
+          <li><a href="troubleshooting.html" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-lifebuoy"/></svg>حل المشاكل</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrap lg-layout">
+      <nav class="lg-toc" aria-label="محتويات الصفحة">
+        <p class="lg-toc-label">في هذي الصفحة</p>
+        <ol>
+          <li><a href="#roles-above">الرتبة فوق رتبتي</a></li>
+          <li><a href="#managed-role">الرتبة تابعة لبوت أو اشتراك</a></li>
+          <li><a href="#channel">القناة انحذفت أو ما أقدر أرسل فيها</a></li>
+          <li><a href="#cant-enable">ما أقدر أشغّل الميزة</a></li>
+          <li><a href="#not-applied">غيّرت إعداد وما تغيّر شي</a></li>
+          <li><a href="#lockdown">القفل ما يخفي القنوات</a></li>
+          <li><a href="#antinuke">الحماية من التخريب ما تشتغل</a></li>
+          <li><a href="#mistake">انطرد أو انحظر عضو بالغلط</a></li>
+          <li><a href="#false-positive">انحذفت رسالة وما فيها شي</a></li>
+          <li><a href="#still">لسا ما انحلت؟</a></li>
+        </ol>
+      </nav>
+
+      <article class="lg-body">
+        <section class="gd-feature">
+          <h2 id="roles-above"><span class="n">01</span>«الرتبة فوق رتبتي»</h2>
+          <p>
+            يطلع لك بـ <code dir="ltr">/checkup</code> أو بالتنبيه: الرتبة اللي اخترتها فوق رتبة مساعد
+            أو بنفس مستواها، فما يقدر يعطيها لأحد. وأحيانًا يقولك إن فيه رتب فوقه وأي عضو عنده وحدة منها
+            ما يقدر يعاقبه.
+          </p>
+          <h3>الحل</h3>
+          <ol class="gd-steps">
+            <li>افتح <strong>إعدادات السيرفر ← الرتب</strong>.</li>
+            <li>اسحب رتبة <strong>مساعد</strong> فوق الرتبة اللي ذكرها.</li>
+            <li>شغّل <code dir="ltr">/checkup</code> مرة ثانية وتأكد.</li>
+          </ol>
+          <p><a href="start.html#roles">ليش لازم تكون فوق؟</a></p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="managed-role"><span class="n">02</span>«الرتبة تابعة لبوت أو اشتراك»</h2>
+          <p>
+            رتب البوتات والاشتراكات يديرها ديسكورد نفسه، ومساعد ما يقدر يعطيها لأحد.
+          </p>
+          <h3>الحل</h3>
+          <p>اختار رتبة عادية ثانية من اللوحة، وحدة أنت سويتها.</p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="channel"><span class="n">03</span>القناة انحذفت أو ما أقدر أرسل فيها</h2>
+          <dl class="gd-facts">
+            <div>
+              <dt>«القناة انحذفت»</dt>
+              <dd>القناة اللي اخترتها لهذي الميزة ما عادت موجودة. اختار قناة ثانية من اللوحة.</dd>
+            </div>
+            <div>
+              <dt>«ما أقدر أرسل فيها»</dt>
+              <dd>
+                مساعد ما عنده صلاحية بالقناة. أعطه <code dir="ltr">Send Messages</code> و
+                <code dir="ltr">Embed Links</code> فيها (إرسال الرسايل وإرسال الإمبد).
+              </dd>
+            </div>
+            <div>
+              <dt>«ما اخترت قناة تحقق»</dt>
+              <dd>الكابتشا تنرسل بلوحة بقناة التحقق، بس ما اخترت قناة. اختارها، أو غيّر طريقة الإرسال للخاص.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="cant-enable"><span class="n">04</span>ما أقدر أشغّل الميزة</h2>
+          <p>
+            بعض الميزات ما تتشغّل إلا بعد ما تحدد اللي تحتاجه. هذا عشان ما تكون «مفعّلة» وهي ما تشتغل.
+          </p>
+          <dl class="gd-facts">
+            <div>
+              <dt>الكابتشا</dt>
+              <dd>رتبة غير المتحقق ورتبة المتحقق، الاثنتين.</dd>
+            </div>
+            <div>
+              <dt>وضع القفل</dt>
+              <dd>قناة التحقق ورتبة غير المتحقق.</dd>
+            </div>
+            <div>
+              <dt>التذاكر</dt>
+              <dd>قناة اللوحة، رتبة الدعم، وقناة سجل التذاكر.</dd>
+            </div>
+            <div>
+              <dt>الترحيب والوداع</dt>
+              <dd>قناة الترحيب، أو قناة الوداع.</dd>
+            </div>
+            <div>
+              <dt>سجل الأحداث</dt>
+              <dd>قناة السجل.</dd>
+            </div>
+            <div>
+              <dt>قناة الفخ</dt>
+              <dd>
+                القناة نفسها. وما تقدر تشيلها وهي شغّالة، عشان ما يصير «شغّال» وهو ما يراقب شي.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="not-applied"><span class="n">05</span>غيّرت إعداد وما تغيّر شي</h2>
+          <ol class="gd-steps">
+            <li>تأكد إنك ضغطت <strong>حفظ</strong> وطلعت لك رسالة نجاح.</li>
+            <li>انتظر شوي. التغيير من اللوحة ممكن ياخذ لحظات (حوالي دقيقة) قبل ما يوصل للبوت.</li>
+            <li>شغّل <code dir="ltr">/checkup</code>. لو الميزة معطّلة، يقولك ليش.</li>
+          </ol>
+          <p>
+            لوحات التذاكر والتحقق اللي بديسكورد تتحدث لحالها، بس هي بعد تاخذ لحظات.
+          </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="lockdown"><span class="n">06</span>القفل ما يخفي القنوات</h2>
+          <p>
+            لو غيّرت رتبة غير المتحقق من اللوحة بعدما فعّلت القفل، تبقى القنوات مخفية عن الرتبة القديمة،
+            والرتبة الجديدة ما يتطبق عليها شي.
+          </p>
+          <h3>الحل</h3>
+          <p>
+            شغّل <code dir="ltr">/captcha lockdown</code> مرة ثانية، وهو يرتّب القنوات من جديد. القنوات
+            الجديدة اللي تسويها بعدين يتطبق عليها القفل لحالها.
+          </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="antinuke"><span class="n">07</span>الحماية من التخريب ما تشتغل</h2>
+          <ul>
+            <li>
+              مساعد لازم يكون عنده صلاحية <code dir="ltr">View Audit Log</code>. بدونها ما يقدر يفرّق بين
+              اللي طلع واللي انطرد.
+            </li>
+            <li>
+              رتبته لازم تكون فوق الرتب اللي فيها صلاحيات خطيرة. ما يقدر يوقف أحد رتبته فوق رتبة مساعد.
+            </li>
+            <li>
+              صاحب السيرفر، وحامل الرتبة الموثوقة، والبوتات الموثّقة من ديسكورد، ما ينعدّون.
+            </li>
+            <li>ولو أنت طفّيتها من الإعدادات، فهي مطفية.</li>
+          </ul>
+          <p><a href="protection.html#antinuke">شرح الحماية من التخريب</a></p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="mistake"><span class="n">08</span>انطرد أو انحظر عضو بالغلط</h2>
+          <p>أول شي اعرف مين ووش السبب:</p>
+          <ol class="gd-steps">
+            <li>
+              اكتب <code dir="ltr">/lookup</code> واختار العضو، أو <code dir="ltr">/modlogs</code>. تشوف
+              إنذاراته وضربات الحماية والإجراءات اللي صارت عليه.
+            </li>
+            <li>
+              لو انحظر: <code dir="ltr">/unban</code> بالايدي حقه. وحظر قناة الفخ دايم ما ينفك لحاله، فلازم
+              تفكه بنفسك.
+            </li>
+            <li>لو انكتم: شيل الكتم من ديسكورد (قائمة العضو ← Remove Timeout).</li>
+          </ol>
+          <h3>وبعدين لا يتكرر</h3>
+          <ul>
+            <li>
+              <strong>بوابة العمر:</strong> العضو يقدر يدخل لما يكبر حسابه. لو الحد عالي، خفّفه من اللوحة.
+            </li>
+            <li><strong>الكابتشا:</strong> زوّد أقصى عدد المحاولات، أو خلّ التحدي زر بدل مسألة.</li>
+            <li>
+              <strong>قناة الفخ:</strong> العقوبة الافتراضية كتم، وتقدر ترجعه. خلّها كتم لو تخاف من الغلط.
+            </li>
+          </ul>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="false-positive"><span class="n">09</span>انحذفت رسالة وما فيها شي</h2>
+          <p>
+            القائمة الجاهزة من فريق مساعد مو دقيقة 100%، وممكن تحذف رسالة فيها كلمة ما ترى إنها تستاهل.
+          </p>
+          <h3>الحل</h3>
+          <ul>
+            <li>
+              لو الكلمة من قائمتك، شيلها من صفحة الحماية التلقائية.
+            </li>
+            <li>
+              لو تبي تستغني عن القائمة الجاهزة كلها، طفّها من نفس الصفحة. قائمتك الخاصة تبقى شغّالة.
+            </li>
+          </ul>
+          <p><a href="protection.html#automod">شرح الحماية التلقائية</a></p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="still"><span class="n">10</span>لسا ما انحلت؟</h2>
+          <p>
+            اسأل بسيرفر الدعم. وخل معك نتيجة <code dir="ltr">/checkup</code> وش اللي توقعته، وبنساعدك أسرع.
+          </p>
+          <div class="gd-callout tip">
+            <svg class="i" aria-hidden="true"><use href="#i-bulb"/></svg>
+            <p>لا تنشر ايدي أو توكن أو أي شي خاص بالسيرفر بقناة عامة. اذكر المشكلة بس.</p>
+          </div>
+          <p>
+            <a class="btn btn-ghost" href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" style="color:var(--text)"><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>سيرفر الدعم</a>
+          </p>
+        </section>
+
+        <div class="gd-pager two">
+          <a class="lg-next" href="commands.html">
+            <span>
+              <span class="lg-next-label">القسم اللي قبله</span>
+              <span class="lg-next-title">الأوامر</span>
+            </span>
+          </a>
+          <a class="lg-next" href="index.html">
+            <span>
+              <span class="lg-next-label">ارجع لـ</span>
+              <span class="lg-next-title">الدليل</span>
+            </span>
+            <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="lg-foot">
+    <div class="wrap lg-foot-in">
+      <span>© 2026 مساعد. غير تابع لشركة Discord.</span>
+      <nav aria-label="روابط">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../privacy.html">الخصوصية</a>
+        <a href="../terms.html">الشروط</a>
+        <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener">لوحة التحكم</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button class="lg-top" type="button" aria-label="ارجع لفوق"><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></button>
+</body>
+</html>

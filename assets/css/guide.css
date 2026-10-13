@@ -1,0 +1,213 @@
+/* Musaed guide (guide/*.html). Loaded after styles.css and legal.css, which it builds on:
+   the sticky bar, the hero, the contents list, .lg-body and the footer are legal.css's.
+   Everything added here is prefixed gd-. */
+
+/* Page tabs under the hero: one chip per guide page */
+.gd-tabs { border-bottom: 1px solid var(--line); background: rgba(11, 13, 12, .6); }
+.gd-tabs ul { list-style: none; display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.gd-tabs ul::-webkit-scrollbar { display: none; }
+.gd-tabs a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid var(--line-2); color: var(--dim); text-decoration: none; font-size: 14.5px; white-space: nowrap;
+  transition: color .2s, background-color .2s, border-color .2s;
+}
+.gd-tabs a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
+.gd-tabs a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(15, 227, 125, .5); }
+.gd-tabs .i { width: 16px; height: 16px; }
+
+/* Hub search */
+.gd-search { position: relative; margin-top: 32px; max-width: 640px; }
+.gd-search label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.gd-search .i { position: absolute; inset-inline-start: 18px; top: 29px; transform: translateY(-50%); color: var(--mute); pointer-events: none; }
+.gd-search input {
+  width: 100%; min-height: 58px; padding-block: 0; padding-inline: 52px 18px; border-radius: 16px;
+  border: 1px solid var(--line-2); background: rgba(17, 20, 19, .85); font-size: 1.05rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.gd-search input::placeholder { color: var(--mute); }
+.gd-search input:hover { border-color: rgba(243, 245, 243, .26); }
+.gd-search input:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.gd-results { list-style: none; display: grid; gap: 8px; margin-top: 12px; }
+.gd-results[hidden], .gd-empty[hidden] { display: none; }
+.gd-results a {
+  display: block; padding: 14px 18px; border-radius: 14px; text-decoration: none;
+  background: var(--bg-1); border: 1px solid var(--line); transition: border-color .2s, background-color .2s;
+}
+.gd-results a:hover, .gd-results a:focus-visible { border-color: rgba(15, 227, 125, .5); background: var(--bg-2); }
+.gd-results strong { display: block; color: var(--text); font-weight: 600; }
+.gd-results span { display: block; color: var(--dim); font-size: 14.5px; line-height: 1.7; }
+.gd-results small { display: block; margin-top: 2px; color: var(--mute); font: 500 12px var(--f-mono); }
+.gd-empty { margin-top: 12px; padding: 16px 18px; border-radius: 14px; background: var(--bg-1); border: 1px solid var(--line-2); color: var(--dim); }
+.gd-empty strong { color: var(--text); }
+.gd-empty a { color: var(--accent); }
+
+/* Category cards on the hub */
+.gd-main { padding-block: clamp(40px, 6vw, 72px) clamp(72px, 10vw, 120px); }
+.gd-h2 { font: 700 clamp(1.4rem, 2.3vw, 1.8rem)/1.5 var(--f-display); margin-bottom: 8px; }
+.gd-h2-sub { color: var(--dim); margin-bottom: 28px; max-width: 56ch; }
+.gd-cards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); margin-bottom: clamp(48px, 7vw, 88px); }
+.gd-card {
+  position: relative; display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: 20px; text-decoration: none;
+  background: linear-gradient(160deg, var(--bg-2), var(--bg-1)); border: 1px solid var(--line-2);
+  transition: border-color .25s, box-shadow .25s;
+}
+.gd-card:hover, .gd-card:focus-visible { border-color: rgba(15, 227, 125, .5); box-shadow: 0 20px 60px -34px rgba(15, 227, 125, .6); }
+.gd-card-ic {
+  width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: var(--accent);
+  background: var(--accent-soft); box-shadow: inset 0 0 0 1px rgba(15, 227, 125, .25);
+}
+.gd-card-ic .i { width: 22px; height: 22px; }
+.gd-card h3 { font: 700 1.3rem/1.5 var(--f-display); color: var(--text); }
+.gd-card p { color: var(--dim); font-size: 15.5px; line-height: 1.8; }
+.gd-card-more { margin-top: auto; padding-top: 6px; display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 14.5px; font-weight: 600; }
+.gd-card-more .i { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+.gd-card:hover .gd-card-more .i { transform: scaleX(-1) translateX(4px); }
+
+/* The three-step start on the hub */
+.gd-quick { list-style: none; display: grid; gap: 16px; counter-reset: q; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); margin-bottom: clamp(48px, 7vw, 88px); }
+.gd-quick li {
+  counter-increment: q; padding: 22px; padding-top: 64px; position: relative; border-radius: 20px;
+  background: var(--bg-1); border: 1px solid var(--line);
+}
+.gd-quick li::before {
+  content: counter(q); position: absolute; top: 20px; inset-inline-start: 22px; width: 32px; height: 32px; border-radius: 10px;
+  display: grid; place-items: center; font: 600 15px/1 var(--f-mono); color: var(--on-accent); background: var(--accent);
+}
+.gd-quick strong { display: block; font: 700 1.1rem/1.6 var(--f-display); margin-bottom: 4px; }
+.gd-quick span { color: var(--dim); font-size: 15.5px; line-height: 1.8; }
+.gd-quick a { color: var(--accent); text-underline-offset: 4px; }
+
+/* Help strip */
+.gd-help {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding: 26px 28px; border-radius: 20px;
+  background: linear-gradient(160deg, var(--bg-2), var(--bg-1)); border: 1px solid var(--line-2);
+}
+.gd-help h2 { font: 700 1.35rem/1.5 var(--f-display); }
+.gd-help p { color: var(--dim); margin-top: 2px; }
+
+/* Inside a guide page */
+.gd-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 18px; font-size: 14px; color: var(--mute); }
+.gd-crumbs a { color: var(--dim); text-decoration: none; display: inline-flex; align-items: center; min-height: 32px; }
+.gd-crumbs a:hover { color: var(--accent); }
+.gd-crumbs .sep { opacity: .5; }
+
+.lg-body h3 { font: 700 1.15rem/1.6 var(--f-display); color: var(--text); margin: 28px 0 10px; }
+.lg-body code, .lg-body bdi { white-space: nowrap; }
+.lg-body .gd-feature + .gd-feature { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--line); }
+.lg-body .gd-feature > h2 { margin-top: 0; }
+
+.gd-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 1.2em; }
+.gd-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; font-size: 13.5px; line-height: 1.5;
+  border: 1px solid var(--line-2); background: rgba(17, 20, 19, .7); color: var(--dim);
+}
+.gd-pill strong { color: var(--text); font-weight: 600; }
+.gd-pill .i { width: 15px; height: 15px; color: var(--accent); }
+.gd-pill.on { color: var(--accent); border-color: rgba(15, 227, 125, .4); background: var(--accent-soft); }
+
+.lg-body ol.gd-steps { list-style: none; display: grid; gap: 12px; margin: 0 0 1.4em; counter-reset: step; }
+.lg-body ol.gd-steps > li { counter-increment: step; padding-inline-start: 62px; min-height: 60px; }
+.lg-body ol.gd-steps > li::before {
+  content: counter(step); top: 14px; inset-inline-start: 16px; width: 30px; height: 30px; border-radius: 9px; transform: none;
+  display: grid; place-items: center; font: 600 14px/1 var(--f-mono); color: var(--on-accent); background: var(--accent);
+}
+
+.gd-callout {
+  display: flex; gap: 14px; padding: 16px 18px; margin: 0 0 1.4em; border-radius: 14px;
+  background: var(--bg-1); border: 1px solid var(--line-2);
+}
+.gd-callout > .i { margin-top: .45em; color: var(--accent); }
+.lg-body .gd-callout p { margin: 0; color: var(--text); }
+.lg-body .gd-callout p + p { margin-top: .6em; }
+.gd-callout.tip { background: var(--accent-soft); border-color: rgba(15, 227, 125, .3); }
+.gd-callout.warn { background: var(--danger-soft); border-color: rgba(255, 107, 107, .35); }
+.gd-callout.warn > .i { color: var(--danger); }
+
+.lg-body dl.gd-facts { display: grid; gap: 10px; margin: 0 0 1.4em; }
+.gd-facts div { display: grid; gap: 2px 18px; padding: 14px 18px; border-radius: 14px; background: var(--bg-1); border: 1px solid var(--line); }
+@media (min-width: 720px) { .gd-facts div { grid-template-columns: 200px minmax(0, 1fr); align-items: baseline; } }
+.gd-facts dt { color: var(--text); font-weight: 600; }
+.gd-facts dd { margin: 0; color: var(--dim); line-height: 1.9; }
+
+/* Commands */
+.gd-filter { display: grid; gap: 12px; margin-bottom: 28px; }
+.gd-filter .gd-search { margin-top: 0; max-width: none; }
+.gd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.gd-chips button {
+  min-height: 44px; padding: 0 16px; border-radius: 999px; cursor: pointer; font-size: 14.5px;
+  border: 1px solid var(--line-2); background: transparent; color: var(--dim); transition: color .2s, background-color .2s, border-color .2s;
+}
+.gd-chips button:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
+.gd-chips button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: rgba(15, 227, 125, .5); }
+.gd-cmds { list-style: none; display: grid; gap: 10px; }
+.gd-cmd { padding: 16px 18px; border-radius: 14px; background: var(--bg-1); border: 1px solid var(--line); }
+.gd-cmd[hidden] { display: none; }
+.gd-cmd-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; }
+.gd-cmd code { font: 500 1rem var(--f-mono); color: var(--accent); background: var(--bg-3); padding: 3px 10px; border-radius: 8px; direction: ltr; unicode-bidi: isolate; }
+.gd-cmd p { margin: 8px 0 0; color: var(--dim); line-height: 1.85; }
+.gd-who { font-size: 13.5px; color: var(--mute); }
+.gd-who bdi { font-family: var(--f-mono); font-size: 12.5px; }
+.gd-count { color: var(--mute); font-size: 14px; }
+
+/* Previous / next */
+.gd-pager { display: grid; gap: 14px; margin-top: 72px; }
+@media (min-width: 720px) { .gd-pager.two { grid-template-columns: 1fr 1fr; } }
+.gd-pager .lg-next { margin-top: 0; }
+
+.guide-page .lg-hero { padding-block: clamp(40px, 6vw, 72px) clamp(32px, 4vw, 48px); }
+.guide-page .lg-title { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+
+/* ---------- Motion (the hub; reduced motion is handled by styles.css's global rule) ---------- */
+@keyframes gdRise {
+  from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes gdAurora {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-6%, 8%, 0) scale(1.15); }
+}
+@keyframes gdPop {
+  0% { transform: scale(0) rotate(-24deg); }
+  70% { transform: scale(1.18) rotate(4deg); }
+  100% { transform: none; }
+}
+
+/* Hero entrance, on load */
+.gd-rise { animation: gdRise .9s var(--ease-expo) both; animation-delay: calc(var(--i, 0) * 110ms + 100ms); }
+.gd-word { display: inline-block; animation: gdRise .85s var(--ease-expo) both; animation-delay: calc(var(--w, 0) * 75ms + 150ms); }
+.guide-hub .aurora { animation: gdAurora 14s ease-in-out infinite alternate; }
+
+/* If the script never ran, show everything instead of leaving it invisible */
+.js.gd-show .reveal { opacity: 1; transform: none; }
+
+/* Cards: lift, a spotlight that follows the pointer, a springy icon */
+.gd-card {
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s, transform .4s var(--ease-expo);
+}
+.gd-card::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(15, 227, 125, .15), transparent 65%);
+}
+.gd-card > * { position: relative; }
+.gd-card:hover, .gd-card:focus-visible { transform: translateY(-4px); }
+.gd-card:hover::before, .gd-card:focus-visible::before { opacity: 1; }
+.gd-card-ic { transition: transform .45s cubic-bezier(.34, 1.56, .64, 1), background-color .25s; }
+.gd-card:hover .gd-card-ic, .gd-card:focus-visible .gd-card-ic { transform: translateY(-3px) rotate(-7deg) scale(1.1); background: rgba(15, 227, 125, .2); }
+
+/* Steps: the number badge pops in after its card */
+.js .gd-quick li.reveal::before { transform: scale(0) rotate(-24deg); }
+.js .gd-quick li.reveal.in::before {
+  transform: none; transition: transform .6s cubic-bezier(.34, 1.56, .64, 1);
+  transition-delay: calc(var(--i, 0) * 80ms + 300ms);
+}
+.gd-quick li { transition: border-color .25s, transform .4s var(--ease-expo); }
+.gd-quick li:hover { border-color: rgba(15, 227, 125, .4); transform: translateY(-3px); }
+.gd-quick li:hover::before { animation: gdPop .5s cubic-bezier(.34, 1.56, .64, 1); }
+
+/* Search results arrive one after another */
+.gd-results li { animation: gdRise .45s var(--ease-expo) both; animation-delay: calc(var(--i, 0) * 45ms); }
+
+/* The help strip's button nudges its icon */
+.gd-help .btn .i { transition: transform .3s var(--ease); }
+.gd-help .btn:hover .i { transform: translateY(-2px) rotate(-8deg); }
