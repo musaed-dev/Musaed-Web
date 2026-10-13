@@ -22,11 +22,13 @@ the dashboard at https://dashboard.musaed.dev; a few systems also have in-chat s
 commands. Durations can be written in plain Arabic ("أسبوع", "30 يوم") or the short form
 (1h30m).
 
-This site (musaed.dev) is a static three-page marketing site. It has no login, no account,
+This site (musaed.dev) is a static marketing and documentation site: a landing page, a
+privacy policy, terms of use, and an Arabic-only user guide. It has no login, no account,
 and no connection to the bot's data — the bot enforces strict per-server data isolation.
 The landing page is bilingual: Arabic loads by default, with a one-click toggle to English
-(?lang=ar / ?lang=en also force a language). All visible copy, including the join-gate demo
-and the interactive dashboard preview, is illustrative UI, not live data from any server.
+(?lang=ar / ?lang=en also force a language). The user guide and the legal pages are Arabic
+only. All visible copy on the landing page, including the join-gate demo and the
+interactive dashboard preview, is illustrative UI, not live data from any server.
 
 ## Pages
 
@@ -34,6 +36,15 @@ and the interactive dashboard preview, is illustrative UI, not live data from an
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)
+
+## User guide (Arabic, Saudi dialect)
+
+- [Guide home](https://musaed.dev/guide/): searchable hub linking to every section below
+- [Getting started](https://musaed.dev/guide/start.html): adding the bot, why its role must sit above the roles it manages, the dashboard and which Discord permission configures which feature, a suggested setup order, and the /checkup command
+- [Protection](https://musaed.dev/guide/protection.html): the age gate, captcha (button or math, DM or verification channel, lockdown mode), the trap channel, automod (banned words, the team word list, spam) and anti-nuke — each with its defaults, setup steps and known limits
+- [Toolkit](https://musaed.dev/guide/toolkit.html): tickets, shortcuts, auto-responses, welcome/goodbye messages and auto-roles, the moderation log and /lookup, the server log, member DMs, and checkup alerts
+- [Commands](https://musaed.dev/guide/commands.html): every slash command with the Discord permission it needs, and how to write durations (30m, 1h30m, 7d)
+- [Troubleshooting](https://musaed.dev/guide/troubleshooting.html): role-hierarchy errors, missing channel permissions, settings that will not enable or apply, captcha lockdown after a role change, and reversing a mistaken kick, ban or timeout
 
 ## Key facts
 
