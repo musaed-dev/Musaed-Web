@@ -2,22 +2,24 @@
 
 Every feature is free for every Discord server, with no time limit and no card
 required. Pro is an optional tier that raises some per-server limits and adds a custom
-embed style. The landing page's #plans panel shows Pro as "coming soon" with no numeric
+embed style and a custom welcome card background. The landing page's #plans panel shows Pro as "coming soon" with no numeric
 price; the limits below come straight from the bot's plans table and are more detailed
 than what the panel itself shows.
 
-Last updated: 2026-09-26
+Last updated: 2026-10-25
 
 ## Free
 
 - Price: 0
-- Included, at full access: moderation, automatic protection, anti-nuke, account-age gate, captcha verification, welcome and goodbye messages, auto-roles, support tickets, auto-responses, text shortcuts, trap channel, server log, and /checkup with broken-feature alerts
+- Included, at full access: moderation, automatic protection, anti-nuke, account-age gate, captcha verification, welcome and goodbye messages with a picture card, auto-roles, a self-roles panel, support tickets, auto-responses, text shortcuts, trap channel, server log, and /checkup with broken-feature alerts
 - Text shortcuts: up to 7
 - Ticket types: up to 6
 - Ticket panels: 1
 - Quick-open buttons per panel: not available
 - Auto-responses: up to 20
 - Auto-response reply length: up to 15 words
+- Auto-responses carrying a file (image, PDF or text, up to 10 MB): 1, counted within the 20
+- Welcome card background: the bot's own
 - Embed style: the bot's default color
 
 ## Pro
@@ -29,6 +31,8 @@ Last updated: 2026-09-26
 - Quick-open buttons per panel: up to 3
 - Auto-responses: up to 40
 - Auto-response reply length: up to 50 words
+- Auto-responses carrying a file: up to 20, counted within the 40
+- Welcome card background: the server's own image
 - Embed style: custom (brand color + footer)
 - Ticket types: unchanged at 6
 

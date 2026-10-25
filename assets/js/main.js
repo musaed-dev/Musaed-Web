@@ -1,7 +1,9 @@
 (() => {
   'use strict';
 
-  const STATS_ENDPOINT = 'https://dashboard.musaed.dev/api/public/stats';
+  const DASH_ORIGIN = 'https://dashboard.musaed.dev';
+  const STATS_ENDPOINT = `${DASH_ORIGIN}/api/public/stats`;
+  const PARTNERS_ENDPOINT = `${DASH_ORIGIN}/api/public/partners`;
   const STATS_TTL_MS = 5 * 60 * 1000;
   const STATS_BACKOFF_MS = 15 * 60 * 1000;
   const STATS_CACHE_KEY = 'musaed:stats';
@@ -107,6 +109,51 @@
 
     onLang(render);
     load();
+  })();
+
+  /* ---------- Partners: live icon + member count (name and link are in the HTML) ---------- */
+  (function partners() {
+    const cards = $$('[data-partner]');
+    if (!cards.length) return;
+    let live = null;
+
+    function render() {
+      if (!live) return;
+      cards.forEach(card => {
+        const p = live[card.dataset.partner];
+        if (!p) return;
+        const show = (sel, n, fmt) => {
+          const li = $(sel, card);
+          if (Number.isInteger(n) && n > 0) { li.textContent = fmt(n); li.hidden = false; }
+        };
+        show('[data-partner-count]', p.member_count, D().partnerMembers);
+        show('[data-partner-online]', p.online_count, D().partnerOnline);
+        // Only a path on the dashboard's own partner route ever becomes an image URL.
+        const ours = path => typeof path === 'string' && path.startsWith('/api/public/partners/');
+        const slot = $('[data-partner-icon]', card);
+        if (ours(p.icon) && !slot.classList.contains('has-img')) {
+          const img = el('img');
+          img.alt = '';
+          img.width = img.height = 120;
+          img.decoding = 'async';
+          img.onload = () => { slot.textContent = ''; slot.appendChild(img); slot.classList.add('has-img'); };
+          img.src = DASH_ORIGIN + p.icon;
+        }
+        const banner = $('[data-partner-banner]', card);
+        if (ours(p.banner) && !banner.style.backgroundImage) {
+          const url = DASH_ORIGIN + p.banner;
+          const probe = new Image();
+          probe.onload = () => { banner.style.backgroundImage = `url("${url}")`; };
+          probe.src = url;
+        }
+      });
+    }
+
+    fetch(PARTNERS_ENDPOINT, { headers: { Accept: 'application/json' } })
+      .then(res => (res.ok ? res.json() : null))
+      .then(data => { live = data && data.partners; render(); })
+      .catch(() => { /* the card already reads fine without the live bits */ });
+    onLang(render);
   })();
 
   /* ---------- Nav ---------- */
@@ -315,33 +362,6 @@
       c.style.setProperty('--y', `${e.clientY - r.top}px`);
     }));
   }
-
-  /* ---------- Member DM progress ---------- */
-  (function dmProgress() {
-    const card = $('.c-dms');
-    const count = $('[data-dm-count]', card);
-    const bar = $('.dms-bar', card);
-    const TOTAL = 1204;
-    let sent = 0, timer = 0;
-    const draw = () => {
-      count.textContent = sent.toLocaleString('en-US');
-      bar.style.setProperty('--p', (sent / TOTAL).toFixed(4));
-    };
-    if (reduce) { sent = 642; draw(); return; }
-    const step = () => {
-      sent = Math.min(TOTAL, sent + 3 + Math.floor(Math.random() * 7));
-      draw();
-      if (sent >= TOTAL) {
-        timer = setTimeout(() => { sent = 0; draw(); step(); }, 1800);
-        return;
-      }
-      timer = setTimeout(step, 70);
-    };
-    onVisible(card, vis => {
-      clearTimeout(timer);
-      if (vis) step();
-    }, { threshold: .3 });
-  })();
 
   /* ---------- Dashboard ---------- */
   (function dashboard() {
