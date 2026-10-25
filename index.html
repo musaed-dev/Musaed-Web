@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="assets/css/styles.css?v=14">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -69,7 +69,9 @@
         "الحماية التلقائية",
         "الحماية من التخريب",
         "التذاكر",
-        "الترحيب والوداع والرتب التلقائية",
+        "الترحيب والوداع مع صورة ترحيب، والرتب التلقائية",
+        "لوحة يختار منها الأعضاء رتبهم",
+        "ردود تلقائية مع صورة أو ملف",
         "سجل الأحداث",
         "فحص السيرفر",
         "لوحة تحكم ويب"
@@ -155,8 +157,8 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=7" defer></script>
-  <script src="assets/js/main.js?v=5" defer></script>
+  <script src="assets/js/i18n.js?v=9" defer></script>
+  <script src="assets/js/main.js?v=7" defer></script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -327,11 +329,42 @@
     <section class="ticker" aria-label="Features" data-i18n-attr="aria-label:ticker.aria">
       <div class="ticker-track">
         <ul>
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
+          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.16">Self-roles</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.12">Web dashboard</li>
         </ul>
         <ul aria-hidden="true">
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.11">Member DMs</li><li data-i18n="tk.12">Web dashboard</li>
+          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.16">Self-roles</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.12">Web dashboard</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- PARTNERS: name, description and link live here; main.js partners() adds the
+         live icon and member count from the dashboard's /api/public/partners. -->
+    <section class="section partners-sec" id="partners">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <p class="eyebrow"><span data-i18n="pt.eyebrow">Partners</span></p>
+          <h2 class="h2" data-i18n="pt.title">Servers that <em>trust Musaed.</em></h2>
+        </div>
+        <div class="partners">
+          <article class="partner reveal" data-partner="M2Uz4Pcpxc">
+            <div class="partner-banner" data-partner-banner aria-hidden="true"></div>
+            <div class="partner-body">
+              <span class="partner-icon" data-partner-icon aria-hidden="true">هـ</span>
+              <div class="partner-copy">
+                <span class="partner-tag" data-i18n="pt.official">Official partner</span>
+                <!-- Written here on purpose, never read from Discord: a hacked server gets renamed. -->
+                <h3><span dir="rtl">هـوسـت لانـد - S1</span></h3>
+                <p data-i18n="pt.hl7">A roleplay server.</p>
+                <ul class="partner-stats">
+                  <li data-partner-count hidden></li>
+                  <li class="on" data-partner-online hidden></li>
+                </ul>
+              </div>
+              <a class="btn btn-primary" href="https://discord.gg/M2Uz4Pcpxc" target="_blank" rel="noopener"><span data-i18n="pt.join">Join the server</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="partners-cta reveal"><span data-i18n="pt.cta">Want your server here?</span> <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="pt.ctaLink">Talk to us in the support server</a></p>
       </div>
     </section>
 
@@ -457,7 +490,7 @@
               <span class="layer-n">05</span>
               <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-shieldalert"/></svg><span data-i18n="l5.tag">Anti-nuke</span></span>
               <h3 data-i18n="l5.title">Stopped before the server is gone.</h3>
-              <p data-i18n="l5.desc">If someone starts deleting channels or roles, or mass-banning or mass-kicking members, Musaed removes their roles right away and alerts your staff. It's on from the moment you add the bot, and you can turn it off.</p>
+              <p data-i18n="l5.desc">If someone starts deleting channels or roles, mass-banning or mass-kicking, creating webhooks or adding bots, Musaed removes their roles right away, kicks the bots they added and alerts your staff. Give @everyone a dangerous permission and they're banned on the spot, with the permission taken back. It's on from the moment you add the bot, and you can turn it off.</p>
             </div>
             <div class="layer-vis vis-nuke" aria-hidden="true">
               <div class="vis-top"><span data-i18n="l5.window">Destructive actions in 60 seconds</span><b data-i18n="l5.limit">limit 5</b></div>
@@ -512,7 +545,7 @@
           <article class="card c-auto reveal">
             <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-message"/></svg><span data-i18n="t3.tag">Auto-responses</span></span>
             <h3 data-i18n="t3.title">Answers the questions you're tired of.</h3>
-            <p data-i18n="t3.desc">Set a trigger word and a reply. Anyone who types it gets the answer instantly.</p>
+            <p data-i18n="t3.desc">Set a trigger word and a reply, with an image, PDF or text file attached if you like. Anyone who types it gets the answer instantly.</p>
             <div class="vis-auto-r" aria-hidden="true">
               <div class="bubble u" data-i18n="t3.q">how do i get <mark>roles</mark>?</div>
               <div class="bubble b"><span class="bot-av sm"><svg><use href="#glyph"/></svg></span><span data-i18n="t3.a">Head to #roles and pick yours.</span></div>
@@ -522,7 +555,7 @@
           <article class="card c-welcome reveal">
             <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-userplus"/></svg><span data-i18n="t4.tag">Welcome</span></span>
             <h3 data-i18n="t4.title">Welcome message, goodbye message and auto-role.</h3>
-            <p data-i18n="t4.desc">Greet every member in the channel you pick, and say goodbye when they leave (not when they're kicked or banned). New members get one role automatically, new bots a separate one.</p>
+            <p data-i18n="t4.desc">Greet every member in the channel you pick, with a picture card of their avatar, name and member number, and say goodbye when they leave (not when they're kicked or banned). New members get one role automatically, new bots a separate one.</p>
             <div class="vis-welcome" aria-hidden="true">
               <span class="w-av">S</span>
               <div><b data-i18n="t4.hi">Welcome, @sara!</b><small data-i18n="t4.num">You're member #1,204. Glad you're here.</small></div>
@@ -571,16 +604,13 @@
             </div>
           </article>
 
-          <article class="card c-dms reveal">
-            <div class="dms-copy">
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg><span data-i18n="t6.tag">Member DMs</span></span>
-              <h3 data-i18n="t6.title">One message, every member's inbox.</h3>
-              <p data-i18n="t6.desc">Write it once in the dashboard. Musaed delivers it to each member one at a time, at a pace that keeps your server safe from rate limits.</p>
-            </div>
-            <div class="vis-dms" aria-hidden="true">
-              <div class="dms-top"><span data-i18n="t6.sending">Sending</span><b><span data-dm-count>0</span> / 1,204</b></div>
-              <div class="dms-bar"><i></i></div>
-              <div class="dms-queue"><span class="av" style="--c:#9ae6c4">L</span><span class="av" style="--c:#ffd08a">O</span><span class="av" style="--c:#c7b8ff">S</span><span class="av" style="--c:#ff9d9d">Y</span><span class="av" style="--c:#9ad7ff">M</span><span class="more">+1,199</span></div>
+          <article class="card c-roles reveal">
+            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg><span data-i18n="t9.tag">Self-roles</span></span>
+            <h3 data-i18n="t9.title">Members pick their own roles.</h3>
+            <p data-i18n="t9.desc">Post one panel with up to 10 buttons, each with its own emoji and colour. A member clicks to take a role and clicks again to drop it.</p>
+            <div class="vis-roles" aria-hidden="true">
+              <div class="btns"><span class="rb-blurple">🎮 <span data-i18n="t9.r1">Gamer</span></span><span class="rb-green">🎨 <span data-i18n="t9.r2">Artist</span></span><span>📢 <span data-i18n="t9.r3">News</span></span></div>
+              <div class="sys"><svg class="i"><use href="#i-check"/></svg><span data-i18n="t9.done">sara took @Gamer</span></div>
             </div>
           </article>
         </div>
@@ -756,7 +786,7 @@
             <ul>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f1">Age gate, captcha and honeypot</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f2">AutoMod, anti-nuke and raid detection</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f3">Tickets, welcome and goodbye, auto-roles, shortcuts and auto-responses</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f3">Tickets, welcome and goodbye with a picture card, auto-roles, self-roles, shortcuts and auto-responses</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f4">Mod logs, the server log and /lookup</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f6">/checkup and alerts when a feature breaks</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f5">The full web dashboard</span></li>
@@ -771,7 +801,8 @@
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p1">Everything in Free</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p4">Your server's own colour and footer on Musaed's messages</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p5">More than one ticket panel, with buttons that open a ticket type in one click</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher allowances for shortcuts and auto-responses</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p6">Your own background on the welcome card</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher allowances for shortcuts and auto-responses, and more of them with a file</span></li>
             </ul>
           </article>
         </div>
