@@ -9,11 +9,15 @@ Musaed's features are independent and toggled per server: moderation with a full
 log; automatic protection (a banned-word filter that also catches stretched-out, spaced,
 symbol-swapped and Arabizi spellings and edited messages, with an optional ready-made word
 list from the Musaed team; spam detection; raid defense); anti-nuke protection, on by
-default, which strips the roles of anyone mass-deleting channels or roles or mass-banning
-or mass-kicking members and alerts staff; an account-age gate; captcha verification (in the
+default, which strips the roles of anyone mass-deleting channels or roles, mass-banning or
+mass-kicking members, creating webhooks or adding bots, kicks the bots they added, alerts
+staff, and instantly bans anyone who gives @everyone a dangerous permission (taking the
+permission back); an account-age gate; captcha verification (in the
 verification channel or by DM, button or math at three difficulty levels); welcome and
-goodbye messages; separate auto-roles for new members and new bots; support tickets;
-auto-responses; text shortcuts for quick moderation; a trap channel that mutes, kicks or
+goodbye messages with a picture card (avatar, name, member number); separate auto-roles for
+new members and new bots; a self-roles panel (up to 10 buttons with emoji and colour that
+members click to take or drop a role); support tickets; auto-responses, optionally with an
+image, PDF or text file; text shortcuts for quick moderation; a trap channel that mutes, kicks or
 bans anyone who posts in a channel marked off-limits; a server log channel (message
 deletes and edits, joins and leaves, role and nickname changes, channel and role creates
 and deletes — nothing stored by Musaed); and /checkup, plus a one-time alert when an
@@ -32,7 +36,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 
 ## Pages
 
-- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, member DMs), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
+- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, self-roles), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)
@@ -42,7 +46,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 - [Guide home](https://musaed.dev/guide/): searchable hub linking to every section below
 - [Getting started](https://musaed.dev/guide/start.html): adding the bot, why its role must sit above the roles it manages, the dashboard and which Discord permission configures which feature, a suggested setup order, and the /checkup command
 - [Protection](https://musaed.dev/guide/protection.html): the age gate, captcha (button or math, DM or verification channel, lockdown mode), the trap channel, automod (banned words, the team word list, spam) and anti-nuke — each with its defaults, setup steps and known limits
-- [Toolkit](https://musaed.dev/guide/toolkit.html): tickets, shortcuts, auto-responses, welcome/goodbye messages and auto-roles, the moderation log and /lookup, the server log, member DMs, and checkup alerts
+- [Toolkit](https://musaed.dev/guide/toolkit.html): tickets, shortcuts, auto-responses, welcome/goodbye messages and auto-roles, the moderation log and /lookup, the server log, checkup alerts, and the self-roles panel
 - [Commands](https://musaed.dev/guide/commands.html): every slash command with the Discord permission it needs, and how to write durations (30m, 1h30m, 7d)
 - [Troubleshooting](https://musaed.dev/guide/troubleshooting.html): role-hierarchy errors, missing channel permissions, settings that will not enable or apply, captcha lockdown after a role change, and reversing a mistaken kick, ban or timeout
 

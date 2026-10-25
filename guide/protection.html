@@ -23,10 +23,10 @@
   <meta name="twitter:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
   <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=14">
   <link rel="stylesheet" href="../assets/css/legal.css?v=2">
   <link rel="stylesheet" href="../assets/css/guide.css?v=2">
-  <script src="../assets/js/guide.js?v=2" defer></script>
+  <script src="../assets/js/guide.js?v=3" defer></script>
   <script type="application/ld+json">
 {
     "@context":  "https://schema.org",
@@ -326,8 +326,19 @@
 
           <h3>كيف تشتغل</h3>
           <p>
-            مساعد يعدّ الإجراءات التخريبية (حذف قناة، حذف رتبة، حظر، طرد) لكل شخص. إذا تجاوز الحد
-            خلال المدة، يتدخل. الافتراضي <strong>5 إجراءات خلال 60 ثانية</strong>، والعقوبة سحب رتبه.
+            مساعد يعدّ الإجراءات التخريبية (حذف قناة، حذف رتبة، حظر، طرد، إنشاء ويب هوك، إضافة بوت)
+            لكل شخص. إذا وصل الحد خلال المدة، يتدخل. الافتراضي <strong>5 إجراءات خلال 60 ثانية</strong>،
+            والعقوبة سحب رتبه.
+          </p>
+          <p>
+            ولما يوقف أحد، يطرد معه البوتات اللي أضافها خلال آخر يوم (مو البوتات الموثّقة، ومو اللي أضافها
+            غيره). وإذا ما قدر يوقفه، يمنشن رتب الإدارة عشان يتدخلون على طول.
+          </p>
+
+          <h3>صلاحيات خطيرة لـ everyone</h3>
+          <p>
+            لو أحد عطى رتبة <strong>everyone</strong> صلاحية خطيرة (مثل الإدارة، أو حذف القنوات والرتب، أو
+            الحظر)، مساعد ما ينتظر العدّ: يشيل الصلاحية اللي انضافت <strong>ويحظره على طول</strong>.
           </p>
           <dl class="gd-facts">
             <div>
@@ -341,6 +352,14 @@
             <div>
               <dt>العقوبة</dt>
               <dd>الافتراضي سحب الرتب، لأنه الأخف وتقدر ترجعه.</dd>
+            </div>
+            <div>
+              <dt>كم مرة أوقف نفس الشخص</dt>
+              <dd>
+                الافتراضي <strong>كل مرة</strong>: لو أحد رجّع له الرتب ورجع يخرّب، يوقفه مرة ثانية. لو اخترت
+                رقم (1 لين 5)، يوقفه هالعدد باليوم وبعدها يتركه يوم كامل، لأن اللي يرجّع الرتب غالبًا مشرف
+                يكمّل تنظيف.
+              </dd>
             </div>
             <div>
               <dt>الرتبة الموثوقة</dt>

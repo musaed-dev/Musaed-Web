@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>الأدوات | دليل مساعد</title>
-  <meta name="description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات، ورسائل الأعضاء: كيف تفعّلها وتضبطها.">
+  <meta name="description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات: كيف تفعّلها وتضبطها.">
   <meta name="theme-color" content="#0b0d0c">
   <link rel="icon" href="../assets/Pics/musaed-favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="../assets/Pics/musaed-favicon.png" type="image/png">
@@ -15,18 +15,18 @@
   <meta property="og:locale" content="ar_SA">
   <meta property="og:url" content="https://musaed.dev/guide/toolkit.html">
   <meta property="og:title" content="الأدوات | دليل مساعد">
-  <meta property="og:description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات، ورسائل الأعضاء: كيف تفعّلها وتضبطها.">
+  <meta property="og:description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات: كيف تفعّلها وتضبطها.">
   <meta property="og:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="الأدوات | دليل مساعد">
-  <meta name="twitter:description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات، ورسائل الأعضاء: كيف تفعّلها وتضبطها.">
+  <meta name="twitter:description" content="التذاكر، الاختصارات، الردود التلقائية، الترحيب، السجلات: كيف تفعّلها وتضبطها.">
   <meta name="twitter:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
   <link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/styles.css?v=12">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=14">
   <link rel="stylesheet" href="../assets/css/legal.css?v=2">
   <link rel="stylesheet" href="../assets/css/guide.css?v=2">
-  <script src="../assets/js/guide.js?v=2" defer></script>
+  <script src="../assets/js/guide.js?v=3" defer></script>
   <script type="application/ld+json">
 {
     "@context":  "https://schema.org",
@@ -124,8 +124,8 @@
           <li><a href="#welcome">الترحيب والوداع</a></li>
           <li><a href="#modlog">سجل الإجراءات</a></li>
           <li><a href="#serverlog">سجل الأحداث</a></li>
-          <li><a href="#memberdm">رسائل الأعضاء</a></li>
           <li><a href="#checkup">فحص السيرفر</a></li>
+          <li><a href="#selfroles">لوحة الرتب</a></li>
         </ol>
       </nav>
 
@@ -229,6 +229,11 @@
           <ul>
             <li>الرد ما ينشن أحد.</li>
             <li>عدد الردود وطولها لهم حد، ويختلف بين الباقة المجانية وبرو.</li>
+            <li>
+              تقدر ترفق مع الرد <strong>صورة</strong> (PNG أو JPG أو GIF أو WebP) أو <strong>PDF</strong>
+              أو <strong>ملف نصي</strong>، لين 10 ميجا. الرد يكون نص، أو ملف، أو الاثنين.
+            </li>
+            <li>بالباقة المجانية رد واحد بس يقدر يكون فيه ملف، وبرو يسمح بأكثر.</li>
           </ul>
         </section>
 
@@ -254,6 +259,20 @@
           <p>
             جرّب شكلها قبل ما تعتمدها بأمر <code dir="ltr">/welcome preview</code>، يعرضها لك على حسابك.
           </p>
+
+          <h3>صورة الترحيب</h3>
+          <p>
+            مع رسالة الترحيب، مساعد يقدر يرسل <strong>صورة</strong> فيها صورة العضو واسمه ورقمه بالسيرفر،
+            وفوقها عنوان (الافتراضي «حيّاك الله») تقدر تغيّره. شغّلها من مجموعة «صورة الترحيب» بصفحة
+            الترحيب بلوحة التحكم، والمعاينة اللي جنبها تعرض لك شكلها. ورسالة الوداع لها صورة مثلها.
+          </p>
+          <div class="gd-callout">
+            <svg class="i" aria-hidden="true"><use href="#i-info"/></svg>
+            <p>
+              الخلفية الافتراضية متاحة للكل. <strong>خلفية من اختيارك</strong> ميزة برو، وهي نفسها لصورة
+              الترحيب وصورة الوداع.
+            </p>
+          </div>
 
           <h3>رسالة الوداع</h3>
           <p>
@@ -326,21 +345,9 @@
           </div>
         </section>
 
-        <section class="gd-feature">
-          <h2 id="memberdm"><span class="n">07</span>رسائل الأعضاء</h2>
-          <p>
-            اكتب رسالة مرة وحدة من لوحة التحكم، ومساعد يوصلها لخاص كل عضو واحد ورا الثاني، بوتيرة تحمي
-            سيرفرك من حدود ديسكورد.
-          </p>
-          <ul>
-            <li>الإرسال يصير بالتدريج، فتاخذ وقت على قد عدد الأعضاء.</li>
-            <li>بعض الأعضاء مقفلين الخاص، فما توصلهم.</li>
-            <li>استخدمها للأشياء المهمة بس. الرسايل الجماعية بالخاص تزعج الناس بسرعة.</li>
-          </ul>
-        </section>
 
         <section class="gd-feature">
-          <h2 id="checkup"><span class="n">08</span>فحص السيرفر</h2>
+          <h2 id="checkup"><span class="n">07</span>فحص السيرفر</h2>
           <p>
             أمر <code dir="ltr">/checkup</code> تشغّله بنفسك، ومعه تنبيهات تلقائية لو ميزة مفعّلة وقفت عن
             الشغل. <a href="start.html#checkup">شرح الأمر</a>.
@@ -362,6 +369,33 @@
           <p>
             وإذا قناة الفخ اشتغلت على عضو ما قدر يعاقبه (لأن رتبته فوق رتبة مساعد)، يوصلك تنبيه بنفس الوقت.
           </p>
+        </section>
+
+        <section class="gd-feature">
+          <h2 id="selfroles"><span class="n">08</span>لوحة الرتب</h2>
+          <p>
+            لوحة أزرار بقناة تختارها، والأعضاء يختارون رتبهم بأنفسهم: يضغط الزر وياخذ الرتبة، ويضغط مرة
+            ثانية ويشيلها.
+          </p>
+          <div class="gd-pills">
+            <span class="gd-pill"><svg class="i" aria-hidden="true"><use href="#i-power"/></svg>الافتراضي: <strong>مطفية</strong></span>
+            <span class="gd-pill"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>تضبطها: <strong dir="ltr">Administrator</strong></span>
+          </div>
+          <ol class="gd-steps">
+            <li>افتح صفحة «لوحة الرتب» بلوحة التحكم، واختار <strong>قناة لوحة الرتب</strong>.</li>
+            <li>
+              أضف الأزرار (لين 10). كل زر له رتبة، وتقدر تعطيه اسم وإيموجي ولون (رمادي، أزرق، أخضر، أحمر).
+              لو تركت الاسم فاضي، ياخذ اسم الرتبة.
+            </li>
+            <li>عدّل نص اللوحة لو تبي، وشغّل واحفظ. مساعد ينشر اللوحة، وأي تعديل بعدين يوصلها لحاله.</li>
+          </ol>
+          <div class="gd-callout warn">
+            <svg class="i" aria-hidden="true"><use href="#i-warn"/></svg>
+            <p>
+              رتبة مساعد لازم تكون <strong>فوق</strong> كل رتبة باللوحة، وإلا ما يقدر يعطيها، والعضو يوصله رد
+              إنه ما قدر.
+            </p>
+          </div>
         </section>
 
         <div class="gd-pager two">
