@@ -6,7 +6,7 @@ embed style and a custom welcome card background. The landing page's #plans pane
 price; the limits below come straight from the bot's plans table and are more detailed
 than what the panel itself shows.
 
-Last updated: 2026-10-25
+Last updated: 2026-10-29
 
 ## Free
 
@@ -20,7 +20,7 @@ Last updated: 2026-10-25
 - Auto-response reply length: up to 15 words
 - Auto-responses carrying a file (image, PDF or text, up to 10 MB): 1, counted within the 20
 - Welcome card background: the bot's own
-- Embed style: the bot's default color
+- Embed style: the bot's default colour
 
 ## Pro
 
@@ -33,7 +33,7 @@ Last updated: 2026-10-25
 - Auto-response reply length: up to 50 words
 - Auto-responses carrying a file: up to 20, counted within the 40
 - Welcome card background: the server's own image
-- Embed style: custom (brand color + footer)
+- Embed style: custom (brand colour + footer)
 - Ticket types: unchanged at 6
 
 ## Notes
