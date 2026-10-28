@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>مساعد — بوت ديسكورد اللي يحرس الباب</title>
-  <meta name="description" content="مساعد يفحص كل عضو جديد ببوابة عمر الحساب والكابتشا وقناة الفخ، ويحمي سيرفرك من السبام والتخريب، ومعه التذاكر واختصارات الإدارة وسجل الأحداث. عربي من الأساس، وتضبطه من لوحة تحكم على الويب.">
+  <meta name="description" content="مساعد بوت ديسكورد عربي يحرس باب سيرفرك: بوابة عمر الحساب والكابتشا وقناة الفخ، وحماية من السبام والتخريب، وتذاكر وترحيب. وكل شي من لوحة تحكم ويب.">
   <meta name="theme-color" content="#0b0d0c">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:locale:alternate" content="en_US">
@@ -13,10 +13,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://musaed.dev/">
   <meta property="og:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="540">
+  <meta property="og:image:alt" content="شعار مساعد: Musaed | مساعد">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="مساعد · Musaed">
   <meta name="twitter:description" content="المشاكل توقف عند الباب. بوت ديسكورد عربي للحماية والتذاكر والإدارة.">
   <meta name="twitter:image" content="https://musaed.dev/assets/Pics/musaed-banner.png">
+  <meta name="twitter:image:alt" content="شعار مساعد: Musaed | مساعد">
   <link rel="canonical" href="https://musaed.dev/">
   <link rel="icon" href="assets/Pics/musaed-favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="assets/Pics/musaed-favicon.png" type="image/png">
@@ -47,7 +51,7 @@
       "@id": "https://musaed.dev/#website",
       "url": "https://musaed.dev/",
       "name": "مساعد",
-      "inLanguage": "ar",
+      "inLanguage": ["ar", "en"],
       "publisher": { "@id": "https://musaed.dev/#org" }
     },
     {
@@ -67,15 +71,30 @@
         "الكابتشا",
         "قناة الفخ",
         "الحماية التلقائية",
+        "رصد الهجمات",
         "الحماية من التخريب",
         "التذاكر",
+        "اختصارات الإدارة",
         "الترحيب والوداع مع صورة ترحيب، والرتب التلقائية",
         "لوحة يختار منها الأعضاء رتبهم",
         "ردود تلقائية مع صورة أو ملف",
+        "سجل الإجراءات",
         "سجل الأحداث",
         "فحص السيرفر",
         "لوحة تحكم ويب"
       ],
+      "publisher": { "@id": "https://musaed.dev/#org" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://musaed.dev/#film",
+      "name": "مساعد في 22 ثانية",
+      "description": "فيديو مدته 22 ثانية فيه موسيقى ونصوص عربية بدون كلام. مشرف يبدأ يحذف القنوات ويحظر الأعضاء، وعند خامس إجراء خلال 60 ثانية مساعد يسحب رتبه وينبّه الإدارة. بعدها أعضاء جدد يمرون ببوابة العمر والكابتشا وقناة الفخ، والحسابات المشبوهة تنوقف. بعدها حساب يكتب «نيترو مجاني للكل» بقناة الفخ وينكتم على طول.",
+      "inLanguage": "ar",
+      "thumbnailUrl": "https://musaed.dev/assets/video/musaed-spot.jpg",
+      "contentUrl": "https://musaed.dev/assets/video/musaed-spot.mp4",
+      "uploadDate": "2026-09-28",
+      "duration": "PT22S",
       "publisher": { "@id": "https://musaed.dev/#org" }
     },
     {
@@ -157,7 +176,7 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=9" defer></script>
+  <script src="assets/js/i18n.js?v=10" defer></script>
   <script src="assets/js/main.js?v=7" defer></script>
 </head>
 <body>
@@ -471,7 +490,7 @@
               <p data-i18n="l4.desc">Banned words are caught even stretched out, spaced apart, swapped for symbols or typed in Arabizi, and in messages edited after sending. A ready-made list from the Musaed team covers several dialects, and you can turn it off. Spam detection and raid detection run alongside.</p>
             </div>
             <div class="layer-vis vis-auto" aria-hidden="true">
-              <div class="vis-top"><span data-i18n="l4.window">Messages in 5 seconds</span><b data-i18n="l4.limit">limit 5</b></div>
+              <div class="vis-top"><span data-i18n="l4.window">Messages in 8 seconds</span><b data-i18n="l4.limit">limit 6</b></div>
               <div class="meter">
                 <i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i class="over" style="--k:5"></i><i class="over" style="--k:6"></i><i class="over" style="--k:7"></i>
                 <span class="thr"></span>
@@ -802,7 +821,7 @@
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p4">Your server's own colour and footer on Musaed's messages</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p5">More than one ticket panel, with buttons that open a ticket type in one click</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p6">Your own background on the welcome card</span></li>
-              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher allowances for shortcuts and auto-responses, and more of them with a file</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.p2">Higher limits for shortcuts and auto-responses, and more of them with a file</span></li>
             </ul>
           </article>
         </div>

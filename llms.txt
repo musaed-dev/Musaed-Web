@@ -36,7 +36,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 
 ## Pages
 
-- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, self-roles), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
+- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, partner servers, a 22-second video (Arabic on-screen text), the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, self-roles), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)
