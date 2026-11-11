@@ -90,8 +90,8 @@
 }
 .lg-body p { color: var(--dim); margin-bottom: 1.1em; }
 .lg-body strong { color: var(--text); font-weight: 600; }
-.lg-body a { color: var(--accent); text-underline-offset: 5px; text-decoration-thickness: 1px; }
-.lg-body a:hover { color: var(--accent-hi); }
+.lg-body a, .lg-lede a { color: var(--accent); text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.lg-body a:hover, .lg-lede a:hover { color: var(--accent-hi); }
 .lg-body code { font: 500 .88em var(--f-mono); padding: 2px 7px; border-radius: 6px; background: var(--bg-3); color: var(--text); }
 .lg-body ul { list-style: none; display: grid; gap: 12px; margin: 0 0 1.4em; }
 .lg-body li {
