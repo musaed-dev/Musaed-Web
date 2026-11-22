@@ -191,17 +191,6 @@
       });
     }
 
-    // A spotlight on each card that follows the pointer.
-    if (matchMedia('(hover: hover)').matches) {
-      document.querySelectorAll('.gd-card').forEach(card => {
-        card.addEventListener('pointermove', e => {
-          const r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-          card.style.setProperty('--my', `${e.clientY - r.top}px`);
-        });
-      });
-    }
-
     // The search box types example searches until someone uses it.
     if (hubInput && !reduce) {
       const base = hubInput.getAttribute('placeholder');

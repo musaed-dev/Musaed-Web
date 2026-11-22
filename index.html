@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>مساعد — بوت ديسكورد اللي يحرس الباب</title>
   <meta name="description" content="مساعد بوت ديسكورد عربي يحرس باب سيرفرك: بوابة عمر الحساب والكابتشا وقناة الفخ، وحماية من السبام والتخريب، وتذاكر وترحيب. وكل شي من لوحة تحكم ويب.">
-  <meta name="theme-color" content="#0b0d0c">
+  <meta name="theme-color" content="#101413">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:title" content="مساعد · Musaed">
@@ -27,7 +27,7 @@
   <link rel="apple-touch-icon" href="assets/Pics/musaed-avatar.png">
   <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/readexpro-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=14">
+  <link rel="stylesheet" href="assets/css/styles.css?v=16">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -83,18 +83,6 @@
         "فحص السيرفر",
         "لوحة تحكم ويب"
       ],
-      "publisher": { "@id": "https://musaed.dev/#org" }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://musaed.dev/#film",
-      "name": "مساعد في 22 ثانية",
-      "description": "فيديو مدته 22 ثانية فيه موسيقى ونصوص عربية بدون كلام. مشرف يبدأ يحذف القنوات ويحظر الأعضاء، وعند خامس إجراء خلال 60 ثانية مساعد يسحب رتبه وينبّه الإدارة. بعدها أعضاء جدد يمرون ببوابة العمر والكابتشا وقناة الفخ، والحسابات المشبوهة تنوقف. بعدها حساب يكتب «نيترو مجاني للكل» بقناة الفخ وينكتم على طول.",
-      "inLanguage": "ar",
-      "thumbnailUrl": "https://musaed.dev/assets/video/musaed-spot.jpg",
-      "contentUrl": "https://musaed.dev/assets/video/musaed-spot.mp4",
-      "uploadDate": "2026-09-28",
-      "duration": "PT22S",
       "publisher": { "@id": "https://musaed.dev/#org" }
     },
     {
@@ -157,6 +145,22 @@
             "@type": "Answer",
             "text": "طريقة يجرّب فيها السيرفر مزايا مساعد الجديدة قبل ما تنطلق للكل. ما يعطيك أكثر من برو، وما يرفع أي حد. والميزة اللي فيه ممكن تتغير أو تنشال، وممكن تصير مدفوعة بعدين. وبنعلن طريقة الانضمام بسيرفر الدعم."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "وش تحفظون عن سيرفري؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "بس اللي يحتاجه مساعد عشان يحمي سيرفرك، والباقي ينمسح بشكل دوري. إذا شلت البوت تنحط بياناته على جنب: رجّعه قريب وترجع إعداداتك، وإذا طولت تنحذف نهائيًا. والتفاصيل كاملة بسياسة الخصوصية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ليش مساعد يطلب صلاحية الأدمن؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عشان يقدر يوقف أي أحد يخرّب سيرفرك، لازم تكون رتبته فوق رتبة اللي يخرّب، ويحتاج يسحب الرتب ويرجّع القنوات والرتب اللي انحذفت. وأي إجراء ياخذه ينسجل بسجل الإجراءات. ونصيحتنا: فعّل التحقق بخطوتين لكل الإدارة، لأن أغلب السيرفرات اللي تنخرب تبدأ بحساب مشرف مخترق."
+          }
         }
       ]
     }
@@ -176,8 +180,8 @@
       if (lang === 'ar') d.classList.add('i18n-pending');
     })();
   </script>
-  <script src="assets/js/i18n.js?v=10" defer></script>
-  <script src="assets/js/main.js?v=7" defer></script>
+  <script src="assets/js/i18n.js?v=13" defer></script>
+  <script src="assets/js/main.js?v=13" defer></script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -206,8 +210,6 @@
     <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
     <symbol id="i-userplus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-    <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
-    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
     <symbol id="i-hash" viewBox="0 0 24 24"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></symbol>
     <symbol id="i-restore" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
@@ -215,7 +217,6 @@
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
     <symbol id="i-layout" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-    <symbol id="i-shieldalert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></symbol>
     <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></symbol>
@@ -223,6 +224,9 @@
     <symbol id="i-userminus" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.6v14.8a1 1 0 0 0 1.52.85l12.02-7.4a1 1 0 0 0 0-1.7L8.52 3.75A1 1 0 0 0 7 4.6Z"/></symbol>
     <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
   </svg>
 
   <header class="nav" id="nav">
@@ -234,11 +238,10 @@
       <nav class="nav-links" aria-label="Primary" data-i18n-attr="aria-label:nav.aria">
         <a href="#protection" data-i18n="nav.protection">Protection</a>
         <a href="#toolkit" data-i18n="nav.toolkit">Toolkit</a>
-        <a href="#dashboard" data-i18n="nav.dashboard">Dashboard</a>
-        <a href="#commands" data-i18n="nav.commands">Commands</a>
+        <!-- <a href="#commands" data-i18n="nav.commands">Commands</a> (section cut 2026-11-22) -->
         <a href="#plans" data-i18n="nav.plans">Plans</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a class="is-new" href="guide/" data-i18n="nav.guide">Guide</a>
+        <a href="guide/" data-i18n="nav.guide">Guide</a>
       </nav>
       <div class="nav-cta">
         <button class="lang-btn" type="button" data-lang-toggle aria-label="اقرأ الصفحة بالعربي">
@@ -257,57 +260,165 @@
     <div class="mobile-menu" id="mobile-menu" hidden>
       <a href="#protection" data-i18n="nav.protection">Protection</a>
       <a href="#toolkit" data-i18n="nav.toolkit">Toolkit</a>
-      <a href="#dashboard" data-i18n="nav.dashboard">Dashboard</a>
-      <a href="#commands" data-i18n="nav.commands">Commands</a>
+      <!-- <a href="#commands" data-i18n="nav.commands">Commands</a> (section cut 2026-11-22) -->
       <a href="#plans" data-i18n="nav.plans">Plans</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
-      <a class="is-new" href="guide/" data-i18n="nav.guide">Guide</a>
+      <a href="guide/" data-i18n="nav.guide">Guide</a>
       <a href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener" data-i18n="nav.login">Log in</a>
       <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.add">Add to Discord</span></a>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
+    <!-- HERO (2026-11-22, owner): leads with anti-nuke's undo. The live count is the pill
+         now (hidden until real data arrives); the old eyebrow and the "free" check are kept
+         as comments. The gate demo moved down into #protection. -->
     <section class="hero" id="top">
-      <div class="hero-bg" aria-hidden="true"><div class="grid"></div><div class="scan"></div><div class="aurora"></div></div>
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow-pill fade-up" style="--d:0ms"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Musaed means “the helper” in Arabic</span></p>
-          <h1 class="display fade-up" style="--d:120ms" data-i18n="hero.title">Trouble stops <em>at the door.</em></h1>
-          <p class="lede fade-up" style="--d:260ms" data-i18n="hero.sub">Musaed checks every new member through an age gate, a captcha and a honeypot before they can cause trouble, then keeps watch with automod, anti-nuke, tickets and one-word mod shortcuts. All of it is set up from a web dashboard.</p>
-          <div class="cta-row fade-up" style="--d:380ms">
-            <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.addLong">Add Musaed to your server</span></a>
-            <a class="btn btn-ghost btn-lg" href="#gate"><span data-i18n="hero.cta2">Watch the gate</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-          <p class="live-stats" data-live-stats hidden><span class="pulse" aria-hidden="true"></span><span data-live-text></span></p>
-          <ul class="assure fade-up" style="--d:480ms">
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a1">Free to start</span></li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a2">Speaks Arabic</span></li>
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a3">Web dashboard</span></li>
-          </ul>
+      <div class="hero-bg" aria-hidden="true"><div class="aurora"></div></div>
+      <div class="wrap hero-copy">
+        <!-- <p class="eyebrow-pill fade-up" style="--d:0ms"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Musaed means “the helper” in Arabic</span></p> -->
+        <p class="live-stats eyebrow-pill" data-live-stats hidden><span class="pulse" aria-hidden="true"></span><span data-live-text></span></p>
+        <h1 class="display fade-up" style="--d:120ms" data-i18n="hero.title">Protects your server from <em>wrecking, spam and raids.</em></h1>
+        <p class="lede fade-up" style="--d:240ms" data-i18n="hero.sub">Musaed checks new members at the door, catches spam and scam links, and stops any mod or bot that starts deleting channels and roles. And if something does get deleted, one press brings it back.</p>
+        <div class="cta-row fade-up" style="--d:360ms">
+          <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.addLong">Add Musaed to your server</span></a>
+          <a class="btn btn-ghost btn-lg" href="#protection"><span data-i18n="hero.cta2">See how it protects</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
-
-        <div class="hero-art" aria-hidden="true">
-          <div class="rings"><i></i><i></i><i></i></div>
-          <svg class="big-glyph" viewBox="0 0 1024 1024">
-            <defs>
-              <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#6cf5b0"/><stop offset=".55" stop-color="#0fe37d"/><stop offset="1" stop-color="#0a9e57"/>
-              </linearGradient>
-            </defs>
-            <path class="g-fill" fill="url(#gg)" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/>
-            <path class="g-stroke" pathLength="1" d="M242 655.5Q242 405.5 462 405.5H681Q677 346.5 644.5 313.5Q612 280.5 563 280.5Q513 280.5 487.5 305Q462 329.5 453 367.5L344 332.5Q353 274.5 375.5 235.5Q398 196.5 428.5 173.5Q459 150.5 493.5 140.5Q528 130.5 561 130.5Q663 130.5 722.5 208Q782 285.5 782 428.5V555.5H462Q432 555.5 412.5 560Q393 564.5 382 575.5Q371 586.5 366.5 606Q362 625.5 362 655.5V893.5H242Z"/>
-          </svg>
-          <span class="orbit o1"><svg class="i"><use href="#i-clock"/></svg><span data-i18n="orbit.1">Age gate · on</span></span>
-          <span class="orbit o2"><svg class="i"><use href="#i-badge"/></svg><span data-i18n="orbit.2">Captcha · math</span></span>
-          <span class="orbit o3"><svg class="i"><use href="#i-target"/></svg><span data-i18n="orbit.3">Honeypot · armed</span></span>
-        </div>
+        <ul class="assure fade-up" style="--d:460ms">
+          <!-- <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a1">Free to start</span></li> -->
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a4">On from the moment you add it</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a2">Speaks Arabic</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="hero.a3">Web dashboard</span></li>
+        </ul>
       </div>
 
-      <!-- Gate pipeline demo -->
+      <!-- Undo demo: the anti-nuke card's loop, then the alert's «رجّع اللي خرّبه» button
+           being pressed and each deleted thing coming back. Pure CSS on a 12 s loop; its
+           resting style is the last frame, for reduced motion. Wording mirrors the bot's
+           real strings (core/strings.py ANTINUKE_*). -->
       <div class="wrap">
-        <div class="gate-demo fade-up" style="--d:600ms" id="gate" data-demo>
+        <div class="gate-demo undo-demo fade-up" style="--d:560ms" id="undo">
+          <div class="demo-head">
+            <p class="demo-label"><span class="pulse" aria-hidden="true"></span><span data-i18n="undo.label">Live demo · anti-nuke and the undo</span></p>
+          </div>
+          <p class="sr-only" data-i18n="undo.sr">An animation of anti-nuke: a moderator deletes two channels and a role and bans two members; at the fifth action within 60 seconds Musaed removes their roles and posts an alert to the staff. An admin presses «Put back what they wrecked», and Musaed brings back both channels and the role and lifts both bans.</p>
+          <div class="undo-grid" aria-hidden="true">
+            <div class="undo-col pv-nuke">
+              <div class="nuke-top"><span data-i18n="l5.window">Destructive actions in 60 seconds</span><b data-i18n="l5.limit">limit 5</b></div>
+              <div class="meter"><i></i></div>
+              <ol class="audit">
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a1">deleted #general</span><b>1</b></li>
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a2">deleted #rules</span><b>2</b></li>
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a3">deleted the @Mods role</span><b>3</b></li>
+                <li><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a4">banned layla</span><b>4</b></li>
+                <li><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a5">banned omar</span><b>5</b></li>
+              </ol>
+              <p class="chip-ok nuke-stop"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="l5.stop">rogue_mod stopped · roles removed, staff alerted</span></p>
+            </div>
+            <div class="undo-col">
+              <div class="dc-card undo-alert">
+                <div class="dc-row">
+                  <span class="bot-av"><svg><use href="#glyph"/></svg></span>
+                  <div>
+                    <p class="dc-meta"><b>Musaed</b><span class="badge">BOT</span></p>
+                    <div class="embed">
+                      <strong data-i18n="undo.title">Stopped a wrecking attempt</strong>
+                      <span data-i18n="undo.desc">rogue_mod did 5 in 60 seconds.</span>
+                      <span data-i18n="undo.offer">Nothing is back yet. Press the button within 10 minutes and I'll put it back.</span>
+                    </div>
+                    <span class="dc-btn undo-btn" data-i18n="undo.btn">Put back what they wrecked</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dc-card undo-done">
+                <p class="undo-done-title"><svg class="i"><use href="#i-restore"/></svg><b data-i18n="undo.done">Put back what they wrecked</b></p>
+                <ul>
+                  <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="undo.r1">#general is back</span></li>
+                  <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="undo.r2">#rules is back</span></li>
+                  <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="undo.r3">The @Mods role is back</span></li>
+                  <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="undo.r4">Bans lifted for layla and omar</span></li>
+                </ul>
+                <small data-i18n="undo.by">mod_ali pressed «Put back what they wrecked».</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS: name, description and link live here; main.js partners() adds the
+         live icon and member count from the dashboard's /api/public/partners. -->
+    <section class="section partners-sec" id="partners">
+      <div class="wrap">
+        <div class="sec-head slim reveal">
+          <h2 class="h2" data-i18n="pt.title">Servers that <em>trust Musaed.</em></h2>
+        </div>
+        <div class="partners">
+          <article class="partner reveal" data-partner="M2Uz4Pcpxc">
+            <div class="partner-banner" data-partner-banner aria-hidden="true"></div>
+            <div class="partner-body">
+              <span class="partner-icon" data-partner-icon aria-hidden="true">هـ</span>
+              <div class="partner-copy">
+                <span class="partner-tag" data-i18n="pt.official">Official partner</span>
+                <!-- Written here on purpose, never read from Discord: a hacked server gets renamed. -->
+                <h3><span dir="rtl">هـوسـت لانـد - S1</span></h3>
+                <p data-i18n="pt.hl7">A roleplay server.</p>
+                <ul class="partner-stats">
+                  <li data-partner-count hidden></li>
+                  <li class="on" data-partner-online hidden></li>
+                </ul>
+              </div>
+              <a class="btn btn-ghost" href="https://discord.gg/M2Uz4Pcpxc" target="_blank" rel="noopener"><span data-i18n="pt.join">Join the server</span></a>
+            </div>
+          </article>
+        </div>
+        <p class="partners-cta reveal"><span data-i18n="pt.cta">Want your server here?</span> <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="pt.ctaLink">Talk to us in the support server</a></p>
+      </div>
+    </section>
+
+    <!-- FILM, cut from the page on 2026-11-22 (owner) and kept for later. To bring it back,
+         uncomment the section below and put this object back into the JSON-LD @graph in <head>
+         (before the FAQPage):
+         { "@type": "VideoObject", "@id": "https://musaed.dev/#film", "name": "مساعد في 22 ثانية",
+           "description": "فيديو مدته 22 ثانية فيه موسيقى ونصوص عربية بدون كلام. مشرف يبدأ يحذف القنوات ويحظر الأعضاء، وعند خامس إجراء خلال 60 ثانية مساعد يسحب رتبه وينبّه الإدارة. بعدها أعضاء جدد يمرون ببوابة العمر والكابتشا وقناة الفخ، والحسابات المشبوهة تنوقف. بعدها حساب يكتب «نيترو مجاني للكل» بقناة الفخ وينكتم على طول.",
+           "inLanguage": "ar", "thumbnailUrl": "https://musaed.dev/assets/video/musaed-spot.jpg",
+           "contentUrl": "https://musaed.dev/assets/video/musaed-spot.mp4", "uploadDate": "2026-09-28",
+           "duration": "PT22S", "publisher": { "@id": "https://musaed.dev/#org" } },
+         The 22-second spot is self-hosted (no third-party player), preload="none", so nothing
+         downloads until someone presses play. Without JS it's a plain <video controls>; main.js
+         film() swaps the native controls for the big play button and returns early while the
+         section is absent. Its CSS (.film) and i18n keys (film.*) stay in place.
+    <section class="section film" id="film">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-play"/></svg></span>
+          <p class="sec-label" data-i18n="film.eyebrow">Musaed in 22 seconds</p>
+          <h2 class="h2" data-i18n="film.title">Watch it <em>guard the door.</em></h2>
+          <p class="sec-sub" data-i18n="film.sub">A rogue mod deleting channels, fake accounts at the door, a bot posting in the trap. See what Musaed does with each one. The video is in Arabic.</p>
+        </div>
+        <div class="film-frame reveal" data-film>
+          <video src="assets/video/musaed-spot.mp4?v=1" poster="assets/video/musaed-spot.jpg?v=1" preload="none" controls playsinline width="1920" height="1080" aria-describedby="film-desc"></video>
+          <button class="film-play" type="button" data-film-play hidden data-i18n-attr="aria-label:film.play" aria-label="Play the video">
+            <span><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></span>
+          </button>
+        </div>
+        <p class="sr-only" id="film-desc" data-i18n="film.desc">A 22-second video with music and Arabic on-screen text, no speech. A moderator starts deleting channels and banning members; at the fifth action within 60 seconds Musaed removes their roles and alerts the staff. New members then pass through the age gate, the captcha and the honeypot, and the suspicious accounts are stopped. An account posts "free nitro for everyone" in the honeypot channel and is muted at once. It ends on the website address, musaed.dev.</p>
+      </div>
+    </section>
+    -->
+
+
+    <!-- PROTECTION: five cards, each acting out its layer on a loop once it scrolls in.
+         Every loop's resting style is its last frame, for reduced motion. -->
+    <section class="section" id="protection">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-shield"/></svg></span>
+          <h2 class="h2" data-i18n="prot.title">Five layers. <em>One quiet server.</em></h2>
+          <p class="sec-sub" data-i18n="prot.sub">Each layer catches what slipped past the one before it. Most raiders never make it past the first.</p>
+        </div>
+
+        <div class="gate-demo reveal" id="gate" data-demo>
           <div class="demo-head">
             <p class="demo-label"><span class="pulse" aria-hidden="true"></span><span data-i18n="demo.label">Live demo · the join gate</span></p>
             <dl class="demo-stats">
@@ -341,439 +452,405 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- TICKER -->
-    <section class="ticker" aria-label="Features" data-i18n-attr="aria-label:ticker.aria">
-      <div class="ticker-track">
-        <ul>
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.16">Self-roles</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.12">Web dashboard</li>
-        </ul>
-        <ul aria-hidden="true">
-          <li data-i18n="tk.1">Age gate</li><li data-i18n="tk.2">Captcha</li><li data-i18n="tk.3">Honeypot</li><li data-i18n="tk.4">AutoMod</li><li data-i18n="tk.13">Anti-nuke</li><li data-i18n="tk.5">Raid detection</li><li data-i18n="tk.6">Tickets</li><li data-i18n="tk.7">Welcome</li><li data-i18n="tk.16">Self-roles</li><li data-i18n="tk.8">Shortcuts</li><li data-i18n="tk.9">Auto-responses</li><li data-i18n="tk.10">Mod logs</li><li data-i18n="tk.14">Server log</li><li data-i18n="tk.15">Server checkup</li><li data-i18n="tk.12">Web dashboard</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- PARTNERS: name, description and link live here; main.js partners() adds the
-         live icon and member count from the dashboard's /api/public/partners. -->
-    <section class="section partners-sec" id="partners">
-      <div class="wrap">
-        <div class="sec-head center reveal">
-          <p class="eyebrow"><span data-i18n="pt.eyebrow">Partners</span></p>
-          <h2 class="h2" data-i18n="pt.title">Servers that <em>trust Musaed.</em></h2>
-        </div>
-        <div class="partners">
-          <article class="partner reveal" data-partner="M2Uz4Pcpxc">
-            <div class="partner-banner" data-partner-banner aria-hidden="true"></div>
-            <div class="partner-body">
-              <span class="partner-icon" data-partner-icon aria-hidden="true">هـ</span>
-              <div class="partner-copy">
-                <span class="partner-tag" data-i18n="pt.official">Official partner</span>
-                <!-- Written here on purpose, never read from Discord: a hacked server gets renamed. -->
-                <h3><span dir="rtl">هـوسـت لانـد - S1</span></h3>
-                <p data-i18n="pt.hl7">A roleplay server.</p>
-                <ul class="partner-stats">
-                  <li data-partner-count hidden></li>
-                  <li class="on" data-partner-online hidden></li>
-                </ul>
+        <div class="pgrid">
+          <!-- 01 Age gate -->
+          <article class="pcard s3 reveal">
+            <div class="pvis pv-age" aria-hidden="true">
+              <div class="idcard">
+                <div class="sweep"></div>
+                <div class="id-top">
+                  <span class="av" style="--c:#8a9a92">F</span>
+                  <div><b class="ltr">fresh_acc91</b><small data-i18n="l1.just">joined a second ago</small></div>
+                </div>
+                <div class="id-rows">
+                  <span data-i18n="l1.acc">Account age</span><b class="bad" data-i18n="l1.r2">2 days</b>
+                  <span data-i18n="l1.min">Minimum account age</span><b data-i18n="l1.minVal">7 days</b>
+                </div>
+                <span class="stamp" data-i18n="l1.kick">kicked</span>
               </div>
-              <a class="btn btn-primary" href="https://discord.gg/M2Uz4Pcpxc" target="_blank" rel="noopener"><span data-i18n="pt.join">Join the server</span></a>
+              <div class="pass-row"><span class="ltr mono">layla</span><span>·</span><span data-i18n="l1.r1">3 years</span><span>·</span><b data-i18n="l1.pass">let in</b></div>
             </div>
-          </article>
-        </div>
-        <p class="partners-cta reveal"><span data-i18n="pt.cta">Want your server here?</span> <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="pt.ctaLink">Talk to us in the support server</a></p>
-      </div>
-    </section>
-
-    <!-- FILM: the 22-second spot, self-hosted (no third-party player). preload="none", so
-         nothing downloads until someone presses play. Without JS it's a plain <video controls>;
-         main.js swaps the native controls for the big play button until first play. -->
-    <section class="section film" id="film">
-      <div class="wrap">
-        <div class="sec-head center reveal">
-          <p class="eyebrow" data-i18n="film.eyebrow">Musaed in 22 seconds</p>
-          <h2 class="h2" data-i18n="film.title">Watch it <em>guard the door.</em></h2>
-          <p class="sec-sub" data-i18n="film.sub">A rogue mod deleting channels, fake accounts at the door, a bot posting in the trap. See what Musaed does with each one. The video is in Arabic.</p>
-        </div>
-        <div class="film-frame reveal" data-film>
-          <video src="assets/video/musaed-spot.mp4?v=1" poster="assets/video/musaed-spot.jpg?v=1" preload="none" controls playsinline width="1920" height="1080" aria-describedby="film-desc"></video>
-          <button class="film-play" type="button" data-film-play hidden data-i18n-attr="aria-label:film.play" aria-label="Play the video">
-            <span><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></span>
-          </button>
-        </div>
-        <p class="sr-only" id="film-desc" data-i18n="film.desc">A 22-second video with music and Arabic on-screen text, no speech. A moderator starts deleting channels and banning members; at the fifth action within 60 seconds Musaed removes their roles and alerts the staff. New members then pass through the age gate, the captcha and the honeypot, and the suspicious accounts are stopped. An account posts "free nitro for everyone" in the honeypot channel and is muted at once. It ends on the website address, musaed.dev.</p>
-      </div>
-    </section>
-
-    <!-- PROTECTION LAYERS -->
-    <section class="section" id="protection">
-      <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow">01 — <span data-i18n="prot.eyebrow">Protection</span></p>
-          <h2 class="h2" data-i18n="prot.title">Five layers. <em>One quiet server.</em></h2>
-          <p class="sec-sub" data-i18n="prot.sub">Each layer catches what slipped past the one before it. Most raiders never make it past the first.</p>
-        </div>
-
-        <div class="layers">
-          <!-- Layer 1: Age gate -->
-          <article class="layer reveal" style="--n:0">
-            <div class="layer-copy">
-              <span class="layer-n">01</span>
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="l1.tag">Age gate</span></span>
+            <div class="pcopy">
+              <p class="ptag">01 · <span data-i18n="l1.tag">Age gate</span></p>
               <h3 data-i18n="l1.title">Brand-new accounts don't get in.</h3>
               <p data-i18n="l1.desc">Set a minimum account age. Anything younger is kicked the moment it joins, with a DM explaining why, before it ever sees a captcha.</p>
             </div>
-            <div class="layer-vis vis-age" aria-hidden="true">
-              <div class="vis-top"><span data-i18n="l1.min">Minimum account age</span><b data-i18n="l1.minVal">7 days</b></div>
-              <div class="age-row" style="--i:0"><span class="av" style="--c:#9ae6c4">L</span><span class="nm">layla</span><span class="age" data-i18n="l1.r1">3 years</span><span class="chip ok" data-i18n="l1.pass">let in</span></div>
-              <div class="age-row bad" style="--i:1"><span class="av" style="--c:#8a928c">F</span><span class="nm">fresh_acc91</span><span class="age" data-i18n="l1.r2">2 days</span><span class="chip no" data-i18n="l1.kick">kicked</span></div>
-              <div class="age-row" style="--i:2"><span class="av" style="--c:#ffd08a">O</span><span class="nm">omar</span><span class="age" data-i18n="l1.r3">1 year</span><span class="chip ok" data-i18n="l1.pass">let in</span></div>
-              <div class="age-row bad" style="--i:3"><span class="av" style="--c:#8a928c">N</span><span class="nm">nitro_drop</span><span class="age" data-i18n="l1.r4">5 hours</span><span class="chip no" data-i18n="l1.kick">kicked</span></div>
-            </div>
           </article>
 
-          <!-- Layer 2: Captcha -->
-          <article class="layer reveal" style="--n:1">
-            <div class="layer-copy">
-              <span class="layer-n">02</span>
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg><span data-i18n="l2.tag">Captcha</span></span>
+          <!-- 02 Captcha -->
+          <article class="pcard s3 reveal">
+            <div class="pvis pv-cap" aria-hidden="true">
+              <div class="dc-card">
+                <div class="dc-head"><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l2.dm">verify</span></div>
+                <div class="dc-row">
+                  <span class="bot-av"><svg><use href="#glyph"/></svg></span>
+                  <div>
+                    <p class="dc-meta"><b>Musaed</b><span class="badge">BOT</span></p>
+                    <div class="embed">
+                      <span data-i18n="l2.q">Answer to get into the server</span>
+                      <span class="math">7 + 5 + 3 = ?</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="cap-input"><span class="ltr"><span class="typed">15</span><span class="caret"></span></span><span class="cap-send" data-i18n="l2.submit">Submit</span></div>
+                <p class="chip-ok cap-ok"><svg class="i"><use href="#i-check"/></svg><span data-i18n="l2.ok">Verified. Unverified role removed.</span></p>
+              </div>
+            </div>
+            <div class="pcopy">
+              <p class="ptag">02 · <span data-i18n="l2.tag">Captcha</span></p>
               <h3 data-i18n="l2.title">A quick check before they get in.</h3>
               <p data-i18n="l2.desc">New members get an Unverified role and a challenge in the verification channel, or by DM if you choose: one button, or a math question at easy, medium or hard. Too many wrong answers and they're out. Lockdown hides every channel except verification.</p>
             </div>
-            <div class="layer-vis vis-dm" aria-hidden="true">
-              <div class="dm-head"><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l2.dm">verify</span></div>
-              <div class="dm-msg">
-                <span class="bot-av"><svg><use href="#glyph"/></svg></span>
-                <div>
-                  <p class="dm-meta"><b>Musaed</b><span class="badge">BOT</span></p>
-                  <div class="embed">
-                    <strong data-i18n="l2.q">Answer to get into the server</strong>
-                    <span class="math">7 + 5 + 3 = ?</span>
-                  </div>
-                </div>
-              </div>
-              <div class="dm-input"><span class="typed">15</span><span class="caret"></span><span class="dm-send" data-i18n="l2.submit">Submit</span></div>
-              <div class="dm-result"><svg class="i"><use href="#i-check"/></svg><span data-i18n="l2.ok">Verified. Unverified role removed.</span></div>
-            </div>
           </article>
 
-          <!-- Layer 3: Honeypot -->
-          <article class="layer reveal" style="--n:2">
-            <div class="layer-copy">
-              <span class="layer-n">03</span>
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><span data-i18n="l3.tag">Honeypot</span></span>
-              <h3 data-i18n="l3.title">A trap only bots fall into.</h3>
-              <p data-i18n="l3.desc">Pick one channel no real member would post in. Any account that writes there is muted, kicked or banned automatically, and you choose whether its message is deleted or stays. It catches captcha-solving bots and hijacked accounts.</p>
-            </div>
-            <div class="layer-vis vis-honey" aria-hidden="true">
+          <!-- 03 Honeypot -->
+          <article class="pcard s2 reveal">
+            <div class="pvis" aria-hidden="true">
               <ul class="chans">
                 <li><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l3.c1">general</span></li>
                 <li><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l3.c2">clips</span></li>
                 <li class="trap"><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l3.c3">dont-post-here</span><em data-i18n="l3.trap">trap</em></li>
                 <li><svg class="i"><use href="#i-hash"/></svg><span data-i18n="l3.c4">events</span></li>
               </ul>
-              <div class="honey-feed">
-                <div class="hmsg"><span class="av" style="--c:#8a928c">X</span><div><b>x0x_helper</b><p data-i18n="l3.spam">free nitro for everyone → gift-claim.link</p></div></div>
-                <div class="hchip"><svg class="i"><use href="#i-lock"/></svg><span data-i18n="l3.caught">Timed out · posted in the trap</span></div>
-              </div>
+              <div class="hmsg"><span class="av" style="--c:#8a9a92">X</span><div><b class="ltr">x0x_helper</b><p data-i18n="l3.spam">free nitro for everyone → gift-claim.link</p></div></div>
+              <p class="chip-no pop"><svg class="i"><use href="#i-lock"/></svg><span data-i18n="l3.caught">Timed out · posted in the trap</span></p>
+            </div>
+            <div class="pcopy">
+              <p class="ptag">03 · <span data-i18n="l3.tag">Honeypot</span></p>
+              <h3 data-i18n="l3.title">A trap only bots fall into.</h3>
+              <p data-i18n="l3.desc">Pick one channel no real member would post in. Any account that writes there is muted, kicked or banned automatically, and you choose whether its message is deleted or stays. It catches captcha-solving bots and hijacked accounts.</p>
             </div>
           </article>
 
-          <!-- Layer 4: AutoMod -->
-          <article class="layer reveal" style="--n:3">
-            <div class="layer-copy">
-              <span class="layer-n">04</span>
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="l4.tag">AutoMod</span></span>
+          <!-- 04 AutoMod -->
+          <article class="pcard s2 reveal">
+            <div class="pvis pv-auto" aria-hidden="true">
+              <div class="variants"><span data-i18n="l4.v1">w o r d</span><span data-i18n="l4.v2">wooord</span><span class="ltr" data-i18n="l4.v3">w0rd</span><span data-i18n="l4.v4">w$rd</span></div>
+              <svg class="funnel" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4"><path d="M12 2v34M6 30l6 6 6-6"/></svg>
+              <p class="caught"><b data-i18n="l4.word">word</b><span data-i18n="l4.res">banned · deleted</span></p>
+            </div>
+            <div class="pcopy">
+              <p class="ptag">04 · <span data-i18n="l4.tag">AutoMod</span></p>
               <h3 data-i18n="l4.title">Spam, banned words and raids, handled.</h3>
               <p data-i18n="l4.desc">Banned words are caught even stretched out, spaced apart, swapped for symbols or typed in Arabizi, and in messages edited after sending. A ready-made list from the Musaed team covers several dialects, and you can turn it off. Spam detection and raid detection run alongside.</p>
             </div>
-            <div class="layer-vis vis-auto" aria-hidden="true">
-              <div class="vis-top"><span data-i18n="l4.window">Messages in 8 seconds</span><b data-i18n="l4.limit">limit 6</b></div>
-              <div class="meter">
-                <i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i><i class="over" style="--k:5"></i><i class="over" style="--k:6"></i><i class="over" style="--k:7"></i>
-                <span class="thr"></span>
-              </div>
-              <div class="auto-chip"><svg class="i"><use href="#i-zap"/></svg><span data-i18n="l4.muted">Spam stopped · member timed out</span></div>
-              <div class="words">
-                <span data-i18n="l4.words">Banned words, even disguised</span>
-                <em>████</em><em>█ █ █ █</em><em>██$█</em><em>█████</em>
-              </div>
-            </div>
           </article>
 
-          <!-- Layer 5: Anti-nuke. Threshold matches the bot's default: 5 destructive actions in 60 seconds. -->
-          <article class="layer reveal" style="--n:4">
-            <div class="layer-copy">
-              <span class="layer-n">05</span>
-              <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-shieldalert"/></svg><span data-i18n="l5.tag">Anti-nuke</span></span>
-              <h3 data-i18n="l5.title">Stopped before the server is gone.</h3>
-              <p data-i18n="l5.desc">If someone starts deleting channels or roles, mass-banning or mass-kicking, creating webhooks or adding bots, Musaed removes their roles right away, kicks the bots they added and alerts your staff. Give @everyone a dangerous permission and they're banned on the spot, with the permission taken back. It's on from the moment you add the bot, and you can turn it off.</p>
-            </div>
-            <div class="layer-vis vis-nuke" aria-hidden="true">
-              <div class="vis-top"><span data-i18n="l5.window">Destructive actions in 60 seconds</span><b data-i18n="l5.limit">limit 5</b></div>
+          <!-- 05 Anti-nuke. Threshold matches the bot's default: 5 destructive actions in 60 seconds. -->
+          <article class="pcard s2 reveal">
+            <div class="pvis pv-nuke" aria-hidden="true">
+              <div class="nuke-top"><span data-i18n="l5.window">Destructive actions in 60 seconds</span><b data-i18n="l5.limit">limit 5</b></div>
+              <div class="meter"><i></i></div>
               <ol class="audit">
-                <li style="--i:0"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a1">deleted #general</span><b>1</b></li>
-                <li style="--i:1"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a2">deleted #rules</span><b>2</b></li>
-                <li style="--i:2"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a3">deleted the @Mods role</span><b>3</b></li>
-                <li style="--i:3"><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a4">banned layla</span><b>4</b></li>
-                <li style="--i:4" class="hit"><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a5">banned omar</span><b>5</b></li>
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a1">deleted #general</span><b>1</b></li>
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a2">deleted #rules</span><b>2</b></li>
+                <li><svg class="i"><use href="#i-trash"/></svg><span data-i18n="l5.a3">deleted the @Mods role</span><b>3</b></li>
+                <li><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a4">banned layla</span><b>4</b></li>
+                <li><svg class="i"><use href="#i-x"/></svg><span data-i18n="l5.a5">banned omar</span><b>5</b></li>
               </ol>
-              <div class="nuke-stop"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="l5.stop">rogue_mod stopped · roles removed, staff alerted</span></div>
+              <p class="chip-ok nuke-stop"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="l5.stop">rogue_mod stopped · roles removed, staff alerted</span></p>
+            </div>
+            <div class="pcopy">
+              <p class="ptag">05 · <span data-i18n="l5.tag">Anti-nuke</span></p>
+              <h3 data-i18n="l5.title">Stopped before the server is gone.</h3>
+              <p data-i18n="l5.desc">If someone starts deleting channels or roles, mass-banning or mass-kicking, creating webhooks or adding bots, Musaed removes their roles right away, kicks the bots they added and alerts your staff. The alert has a button: press it within 10 minutes and Musaed puts back the channels and roles they deleted and lifts their bans. Give @everyone a dangerous permission and they're banned on the spot, with the permission taken back. It's on from the moment you add the bot, and you can turn it off.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- TOOLKIT -->
+    <!-- TOOLKIT: tabs on one side, the picked tool acted out on the other.
+         main.js cycles the tabs while in view until someone picks one; without JS
+         every panel shows. -->
     <section class="section toolkit" id="toolkit">
       <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow">02 — <span data-i18n="tool.eyebrow">Toolkit</span></p>
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-wrench"/></svg></span>
           <h2 class="h2" data-i18n="tool.title">Everything else your mods <em>used to do by hand.</em></h2>
+          <p class="sec-sub" data-i18n="tool.sub">Tools that run on their own, so your mods can focus on the server.</p>
         </div>
 
-        <div class="bento">
-          <article class="card c-tickets reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg><span data-i18n="t1.tag">Tickets</span></span>
-            <h3 data-i18n="t1.title">Support tickets with a menu.</h3>
-            <p data-i18n="t1.desc">One panel with a dropdown of ticket types. Each request gets its own private channel, and your support role gets pinged.</p>
-            <div class="vis-ticket" aria-hidden="true">
-              <div class="select"><span data-i18n="t1.open">Open a ticket</span><svg class="i"><use href="#i-chevron"/></svg></div>
-              <ul class="options">
-                <li style="--i:0"><svg class="i"><use href="#i-message"/></svg><span data-i18n="t1.o1">Support</span></li>
-                <li style="--i:1" class="hl"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="t1.o2">Report a member</span></li>
-                <li style="--i:2"><svg class="i"><use href="#i-users"/></svg><span data-i18n="t1.o3">Partnership</span></li>
+        <div class="tk reveal" data-tk>
+          <div class="tk-tabs" role="tablist" aria-label="Toolkit" data-i18n-attr="aria-label:tool.eyebrow">
+            <button class="tk-tab" type="button" role="tab" id="tk-t0" aria-controls="tk-p0" aria-selected="true">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg></span><span data-i18n="t1.tag">Tickets</span></span>
+              <span class="tk-desc"><b data-i18n="t1.title">Support tickets with a menu.</b> <span data-i18n="t1.desc">One panel with a dropdown of ticket types. Each request gets its own private channel, and your support role gets pinged.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button>
+            <button class="tk-tab" type="button" role="tab" id="tk-t1" aria-controls="tk-p1" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-command"/></svg></span><span data-i18n="t2.tag">Shortcuts</span></span>
+              <span class="tk-desc"><b data-i18n="t2.title">One word, one mod action.</b> <span data-i18n="t2.desc">Map a word to ban, kick, timeout or lifting a timeout. A mod types it with a mention and it's done.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button>
+            <!-- cut 2026-11-22 (owner), tab auto-responses, kept for later:
+<button class="tk-tab" type="button" role="tab" id="tk-t2" aria-controls="tk-p2" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-message"/></svg></span><span data-i18n="t3.tag">Auto-responses</span></span>
+              <span class="tk-desc"><b data-i18n="t3.title">Answers the questions you're tired of.</b> <span data-i18n="t3.desc">Set a trigger word and a reply, with an image, PDF or text file attached if you like. Anyone who types it gets the answer instantly.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button> -->
+            <button class="tk-tab" type="button" role="tab" id="tk-t3" aria-controls="tk-p3" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-userplus"/></svg></span><span data-i18n="t4.tag">Welcome</span></span>
+              <span class="tk-desc"><b data-i18n="t4.title">Welcome message, goodbye message and auto-role.</b> <span data-i18n="t4.desc">Greet every member in the channel you pick, with a picture card of their avatar, name and member number, and say goodbye when they leave (not when they're kicked or banned). New members get one role automatically, new bots a separate one.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button>
+            <!-- cut 2026-11-22 (owner), tab mod logs, kept for later:
+<button class="tk-tab" type="button" role="tab" id="tk-t4" aria-controls="tk-p4" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg></span><span data-i18n="t5.tag">Mod logs</span></span>
+              <span class="tk-desc"><b data-i18n="t5.title">Every action, on the record.</b> <span data-i18n="t5.desc">Kicks, bans, timeouts and warnings are all logged. /lookup puts a member's warnings, automod strikes and dates on one card.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button> -->
+            <!-- cut 2026-11-22 (owner), tab server log, kept for later:
+<button class="tk-tab" type="button" role="tab" id="tk-t5" aria-controls="tk-p5" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg></span><span data-i18n="t7.tag">Server log</span></span>
+              <span class="tk-desc"><b data-i18n="t7.title">Everything that happens, in one channel.</b> <span data-i18n="t7.desc">Every deleted or edited message, every join and leave, every role or nickname change, and every channel or role created or deleted. Musaed keeps no copy of any of it.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button> -->
+            <button class="tk-tab" type="button" role="tab" id="tk-t6" aria-controls="tk-p6" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-activity"/></svg></span><span data-i18n="t8.tag">Server checkup</span></span>
+              <span class="tk-desc"><b data-i18n="t8.title">Tells you what's broken.</b> <span data-i18n="t8.desc">/checkup checks your server's setup. If a feature you turned on stops working (the bot's role got moved down, a channel was deleted, a permission is missing), Musaed sends you one alert about it. And if the trap channel couldn't punish someone, it lets you know.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button>
+            <!-- cut 2026-11-22 (owner), tab self-roles, kept for later:
+<button class="tk-tab" type="button" role="tab" id="tk-t7" aria-controls="tk-p7" aria-selected="false">
+              <span class="tk-name"><span class="tk-ic"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg></span><span data-i18n="t9.tag">Self-roles</span></span>
+              <span class="tk-desc"><b data-i18n="t9.title">Members pick their own roles.</b> <span data-i18n="t9.desc">Post one panel with up to 10 buttons, each with its own emoji and colour. A member clicks to take a role and clicks again to drop it.</span></span>
+              <span class="tk-bar" aria-hidden="true"></span>
+            </button> -->
+          </div>
+
+          <div class="tk-stage">
+            <div class="tk-panel" role="tabpanel" id="tk-p0" aria-labelledby="tk-t0" tabindex="0">
+              <div class="tk-vis">
+                <div class="select"><span data-i18n="t1.open">Open a ticket</span><svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></div>
+                <ul class="options">
+                  <li style="--i:0"><svg class="i" aria-hidden="true"><use href="#i-message"/></svg><span data-i18n="t1.o1">Support</span></li>
+                  <li style="--i:1" class="hl"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span data-i18n="t1.o2">Report a member</span></li>
+                  <li style="--i:2"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg><span data-i18n="t1.o3">Partnership</span></li>
+                </ul>
+                <p class="chip-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="t1.done">Private channel opened · support role pinged</span></p>
+              </div>
+            </div>
+            <div class="tk-panel" role="tabpanel" id="tk-p1" aria-labelledby="tk-t1" tabindex="0">
+              <div class="tk-vis">
+                <div class="map"><code data-i18n="t2.word">out</code><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span data-i18n="t2.action">kick</span></div>
+                <div class="line"><span class="av" style="--c:#0fe37d">A</span><p><b class="ltr">mod_ali</b><span><mark data-i18n="t2.word">out</mark> <span class="ltr">@spam_acc</span></span></p></div>
+                <p class="chip-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="t2.done">spam_acc was kicked · logged</span></p>
+              </div>
+            </div>
+            <!-- cut 2026-11-22 (owner), panel auto-responses, kept for later:
+<div class="tk-panel" role="tabpanel" id="tk-p2" aria-labelledby="tk-t2" tabindex="0">
+              <div class="tk-vis">
+                <div class="bubble u" data-i18n="t3.q">how do i get <mark>roles</mark>?</div>
+                <div class="bubble b"><span data-i18n="t3.a">Head to #roles and pick yours.</span><span class="bot-av sm" aria-hidden="true"><svg><use href="#glyph"/></svg></span></div>
+              </div>
+            </div> -->
+            <div class="tk-panel" role="tabpanel" id="tk-p3" aria-labelledby="tk-t3" tabindex="0">
+              <div class="tk-vis">
+                <div class="welcome">
+                  <span class="av" style="--c:#ffd08a" aria-hidden="true">S</span>
+                  <div><b data-i18n="t4.hi">Welcome, @sara!</b><small data-i18n="t4.num">You're member #1,204. Glad you're here.</small></div>
+                </div>
+                <p class="chip-ok"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="t4.role">Got the auto-role</span></p>
+              </div>
+            </div>
+            <!-- cut 2026-11-22 (owner), panel mod logs, kept for later:
+<div class="tk-panel" role="tabpanel" id="tk-p4" aria-labelledby="tk-t4" tabindex="0">
+              <div class="tk-vis">
+                <div class="dc-card lookup">
+                  <div class="lk-head"><span class="av" style="--c:#ffd08a" aria-hidden="true">F</span><b class="ltr">fahad</b><code>/lookup</code></div>
+                  <dl>
+                    <div><dt data-i18n="t5.warns">Warnings</dt><dd>2</dd></div>
+                    <div><dt data-i18n="t5.strikes">AutoMod strikes</dt><dd>1</dd></div>
+                    <div><dt data-i18n="t5.joined">Joined</dt><dd data-i18n="t5.when">3 months ago</dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div> -->
+            <!-- cut 2026-11-22 (owner), panel server log, kept for later:
+<div class="tk-panel" role="tabpanel" id="tk-p5" aria-labelledby="tk-t5" tabindex="0">
+              <ul class="tk-vis logs">
+                <li style="--i:0" class="del"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg><span data-i18n="t7.l1">Message deleted in #general</span></li>
+                <li style="--i:1"><svg class="i" aria-hidden="true"><use href="#i-pencil"/></svg><span data-i18n="t7.l2">Message edited in #clips</span></li>
+                <li style="--i:2" class="in-ok"><svg class="i" aria-hidden="true"><use href="#i-userplus"/></svg><span data-i18n="t7.l3">sara joined</span></li>
+                <li style="--i:3"><svg class="i" aria-hidden="true"><use href="#i-userminus"/></svg><span data-i18n="t7.l4">omar left</span></li>
+                <li style="--i:4" class="in-ok"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg><span data-i18n="t7.l5">@Helpers role created</span></li>
               </ul>
+            </div> -->
+            <div class="tk-panel" role="tabpanel" id="tk-p6" aria-labelledby="tk-t6" tabindex="0">
+              <div class="tk-vis">
+                <div class="dc-card checks">
+                  <div class="lk-head"><b data-i18n="t8.head">Server checkup</b><code>/checkup</code></div>
+                  <ul>
+                    <li style="--i:0" class="ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><b data-i18n="t8.f1">Captcha</b><span data-i18n="t8.fine">working</span></li>
+                    <li style="--i:1" class="bad"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg><b data-i18n="t8.f2">Welcome</b><span data-i18n="t8.why2">channel was deleted</span></li>
+                    <li style="--i:2" class="bad"><svg class="i" aria-hidden="true"><use href="#i-alert"/></svg><b data-i18n="t8.f3">Auto-role</b><span data-i18n="t8.why3">role is above Musaed's</span></li>
+                  </ul>
+                </div>
+                <p class="chip-ok"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg><span data-i18n="t8.alert">One alert sent to your admins</span></p>
+              </div>
             </div>
-          </article>
-
-          <article class="card c-short reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-command"/></svg><span data-i18n="t2.tag">Shortcuts</span></span>
-            <h3 data-i18n="t2.title">One word, one mod action.</h3>
-            <p data-i18n="t2.desc">Map a word to ban, kick, timeout or lifting a timeout. A mod types it with a mention and it's done.</p>
-            <div class="vis-short" aria-hidden="true">
-              <div class="map"><code data-i18n="t2.word">out</code><svg class="i i-arrow"><use href="#i-arrow"/></svg><span data-i18n="t2.action">kick</span></div>
-              <div class="line"><span class="av" style="--c:#0fe37d">A</span><p><b>mod_ali</b><span><mark data-i18n="t2.word">out</mark> @spam_acc</span></p></div>
-              <div class="sys"><svg class="i"><use href="#i-check"/></svg><span data-i18n="t2.done">spam_acc was kicked · logged</span></div>
-            </div>
-          </article>
-
-          <article class="card c-auto reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-message"/></svg><span data-i18n="t3.tag">Auto-responses</span></span>
-            <h3 data-i18n="t3.title">Answers the questions you're tired of.</h3>
-            <p data-i18n="t3.desc">Set a trigger word and a reply, with an image, PDF or text file attached if you like. Anyone who types it gets the answer instantly.</p>
-            <div class="vis-auto-r" aria-hidden="true">
-              <div class="bubble u" data-i18n="t3.q">how do i get <mark>roles</mark>?</div>
-              <div class="bubble b"><span class="bot-av sm"><svg><use href="#glyph"/></svg></span><span data-i18n="t3.a">Head to #roles and pick yours.</span></div>
-            </div>
-          </article>
-
-          <article class="card c-welcome reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-userplus"/></svg><span data-i18n="t4.tag">Welcome</span></span>
-            <h3 data-i18n="t4.title">Welcome message, goodbye message and auto-role.</h3>
-            <p data-i18n="t4.desc">Greet every member in the channel you pick, with a picture card of their avatar, name and member number, and say goodbye when they leave (not when they're kicked or banned). New members get one role automatically, new bots a separate one.</p>
-            <div class="vis-welcome" aria-hidden="true">
-              <span class="w-av">S</span>
-              <div><b data-i18n="t4.hi">Welcome, @sara!</b><small data-i18n="t4.num">You're member #1,204. Glad you're here.</small></div>
-            </div>
-          </article>
-
-          <article class="card c-lookup reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg><span data-i18n="t5.tag">Mod logs</span></span>
-            <h3 data-i18n="t5.title">Every action, on the record.</h3>
-            <p data-i18n="t5.desc">Kicks, bans, timeouts and warnings are all logged. /lookup puts a member's warnings, automod strikes and dates on one card.</p>
-            <div class="vis-lookup" aria-hidden="true">
-              <div class="lk-head"><span class="av" style="--c:#ffd08a">F</span><b>fahad</b><code>/lookup</code></div>
-              <dl>
-                <div><dt data-i18n="t5.warns">Warnings</dt><dd>2</dd></div>
-                <div><dt data-i18n="t5.strikes">AutoMod strikes</dt><dd>1</dd></div>
-                <div><dt data-i18n="t5.joined">Joined</dt><dd data-i18n="t5.when">3 months ago</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="card c-log reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="t7.tag">Server log</span></span>
-            <h3 data-i18n="t7.title">Everything that happens, in one channel.</h3>
-            <p data-i18n="t7.desc">Every deleted or edited message, every join and leave, every role or nickname change, and every channel or role created or deleted. Musaed keeps no copy of any of it.</p>
-            <ul class="vis-log" aria-hidden="true">
-              <li style="--i:0"><svg class="i"><use href="#i-trash"/></svg><span data-i18n="t7.l1">Message deleted in #general</span></li>
-              <li style="--i:1"><svg class="i"><use href="#i-pencil"/></svg><span data-i18n="t7.l2">Message edited in #clips</span></li>
-              <li style="--i:2" class="in-ok"><svg class="i"><use href="#i-userplus"/></svg><span data-i18n="t7.l3">sara joined</span></li>
-              <li style="--i:3"><svg class="i"><use href="#i-userminus"/></svg><span data-i18n="t7.l4">omar left</span></li>
-              <li style="--i:4" class="in-ok"><svg class="i"><use href="#i-badge"/></svg><span data-i18n="t7.l5">@Helpers role created</span></li>
-            </ul>
-          </article>
-
-          <article class="card c-check reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-activity"/></svg><span data-i18n="t8.tag">Server checkup</span></span>
-            <h3 data-i18n="t8.title">Tells you what's broken.</h3>
-            <p data-i18n="t8.desc">/checkup checks your server's setup. If a feature you turned on stops working (the bot's role got moved down, a channel was deleted, a permission is missing), Musaed sends you one alert about it. And if the trap channel couldn't punish someone, it lets you know.</p>
-            <div class="vis-check" aria-hidden="true">
-              <div class="lk-head"><svg class="i"><use href="#i-activity"/></svg><b data-i18n="t8.head">Server checkup</b><code>/checkup</code></div>
-              <ul>
-                <li class="ok"><svg class="i"><use href="#i-check"/></svg><b data-i18n="t8.f1">Captcha</b><span data-i18n="t8.fine">working</span></li>
-                <li class="bad"><svg class="i"><use href="#i-alert"/></svg><b data-i18n="t8.f2">Welcome</b><span data-i18n="t8.why2">channel was deleted</span></li>
-                <li class="bad"><svg class="i"><use href="#i-alert"/></svg><b data-i18n="t8.f3">Auto-role</b><span data-i18n="t8.why3">role is above Musaed's</span></li>
-              </ul>
-              <div class="chk-alert"><svg class="i"><use href="#i-bell"/></svg><span data-i18n="t8.alert">One alert sent to your admins</span></div>
-            </div>
-          </article>
-
-          <article class="card c-roles reveal">
-            <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-badge"/></svg><span data-i18n="t9.tag">Self-roles</span></span>
-            <h3 data-i18n="t9.title">Members pick their own roles.</h3>
-            <p data-i18n="t9.desc">Post one panel with up to 10 buttons, each with its own emoji and colour. A member clicks to take a role and clicks again to drop it.</p>
-            <div class="vis-roles" aria-hidden="true">
-              <div class="btns"><span class="rb-blurple">🎮 <span data-i18n="t9.r1">Gamer</span></span><span class="rb-green">🎨 <span data-i18n="t9.r2">Artist</span></span><span>📢 <span data-i18n="t9.r3">News</span></span></div>
-              <div class="sys"><svg class="i"><use href="#i-check"/></svg><span data-i18n="t9.done">sara took @Gamer</span></div>
-            </div>
-          </article>
+            <!-- cut 2026-11-22 (owner), panel self-roles, kept for later:
+<div class="tk-panel" role="tabpanel" id="tk-p7" aria-labelledby="tk-t7" tabindex="0">
+              <div class="tk-vis">
+                <div class="rolebtns"><span class="rb-blurple">🎮 <span data-i18n="t9.r1">Gamer</span></span><span class="rb-green">🎨 <span data-i18n="t9.r2">Artist</span></span><span>📢 <span data-i18n="t9.r3">News</span></span></div>
+                <p class="chip-ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="t9.done">sara took @Gamer</span></p>
+              </div>
+            </div> -->
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD: a quiet preview that closes the toolkit, not a feature pitch.
+         The settings on the left change the Discord preview on the right (main.js dashboard()). -->
     <section class="section dashboard" id="dashboard">
       <div class="wrap">
-        <div class="sec-head reveal">
-          <p class="eyebrow">03 — <span data-i18n="dash.eyebrow">Dashboard</span></p>
-          <h2 class="h2" data-i18n="dash.title">Set it up in a browser, <em>not in chat.</em></h2>
-          <p class="sec-sub" data-i18n="dash.sub">Every setting lives in the web dashboard. Change something and the panel in Discord updates itself. Try it:</p>
+        <div class="dash-head reveal">
+          <div>
+            <p class="dash-label" data-i18n="dash.eyebrow">Dashboard</p>
+            <h2 class="dash-title" data-i18n="dash.title">And you set all of this in your browser.</h2>
+            <p class="dash-sub" data-i18n="dash.sub">Change anything and the panel in Discord updates by itself. Try it.</p>
+          </div>
+          <div class="dash-links">
+            <a class="btn btn-ghost btn-sm" href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener"><span data-i18n="dash.open">Open the dashboard</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="text-link" href="guide/" data-i18n="dash.guide">Setup guide (Arabic)</a>
+          </div>
         </div>
 
-        <div class="dash reveal">
-          <div class="dash-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url">musaed / <span data-i18n="dash.server">my-server</span> / <span data-i18n="dash.crumb">join-gate</span></span></div>
-          <div class="dash-body">
-            <aside class="dash-side" aria-hidden="true">
-              <div class="srv"><span class="srv-ic">M</span><span data-i18n="dash.serverName">My Server</span></div>
-              <ul>
-                <li><svg class="i"><use href="#i-layout"/></svg><span data-i18n="dash.n1">Overview</span></li>
-                <li class="on"><svg class="i"><use href="#i-lock"/></svg><span data-i18n="dash.n2">Join gate</span></li>
-                <li><svg class="i"><use href="#i-shield"/></svg><span data-i18n="dash.n3">AutoMod</span></li>
-                <li><svg class="i"><use href="#i-ticket"/></svg><span data-i18n="dash.n4">Tickets</span></li>
-                <li><svg class="i"><use href="#i-userplus"/></svg><span data-i18n="dash.n5">Welcome</span></li>
-                <li><svg class="i"><use href="#i-command"/></svg><span data-i18n="dash.n6">Shortcuts</span></li>
-                <li><svg class="i"><use href="#i-message"/></svg><span data-i18n="dash.n7">Auto-responses</span></li>
-              </ul>
-            </aside>
+        <div class="dash-row reveal">
+          <div class="dash">
+            <div class="dash-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url">musaed / <span data-i18n="dash.server">my-server</span> / <span data-i18n="dash.crumb">join-gate</span></span></div>
+            <div class="dash-body">
+              <aside class="dash-side" aria-hidden="true">
+                <div class="srv"><span class="srv-ic">M</span><span data-i18n="dash.serverName">My Server</span></div>
+                <ul>
+                  <li><svg class="i"><use href="#i-layout"/></svg><span data-i18n="dash.n1">Overview</span></li>
+                  <li class="on"><svg class="i"><use href="#i-lock"/></svg><span data-i18n="dash.n2">Join gate</span></li>
+                  <li><svg class="i"><use href="#i-shield"/></svg><span data-i18n="dash.n3">AutoMod</span></li>
+                  <li><svg class="i"><use href="#i-ticket"/></svg><span data-i18n="dash.n4">Tickets</span></li>
+                  <li><svg class="i"><use href="#i-userplus"/></svg><span data-i18n="dash.n5">Welcome</span></li>
+                  <li><svg class="i"><use href="#i-command"/></svg><span data-i18n="dash.n6">Shortcuts</span></li>
+                  <li><svg class="i"><use href="#i-message"/></svg><span data-i18n="dash.n7">Auto-responses</span></li>
+                </ul>
+              </aside>
 
-            <form class="dash-main" data-dash onsubmit="return false">
-              <h3 data-i18n="dash.page">Join gate</h3>
+              <form class="dash-main" data-dash onsubmit="return false">
+                <h3 data-i18n="dash.page">Join gate</h3>
 
-              <div class="setting">
-                <div class="set-text"><b id="lbl-age" data-i18n="dash.age">Age gate</b><small data-i18n="dash.ageSub">Kick accounts younger than the minimum.</small></div>
-                <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-age" data-toggle="age"></button>
-              </div>
-              <div class="setting sub" data-dep="age">
-                <label for="age-range" data-i18n="dash.minAge">Minimum account age</label>
-                <div class="range-row">
-                  <input type="range" id="age-range" min="1" max="30" value="7" data-range="age">
-                  <output for="age-range" data-out="age">7 days</output>
+                <div class="setting">
+                  <div class="set-text"><b id="lbl-age" data-i18n="dash.age">Age gate</b><small data-i18n="dash.ageSub">Kick accounts younger than the minimum.</small></div>
+                  <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-age" data-toggle="age"></button>
                 </div>
-              </div>
-
-              <div class="setting">
-                <div class="set-text"><b id="lbl-cap" data-i18n="dash.captcha">Captcha</b><small data-i18n="dash.captchaSub">Challenge new members in #verify, or by DM.</small></div>
-                <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-cap" data-toggle="captcha"></button>
-              </div>
-              <div class="setting sub" data-dep="captcha">
-                <span id="lbl-type" data-i18n="dash.type">Challenge type</span>
-                <div class="seg" role="radiogroup" aria-labelledby="lbl-type">
-                  <label><input type="radio" name="ctype" value="button"><span data-i18n="dash.button">Button</span></label>
-                  <label><input type="radio" name="ctype" value="math" checked><span data-i18n="dash.math">Math question</span></label>
-                </div>
-              </div>
-              <div class="setting sub" data-dep="captcha" data-diff-row>
-                <span id="lbl-diff" data-i18n="dash.diff">Math difficulty</span>
-                <div class="seg" role="radiogroup" aria-labelledby="lbl-diff">
-                  <label><input type="radio" name="cdiff" value="easy"><span data-i18n="dash.easy">Easy</span></label>
-                  <label><input type="radio" name="cdiff" value="medium" checked><span data-i18n="dash.medium">Medium</span></label>
-                  <label><input type="radio" name="cdiff" value="hard"><span data-i18n="dash.hard">Hard</span></label>
-                </div>
-              </div>
-              <div class="setting sub" data-dep="captcha">
-                <span id="lbl-att" data-i18n="dash.attempts">Max attempts</span>
-                <div class="stepper" role="group" aria-labelledby="lbl-att">
-                  <button type="button" data-step="-1" data-i18n-attr="aria-label:dash.less" aria-label="Fewer attempts"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
-                  <output data-out="attempts" aria-live="polite">3</output>
-                  <button type="button" data-step="1" data-i18n-attr="aria-label:dash.more" aria-label="More attempts"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
-                </div>
-              </div>
-
-              <div class="setting">
-                <div class="set-text"><b id="lbl-hp" data-i18n="dash.honeypot">Honeypot</b><small data-i18n="dash.honeypotSub">Anyone who posts in #dont-post-here is timed out.</small></div>
-                <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-hp" data-toggle="honeypot"></button>
-              </div>
-            </form>
-
-            <div class="dash-preview">
-              <div class="prev-top">
-                <span class="prev-label" data-i18n="dash.preview">Discord preview</span>
-                <span class="synced" data-synced aria-live="polite"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="dash.synced">Panel synced</span></span>
-              </div>
-              <div class="dc">
-                <p class="dc-chan"><svg class="i" aria-hidden="true"><use href="#i-hash"/></svg><span data-i18n="dash.verifyChan">verify</span></p>
-                <div class="dc-msg">
-                  <span class="bot-av"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
-                  <div class="dc-body">
-                    <p class="dm-meta"><b>Musaed</b><span class="badge">BOT</span></p>
-                    <div class="embed">
-                      <strong data-prev="title">Verify to get in</strong>
-                      <span data-prev="desc"></span>
-                      <span class="embed-foot" data-prev="age"></span>
-                    </div>
-                    <span class="dc-btn" data-prev="btn">Start</span>
+                <div class="setting sub" data-dep="age">
+                  <label for="age-range" data-i18n="dash.minAge">Minimum account age</label>
+                  <div class="range-row">
+                    <input type="range" id="age-range" min="1" max="30" value="7" data-range="age">
+                    <output for="age-range" data-out="age">7 days</output>
                   </div>
                 </div>
-                <p class="dc-trap" data-prev="trap"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><span>#dont-post-here is armed</span></p>
+
+                <div class="setting">
+                  <div class="set-text"><b id="lbl-cap" data-i18n="dash.captcha">Captcha</b><small data-i18n="dash.captchaSub">Challenge new members in #verify, or by DM.</small></div>
+                  <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-cap" data-toggle="captcha"></button>
+                </div>
+                <div class="setting sub" data-dep="captcha">
+                  <span id="lbl-type" data-i18n="dash.type">Challenge type</span>
+                  <div class="seg" role="radiogroup" aria-labelledby="lbl-type">
+                    <label><input type="radio" name="ctype" value="button"><span data-i18n="dash.button">Button</span></label>
+                    <label><input type="radio" name="ctype" value="math" checked><span data-i18n="dash.math">Math question</span></label>
+                  </div>
+                </div>
+                <div class="setting sub" data-dep="captcha" data-diff-row>
+                  <span id="lbl-diff" data-i18n="dash.diff">Math difficulty</span>
+                  <div class="seg" role="radiogroup" aria-labelledby="lbl-diff">
+                    <label><input type="radio" name="cdiff" value="easy"><span data-i18n="dash.easy">Easy</span></label>
+                    <label><input type="radio" name="cdiff" value="medium" checked><span data-i18n="dash.medium">Medium</span></label>
+                    <label><input type="radio" name="cdiff" value="hard"><span data-i18n="dash.hard">Hard</span></label>
+                  </div>
+                </div>
+                <div class="setting sub" data-dep="captcha">
+                  <span id="lbl-att" data-i18n="dash.attempts">Max attempts</span>
+                  <div class="stepper" role="group" aria-labelledby="lbl-att">
+                    <button type="button" data-step="-1" data-i18n-attr="aria-label:dash.less" aria-label="Fewer attempts"><svg class="i" aria-hidden="true"><use href="#i-minus"/></svg></button>
+                    <output data-out="attempts" aria-live="polite">3</output>
+                    <button type="button" data-step="1" data-i18n-attr="aria-label:dash.more" aria-label="More attempts"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button>
+                  </div>
+                </div>
+
+                <div class="setting">
+                  <div class="set-text"><b id="lbl-hp" data-i18n="dash.honeypot">Honeypot</b><small data-i18n="dash.honeypotSub">Anyone who posts in #dont-post-here is timed out.</small></div>
+                  <button type="button" class="switch" role="switch" aria-checked="true" aria-labelledby="lbl-hp" data-toggle="honeypot"></button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="dash-link" aria-hidden="true"><i></i></div>
+
+          <div class="dash-preview">
+            <div class="prev-top">
+              <span class="prev-label" data-i18n="dash.preview">Discord preview</span>
+              <span class="synced" data-synced aria-live="polite"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="dash.synced">Panel synced</span></span>
+            </div>
+            <div class="dc">
+              <p class="dc-chan"><svg class="i" aria-hidden="true"><use href="#i-hash"/></svg><span data-i18n="dash.verifyChan">verify</span></p>
+              <div class="dc-msg">
+                <span class="bot-av"><svg aria-hidden="true"><use href="#glyph"/></svg></span>
+                <div class="dc-body">
+                  <p class="dc-meta"><b>Musaed</b><span class="badge">BOT</span></p>
+                  <div class="embed">
+                    <strong data-prev="title">Verify to get in</strong>
+                    <span data-prev="desc"></span>
+                    <span class="embed-foot" data-prev="age"></span>
+                  </div>
+                  <span class="dc-btn" data-prev="btn">Start</span>
+                </div>
               </div>
+              <p class="dc-trap" data-prev="trap"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><span>#dont-post-here is armed</span></p>
             </div>
           </div>
         </div>
-        <div class="dash-cta reveal">
-          <a class="btn btn-primary btn-lg" href="https://dashboard.musaed.dev/auth/login" target="_blank" rel="noopener"><span data-i18n="dash.open">Open the dashboard</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-ghost btn-lg" href="guide/" data-i18n="dash.guide">Setup guide (Arabic)</a>
-          <span data-i18n="dash.openNote">Sign in with Discord. Free, no card needed.</span>
-        </div>
+        <p class="dash-note" data-i18n="dash.openNote">Sign in with Discord. Free, no card needed.</p>
       </div>
     </section>
 
-    <!-- COMMANDS -->
+    <!-- COMMANDS, cut from the page on 2026-11-22 (owner): the guide covers commands, and the
+         page says setup lives in the dashboard. Kept for later: uncomment this section and the
+         "Commands" links in the nav and mobile menu. main.js commands() returns early while
+         it is absent.
     <section class="section commands" id="commands">
       <div class="wrap">
-        <div class="cmd-head">
-          <div class="sec-head reveal">
-            <p class="eyebrow">04 — <span data-i18n="cmd.eyebrow">Commands</span></p>
-            <h2 class="h2" data-i18n="cmd.title">Slash commands for <em>when it matters.</em></h2>
-            <p class="sec-sub" data-i18n="cmd.sub">Setup lives in the dashboard. These are for the moments you need to act right now.</p>
-          </div>
-          <div class="cmd-tools reveal">
-            <label class="search">
-              <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
-              <span class="sr-only" data-i18n="cmd.searchLabel">Search commands</span>
-              <input type="search" data-cmd-search placeholder="Search commands…" data-i18n-attr="placeholder:cmd.search" autocomplete="off">
-            </label>
-            <div class="filters" role="group" aria-label="Filter by category" data-i18n-attr="aria-label:cmd.filterAria" data-cmd-filters></div>
-          </div>
+        <div class="sec-head reveal">
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-terminal"/></svg></span>
+          <h2 class="h2" data-i18n="cmd.title">Slash commands for <em>when it matters.</em></h2>
+          <p class="sec-sub" data-i18n="cmd.sub">Setup lives in the dashboard. These are for the moments you need to act right now.</p>
+        </div>
+        <div class="cmd-tools reveal">
+          <label class="search">
+            <svg class="i" aria-hidden="true"><use href="#i-search"/></svg>
+            <span class="sr-only" data-i18n="cmd.searchLabel">Search commands</span>
+            <input type="search" data-cmd-search placeholder="Search commands…" data-i18n-attr="placeholder:cmd.search" autocomplete="off">
+          </label>
+          <div class="filters" role="group" aria-label="Filter by category" data-i18n-attr="aria-label:cmd.filterAria" data-cmd-filters></div>
         </div>
         <ul class="cmd-list reveal" data-cmd-list></ul>
         <p class="cmd-empty" data-cmd-empty hidden data-i18n="cmd.empty">No command matches that search.</p>
       </div>
     </section>
+    -->
 
-    <!-- DATA -->
+    <!-- DATA, cut from the page on 2026-11-22 (owner): folded into the FAQ (faq.q8, with a
+         link to the privacy page). Kept for later; its i18n keys (data.*) stay.
     <section class="section data" id="data">
-      <div class="wrap data-grid">
+      <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow">05 — <span data-i18n="data.eyebrow">Your data</span></p>
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-lock"/></svg></span>
           <h2 class="h2" data-i18n="data.title">Your data leaves <em>when you do.</em></h2>
           <p class="sec-sub" data-i18n="data.sub">Musaed keeps what it needs to protect your server, and clears the rest on a schedule.</p>
         </div>
-        <ol class="data-steps">
+        <ol class="data-steps" data-stagger>
           <li class="reveal">
             <span class="d-ic"><svg class="i" aria-hidden="true"><use href="#i-restore"/></svg></span>
             <div><h3 data-i18n="data.1t">Removed the bot? Your setup waits.</h3><p data-i18n="data.1d">If Musaed leaves your server, its data is set aside, not kept forever. Add it back soon and your setup returns. Wait too long and it's deleted for good.</p></div>
@@ -789,19 +866,20 @@
         </ol>
       </div>
     </section>
+    -->
 
     <!-- PLANS -->
     <section class="section plans-sec" id="plans">
       <div class="wrap">
-        <div class="sec-head center reveal">
-          <p class="eyebrow">06 — <span data-i18n="plans.eyebrow">Plans</span></p>
+        <div class="sec-head reveal">
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-badge"/></svg></span>
           <h2 class="h2" data-i18n="plans.title">Free to start. <em>Pro when you grow.</em></h2>
         </div>
-        <div class="plans">
+        <div class="plans" data-stagger>
           <article class="plan reveal">
             <h3 data-i18n="plans.free">Free</h3>
             <p class="plan-for" data-i18n="plans.freeFor">Everything you need to lock the door.</p>
-            <a class="btn btn-ghost" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><span data-i18n="cta.add">Add to Discord</span></a>
+            <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><span data-i18n="cta.add">Add to Discord</span></a>
             <ul>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f1">Age gate, captcha and honeypot</span></li>
               <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="plans.f2">AutoMod, anti-nuke and raid detection</span></li>
@@ -830,13 +908,10 @@
 
     <!-- FAQ -->
     <section class="section faq" id="faq">
-      <div class="wrap faq-grid">
+      <div class="wrap">
         <div class="sec-head reveal">
-          <p class="eyebrow">07 — <span data-i18n="faq.eyebrow">Questions</span></p>
+          <span class="sec-ic" aria-hidden="true"><svg class="i"><use href="#i-help"/></svg></span>
           <h2 class="h2" data-i18n="faq.title">Before you <em>add it.</em></h2>
-          <div class="dash-cta">
-            <a class="btn btn-ghost" href="guide/"><span data-i18n="faq.guide">Read the full guide (Arabic)</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
         </div>
         <div class="faq-list reveal">
           <details><summary><span data-i18n="faq.q1">Does Musaed speak Arabic?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a1">Yes. Musaed was built Arabic-first. Its replies, panels and command descriptions are all in Arabic.</p></details>
@@ -846,18 +921,25 @@
           <details><summary><span data-i18n="faq.q5">When is Pro coming?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a5">Soon. Everything in the free plan works today. Pro will add higher limits, your server's own colour and footer on Musaed's messages, and more than one ticket panel. We'll announce the launch in the <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">support server</a>.</p></details>
           <details><summary><span data-i18n="faq.q6">Can I use Musaed with other bots?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a6">Yes. Every feature can be turned on or off by itself, so Musaed can guard the door while your other bots keep their jobs.</p></details>
           <details><summary><span data-i18n="faq.q7">What is Early Access?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a7">A way for a server to try new Musaed features before they launch for everyone. It never gives more than Pro and never raises a limit. A feature in it can change or be removed, and it can become paid later. We'll announce how to join in the <a href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener">support server</a>.</p></details>
+          <details><summary><span data-i18n="faq.q8">What do you keep about my server?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a8">Only what Musaed needs to protect your server, and the rest is cleared on a schedule. If you remove the bot, its data is set aside: add it back soon and your setup returns, wait too long and it's deleted for good. The full details are in the <a href="privacy.html">privacy policy</a>.</p></details>
+          <details><summary><span data-i18n="faq.q9">Why does Musaed ask for Administrator?</span><span class="pm" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><p data-i18n="faq.a9">To stop someone who is wrecking your server, Musaed's role has to sit above theirs, and it needs to take roles away and bring deleted channels and roles back. Every action it takes is written to the mod log. And turn on two-factor authentication for all your staff: most wrecked servers start with a hacked mod account.</p></details>
+        </div>
+        <div class="faq-more reveal">
+          <a class="btn btn-ghost" href="guide/"><span data-i18n="faq.guide">Read the full guide (Arabic)</span><svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
-    <!-- FINALE -->
+    <!-- FINALE: an arch doorway behind the closing line -->
     <section class="finale" aria-labelledby="finale-title">
-      <div class="finale-bg" aria-hidden="true"><div class="grid"></div></div>
-      <div class="wrap finale-in">
-        <p class="finale-ar reveal" lang="ar" aria-hidden="true" data-word="مساعد">مساعد</p>
-        <h2 class="finale-title reveal" id="finale-title" data-i18n="fin.title">Your server's helper, <em>standing at the door.</em></h2>
-        <div class="reveal">
-          <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.addLong">Add Musaed to your server</span></a>
+      <div class="wrap">
+        <div class="finale-box reveal">
+          <svg class="finale-arch" viewBox="0 0 520 440" aria-hidden="true"><path class="a1" d="M40 440V220A220 220 0 0 1 480 220V440"/><path class="a2" d="M110 440V240A150 150 0 0 1 410 240V440"/></svg>
+          <h2 class="finale-title" id="finale-title" data-i18n="fin.title">Your server's helper, <em>standing at the door.</em></h2>
+          <div class="finale-cta">
+            <a class="btn btn-primary btn-lg" href="https://discord.com/oauth2/authorize?client_id=1341863717247258655&amp;permissions=8&amp;integration_type=0&amp;scope=bot+applications.commands" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="cta.addLong">Add Musaed to your server</span></a>
+            <a class="btn btn-ghost btn-lg" href="https://discord.gg/CcwRT6K5qv" target="_blank" rel="noopener" data-i18n="foot.support">Support server</a>
+          </div>
         </div>
       </div>
     </section>
