@@ -2,17 +2,21 @@
 
 > Musaed is an Arabic (Saudi dialect) moderation and automation bot for Discord servers.
 > It is written in Arabic from the ground up — every command, reply, error message and
-> duration input is native Arabic, not a translation layer. Core features are free for
-> every server with no time limit and no card; an optional Pro tier raises some limits.
+> duration input is native Arabic, not a translation layer. Protection and moderation are
+> on the free plan with no card; an optional Pro tier adds Musaed's own name and picture
+> inside a server and scheduled messages, and raises some limits.
 
 Musaed's features are independent and toggled per server: moderation with a full audit
 log; automatic protection (a banned-word filter that also catches stretched-out, spaced,
 symbol-swapped and Arabizi spellings and edited messages, with an optional ready-made word
-list from the Musaed team; spam detection; raid defense); anti-nuke protection, on by
+list from the Musaed team; spam detection, with its own switch; raid alerts that offer to
+pause invites and do nothing until a staff member presses); anti-nuke protection, on by
 default, which strips the roles of anyone mass-deleting channels or roles, mass-banning or
 mass-kicking members, creating webhooks or adding bots, kicks the bots they added, alerts
-staff, and instantly bans anyone who gives @everyone a dangerous permission (taking the
-permission back); an account-age gate; captcha verification (in the
+staff in a staff-only channel with a button that puts back the deleted channels and roles
+and lifts the bans (pressed by someone with Manage Server within 10 minutes; nothing is
+restored on its own), and instantly bans anyone who gives @everyone a dangerous permission
+(taking the permission back); invite tracking (who invited whom, on by default); an account-age gate; captcha verification (in the
 verification channel or by DM, button or math at three difficulty levels); welcome and
 goodbye messages with a picture card (avatar, name, member number); separate auto-roles for
 new members and new bots; a self-roles panel (up to 10 buttons with emoji and colour that
@@ -36,7 +40,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 
 ## Pages
 
-- [Landing page](https://musaed.dev/): what the bot does, an animated join-gate demo, partner servers, a 22-second video (Arabic on-screen text), the five protection layers (age gate, captcha, trap channel, automod, anti-nuke), the toolkit (tickets, shortcuts, auto-responses, welcome/goodbye/auto-role, mod logs, server log, server checkup, self-roles), an interactive dashboard preview, the searchable command list, data retention, plans, and an FAQ
+- [Landing page](https://musaed.dev/): what the bot protects against, an animated demo of anti-nuke stopping a wrecker and the one-press restore, partner servers, the five protection layers (age gate, captcha, trap channel, automod, anti-nuke) opened by an animated join-gate demo, the toolkit (tickets, shortcuts, welcome/goodbye/auto-role, server checkup), an interactive dashboard preview, plans, and an FAQ (including what is kept about a server and why Musaed asks for Administrator)
 - [Privacy policy](https://musaed.dev/privacy.html)
 - [Terms of use](https://musaed.dev/terms.html)
 - [Structured pricing](https://musaed.dev/pricing.txt)
@@ -45,7 +49,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 
 - [Guide home](https://musaed.dev/guide/): searchable hub linking to every section below
 - [Getting started](https://musaed.dev/guide/start.html): adding the bot, why its role must sit above the roles it manages, the dashboard and which Discord permission configures which feature, a suggested setup order, and the /checkup command
-- [Protection](https://musaed.dev/guide/protection.html): the age gate, captcha (button or math, DM or verification channel, lockdown mode), the trap channel, automod (banned words, the team word list, spam) and anti-nuke — each with its defaults, setup steps and known limits
+- [Protection](https://musaed.dev/guide/protection.html): the age gate, captcha (button or math, DM or verification channel, lockdown mode), the trap channel, automod (banned words, the team word list, spam, raid alerts) and anti-nuke with the one-press restore — each with its defaults, setup steps and known limits
 - [Toolkit](https://musaed.dev/guide/toolkit.html): tickets, shortcuts, auto-responses, welcome/goodbye messages and auto-roles, the moderation log and /lookup, the server log, checkup alerts, and the self-roles panel
 - [Commands](https://musaed.dev/guide/commands.html): every slash command with the Discord permission it needs, and how to write durations (30m, 1h30m, 7d)
 - [Troubleshooting](https://musaed.dev/guide/troubleshooting.html): role-hierarchy errors, missing channel permissions, settings that will not enable or apply, captcha lockdown after a role change, and reversing a mistaken kick, ban or timeout
@@ -54,7 +58,7 @@ interactive dashboard preview, is illustrative UI, not live data from any server
 
 - Language: Arabic (Saudi dialect) by default, English available as a toggle; right-to-left in Arabic
 - Platform: Discord
-- Pricing: all systems free for every server, no time limit, no card; Pro is not yet launched — "coming soon", no numeric price, assigned by the Musaed team when it ships (no self-serve checkout)
+- Pricing: protection and moderation on the free plan, no card; Pro (Musaed's own name and picture in a server, scheduled messages, custom embed style and welcome card background, higher limits) is not yet on sale — "coming soon", no numeric price, assigned by the Musaed team when it ships (no self-serve checkout)
 - Add the bot: https://discord.com/oauth2/authorize?client_id=1341863717247258655&permissions=8&scope=bot+applications.commands
 - Dashboard: https://dashboard.musaed.dev
 - Community / support server: https://discord.gg/CcwRT6K5qv

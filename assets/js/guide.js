@@ -90,13 +90,13 @@
       { t: 'بوابة العمر', d: 'يطرد الحسابات الجديدة جدًا أول ما تدخل.', u: 'protection.html#agegate', p: 'الحماية', k: 'عمر الحساب طرد اقل عمر حسابات جديده age gate' },
       { t: 'الكابتشا', d: 'تحدي للأعضاء الجدد قبل ما يدخلون.', u: 'protection.html#captcha', p: 'الحماية', k: 'تحقق captcha مسالة حسابيه زر رتبه غير المتحقق قفل lockdown' },
       { t: 'قناة الفخ', d: 'قناة ما يكتب فيها إلا البوتات والحسابات المخترقة.', u: 'protection.html#honeypot', p: 'الحماية', k: 'honeypot فخ بوتات مخترقه كتم حظر سبام' },
-      { t: 'الحماية التلقائية', d: 'الكلمات الممنوعة والسبام.', u: 'protection.html#automod', p: 'الحماية', k: 'automod كلمات ممنوعه سبام فلتر قائمه فريق مساعد حذف' },
-      { t: 'الحماية من التخريب', d: 'يوقف اللي يحذف قنوات أو رتب أو يحظر بالجملة.', u: 'protection.html#antinuke', p: 'الحماية', k: 'antinuke تخريب هجوم nuke حذف قنوات رتب حظر سحب رتب ويب هوك webhook اضافه بوت everyone صلاحيات' },
+      { t: 'الحماية التلقائية', d: 'الكلمات الممنوعة والسبام والهجمات.', u: 'protection.html#automod', p: 'الحماية', k: 'automod كلمات ممنوعه سبام فلتر قائمه فريق مساعد حذف هجمات raid دخول كثير اقفل الدعوات تجاهل' },
+      { t: 'الحماية من التخريب', d: 'يوقف اللي يحذف قنوات أو رتب أو يحظر بالجملة، ويرجّع اللي حذفه بضغطة.', u: 'protection.html#antinuke', p: 'الحماية', k: 'antinuke تخريب هجوم nuke حذف قنوات رتب حظر سحب رتب ويب هوك webhook اضافه بوت everyone صلاحيات ترجيع رجع اللي خربه undo restore استرجاع رجع له الرتب تنبيهات قناه الاداره' },
 
       { t: 'التذاكر', d: 'لوحة بقائمة أنواع، وروم خاص لكل طلب.', u: 'toolkit.html#tickets', p: 'الأدوات', k: 'tickets تذاكر دعم لوحه رتبة الدعم سجل' },
       { t: 'الاختصارات', d: 'كلمة وحدة تنفّذ حظر أو طرد أو كتم.', u: 'toolkit.html#shortcuts', p: 'الأدوات', k: 'shortcuts اختصار كلمه حظر طرد كتم فك كتم' },
       { t: 'الردود التلقائية', d: 'رد جاهز على الأسئلة المتكررة.', u: 'toolkit.html#autoresponse', p: 'الأدوات', k: 'ردود تلقائيه رد جاهز كلمه اسئله ملف صوره pdf مرفق' },
-      { t: 'الترحيب والوداع والرتب التلقائية', d: 'رسالة لكل داخل، ووداع، ورتبة تلقائية.', u: 'toolkit.html#welcome', p: 'الأدوات', k: 'welcome ترحيب وداع رتبه تلقائيه autorole متغيرات صوره الترحيب بطاقه خلفيه' },
+      { t: 'الترحيب والوداع والرتب التلقائية', d: 'رسالة لكل داخل، ووداع، ورتبة تلقائية.', u: 'toolkit.html#welcome', p: 'الأدوات', k: 'welcome ترحيب وداع رتبه تلقائيه autorole متغيرات صوره الترحيب بطاقه خلفيه مين دعا مين دعوه دعوات invites inviter' },
       { t: 'سجل الإجراءات', d: 'كل طرد وحظر وكتم وإنذار مسجّل.', u: 'toolkit.html#modlog', p: 'الأدوات', k: 'سجل اجراءات modlogs lookup انذار' },
       { t: 'سجل الأحداث', d: 'الرسايل المحذوفة والمعدّلة والدخول والخروج بقناة وحدة.', u: 'toolkit.html#serverlog', p: 'الأدوات', k: 'server log سجل احداث رسايل محذوفه معدله' },
       { t: 'فحص السيرفر', d: 'تنبيه لو ميزة مفعّلة وقفت عن الشغل.', u: 'toolkit.html#checkup', p: 'الأدوات', k: 'checkup فحص تنبيهات قناه التنبيهات' },
@@ -188,17 +188,6 @@
         s.style.setProperty('--w', i);
         s.textContent = w;
         title.append(s, ' ');
-      });
-    }
-
-    // A spotlight on each card that follows the pointer.
-    if (matchMedia('(hover: hover)').matches) {
-      document.querySelectorAll('.gd-card').forEach(card => {
-        card.addEventListener('pointermove', e => {
-          const r = card.getBoundingClientRect();
-          card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-          card.style.setProperty('--my', `${e.clientY - r.top}px`);
-        });
       });
     }
 

@@ -13,7 +13,6 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const wait = ms => new Promise(r => setTimeout(r, ms));
 
@@ -172,21 +171,6 @@
     if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); }
   });
   onLang(() => setMenu(!menu.hidden));
-
-  /* ---------- Hero grid spotlight ---------- */
-  if (fine && !reduce) {
-    const hero = $('.hero');
-    const grid = $('.hero .grid');
-    hero.addEventListener('pointermove', e => {
-      const r = grid.getBoundingClientRect();
-      grid.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      grid.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-    hero.addEventListener('pointerleave', () => {
-      grid.style.setProperty('--mx', '-500px');
-      grid.style.setProperty('--my', '-500px');
-    });
-  }
 
   /* ---------- Film: native controls without JS; a big play button with it ---------- */
   (function film() {
@@ -354,14 +338,44 @@
   }, { threshold: .18, rootMargin: '0px 0px -6% 0px' });
   $$('.reveal').forEach(n => revealIO.observe(n));
 
-  /* ---------- Card spotlight ---------- */
-  if (fine) {
-    $$('.card').forEach(c => c.addEventListener('pointermove', e => {
-      const r = c.getBoundingClientRect();
-      c.style.setProperty('--x', `${e.clientX - r.left}px`);
-      c.style.setProperty('--y', `${e.clientY - r.top}px`);
-    }));
-  }
+  /* ---------- Toolkit tabs: cycle while in view until someone picks one ---------- */
+  (function toolkit() {
+    const box = $('[data-tk]');
+    if (!box) return;
+    const tabs = $$('[role="tab"]', box);
+    const panels = tabs.map(t => $('#' + t.getAttribute('aria-controls')));
+    const CYCLE_MS = 5000;   // matches the tkProg bar in styles.css
+    let cur = 0, timer = 0, auto = !reduce, inView = false;
+
+    function select(i, focus) {
+      cur = (i + tabs.length) % tabs.length;
+      tabs.forEach((t, k) => {
+        const on = k === cur;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        panels[k].hidden = !on;
+      });
+      if (focus) tabs[cur].focus();
+    }
+    function schedule() {
+      clearTimeout(timer);
+      box.classList.toggle('auto', auto && inView);
+      if (auto && inView && !document.hidden) timer = setTimeout(() => { select(cur + 1); schedule(); }, CYCLE_MS);
+    }
+    function stopAuto() { auto = false; schedule(); }
+
+    tabs.forEach((t, k) => t.addEventListener('click', () => { stopAuto(); select(k); }));
+    box.addEventListener('keydown', e => {
+      if (!e.target.matches('[role="tab"]')) return;
+      const rtl = root.dir === 'rtl';
+      const step = { ArrowDown: 1, ArrowUp: -1, ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1 }[e.key];
+      if (step) { e.preventDefault(); stopAuto(); select(cur + step, true); }
+      else if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); stopAuto(); select(e.key === 'Home' ? 0 : tabs.length - 1, true); }
+    });
+    select(0);
+    onVisible(box, vis => { inView = vis; schedule(); }, { threshold: .3 });
+    document.addEventListener('visibilitychange', schedule);
+  })();
 
   /* ---------- Dashboard ---------- */
   (function dashboard() {
@@ -437,6 +451,7 @@
     const search = $('[data-cmd-search]');
     const filters = $('[data-cmd-filters]');
     const empty = $('[data-cmd-empty]');
+    if (!list) return;   // the section is commented out of index.html (2026-11-22)
     const CATS = ['all', 'mod', 'verify', 'setup', 'info'];
     let cat = 'all';
 
@@ -472,39 +487,15 @@
     onLang(() => { renderFilters(); renderList(); });
   })();
 
-  /* ---------- Scroll-linked: nav, stacked layers, finale fill ---------- */
-  const layers = $$('.layer');
-  const finaleWord = $('.finale-ar');
+  /* ---------- Nav background after scrolling ---------- */
   let ticking = false;
-
   function onScroll() {
     ticking = false;
-    const vh = innerHeight;
     nav.classList.toggle('scrolled', scrollY > 24);
-
-    const stacked = innerWidth >= 900 && !reduce;
-    layers.forEach((l, i) => {
-      const next = layers[i + 1];
-      if (!stacked || !next) {
-        l.style.removeProperty('--s');
-        l.style.removeProperty('--b');
-        return;
-      }
-      const stick = 100 + (i + 1) * 22;
-      const p = clamp(1 - (next.getBoundingClientRect().top - stick) / (vh * .7), 0, 1);
-      l.style.setProperty('--s', (1 - p * .05).toFixed(3));
-      l.style.setProperty('--b', (1 - p * .4).toFixed(3));
-    });
-
-    if (!reduce) {
-      const r = finaleWord.getBoundingClientRect();
-      finaleWord.style.setProperty('--fill', clamp((vh * .92 - r.top) / (vh * .55), 0, 1).toFixed(3));
-    }
   }
   addEventListener('scroll', () => {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
   }, { passive: true });
-  addEventListener('resize', onScroll);
 
   /* ---------- Boot ---------- */
   applyLang();

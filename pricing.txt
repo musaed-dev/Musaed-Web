@@ -1,17 +1,18 @@
 # Pricing — Musaed (مساعد)
 
-Every feature is free for every Discord server, with no time limit and no card
-required. Pro is an optional tier that raises some per-server limits and adds a custom
-embed style and a custom welcome card background. The landing page's #plans panel shows Pro as "coming soon" with no numeric
+The free plan covers all of Musaed's protection and moderation, with no card required.
+Pro is an optional tier that adds Musaed's own name and picture inside a server, scheduled
+messages, a custom embed style and a custom welcome card background, and raises some
+per-server limits. The landing page's #plans panel shows Pro as "coming soon" with no numeric
 price; the limits below come straight from the bot's plans table and are more detailed
 than what the panel itself shows.
 
-Last updated: 2026-10-29
+Last updated: 2026-11-22
 
 ## Free
 
 - Price: 0
-- Included, at full access: moderation, automatic protection, anti-nuke, account-age gate, captcha verification, welcome and goodbye messages with a picture card, auto-roles, a self-roles panel, support tickets, auto-responses, text shortcuts, trap channel, server log, and /checkup with broken-feature alerts
+- Included, at full access: moderation, automatic protection and raid alerts, anti-nuke with the one-press restore, account-age gate, captcha verification, welcome and goodbye messages with a picture card, invite tracking (who invited whom), auto-roles, a self-roles panel, support tickets, auto-responses, text shortcuts, trap channel, server log, and /checkup with broken-feature alerts
 - Text shortcuts: up to 7
 - Ticket types: up to 6
 - Ticket panels: 1
@@ -21,6 +22,8 @@ Last updated: 2026-10-29
 - Auto-responses carrying a file (image, PDF or text, up to 10 MB): 1, counted within the 20
 - Welcome card background: the bot's own
 - Embed style: the bot's default colour
+- Musaed's name and picture in the server: the bot's own
+- Scheduled messages: not available
 
 ## Pro
 
@@ -34,6 +37,8 @@ Last updated: 2026-10-29
 - Auto-responses carrying a file: up to 20, counted within the 40
 - Welcome card background: the server's own image
 - Embed style: custom (brand colour + footer)
+- Musaed's name, avatar, banner and bio inside the server: custom
+- Scheduled messages (repeating posts): up to 5
 - Ticket types: unchanged at 6
 
 ## Notes
